@@ -1,0 +1,15 @@
+
+.b
+    font-weight: bold
+
+.bb
+    font-weight: bolder
+
+$bbs: 300, 350, 400, 450, 500, 550, 600
+
+@each $b in $bbs
+    .fw-#{$b}
+        font-weight: $b
+        
+.n, .fw-n
+    font-weight: normal

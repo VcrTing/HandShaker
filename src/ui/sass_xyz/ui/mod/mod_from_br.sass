@@ -1,0 +1,34 @@
+
+// 来自的 动画
+
+.ani-mod-from-br-iive
+    opacity: 1
+    animation: ani_mod_from_br_iive $mod-from-time-iive ease-in-out
+
+@keyframes ani_mod_from_br_iive
+    0%
+        opacity: 0.4
+        transform: MOD_UP_R(0.94)
+    100%
+        opacity: 1
+        transform: MOD_STAY()
+
+.ani-mod-from-br-die
+    opacity: 0
+    animation: ani_mod_from_br_die $mod-from-time-die ease-in-out
+
+@keyframes ani_mod_from_br_die
+    0%
+        opacity: 1
+        transform: MOD_STAY()
+    100%
+        opacity: 0
+        transform: MOD_UP_R(0)
+      
+// 样式  
+.mod-iive
+    .mod-from-br
+        @extend .ani-mod-from-br-iive  
+.mod-die
+    .mod-from-br
+        @extend .ani-mod-from-br-die

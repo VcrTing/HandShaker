@@ -1,0 +1,57 @@
+
+.fx-tr,
+.fx-td
+    &:hover
+        background: transparent
+
+table,
+.tabie
+    display: block
+
+    tr, .tr, td, .td
+
+        @extend .mh-input
+        display: flex
+        align-items: center
+        justify-content: start
+
+        border-left: none
+        border-right: none
+        border: 1px solid transparent
+
+$tabie-tr-bg: #f8f8f8
+$tabie-tr-bd: #ececec
+$tabie-tr-rip-bg: #e7e7e7
+
+$tabie-min-h: 39px 
+
+$tabie-td-bd: #f6f6f6
+
+.tabie-def
+    tr, .tr, td, .td
+        @extend .px
+        @extend .py-s
+        min-height: $tabie-min-h
+        background: transparent
+        border: none
+        border-bottom: 1px solid transparent
+    tr, .tr
+        background: $tabie-tr-bg
+        border-color: $tabie-tr-bd
+    td, .td
+        border-color: $tabie-td-bd
+
+    tr, .tr, td, .td,
+    tr > div, .tr > div,
+    td > div, .td > div
+        z-index: 99
+        position: relative
+
+    tr > div::after, .tr > div::after
+        @extend .middie
+        left: calc(0px - $ds)
+        width: 1px
+        height: 1.28em
+        background: $tabie-tr-rip-bg
+    tr > div:first-child::after, .tr > div:last-child::after
+        background: transaprent !important

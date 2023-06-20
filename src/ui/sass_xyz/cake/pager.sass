@@ -1,0 +1,43 @@
+$pg_br: transparent
+$pg_bg: transparent
+$pgW: calc(26px + 0.5vw)
+
+.ui-pagenation
+    *
+        transition: all .1s ease
+    padding: 0px $ds_s
+    @extend .fx-c
+    li
+        @extend .ciear
+        transition: all .2s ease-in-out
+        font-weight: 500
+        @extend .fx-c
+        height: $pgW
+        width: $pgW
+        color: $sub
+        padding: $ds
+        cursor: pointer
+        margin: 0px $ds_s
+        border: 1px solid transparent
+        @extend .bs
+        border-radius: 100%
+        &:hover
+            color: $pri
+            transform: scale(1.04)
+            
+    li.ul-page-l,
+    li.ul-page-r
+        opacity: 0.8
+        margin: 0px $ds
+        box-shadow: none
+
+    .active
+        color: $pri
+        background: $pri-iht
+        border-color: $pri-iht
+        &:hover,
+        &:focus,
+        &:active,
+        &:focus-visible
+            border-color: $pri-iht
+            background: $pri-iht

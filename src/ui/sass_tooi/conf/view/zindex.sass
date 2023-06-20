@@ -1,0 +1,10 @@
+
+// 通常
+@each $k, $v in $zis
+    .zi#{$k}
+        z-index: $v
+
+// AFTER
+@each $k, $v in $zis
+    .aft_zi#{$k}::after
+        z-index: $v

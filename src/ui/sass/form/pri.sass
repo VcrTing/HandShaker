@@ -1,0 +1,10 @@
+
+.fx-input-pri
+    &:hover
+        // border-color: $pri
+    &:focus, &:active, &:focus-visible
+        border-color: $pri
+        box-shadow: 0px 0px 4px 0px $pri-shd
+
+.input-pri
+    @extend .fx-input-pri

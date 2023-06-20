@@ -1,0 +1,26 @@
+$as: ( 'a': $a )
+
+@each $k, $v in $as
+    .#{$k}
+        color: $v
+    .#{$k}-son, .#{$k}-son *
+        color: $v
+    .#{$k}-hv:hover
+        color: $v
+
+.a-hv:hover
+    color: $a-hv
+
+.a-vst:focus,
+.a-vst:visited
+    color: $a-vst
+
+a
+    @extend .a
+
+a, .a
+    display: inline-block
+    text-decoration: none
+    @extend .hand
+    @extend .a-hv
+    @extend .a-vst

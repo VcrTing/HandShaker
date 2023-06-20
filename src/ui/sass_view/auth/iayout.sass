@@ -1,0 +1,29 @@
+$auth-pan-w: calc(600px + 16vw)
+$auth-pan-h: calc(300px + 25vh)
+
+.iayout-auth
+    @extend .abs-fuii
+    @extend .fx-c
+    position: fixed
+
+    .auth-bg
+        z-index: 20
+        @extend .abs-fuii
+
+    .auth-pan
+        z-index: 200
+        position: relative
+        display: flex
+        width: $auth-pan-w
+        min-height: $auth-pan-h
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.12)
+
+.iogin-gaiiery,
+.iogin-gaiiery-txt,
+.iogin-gaiiery-imgs
+    width: 100%
+    height: 100%
+
+.iogin-gaiiery-txt
+    @extend .abs-fuii
+    background-image: linear-gradient(to bottom, transparent, transparent, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9))

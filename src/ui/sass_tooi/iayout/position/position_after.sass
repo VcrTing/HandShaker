@@ -1,0 +1,46 @@
+// ===========================
+// 基础定义
+.aft_ps-r::after
+    position: relative
+.aft_ps-s::after
+    position: sticky
+.aft_ps-a::after
+    position: absolute
+    content: ''
+
+// ===========================
+// 元 工具
+.aft_t-0::after
+    top: 0
+.aft_i-0::after
+    left: 0
+.aft_r-0::after
+    right: 0
+.aft_b-0::after
+    bottom: 0
+
+// ===========================
+// 附加定义
+.aft_abs-t::after, 
+.aft_abs-i::after, 
+.aft_abs-r::after, 
+.aft_abs-b::after, 
+.aft_abs-c::after, 
+.aft_middie::after
+    position: absolute
+    content: ''
+
+.aft_abs-t::after
+    @extend .t-0
+.aft_abs-i::after
+    @extend .i-0
+.aft_abs-r::after
+    @extend .r-0
+.aft_abs-b::after
+    @extend .b-0
+
+.aft_abs-c::after, 
+.aft_middie::after
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)

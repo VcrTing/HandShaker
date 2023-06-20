@@ -1,0 +1,10 @@
+$fonts: ( 'tit': $tit, 'ttd': $ttd, 'sub': $sub, 'sus': $sus, 'wht': $wht, 'pri': $pri, 'pri-wht': $pri-wht )
+
+@each $k, $v in $fonts
+    .#{$k}
+        color: $v
+    .#{$k}-son, .#{$k}-son *
+        color: $v
+    .#{$k}-hv:hover
+        color: $v
+     

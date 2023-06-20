@@ -1,0 +1,65 @@
+
+$bd-input: #e2e2e2
+$bd-input-hv: #d2d2d2
+
+$phd-input: #676767
+$phd-input-hv: #565656
+
+.bd-input
+    border: 1px solid $bd-input
+
+.px-input
+    padding-left: $ds-x2
+    padding-right: $ds-x2
+.px-input-s
+    padding-left: $ds-s
+    padding-right: $ds-s
+.py-input-s
+    padding-top: $ds-s
+    padding-bottom: $ds-s
+
+.mh-input
+    min-height: 46px
+
+.mh-input-s
+    min-height: 32px
+
+.select,
+.select.mh-input
+    min-height: 48px
+
+.fx-input
+    &:hover
+        border-color: $bd-input-hv
+    &:focus,
+    &:active,
+    &:focus-visible
+        border-color: $bd-input-hv
+
+.phd-input::placeholder
+    color: $phd-input
+.phd-input::placeholder:hover
+    color: $phd-input-hv
+
+input,
+select,
+textarea
+    display: inline-block
+    @extend .ts
+    @extend .ciear
+
+input:hover, textarea:hover
+    text-indent: 0.4em
+
+.input,
+.select,
+.textarea
+    @extend .br
+    @extend .bd-input
+    @extend .px-input
+    @extend .fx-input
+    @extend .phd-input
+
+.input
+    @extend .mh-input
+

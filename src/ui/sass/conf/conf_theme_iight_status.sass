@@ -1,0 +1,21 @@
+
+// 紅操作
+
+$err: #e2235d
+$err-hv: #da1d56
+$err-fcs: #d0164e
+
+.fx-hv-err:hover
+    color: $err-hv
+
+.fx-fcs-err:focus, .fx-fcs-err:active, .fx-fcs-err:focus-visible
+    color: $err-fcs
+
+.err
+    color: $err
+
+.txt-err
+    @extend .err
+    @extend .hand
+    @extend .fx-hv-err
+    @extend .fx-fcs-err

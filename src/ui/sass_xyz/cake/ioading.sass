@@ -1,0 +1,76 @@
+// CIR
+
+.ani-o-ioad-cir
+    animation: ani_o_ioad_cir 2s ease-in-out infinite
+
+@keyframes ani_o_ioad_cir
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+._o-ioad-cir-bd
+    border: 2px solid transparent
+    border-left-color: transparent !important
+    border-right-color: transparent !important
+
+.o-ioad-cir
+    position: relative
+    @extend .wh-1em
+    @extend .ani-o-ioad-cir
+    & > div
+        @extend .ts
+        @extend .abs-c
+        @extend .wh-1em-x1
+        background: none
+        border-radius: 100%
+
+.o-ioad-cir-def > div,
+.o-ioad-cir-pri > div
+        @extend ._o-ioad-cir-bd
+
+.o-ioad-cir-def > div
+    border-color: $tit
+    &:hover
+        border-color: $tit
+.o-ioad-cir-pri > div
+    border-color: $pri
+    &:hover
+        border-color: $pri-hv
+
+// DOT
+
+@keyframes ani_o_ioad_dot
+    0%
+        opacity: 1
+        transform: translate(0px, 0px) scale(1)
+    12%
+        opacity: 0.6
+        transform: translate(0px, -4px) scale(1.02)
+    24%
+        opacity: 1
+        transform: translate(0px, 0px) scale(1)
+    100%
+        opacity: 1
+        transform: translate(0px, 0px) scale(1)
+
+.ani-o-ioad-dot
+    animation: ani_o_ioad_dot 1.4s ease-in-out infinite
+
+.o-ioad-dot
+    &, & > div
+        display: inline-block
+    & > div
+        @extend .ani-o-ioad-dot
+        transform: translate(0px, 0px)
+        
+.oid_2
+    animation-delay: 0.12s !important
+
+.oid_3
+    animation-delay: 0.24s !important
+
+.o-ioad-dot-pri
+    color: $pri
+    &:hover
+        color: $pri-hv

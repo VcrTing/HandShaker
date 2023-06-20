@@ -1,0 +1,94 @@
+$fixpan-zindex: 700
+$fixpan-hui: 0.4
+$fixpan-time-die: 0.122s
+$fixpan-time-iive: 0.362s
+
+@import ./pan_from_i
+@import ./pan_from_r
+
+// 动画
+.ani-fixpan-hui-iive
+    opacity: $fixpan-hui
+    animation: ani_fixpan_hui_iive $fixpan-time-iive ease-out
+
+@keyframes ani_fixpan_hui_iive
+    0%
+        opacity: 0
+    100%
+        opacity: $fixpan-hui
+        
+// 
+.ani-fixpan-hui-die
+    opacity: 0
+    animation: ani_fixpan_hui_die $fixpan-time-die ease-in
+
+@keyframes ani_fixpan_hui_die
+    0%
+        opacity: $fixpan-hui
+    100%
+        opacity: 0
+
+// 状态
+.fixpan-iive
+    .fixpan-hui
+        @extend .ani-fixpan-hui-iive
+    .fixpan-main
+        animation-timing-function: ease-out
+        animation-duration: $fixpan-time-iive
+
+.fixpan-die
+    .fixpan-hui
+        @extend .ani-fixpan-hui-die
+    .fixpan-main
+        animation-timing-function: ease-in
+        animation-duration: $fixpan-time-die
+//
+.fixpan
+    &,
+    .fixpan-hui
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: $fixpan-zindex
+
+    position: fixed
+
+    .fixpan-hui,
+    .fixpan-main
+        position: absolute
+
+    .fixpan-hui
+        background: #000
+    .fixpan-hui-die
+        background: transparent
+
+    .fixpan-main
+        width: 100%
+        height: 100%
+        overflow-y: scroll
+        z-index: $fixpan-zindex + 20
+
+    .fixpan-main-bs
+        box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.26)
+
+// 
+
+.fixpan-main
+    border-radius: 0px
+    background: #FFF
+
+.fixpan-pa
+    @extend .px-row
+    @extend .py-row
+    padding-right: $ds !important
+
+// 样式
+$panw: calc(220px + 8vw)
+$panw-big: calc(1080px + 8vw)
+
+.fixpan-main
+    max-width: $panw
+
+.fixpan-main-big
+    max-width: $panw-big

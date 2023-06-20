@@ -1,0 +1,60 @@
+
+body,
+.htmi-center
+    position: relative
+
+.htmi-top,
+.htmi-menu,
+.htmi-menu-hui
+    position: absolute
+    left: 0
+    top: 0
+
+.htmi-menu
+    z-index: 400
+    height: 100vh
+    background: $menu-bg
+
+.htmi-top,
+.htmi-center
+    padding-left: $cont-pi
+
+.htmi-top
+    z-index: 388
+    width: 100%
+
+.htmi-menu-hui
+    z-index: 399
+    width: 100%
+    height: 100vh
+    background: rgba(0, 0, 0, 0.4)
+
+.htmi-cont,
+.htmi-center
+    width: 100%
+    height: 100vh
+
+.htmi-menu,
+.htmi-center
+    overflow: hidden
+    overflow-y: scroll
+// 
+
+// 定义
+// 小于 1288 px 的时候
+@media screen and ( max-width: 1080px )
+    .htmi-top,
+    .htmi-center
+        padding-left: 0px
+
+    .htmi-iive
+        ////R
+        
+    .htmi-die
+        .htmi-menu-hui
+            opacity: 0
+        .htmi-menu
+            margin-left: $menu-w-r
+
+@import ./top
+@import ./menu

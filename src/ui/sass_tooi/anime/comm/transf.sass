@@ -1,0 +1,14 @@
+
+// 时间方法
+.ttf
+    transition-timing-function: $ttf
+.ttf-s
+    transition-timing-function: $ttf_s
+
+// BASE
+@each $k, $v in $durations
+    .trans#{$k}
+        @extend .ttf
+        transition-property: all
+        transition-duration: $v
+        

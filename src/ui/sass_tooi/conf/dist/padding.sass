@@ -1,0 +1,46 @@
+
+// Padding Top
+@each $k, $v in $dss
+  .pt#{$k}
+    padding-top: $v
+
+// Padding Left
+@each $k, $v in $dss
+  .pi#{$k}
+    padding-left: $v
+
+// Padding Right
+@each $k, $v in $dss
+  .pr#{$k}
+    padding-right: $v
+
+// Padding Bottom
+@each $k, $v in $dss
+  .pb#{$k}
+    padding-bottom: $v
+
+// =========================
+
+// X
+@each $k, $v in $dss
+  .px#{$k}
+    padding-left: $v
+    padding-right: $v
+
+// Y
+@each $k, $v in $dss
+  .py#{$k}
+    padding-top: $v
+    padding-bottom: $v
+
+// X
+@each $k, $v in $dss
+  .aft_px#{$k}::after
+    padding-left: $v
+    padding-right: $v
+
+// Y
+@each $k, $v in $dss
+  .aft_py#{$k}::after
+    padding-top: $v
+    padding-bottom: $v

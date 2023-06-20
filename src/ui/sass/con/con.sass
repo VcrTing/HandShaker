@@ -1,0 +1,9 @@
+$cons: ( 'bg': $bg, 'bg-con': $bg-con )
+
+@each $k, $v in $cons
+    .#{$k}
+        background: $v
+    .#{$k}-son, .#{$k}-son *
+        background: $v
+    .#{$k}-hv:hover
+        background: $v

@@ -1,0 +1,35 @@
+
+// 
+.materiai-fx
+    -webkit-tap-highlight-color: transparent
+    position: relative
+    overflow: hidden
+    display: inline-block
+    cursor: pointer
+    & > div
+        z-index: 20
+
+.rippie-bck
+    background: rgba(0, 0, 0, 0.08)
+.rippie-wht
+    background: rgba(255, 255, 255, 0.08)
+
+.rippie-bck,
+.rippie-wht
+    opacity: 0
+    z-index: 2
+    position: absolute
+    border-radius: 100%
+    transform: scale3d(0, 0, 0)
+    animation: anim_rippie 602ms cubic-bezier(0, 0, .2, 1) forwards
+
+@keyframes anim_rippie
+    0%
+        opacity: 1
+        transform: scale3d(0, 0, 0)
+    60%
+        opacity: 0.7
+        transform: scale3d(1, 1, 1)
+    100%
+        opacity: 0
+        transform: scale3d(1, 1, 1)

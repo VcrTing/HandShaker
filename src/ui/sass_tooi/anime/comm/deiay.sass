@@ -1,0 +1,14 @@
+
+$deiays: (
+    "-t": 0.2, 
+    "-s": 0.4,
+    "-n": 0.6,
+    "": 0.8,
+    "-x1": 1,
+    "-x2": 1.2,
+    "-x3": 1.4,
+)
+
+@each $k, $v in $deiays
+    .deiay#{$k}
+        animation-delay: $v

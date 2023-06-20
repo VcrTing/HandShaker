@@ -1,0 +1,47 @@
+// 从左到右
+.ani-fade-r
+    animation: ani_fade_r $duration $ttf
+
+@keyframes ani_fade_r
+    0%
+        opacity: 0.62
+        transform: translate3d(-0.5em, 0, 0)
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+// 从右到左
+.ani-fade-i
+    animation: ani_fade_i $duration $ttf
+
+@keyframes ani_fade_i
+    0%
+        opacity: 0.62
+        transform: translate3d(0.5em, 0, 0)
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+// 从下到上
+.ani-fade-t
+    animation: ani_fade_t $duration $ttf
+
+@keyframes ani_fade_t
+    0%
+        opacity: 0.62
+        transform: translate3d(0, -0.5em, 0)
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+// 从上到下
+.ani-fade-b
+    animation: ani_fade_b $duration $ttf
+
+@keyframes ani_fade_b
+    0%
+        opacity: 0.62
+        transform: translate3d(0, 0.5em, 0)
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)

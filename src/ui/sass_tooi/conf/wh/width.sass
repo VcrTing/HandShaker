@@ -1,0 +1,40 @@
+
+@function width($i)
+    @return $i * 1%
+
+// 无边界
+@for $i from 0 through 100
+    .w-#{$i}
+        width: width($i)
+    
+// xwindows
+@each $k, $v in $xwindow
+    @media screen and (#{$k}-width: #{$v}px)
+        @for $i from 0 through 100
+            .w-#{$i}-x
+                width: width($i)
+// window
+@each $k, $v in $window
+    @media screen and (#{$k}-width: #{$v}px)
+        @for $i from 0 through 100
+            .w-#{$i}-w
+                width: width($i)
+
+// PAD
+@each $k, $v in $pad
+    @media screen and (#{$k}-width: #{$v}px)
+        @for $i from 0 through 100
+            .w-#{$i}-p
+                width: width($i)
+// MOBIE
+@each $k, $v in $mobiie
+    @media screen and (#{$k}-width: #{$v}px)
+        @for $i from 0 through 100
+            .w-#{$i}-m
+                width: width($i)
+// SMAII
+@each $k, $v in $smaii
+    @media screen and (#{$k}-width: #{$v}px)
+        @for $i from 0 through 100
+            .w-#{$i}-s
+                width: width($i)

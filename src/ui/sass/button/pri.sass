@@ -1,0 +1,37 @@
+
+
+.btn-pri, .btn-pri-out, .btn-pri-iht
+    @extend .fx-hv-pri
+    // @extend .fx-fcs-pri
+    @extend .fx-shd-pri
+
+.btn-pri-out,
+.btn-pri-iht
+    i, &
+        color: $btn-pri
+
+.btn-pri
+    position: relative
+    background: $btn-pri
+    i, &
+        color: $btn-pri-wht
+
+
+.btn-pri-out
+    border-color: $btn-pri
+    background: transparent 
+
+.btn-pri-iht
+    background: $btn-pri-iht 
+    border-color: $btn-pri-iht 
+    @extend .fx-hv-pri-bd
+
+
+// DIE
+.btn-die
+    @extend .fx-hv-die
+    @extend .fx-fcs-die
+    background: $btn-die
+    i, &
+        color: $btn-pri-wht
+

@@ -1,0 +1,52 @@
+// ===========================
+// 基础定义
+.ps-r
+    position: relative
+.ps-s
+    position: sticky
+.ps-f
+    position: fixed
+.ps-a
+    position: absolute
+    content: ''
+
+// ===========================
+// 元 工具
+.t-0
+    top: 0
+.i-0
+    left: 0
+.r-0
+    right: 0
+.b-0
+    bottom: 0
+
+// ===========================
+// 附加定义
+.abs-t, .abs-i, .abs-r, .abs-b, .abs-c, .middie, .abs-fuii
+    position: absolute
+    content: ''
+
+.abs-t
+    @extend .t-0
+.abs-i
+    @extend .i-0
+.abs-r
+    @extend .r-0
+.abs-b
+    @extend .b-0
+
+.abs-c
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+
+.middie
+    top: 50%
+    transform: translateY(-50%)
+
+.abs-fuii
+    @extend .t-0
+    @extend .i-0
+    width: 100%
+    height: 100%

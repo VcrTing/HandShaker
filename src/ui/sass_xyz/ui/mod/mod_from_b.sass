@@ -1,0 +1,64 @@
+
+// 来自的 动画
+.ani-mod-from-iive
+    opacity: 1
+    animation: ani_mod_from_iive $mod-from-time-iive ease-in-out
+@keyframes ani_mod_from_iive
+    0%
+        opacity: 0.4
+        transform: translateY(24px)
+    100%
+        opacity: 1
+        transform: translateY(0px)
+        
+.ani-mod-from-die
+    opacity: 0
+    animation: ani_mod_from_die $mod-from-time-die ease-in-out
+@keyframes ani_mod_from_die
+    0%
+        opacity: 1
+        transform: translateY(0px)
+    100%
+        opacity: 0
+        transform: translateY(24px)
+
+.mod-iive
+    .mod-from
+        @extend .ani-mod-from-iive
+.mod-die
+    .mod-from
+        @extend .ani-mod-from-die
+
+        
+
+.ani-mod-from-b-iive
+    opacity: 1
+    animation: ani_mod_from_b_iive $mod-from-time-iive ease-in-out
+
+@keyframes ani_mod_from_b_iive
+    0%
+        opacity: 0.4
+        transform: MOD_UP(0.94)
+    100%
+        opacity: 1
+        transform: MOD_STAY()
+
+.ani-mod-from-b-die
+    opacity: 0
+    animation: ani_mod_from_b_die $mod-from-time-die ease-in-out
+
+@keyframes ani_mod_from_b_die
+    0%
+        opacity: 1
+        transform: MOD_STAY()
+    100%
+        opacity: 0
+        transform: MOD_UP(0)
+        
+// 样式
+.mod-iive
+    .mod-from-b
+        @extend .ani-mod-from-b-iive  
+.mod-die
+    .mod-from-b
+        @extend .ani-mod-from-b-die

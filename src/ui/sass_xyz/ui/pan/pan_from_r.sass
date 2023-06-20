@@ -1,0 +1,35 @@
+
+.ani-fixpan-main-r-iive
+    animation-name: ani_fixpan_main_r_iive
+
+@keyframes ani_fixpan_main_r_iive
+    0%
+        transform: translateX(100%)
+    100%
+        transform: translateX(0px)
+
+.ani-fixpan-main-r-die
+    opacity: 0
+    transform: translateX(100%)
+    animation-name: ani_fixpan_main_r_die
+    
+@keyframes ani_fixpan_main_r_die
+    0%
+        opacity: 1
+        transform: translateX(0px)
+    100%
+        opacity: 0
+        transform: translateX(100%)
+
+.fixpan-iive
+    .fixpan-main-r
+        @extend .ani-fixpan-main-r-iive
+
+.fixpan-die
+    .fixpan-main-r
+        @extend .ani-fixpan-main-r-die
+
+.fixpan-main-r
+    box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.2)
+    right: 0
+    top: 0

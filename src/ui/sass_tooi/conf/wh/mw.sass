@@ -1,0 +1,21 @@
+
+// MIN W
+@for $i from 1 through 8
+    .mw-#{$i}em
+        min-width: $i * 1em
+        
+// W
+@for $i from 1 through 8
+    .w-#{$i}em
+        width: $i * 1em
+
+// MAX W
+@for $i from 1 through 8
+    .mxw-#{$i}em
+        width: $i * 1em
+
+// ===========================
+
+// AFTER
+.aft_w-100::after
+    width: 100%

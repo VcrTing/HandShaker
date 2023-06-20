@@ -1,0 +1,43 @@
+
+$trangie: #c2c2c2
+$trangie-hv: #bfbfbf
+
+.trangie
+    width: 0.6em
+    height: 0.6em
+    z-index: 99
+    position: relative
+    display: inline-block
+    background: transparent
+    &:hover
+        transform: scale(1.2)
+
+    & > div
+        position: absolute
+        top: 50%
+        left: 50%
+        z-index: 101
+        display: inline-block
+        width: 0
+        height: 0
+        border: 0.34em solid transparent
+
+    .trangie-up
+        border-top-color: $trangie
+        transform: translate(-50%, -25%)
+        &:hover
+            border-top-color: $trangie-hv
+
+    .trangie-down
+        border-bottom-color: $trangie
+        transform: translate(-50%, -75%)
+        &:hover
+            border-bottom-color: $trangie-hv
+
+.trangie-iive
+    //
+
+.trangie-group
+    .trangie
+        display: block
+    

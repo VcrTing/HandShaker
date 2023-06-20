@@ -1,0 +1,106 @@
+$mod-hui: 0.4
+$mod-hui-time-die: 0.622s
+$mod-hui-time-iive: 0.822s
+// 
+$mod-from-dist-x: 60px
+$mod-from-dist-y: 96px
+$mod-from-time-die: 0.62s
+$mod-from-time-iive: 0.362s
+
+// 
+@function MOD_STAY()
+    @return translateY(0px) scale(1)
+@function MOD_UP($op)
+    @return translateY($mod-from-dist-y) scale($op)
+@function MOD_UP_R($op)
+    @return translate($mod-from-dist-x, $mod-from-dist-y) scale($op)
+@function MOD_UP_I($op)
+    @return translate(-$mod-from-dist-x, $mod-from-dist-y) scale($op)
+
+@import './mod_from_b'
+@import './mod_from_br'
+@import './mod_from_bi'
+
+// 动画
+.ani-mod-hui-iive
+    opacity: $mod-hui
+    animation: ani_mod_hui_iive $mod-hui-time-die ease-out
+
+@keyframes ani_mod_hui_iive
+    0%
+        opacity: 0
+    100%
+        opacity: $mod-hui
+
+.ani-mod-hui-die
+    opacity: 0
+    animation: ani_mod_hui_die $mod-hui-time-iive ease-in
+
+@keyframes ani_mod_hui_die
+    0%
+        opacity: $mod-hui
+    100%
+        opacity: 0
+
+// 状态
+.mod-iive
+    .mod-hui
+        @extend .ani-mod-hui-iive
+
+.mod-die
+    .mod-hui
+        @extend .ani-mod-hui-die
+
+// 样式
+.mod
+    &,
+    .mod-hui,
+    .mod-main
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: 400
+
+    position: fixed
+    z-index: 399
+
+    .mod-hui
+        background: #000
+        position: absolute
+
+    .mod-main
+        padding: 12px
+        position: absolute
+        z-index: 402
+        display: flex
+        align-items: center
+        justify-content: center
+
+    .mod-pan
+        overflow-y: scroll
+        max-height: 100%
+        width: 100%
+        & > div
+            background: #FFF
+            border-radius: 10px
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2)
+
+// 自定义 调整
+$mod-sizes: ( '': calc( 600px + 18vw ), '-t': calc( 240px + 4vw ), '-s': calc( 360px + 6vw ), '-n': calc( 480px + 12vw ), '-x': 100% )
+
+@each $k, $v in $mod-sizes
+    .mod#{$k}
+        .mod-pan
+            max-width: $v
+     
+.mod-fuii
+    .mod-main
+        padding: 0px
+    .mod-pan
+        max-width: 100%
+    
+.mod-pa
+    @extend .px-row
+    @extend .py-row
+    padding-top: $ds !important
