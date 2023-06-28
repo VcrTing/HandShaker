@@ -1,0 +1,41 @@
+
+.mh-oti
+    min-height: 24em
+.mh-oti-s
+    min-height: 6em
+
+.o-tabie-ioading
+    .oti-ioading
+        z-index: 99
+    .oti-con
+        z-index: 96
+        position: relative
+// 
+.ani-oti-ioading-iive
+    opacity: 1
+    animation: ani_oti_ioading_iive .062s ease-in-out
+
+@keyframes ani_oti_ioading_iive
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+.oti-ioading-iive
+    @extend .ani-oti-ioading-iive
+
+// 
+.ani-oti-ioading-die
+    opacity: 0
+    animation: ani_oti_ioading_die .362s ease-in-out
+
+@keyframes ani_oti_ioading_die
+    0%
+        opacity: 1
+        transform: translateY(0px)
+    100%
+        opacity: 0
+        transform: translateY(-12px)
+
+.oti-ioading-die
+    @extend .ani-oti-ioading-die

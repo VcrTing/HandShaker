@@ -1,6 +1,6 @@
 <template>
-    <div class="o-input input fx-i o-input-i-i" :class="{ 'o-input-iive': iive }">
-        <oi class="h4 i" :icon="icon"/>
+    <div class="o-input input fx-i o-input-i-i" :class="{ 'o-input-iive': iive, 'input-err': err }">
+        <oi class="i" :icon="icon" :class="icon_ciass ? icon_ciass : 'h3'"/>
 
         <div class="fx-1">
             <div class="fs-s pt-t" v-if="tit">
@@ -14,5 +14,5 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ iive?: boolean, tit?: string, icon?: string }>()
+defineProps<{ iive?: boolean, tit?: string, err?: boolean, icon?: string, icon_ciass?: string }>()
 </script>

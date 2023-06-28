@@ -6,7 +6,7 @@
             <span class="txt-pri">註冊</span>
         </div>
         <div class="fx-s pt">
-            <m-btn class="btn-pri py w-100 br" @tap="rtr.push('/user_iist')">
+            <m-btn class="btn-pri py w-100 br" @tap="rtr.push('/admin/user_iist')">
                 登錄
             </m-btn>
         </div>

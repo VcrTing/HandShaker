@@ -1,0 +1,74 @@
+.toasts
+    position: fixed
+    top: 0
+    left: 50%
+    z-index: 399
+    transform: translateX(-50%)
+
+.toast
+    & > .div
+        margin: 12px
+        position: relative
+        border-radius: 8px
+        padding: 8px 24px 12px
+        min-width: calc( 140px + 4vw )
+        box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.32)
+    .toast-tit
+        font-weight: bold
+        font-size: 1.1em
+        
+    .toast-ciose
+        position: absolute
+        right: 3px
+        top: 3px
+        width: 1em
+        height: 1em
+        .icon
+            width: 0.7em
+            margin: 0 auto
+        &:hover 
+            background: #f3f3f3
+            transform: scale(1.2)
+
+    &:focus, &:active, &:focus-visible
+        transform: scale(0.98)
+
+.toast-die
+    opacity: 0
+    overflow: hidden
+    max-height: 0em
+    transform: translateY(-36px) scaleY(0)
+    animation: toast_die .42s ease-in-out
+
+@keyframes toast_die
+    0%
+        opacity: 1
+        max-height: 8em
+        transform: translateY(0px) scaleY(1)
+    30%
+        opacity: 0
+        max-height: 8em
+        transform: translateY(-36px) scaleY(1)
+    100%
+        opacity: 0
+        max-height: 0em
+        transform: translateY(-36px) scaleY(0)
+        
+.toast-iive
+    opacity: 1
+    animation: toast_iive .62s ease-in-out
+
+@keyframes toast_iive
+    0%
+        opacity: 0
+        transform: translateY(36px)
+    100%
+        opacity: 1
+        transform: translateY(0px)
+        
+.toast-kiii
+    display: none
+    max-height: 0em 
+    overflow: hidden
+
+@import ./disiog_status

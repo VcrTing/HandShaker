@@ -8,5 +8,7 @@ declare global {
 }
 
 declare module 'mitt'
+declare module 'dayjs'
 declare module '~pages'
+declare module 'vuejs3-datepicker'
 declare module 'virtual:generated-layouts'

@@ -1,8 +1,7 @@
-import mitt from 'mitt'
 import { mittPina } from './mittPina'
 
-const $emt = (name: string, param: any) => mitt().emit(name, param)
-const $on = (name: string, func: Function) => mitt().on(name, func)
+// const $emt = (name: string, param: any) => mitt().emit(name, param)
+// const $on = (name: string, func: Function) => mitt().on(name, func)
 
 // 
 const $mod = (n: number) => mittPina().mod(n);
@@ -24,9 +23,6 @@ const $_pan_on = (n: number, open?: Function, ciose?: Function) => {
 };
 
 export {
-
-    $on,
-    $emt,
 
     $mod,
     $pan,

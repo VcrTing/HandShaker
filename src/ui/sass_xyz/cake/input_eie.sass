@@ -1,4 +1,73 @@
-.o-search
-    width: 100%
-    display: block
-    
+
+.mh-input-timed-value
+    @extend .mh-o-input
+    // 18px + 12px
+
+// 時間 選擇框
+.input-timed
+    .vuejs3-datepicker,
+    .vuejs3-datepicker__value,
+    .vuejs3-datepicker__content
+        width: 100%
+        min-width: 6em
+        border: none
+
+    .vuejs3-datepicker
+        position: relative
+        z-index: 200
+    .vuejs3-datepicker__value
+        overflow: hidden
+        line-height: 1em
+        border: 1px solid transparent
+        @extend .pa-o-input
+        @extend .mh-input-timed-value
+        
+    .vuejs3-datepicker__content
+        margin: 0px
+        padding: 0px
+        font-size: 1em
+    //   
+    .vuejs3-datepicker__icon,
+    .vuejs3-datepicker__calendar-topbar
+        display: none !important
+
+    .vuejs3-datepicker__calendar
+        border-color:  transparent
+        margin: $ds 0
+        z-index: 300
+        overflow: hidden
+        border-radius: 6px
+        padding-bottom: 2px
+        box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.32)
+        
+        span.day
+            border-radius: 100% !important
+        span.year, span.month
+            border-radius: 4px !important
+        .selected 
+            color: #FFF
+            background: $pri !important 
+            &:hover
+                background: $pri-hv !important 
+            @extend .fx-shd-pri
+
+        .prev, .next, .day__month_btn, .month__year_btn
+            padding: 3px 0px
+            text-align: center
+
+        .cell:not(.blank):not(.disabled).day, 
+        .cell:not(.blank):not(.disabled).month, 
+        .cell:not(.blank):not(.disabled).year
+            transition: all .062s ease-in-out
+            &:hover
+                border: 1px solid #FFF
+                background: #f8f8f8
+            &:focus, &:active, &:focus-visible
+                transform: scale(1.03)
+
+    .vdp-datepicker
+        input
+            background: pink
+    #calendar-div
+        background: none !important
+            

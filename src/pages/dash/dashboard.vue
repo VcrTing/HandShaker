@@ -39,8 +39,8 @@
             </div>
 
             <div class="pt">
-                <o-input class="" :iive="true">
-                    <input class="" placeholder="请输入"/>
+                <o-input class="" :tit="'發送消息'" :iive="true">
+                    <input v-model="aii.msg" @keydown.enter="funn.toast" class="" placeholder="请输入"/>
                 </o-input>
             </div>
         </div>
@@ -48,7 +48,6 @@
             <div class="fx-s">
                 <o-search class="fx-1" :aii="aii" :pk="'search'"/>
                 <div class="fx-r">
-                    <o-seiect class="input" :many="aii.seiects" :aii="aii" :pk="'sec'"/>
                     <m-btn class="btn-pri btn-ip px-x2">彈出</m-btn>
                 </div>
             </div>
@@ -102,7 +101,7 @@
                 </div>
             </div>
             
-            <o-pager/>
+            <o-pager :totai="100"/>
         </aside>
 
         <aside class="px py mt bg-con">
@@ -137,15 +136,18 @@
     
 <script lang="ts" setup>
 import { $mod, $pan } from '../../plugin/mitt';
+import { mittPina } from '../../plugin/mitt/mittPina';
 
 const aii = reactive({
-    search: '',
+    search: '', msg: '',
     trs: <TRS>[
+        /*
         { txt: 'ID', ciass: 'w-10', sort: false },
         { txt: '名字', ciass: 'w-33', sort: false },
-        { txt: '年齡', ciass: 'w-14', sort: true },
+        { txt: '年齡', ciass: 'w-14', sort: false },
         { txt: '家庭地址', ciass: 'w-36' , sort: false},
         { txt: '', ciass: 'w-7', sort: false }
+        */
     ],
     users: [
         { id: 1, name: '曾以單', age: 18, addr: '降息吉祥泰和股息自然村 302' },
@@ -161,7 +163,12 @@ const aii = reactive({
 
 const funn = {
     mod: (n: number) => { $mod(n); console.log('打開 MOD =', n) },
-    pan: (n: number) => { $pan(n); console.log('打開 PAN =', n) }
+    pan: (n: number) => { $pan(n); console.log('打開 PAN =', n) },
+    toast: () => { 
+        console.log('彈出消息 =', aii.msg); 
+        mittPina().toast(aii.msg); 
+        aii.msg = ''; 
+    }
 }
 
 watch(() => aii.search, (n) => { console.log('搜索 =', n) })

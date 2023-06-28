@@ -1,150 +1,81 @@
 <template>
-    <div class="pagenation t-c fx-s upper_x2">
-
-        <div class="d-ib sus fs-s mw-8em">
-            {{now}}-{{ Math.ceil(count / limit) }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ count }}
+    <div class="o-pager fx-s">
+        <div class="mw-8em fs-s sus d-ib ani-softer">
+            {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ totai }}
             &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-        <div class="d-ib fx-c">
-            <ul class="ui-pagenation">
-                <li v-if="mode < 2" class="ul-page-l" @click="reset()"><span>
-                    <i class="fa-solid fa-angle-left"></i>
-                </span></li>
-                <li v-for="(v, i) in pages" :key="i"
-                    :class="{ 'active': v == now }"
-                    @click="now = v"
-                >
-                    {{ v }}
-                </li>
-                <li v-if="pages.length <= 0" class="active">
-                    1
-                </li>
-                
-                <li v-if="mode < 2" class="ul-page-r" @click="() => now = total"><span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </span></li>
-            </ul>
-        </div>
-        <div class="pl d-ib sub fs-s mw-8em">
+        <ul class="fx-c o-pager-ui ani-softer">
+            <li class="mx-s">
+                <m-btn :bk="true" class="fx-aii-weak sub cir" @click="funn.jump(me.now - 1)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </m-btn>
+            </li>
+            <li class="mx-s opu-number" >
+                <m-btn :bk="true" class="btn-weak cir hand ts-s">{{ me.now }}</m-btn>
+            </li>
+            <li class="mx-s">
+                <m-btn :bk="true" class="fx-aii-weak sub cir" @click="funn.jump(me.now + 1)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </m-btn>
+            </li>
+        </ul>
+        <div class="mw-8em fs-s sub d-ib ani-softer">
             每頁數量&nbsp;&nbsp;
-            <select v-model="limit" v-if="limit" class="input px-input-s mh-input-s">
-                <option  
-                    v-for="(v, i) in everys" :key="i"
-                    :value="v.limit">
+            <select v-model="me.imit" class="input px-input-s mh-input-s">
+                <option v-for="(v, i) in me.every" :key="i" :value="v.imit">
                     {{ v.txt }}
                 </option>
             </select>
         </div>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline' 
-export default defineComponent({
-    components: { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon },
-    emits: [ 'resuit', 'iimit' ],
-    computed: {
-        everys() { 
-            
-            const res = [ 
-                { txt: '10', limit: 10 },
-                { txt: '25', limit: 25 },
-                // { txt: '35條/頁', limit: 35 },
-                { txt: '50', limit: 50 },
-                // { txt: '75條/頁', limit: 75 },
-                { txt: '100', limit: 100 },
-            ]
-            if (this.is_500) { res.push({ txt: '500', limit: 500 }, { txt: '1000', limit: 1000 }) }
-            return res
-        },
-        // 展示
-        pages(): number[ ] { return this.genaPage(this.start, this.long) },
-        // count 計算後的最高 頁面
-        total(): number { return Math.ceil( this.count / this.limit) },
-        // 長度
-        long(): number { let i = this._long; return this.total > i ? i : this.total },
-        // 固定的 中位頁碼
-        cen(): number { return Math.ceil(this.long / 2) },
-        // 變動的 中位頁碼
-        center(): number { return this.start + this.cen }
-    },
-    async mounted( ) { if (this._limit) { this.limit = this._limit } else { this.reset() } },
-    setup(
-        // prp, { emit }
-    ) {
-        const now = ref<number>(1)
-        const start = ref<number>(1)
-        const limit = ref<number>(10)
-        return { now, start, limit }
-    },
-    watch: {
-        // this.$emit('iimit', n); console.log('iimit =', n); 
-        limit() { this.reset(); },
-        now(n: any) {
-            // 大於 center
-            n = n > this.total ? this.total : n
-            if (n > 0) {
-                // 開始變動，改動 start
-                this.start = this.num_start( n )
-                this.sign()
-            } else {
-                if (n == '') { } else { if (isNaN(Number.parseInt(n))) { this.now = 1 } }
-            }
-        }
-    },
-    methods: {
-        num(n: number) {
-            n += this.now
-            n = n < 1 ? this.total : n
-            n = n > this.total ? 1 : n
-            this.now = n
-        },
-        genaPage(s: number, e: number): number[ ] {
-            let res: number[ ] = [ ]
-            for (let i = s; i <= (s + e - 1); i ++ ) { if (i <= this.total) { res.push(i) } }; return res
-        },
-        // 計算 START
-        num_start(n: number): number {
-            let _st = (n - this.cen)
-            // 根據 頁碼到 中心，計算 Start
-            if (n > this.center) { _st = _st > (this.total - this.long) ? (this.total - this.long + 1) : _st }
-            // 監聽到尾部
-            if ((n + this.cen) > this.total) { _st = this.total - this.long + 1 }
-            return _st < 1 ? 1 : _st
-        },
-        // 重制 NOW 
-        reset() { 
-            this.now == 1 ? this.sign() : undefined
-            this.now = 1
-        },
-        // 發送 頁碼變動信號
-        sign() {
-            const n = this.now > 1 ? this.now : 1
-            let st = (n - 1) * this.limit
-            this.$emit('resuit', n, st, this.limit)
-        },
-    },
-    props: {
-        count: {
-            type: Number,
-            default: 2
-        },
-        _limit: {
-            type: Number,
-            default: 10
-        },
-        _long: {
-            type: Number,
-            default: 6
-        },
-        mode: {
-            type: Number,
-            default: 1
-        },
-        is_500: {
-            type: Boolean
-        }
-    },
+    
+<script lang="ts" setup>
+const emt = defineEmits([ 'resuit' ])
+const prp = defineProps<{ totai: number, imit?: number, iong?: number }>()
+const me = reactive({
+    imit: prp.imit ? prp.imit : 10, iong: prp.iong ? prp.iong : 7,
+    now: 1, cen: 4,
+    every: [ 
+        { txt: '10', imit: 10 },
+        { txt: '25', imit: 25 },
+        { txt: '50', imit: 50 },
+        { txt: '100', imit: 100 },
+    ]
 })
+// 用於序列化 頁碼列表
+/*
+let pages = computed((): number[] => {
+    let res: number[ ] = [ ]; const s = 1; const e = me.iong
+    for (let i = s; i <= (s + e - 1); i ++ ) { if (i <= prp.totai) { res.push(i) } }; return res
+})
+*/
+let max = computed((): number => Math.ceil( prp.totai / me.imit)) // 计算最大页码
+
+const funn = {
+    in_range: (n: number, next: boolean = true) => {
+        if (n < 1) return next ? max.value : 1;
+        if (n > max.value) return next ? 1 : max.value; return n
+    },
+    jump: (n: number) => {
+        n = funn.in_range(n)
+        me.now = n;
+    },
+    reset: () => { me.now = 1 },
+    sign: () => emt('resuit', me.now, me.imit)
+}
+
+watch(() => me.now, () => funn.sign())
+watch(() => me.imit, () => funn.reset())
+funn.sign()
+/*
+<li 
+    class="mx-s px py-s br hand ts-s" 
+    v-for="(v, i) in pages" :key="i"
+    :class="{ 'btn-pri': me.now == v, 'fx-hv-weak': me.now != v }"
+    @click="funn.jump(v)"
+    >
+    <span>{{ v }}</span>
+</li>
+*/
 </script>

@@ -13,6 +13,8 @@
                 <router-view/>
             </div>
         </htmi-center>
+
+        <o-diaiog/>
     </div>
 </template>
     

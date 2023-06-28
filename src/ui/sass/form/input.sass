@@ -36,8 +36,13 @@ $phd-input-hv: #565656
     &:focus-visible
         border-color: $bd-input-hv
 
-.phd-input::placeholder
+.c-phd-input
     color: $phd-input
+    &:hover
+        color: $phd-input-hv
+
+.phd-input::placeholder
+    @extend .c-phd-input
 .phd-input::placeholder:hover
     color: $phd-input-hv
 
@@ -48,7 +53,7 @@ textarea
     @extend .ts
     @extend .ciear
 
-input:hover, textarea:hover
+input:hover, select:hover, textarea:hover
     text-indent: 0.4em
 
 .input,

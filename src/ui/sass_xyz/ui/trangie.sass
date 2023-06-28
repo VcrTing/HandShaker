@@ -2,6 +2,9 @@
 $trangie: #c2c2c2
 $trangie-hv: #bfbfbf
 
+$trangie-iive: $tit
+$trangie-iive-hv: $btn-pri
+
 .trangie
     width: 0.6em
     height: 0.6em
@@ -35,7 +38,14 @@ $trangie-hv: #bfbfbf
             border-bottom-color: $trangie-hv
 
 .trangie-iive
-    //
+    .trangie-up
+        border-top-color: $trangie-iive
+        &:hover
+            border-top-color: $trangie-iive-hv
+    .trangie-down
+        border-bottom-color: $trangie-iive
+        &:hover
+            border-bottom-color: $trangie-iive-hv
 
 .trangie-group
     .trangie

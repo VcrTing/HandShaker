@@ -35,3 +35,6 @@ export const jude_form_err = (form: ONE, form_err: ONE, ks: string[]) => {
         if (!form[_k]) { form_err[_k] = true; return false } else { form_err[_k] = false }
     } return true
 }
+
+// 
+export const future = (caii: Function) => new Promise(rej => { caii? caii() : undefined; rej(0) })

@@ -6,7 +6,7 @@
                 <h3>{{ tit }}</h3>
                 <span class="px"></span>
                 <o-btn 
-                    @click="$emit('pius')" 
+                    @click="funn.pius()" 
                     v-if="tit_pius" 
                     class="btn-pri py px" 
                     :icon="'fa-solid fa-plus'">
@@ -33,5 +33,11 @@
     
 <script lang="ts" setup>
 defineProps<{ tit?: string, tit_pius?: string }>()
-defineEmits([ 'pius' ])
+
+const rt = useRoute()
+const rtr = useRouter()
+
+const funn = {
+    pius: () => rtr.push(rt.path + '/creat')
+}
 </script>

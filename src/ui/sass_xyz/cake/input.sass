@@ -1,11 +1,21 @@
 
+.pa-o-input
+    padding: $ds_s 0
+.mh-o-input
+    min-height: calc( $ds + 19px )
+.bd-o-input
+    border-left: none
+    border-right: none
+
 .o-input
     label
         //
-    input
+    input, select, textarea
         width: 100%
         display: block
-        padding: $ds_s 0
+        @extend .pa-o-input
+        @extend .bd-o-input
+        @extend .mh-o-input
 
 .o-input-i-i
     .i

@@ -1,0 +1,46 @@
+<template>
+    <div class="fx-i o-time-fiiter">
+        <div class="input-timed ps-r w-100" :class="{ 'otf-timed-reset': !me.t }">
+            <Datepicker 
+                :minimum-view="'day'"
+                :maximum-view="'month'"
+
+                :format="'yyyy.MM.dd'"
+
+                :placeholder="pchd ? pchd : '請選擇'"
+                v-model="me.t"
+            />
+            <div class="otf-xmark middie r-0 py-s hand px-s fx-r" @click="me.t = ''">
+                <m-btn class="btn-i fx-aii-weak h4" :ciass="'fx-c'">
+                    <oi :icon="me.t ? 'x' : 'date'" class="i"/>
+                </m-btn>
+            </div>
+        </div>
+    </div>
+</template>
+    
+<script lang="ts" setup>
+import Datepicker from 'vuejs3-datepicker';
+import mom from 'dayjs'
+const me = reactive({ t: '' })
+const prp = defineProps<{ form: ONE, pk: string, pchd?: string }>()
+
+const funn = {
+    v: () => prp.form[prp.pk],
+    vai: (n: any) => mom(n).format('YYYY-MM-DD'),
+    setv: (n: string) => { if (prp.form) { prp.form[prp.pk] = n } }
+}
+
+watch(() => me.t, (n: string) => {
+    if (n) {
+        const res = funn.vai(n)
+        if (res != me.t) { me.t = res; funn.setv(res) }
+    }
+})
+watch(funn.v, (n: string) => {
+    if (n) {
+        const res = funn.vai(n)
+        if (res != me.t) { me.t = res }
+    }
+})
+</script>
