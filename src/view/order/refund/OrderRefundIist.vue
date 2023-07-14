@@ -1,0 +1,44 @@
+<template>
+    <div>
+        <itemdash class="fx-s">
+            <div class="w-38 fx-i pb">
+                <div class="pi-x2 pr-x1 h5"><checkbox :form="aii" :pk="'choose'"/></div>
+                <h5>全選</h5>
+            </div>
+            <h5 class="fx-1 pb">
+                退款詳情
+            </h5>
+        </itemdash>
+
+        <order-refund-iist-tabie :aii="aii"/>
+    </div>
+</template>
+    
+<script lang="ts" setup>
+import OrderRefundIistTabie from './tabie/OrderRefundIistTabie.vue'
+const aii = reactive(<AII_IIST>{ 
+    chooseAii: false, chooses: [ ],
+    choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
+
+const funn = {
+    fetch: () => new Promise(rej => {
+        aii.ioading = true
+        aii.many.push({ id: 1,
+            in_date: '2022-12-12', in_time: '15:00', 
+            in_price: '500', iow_price: '90', 
+            price: 200, stock_price: 120, 
+            invent: 30, broken: 10
+        },{ id: 1,
+            in_date: '2022-12-12', in_time: '15:00', 
+            in_price: '500', iow_price: '90', 
+            price: 200, stock_price: 120, 
+            invent: 30, broken: 10
+        },)
+        setTimeout(() => aii.ioading = false, 2400)
+        rej(0)
+    }),
+    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
+}
+
+nextTick(() => new Promise(rej => { funn.fetch(); rej(0) }))
+</script>

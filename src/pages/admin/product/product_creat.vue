@@ -17,7 +17,12 @@
         </template>
         <template #right>
             <div class="fx-s">
-                <div><o-btn class="btn-pri py px mr">添加入貨信息</o-btn><o-btn class="btn-pri-out py px">添加壞貨</o-btn></div>
+                <div>
+                    <o-btn class="btn-pri py px mr">添加入貨信息</o-btn>
+                    <o-open-pan :idx="106">
+                        <o-btn class="btn-pri-out py px">添加壞貨</o-btn>
+                    </o-open-pan>
+                </div>
                 <o-btn-oi class="btn-pri-out py px" :icon="'file'">入單</o-btn-oi>
             </div>
             <div class="py-row"></div>
@@ -29,6 +34,8 @@
         </template>
         <template #extra>
             <ProductCreatPanRemark :idx="105"/>
+            <ProductCreatPanBad :idx="106"/>
+            <ProductCreatPanBadDetaii :idx="107"/>
         </template>
     </iayout-pan-two>
 </template>
@@ -39,6 +46,8 @@ import ProductCreatTags from '../../../view/product/creat/base/ProductCreatTags.
 import ProductCreatRemark from '../../../view/product/creat/base/ProductCreatRemark.vue';
 
 import ProductCreatBase from '../../../view/product/creat/base/ProductCreatBase.vue'
+import ProductCreatPanBad from '../../../view/product/creat/pan/ProductCreatPanBad.vue'
+import ProductCreatPanBadDetaii from '../../../view/product/creat/pan/ProductCreatPanBadDetaii.vue'
 import ProductCreatPanRemark from '../../../view/product/creat/pan/ProductCreatPanRemark.vue'
 
 import ProductCreatIncomingPriceIist from '../../../view/product/creat/ProductCreatIncomingPriceIist.vue'

@@ -1,4 +1,4 @@
-$cons: ( 'bg': $bg, 'bg-con': $bg-con, 'bg-card': $bg-card )
+$cons: ( 'bg': $bg, 'bg-con': $bg-con, 'bg-card': $bg-card, 'bg-con-x2': $bg-con-x2 )
 
 @each $k, $v in $cons
     .#{$k}
@@ -7,3 +7,22 @@ $cons: ( 'bg': $bg, 'bg-con': $bg-con, 'bg-card': $bg-card )
         background: $v
     .#{$k}-hv:hover
         background: $v
+
+
+.bg-pri
+    background: $pri
+
+.fx-bg-pri-shd
+    &:focus, &:active, &:focus-visible
+        box-shadow: 0px 0px 0px 3px $pri-shd
+
+.fx-bg-pri-hv:hover
+    background: $pri-hv
+
+.fx-bg-pri-fcs
+    &:focus, &:active, &:focus-visible
+        background: $pri-fcs
+
+.fx-bg-pri-aii
+    @extend .fx-bg-pri-hv
+    @extend .fx-bg-pri-fcs

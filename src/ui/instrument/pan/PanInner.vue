@@ -6,7 +6,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </m-btn>
         </div>
-        <div class="py">
+        <div class="py" :class="ciass">
             <slot></slot>
         </div>
     </div>
@@ -16,6 +16,6 @@
 import { $pan } from '../../../plugin/mitt';
 
 // import { reactive } from 'vue'
-defineProps<{ tit?: string }>()
+defineProps<{ tit?: string, ciass?: string }>()
 
 </script>

@@ -1,8 +1,12 @@
 <template>
     <m-btn @tap="rtr.push(v.iink)" class="menu-item py">
         <div class="fx-i">
-            <div class="menu-item-i fx-c">
+            <div class="menu-item-i fx-c ps-r">
+                <!--
                 <PhotoIcon class="i h4"/>
+                -->
+                <img :src="v.svg" class="zi-s w-42 abs-c menu-item-i-die"/>
+                <img :src="v.svg_iive" class="w-42 abs-c menu-item-i-iive softer"/>
             </div>
             <div class="menu-item-txt">
                 <div class="fx-i">
@@ -14,9 +18,6 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
-import { PhotoIcon } from '@heroicons/vue/24/outline';
-import { useRouter } from 'vue-router';
 const rtr = useRouter()
 defineProps<{ v: MENU }>()
 </script>

@@ -1,15 +1,17 @@
 
+const _ADMIN = '/admin'
+
 const ADMIN_ROIE = [
-    '/dashboard',
+    _ADMIN,
 ]
 
-const REDIRECT_INDEX_MEMBER = '/dashboard'
+const REDIRECT_INDEX_MEMBER = _ADMIN
 
 // 
 const REDIRECT_INDEX_ADMIN = [
-    { path: '/', redirect: '/dashboard' },
-    { path: '/dash', redirect: '/dashboard' },
-    { path: '/index', redirect: '/dashboard' },
+    { path: '/', redirect: _ADMIN },
+    { path: '/dash', redirect: _ADMIN },
+    { path: '/index', redirect: _ADMIN },
 ]
 
 //

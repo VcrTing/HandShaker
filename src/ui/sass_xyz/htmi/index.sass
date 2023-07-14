@@ -1,0 +1,44 @@
+
+body, .htmi-center
+    position: relative
+
+.htmi-top, .htmi-menu, .htmi-menu-hui
+    position: absolute
+    left: 0
+    top: 0
+
+.htmi-menu
+    z-index: 400
+    height: 100vh
+
+.htmi-top
+    z-index: 388
+    width: 100%
+
+.htmi-menu-hui
+    z-index: 399
+    width: 100%
+    height: 100vh
+    background: rgba(0, 0, 0, 0.4)
+
+.htmi-cont, .htmi-center
+    width: 100%
+    height: 100vh
+
+.htmi-menu, .htmi-center
+    overflow: hidden
+    overflow-y: scroll
+
+// 定义
+// 小于 1288 px 的时候
+@media screen and ( max-width: 1080px )
+    .htmi-die
+        .htmi-menu-hui
+            opacity: 0
+    
+@import ./top
+@import ./admin
+@import ./admin_menu
+
+@import ./cashier
+@import ./cashier_menu

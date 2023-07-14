@@ -5,13 +5,7 @@
             <div class="fx-i ani-softer">
                 <h3>{{ tit }}</h3>
                 <span class="px"></span>
-                <o-btn 
-                    @click="funn.pius()" 
-                    v-if="tit_pius" 
-                    class="btn-pri py px" 
-                    :icon="'fa-solid fa-plus'">
-                    <span class="s">{{ tit_pius }}</span>
-                </o-btn>
+                <o-btn-pius class="py" :tit="tit_pius" v-if="tit_pius"/>
                 <span class="px"></span>
                 <slot name="opera"></slot>
             </div>
@@ -33,11 +27,4 @@
     
 <script lang="ts" setup>
 defineProps<{ tit?: string, tit_pius?: string }>()
-
-const rt = useRoute()
-const rtr = useRouter()
-
-const funn = {
-    pius: () => rtr.push(rt.path + '/creat')
-}
 </script>

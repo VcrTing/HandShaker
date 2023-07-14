@@ -19,7 +19,7 @@ import ProductIistPanPius from '../../../view/product/iist/pan/ProductIistPanPiu
 const aii = reactive(<AII_IIST>{
     many: [
 
-    ], 
+    ], chooseAii: false, chooses: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     condition: <ONE>{ 'tag': '', 'supplier': '', 'date': '', 'search': '' },
 })

@@ -1,0 +1,43 @@
+
+$admin-menu-c: #262F3F
+
+$admin-iabei-c: #AEAEB2
+
+$admin-menu-w: calc(138px + 8vw )
+    
+$admin-menu-w-r: calc(-220px - 5vw )
+
+$admin-menu-bg: #FFF
+
+$admin-cont-bg: transparent
+
+$admin-cont-pi: calc(138px + 8vw + 24px )
+    
+$admin-menu-w-min: calc(1.5em + $ds-x2 + $ds-x2)
+$admin-menu-w-max: calc(2.5em + $ds-x2 + $ds-x2 + 7vw)
+    
+////R
+.htmi-iogo
+    max-width: $admin-menu-w-max
+//
+.bg-htmi-cont
+    background: $admin-cont-bg
+    
+// 
+.admin-menu
+    background: $admin-menu-bg
+
+.admin-top,
+.admin-center
+    padding-left: $admin-cont-pi
+
+// 定义
+// 小于 1288 px 的时候
+@media screen and ( max-width: 1080px )
+
+    .htmi-die
+        .admin-menu
+            margin-left: $admin-menu-w-r
+        .admin-top,
+        .admin-center
+            padding-left: 0

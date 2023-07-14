@@ -1,10 +1,10 @@
 <template>
-    <div class="pri bg-pri-iht diog fx-s px py-s">
+    <div class="bg-con-x2 br diog fx-s pi">
         <InformationCircleIcon class="i h3"/>
         <div class="fx-1 px" :class="ciass">
             <slot></slot>
         </div>
-        <button class="btn-err-txt">{{ end }}</button>
+        <m-btn :bk="true" class="txt-err fs-s px py">{{ end }}</m-btn>
     </div>
 </template>
     

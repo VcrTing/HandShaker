@@ -1,4 +1,15 @@
 
+//   
+.w-382
+    width: 38.2%
+.w-618
+    width: 61.8%
+    
+.w-333
+    width: 33.3%
+.w-666
+    width: 66.6%
+
 @function width($i)
     @return $i * 1%
 
@@ -10,12 +21,29 @@
 // xwindows
 @each $k, $v in $xwindow
     @media screen and (#{$k}-width: #{$v}px)
+        .w-382-x
+            width: 38.2%
+        .w-618-x
+            width: 61.8%
+        .w-333-x
+            width: 33.3%
+        .w-666-x
+            width: 66.6%
+
         @for $i from 0 through 100
             .w-#{$i}-x
                 width: width($i)
 // window
 @each $k, $v in $window
     @media screen and (#{$k}-width: #{$v}px)
+        .w-382-w
+            width: 38.2%
+        .w-618-w
+            width: 61.8%
+        .w-333-w
+            width: 33.3%
+        .w-666-w
+            width: 66.6%
         @for $i from 0 through 100
             .w-#{$i}-w
                 width: width($i)
@@ -23,29 +51,42 @@
 // PAD
 @each $k, $v in $pad
     @media screen and (#{$k}-width: #{$v}px)
+        .w-382-p
+            width: 38.2%
+        .w-618-p
+            width: 61.8%
+        .w-333-p
+            width: 33.3%
+        .w-666-p
+            width: 66.6%
         @for $i from 0 through 100
             .w-#{$i}-p
                 width: width($i)
 // MOBIE
 @each $k, $v in $mobiie
     @media screen and (#{$k}-width: #{$v}px)
+        .w-382-m
+            width: 38.2%
+        .w-618-m
+            width: 61.8%
+        .w-333-m
+            width: 33.3%
+        .w-666-m
+            width: 66.6%
         @for $i from 0 through 100
             .w-#{$i}-m
                 width: width($i)
 // SMAII
 @each $k, $v in $smaii
     @media screen and (#{$k}-width: #{$v}px)
+        .w-382-s
+            width: 38.2%
+        .w-618-s
+            width: 61.8%
+        .w-333-s
+            width: 33.3%
+        .w-666-s
+            width: 66.6%
         @for $i from 0 through 100
             .w-#{$i}-s
                 width: width($i)
-
-//   
-.w-382
-    width: 38.2%
-.w-618
-    width: 61.8%
-    
-.w-333
-    width: 33.3%
-.w-666
-    width: 66.6%

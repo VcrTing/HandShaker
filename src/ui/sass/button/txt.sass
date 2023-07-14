@@ -1,4 +1,5 @@
 
+
 .btn-txt
     @extend .hand
     color: $pri
@@ -9,9 +10,11 @@
     //   
 
 .btn-tab
-    border-color: #efefef
-    &:hover
-        background: #f8f8f8
+    background: $btn-tab
+    border: 1px solid $btn-tab-bd
+    @extend .fx-hv-tab
+    @extend .fx-fcs-tab
+    @extend .fx-shd-tab
 
 .btn-weak
     background: $btn-weak

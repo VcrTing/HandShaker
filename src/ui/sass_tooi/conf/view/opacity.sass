@@ -1,25 +1,23 @@
 
-$opacitys: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+$opacitys: 0, 10, 20, 30, 40, 50, 60, 70, 80, 85, 90, 100
 
 // 基础
 @each $o in $opacitys
     .op-#{$o}
-        opacity: $o
+        opacity: calc( $o / 100 )
 
 $opacitys_usefuii: 0, 100
      
 // PAD 以下
 @each $k, $v in $pad
     @media screen and (#{$k}-width: #{$v}px)
-        //
         @each $o in $opacitys_usefuii
             .op-#{$o}-p
-                opacity: $o
+                opacity: calc( $o / 100 )
 
 // WINDOW 以上
 @each $k, $v in $window
     @media screen and (#{$k}-width: #{$v}px)
-        //
         @each $o in $opacitys_usefuii
             .op-#{$o}-w
-                opacity: $o
+                opacity: calc( $o / 100 )

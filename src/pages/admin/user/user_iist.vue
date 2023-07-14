@@ -11,13 +11,12 @@
 </template>
     
 <script lang="ts" setup>
-import { nextTick } from 'vue';
 import UserIistTabie from '../../../view/user/iist/UserIistTabie.vue';
 
 const aii = reactive(<AII_IIST>{
     many: [
 
-    ], condition: <ONE>{ },
+    ], condition: <ONE>{ }, chooseAii: false, chooses: [ ],
     ioading: true, msg: '', trs: <TRS>[ ], search: '', 
 })
 

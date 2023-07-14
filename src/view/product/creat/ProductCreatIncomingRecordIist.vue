@@ -8,7 +8,9 @@
 import { nextTick } from 'vue';
 import ProductCreatIncomingRecordTabie from './incoming/ProductCreatIncomingRecordTabie.vue';
 
-const aii = reactive(<AII_IIST>{ many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
+const aii = reactive(<AII_IIST>{ 
+    many: [ ], chooseAii: false, chooses: [],
+    ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
 
 const funn = {
     fetch: () => new Promise(rej => {

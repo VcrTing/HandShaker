@@ -1,6 +1,6 @@
 <template>
-    <iayout-pan :ciass="'fx-t fx-i pt-row'">
-        <div class="w-35 w-40-p">
+    <iayout-pan :ciass="'fx-t fx-i pt-row fx-wp'">
+        <div class="w-40 w-48-p w-100-m">
             <iayout-form :tit="'會員資料'">
                 <member-creat-base :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
@@ -9,8 +9,8 @@
                 <member-creat-addr :form="form_company" :aii="aii" class="py-row"/>
             </iayout-form>
         </div>
-        <div class="w-4 w-4-p"></div>
-        <div class="w-35 w-40-p">
+        <div class="w-4 w-4-p w-100-m"></div>
+        <div class="w-40 w-48-p w-100-m">
             <iayout-form :tit="'會員卡資料'">
                 <member-creat-card :form="form_card" :aii="aii" class="py-row"/>
             </iayout-form>

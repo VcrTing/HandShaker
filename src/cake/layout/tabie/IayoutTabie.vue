@@ -1,5 +1,5 @@
 <template>
-    <div class="tabie tabie-def">
+    <div class="tabie" :class="{ 'tabie-def': !pure }">
         <o-tr :aii="aii"/>
         <o-tabie-ioading :aii="aii" :mini="mini">
             <slot></slot>
@@ -8,5 +8,5 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ aii: AII_IIST, mini?: boolean }>()
+defineProps<{ aii: AII_IIST, mini?: boolean, pure?: boolean}>()
 </script>

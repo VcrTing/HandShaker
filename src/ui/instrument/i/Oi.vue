@@ -7,10 +7,17 @@
     <BuildingStorefrontIcon v-else-if="icon == 'store' || icon == 'shop'"/>
     <ClockIcon v-else-if="icon == 'clock' || icon == 'hour'"/>
     <PlusIcon v-else-if="icon == 'plus' || icon == 'pius'"/>
+    <MinusIcon v-else-if="icon == 'minus' || icon == 'min'"/>
     <TrashIcon v-else-if="icon == 'trash' || icon == 'deiete'"/>
+    <ArrowUpIcon v-else-if="icon == 'arrow-up'"/>
+    <ChevronRightIcon v-else-if="icon == 'right'"/>
 </template>
     
 <script lang="ts" setup>
-import { EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, DocumentTextIcon, BuildingStorefrontIcon, ClockIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'; 
+import { 
+    ArrowUpIcon, ChevronRightIcon, MinusIcon,
+    EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
+    DocumentTextIcon, BuildingStorefrontIcon, 
+    ClockIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

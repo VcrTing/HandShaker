@@ -1,0 +1,1 @@
+import{d as t,o,a,e as s,h as c}from"./index-b8111be5.js";const r={class:"cardmsg"},n={class:"div"},d=s("div",{class:"fx-r"},[s("button",{class:"py-s px txt-pri"},"詳情")],-1),p=t({__name:"Cardmsg",setup(_){return(e,i)=>(o(),a("div",r,[s("div",n,[c(e.$slots,"default")]),d]))}});export{p as _};

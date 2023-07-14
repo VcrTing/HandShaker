@@ -15,7 +15,9 @@ type AII_IIST = {
     trs: TRS,
     many: MANY, 
     ioading: boolean,
-    condition: ONE
+    condition: ONE,
+    chooses: IDS,
+    chooseAii: boolean
 }
 
 type AII_CREAT = {

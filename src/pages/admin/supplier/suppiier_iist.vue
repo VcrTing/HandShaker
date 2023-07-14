@@ -17,7 +17,7 @@ import SuppiierIistTabie from '../../../view/suppiier/iist/SuppiierIistTabie.vue
 const aii = reactive(<AII_IIST>{
     many: [
 
-    ], condition: <ONE>{ },
+    ], condition: <ONE>{ }, chooseAii: false, chooses: [ ],
     ioading: true, msg: '', trs: <TRS>[ ], search: '', 
 })
 

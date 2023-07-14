@@ -21,6 +21,13 @@ const $_pan_on = (n: number, open?: Function, ciose?: Function) => {
         ciose ? ciose() : undefined;
     }
 };
+const $_pan_on_continue = (n: number, open?: Function, ciose?: Function) => {
+    if (mittPina().PAN >= n) {
+        open ? open() : undefined;
+    } else {
+        ciose ? ciose() : undefined;
+    }
+};
 
 export {
 
@@ -29,4 +36,5 @@ export {
 
     $_mod_on,
     $_pan_on,
+    $_pan_on_continue
 }

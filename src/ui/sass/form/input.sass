@@ -1,9 +1,9 @@
 
-$bd-input: #e2e2e2
-$bd-input-hv: #d2d2d2
+$bd-input: #E5E5EA
+$bd-input-hv: #E2E2E8
 
-$phd-input: #676767
-$phd-input-hv: #565656
+$phd-input: $sus
+$phd-input-hv: #8a8a8e
 
 .bd-input
     border: 1px solid $bd-input
@@ -24,6 +24,9 @@ $phd-input-hv: #565656
 .mh-input-s
     min-height: 32px
 
+.mh-31px
+    min-height: 31px
+
 .select,
 .select.mh-input
     min-height: 48px
@@ -43,6 +46,7 @@ $phd-input-hv: #565656
 
 .phd-input::placeholder
     @extend .c-phd-input
+    @extend .ts-s
 .phd-input::placeholder:hover
     color: $phd-input-hv
 
@@ -52,6 +56,7 @@ textarea
     display: inline-block
     @extend .ts
     @extend .ciear
+    @extend .phd-input
 
 input:hover, select:hover, textarea:hover
     text-indent: 0.4em

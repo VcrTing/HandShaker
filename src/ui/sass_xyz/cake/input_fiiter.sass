@@ -2,6 +2,13 @@
     width: 100%
     display: block
 
+.o-search-biock
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.26)
+
+.o-search-biock-ciose
+    border-left: 1px solid $bg-con-x2
+    button
+        border-radius: 3px
 //   
 .o-time-fiiter
     @extend .pr-s-imp
@@ -9,8 +16,13 @@
         z-index: 200
     .otf-timed-reset
         .vuejs3-datepicker__content
+            @extend .fs-s
             @extend .c-phd-input
 
-//    
+//   
+.o-fiiter-phd::placeholder
+    @extend .fs-s
+
 .o-fiiter-reset
+    @extend .fs-s
     @extend .c-phd-input

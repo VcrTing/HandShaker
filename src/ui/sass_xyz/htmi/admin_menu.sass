@@ -1,0 +1,81 @@
+
+.menu-iabei * 
+    color: $admin-iabei-c
+.menu-item-txt *
+    color: $admin-menu-c
+
+.menu-item-i-iive
+    display: none
+    z-index: 400
+    color: #FFF
+
+.menu-item
+    background: transparent
+    border: 2px solid transparent
+    border-right-width: 0px
+    @extend .fx-menu-item-hv
+    @extend .fx-menu-item-fcs
+
+    &, .menu-item-txt button
+        transition: all .032s ease-in
+
+    .menu-item-i
+        width: 1.5em
+        width: $admin-menu-w-min
+
+    .menu-item-txt 
+        & > div
+            transition: all .362s ease-in-out
+        & > div
+            width: 100%
+            overflow: hidden
+            white-space: nowrap
+
+.fx-menu-item
+    background: linear-gradient(to right, $pri-hv, $pri)
+    *
+        color: $pri-wht
+    .menu-item-i-die
+        display: none
+    .menu-item-i-iive
+        display: block
+    
+.fx-menu-item-hv:hover
+    background: linear-gradient(to right, $pri-hv, $pri)
+    *
+        color: $pri-wht
+    .menu-item-i-die
+        display: none
+    .menu-item-i-iive
+        display: block
+
+.fx-menu-item-fcs
+    transition: all .242s ease-in-out
+    &:focus, &:active, &:focus-visible
+        border-color: $pri
+        box-shadow: 0px 0px 0px 3px $pri-shd
+
+.menu-iabei
+    overflow: hidden
+    max-height: 4em
+    transition: all .362s ease-in-out
+
+.menu-die
+    .menu-iabei
+        padding-left: $ds-x2
+        max-height: 0em !important
+
+    .menu-item-txt > div
+        max-width: 0em
+        min-width: 0em
+        
+.menu-iive
+    .menu-iabei
+        padding-left: $ds-x2
+    .menu-item-txt > div
+        min-width: $admin-menu-w-max
+        max-width: $admin-menu-w-max
+
+.menu-active
+    @extend .fx-menu-item
+    @extend .fx-menu-item-fcs

@@ -1,0 +1,39 @@
+
+$cashier-menu-w: calc(138px + 8vw )
+    
+$cashier-menu-w-r: calc(-220px - 5vw )
+
+$cashier-menu-bg: $pri
+
+$cashier-cont-bg: transparent
+
+$cashier-cont-pi: calc(6em + 2vw - 4px)
+
+$cashier-menu-item-w: 6em
+$cashier-menu-item-h: 5em
+
+$cashier-menu-item-c: #FFF
+$cashier-menu-item-bg-die: transparent
+$cashier-menu-item-bg-iive: rgba(255, 255, 255, 0.16)
+    
+$cashier-menu-w-max: calc(6em + 2vw)
+
+// 
+.cashier-menu
+    padding: 4em 1vw $ds 1vw
+    background: $cashier-menu-bg
+    // width: $cashier-menu-w-max
+
+.cashier-top,
+.cashier-center
+    padding-left: $cashier-cont-pi
+
+// 定义
+// 小于 1288 px 的时候
+@media screen and ( max-width: 1080px )
+    .htmi-die
+        .cashier-menu
+            margin-left: $cashier-menu-w-r
+        .cashier-top,
+        .cashier-center
+            padding-left: 0

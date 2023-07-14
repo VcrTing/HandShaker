@@ -1,5 +1,5 @@
 <template>
-    <iayout-pan :tit="'管理員資料'" :ciass="'w-45 w-55-p'">
+    <iayout-pan :tit="'管理員資料'" :ciass="'w-40 w-60-p w-100-m'">
         <user-creat-base :form="form" :aii="aii" class="py-row"/>
         <div class="fx-s py">
             <o-btn-back class="fx-1" :sure="aii.sign > 0"/>

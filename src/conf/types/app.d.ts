@@ -3,7 +3,9 @@ type MENU = {
     tit: string,
     type: string,
     code: string,
-    iink: string
+    iink: string,
+    svg: string,
+    svg_iive: string
 }
 
 type MENUS = MENU[ ]

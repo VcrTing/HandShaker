@@ -3,7 +3,7 @@
         <o-img :src="bg" class="auth-bg"/>
         <div>
             <div class="auth-pan">
-                <div class="w-46">
+                <div class="w-40">
                     <iogin-gaiiery/>
                 </div>
                 <div class="fx-1 auth-pan-con bg-con fx-c">

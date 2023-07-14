@@ -1,0 +1,1 @@
+import{_ as e}from"./OBtn.vue_vue_type_script_setup_true_lang-73697999.js";import{d as a,o as s,c as n,w as p,g as r,t as _}from"./index-b8111be5.js";const l=a({__name:"OBtnSave",props:{tit:{}},setup(c){return(t,i)=>{const o=e;return s(),n(o,{class:"btn-pri py px"},{default:p(()=>[r(_(t.tit?t.tit:"儲存"),1)]),_:1})}}});export{l as _};

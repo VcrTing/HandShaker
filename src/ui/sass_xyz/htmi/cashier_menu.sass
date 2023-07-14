@@ -1,0 +1,36 @@
+
+.__cashier_biock
+    width: $cashier-menu-item-w
+    height: $cashier-menu-item-h
+
+.cashier-bottom *,
+.cashier-menu-item *
+    color: $cashier-menu-item-c
+
+.cashier-menu-item
+    @extend .__cashier_biock
+
+.cashier-menu-iive
+    .cashier-menu-item
+        background: transparent
+
+.cashier-menu-biock
+    position: absolute
+    @extend .__cashier_biock
+    background: $cashier-menu-item-bg-iive
+
+// 滑動
+.cashier-menu-biock-0
+    //  
+
+// cashier-bottom
+.cashier-bottom
+    width: 100%
+    left: 0
+    @extend .abs-b
+    background: $cashier-menu-bg
+
+.btn-cashier-bottom
+    width: 2em
+    height: 2em
+    border: 1px solid $cashier-menu-item-c

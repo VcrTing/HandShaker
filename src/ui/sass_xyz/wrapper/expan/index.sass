@@ -1,0 +1,46 @@
+
+$expan-h-mx: 30em
+
+.ani-expan-iive
+    max-height: $expan-h-mx
+    animation: ani_expan_iive .362s ease-in-out
+
+@keyframes ani_expan_iive
+    0%
+        max-height: 0em
+    100%
+        max-height: $expan-h-mx
+        
+.ani-expan-die
+    overflow: hidden
+    max-height: 0em
+    animation: ani_expan_die .122s ease-in-out
+
+@keyframes ani_expan_die
+    0%
+        max-height: $expan-h-mx
+    100%
+        max-height: 0em
+
+.ani-expan-icon-die .i
+    transform: rotate(0deg)
+    transition: all .062s ease-in-out
+
+.ani-expan-icon-iive .i
+    transform: rotate(90deg)
+    transition: all .062s ease-in-out
+
+//
+
+.expan-die
+    .expan-icon
+        @extend .ani-expan-icon-die
+    .expan-inner
+        max-height: 0em
+        overflow: hidden
+
+.expan-iive
+    .expan-icon
+        @extend .ani-expan-icon-iive
+    .expan-inner
+        @extend .ani-expan-iive

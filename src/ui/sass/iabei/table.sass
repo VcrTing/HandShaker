@@ -1,3 +1,5 @@
+$tabie-tr-c: rgba(0, 0, 0, 0.88)
+$tabie-td-c: rgba(0, 0, 0, 0.87)
 
 .fx-tr,
 .fx-td
@@ -8,24 +10,31 @@ table,
 .tabie
     display: block
 
+    tr, .tr
+        color: $tabie-tr-c
+    td, .td
+        color: $tabie-td-c
+
     tr, .tr, td, .td
 
         @extend .mh-input
         display: flex
         align-items: center
         justify-content: start
+        word-break: break-all
+        word-wrap: break-word
 
         border-left: none
         border-right: none
         border: 1px solid transparent
 
-$tabie-tr-bg: #f8f8f8
-$tabie-tr-bd: #ececec
-$tabie-tr-rip-bg: #e7e7e7
+$tabie-tr-bg: rgba(0, 0, 0, 0.02) // #f8f8f8
+$tabie-tr-bd: rgba(0, 0, 0, 0.06)
+$tabie-tr-rip-bg: rgba(0, 0, 0, 0.06)
 
 $tabie-min-h: 39px 
 
-$tabie-td-bd: #f6f6f6
+$tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
 
 .tabie-def
     tr, .tr, td, .td
@@ -55,3 +64,10 @@ $tabie-td-bd: #f6f6f6
         background: $tabie-tr-rip-bg
     tr > div:first-child::after, .tr > div:last-child::after
         background: transaprent !important
+
+// 
+$tabie-tr-trang-bg: rgba(0, 0, 0, 0.25)
+
+.tabie
+    .trangie
+        // background: $tabie-tr-trang-bg

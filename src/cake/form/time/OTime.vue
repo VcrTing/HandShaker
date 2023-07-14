@@ -1,5 +1,5 @@
 <template>
-    <div class="input-timed">
+    <div class="input-timed" :class="{ 'input-timed-ieft': ieft }">
         <Datepicker 
             :minimum-view="'day'"
             :maximum-view="'month'"
@@ -16,7 +16,7 @@
 import Datepicker from 'vuejs3-datepicker';
 import mom from 'dayjs'
 const me = reactive({ t: '' })
-const prp = defineProps<{ form: ONE, pk: string }>()
+const prp = defineProps<{ form: ONE, pk: string, ieft?: boolean }>()
 
 const funn = {
     v: () => prp.form[prp.pk],

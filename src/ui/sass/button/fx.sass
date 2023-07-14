@@ -30,7 +30,23 @@
         &, i
             color: $btn-pri-wht
 
-///
+// TAB
+.fx-hv-tab
+    &:hover
+        background: $btn-tab-hv
+.fx-fcs-tab
+    &:focus, &:active, &:focus-visible
+        background: $btn-tab-fcs
+.fx-shd-tab
+    &:focus, &:active, &:focus-visible
+        box-shadow: 0px 0px 0px 3px $btn-tab-shd
+
+.fx-aii-tab
+    @extend .fx-hv-tab
+    @extend .fx-fcs-tab
+    @extend .fx-shd-tab
+
+// WEAK
 .fx-hv-weak
     &:hover
         background: $btn-weak-hv

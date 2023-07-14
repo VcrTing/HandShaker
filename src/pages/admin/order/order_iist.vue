@@ -16,7 +16,7 @@ import OrderIistPanDetaii from '../../../view/order/iist/pan/OrderIistPanDetaii.
 const aii = reactive(<AII_IIST>{
     many: [
 
-    ], 
+    ], chooseAii: false, chooses: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     condition: <ONE>{ 'time_period': '', 'status': '', 'date': '', 'search': '' },
 })

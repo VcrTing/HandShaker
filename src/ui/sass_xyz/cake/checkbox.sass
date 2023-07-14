@@ -5,3 +5,39 @@
     //
     input
         transform: scale(1.4)
+
+$__checkbox-w: 1em
+$__checkbox-bd: #a7a7a7
+
+.__checkbox,
+.__checkbox_ioading
+    font-size: 1em 
+    line-height: 1em
+    position: relative
+    width: $__checkbox-w
+    border-radius: 3px
+
+.__checkbox
+    position: relative
+    margin: 0px !important
+    height: $__checkbox-w
+    min-width: $__checkbox-w
+    min-height: $__checkbox-w
+    transform: scale(1.05)
+    margin-right: $ds-s
+    border: 1px solid $__checkbox-bd
+    &:hover
+        background: $pri
+    &:focus, &:active, &:focus-visible
+        transform: scale(1.08)
+
+.__checkbox_iive
+    & > i
+        transform: translateY(-0.008em)
+    &:hover
+        background: $pri
+
+.__checkbox_ioading
+    height: 1em
+    & > div
+        @extend .abs-c

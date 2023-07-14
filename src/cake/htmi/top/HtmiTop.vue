@@ -1,7 +1,9 @@
 <template>
     <section class="fx-s">
         <div class="fx-i pr" @click="$emit('change')">
+            <!--
             <Bars3Icon class="i hand"/>
+            -->
         </div>
 
         <div class="fx-r">
@@ -20,8 +22,6 @@
 </template>
     
 <script lang="ts" setup>
-import { Bars3Icon } from '@heroicons/vue/24/outline';
-import { useRouter } from 'vue-router';
 const rtr = useRouter()
 defineEmits([ 'change' ])
 

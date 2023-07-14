@@ -22,6 +22,7 @@ import { nextTick } from 'vue';
 import { memberPina } from '../../../plugin/pina_admin/memberPina'
 import { iist_deiay_insert } from '../../../tool/app/anim'
 import { future } from '../../../tool/hook/credit';
+
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
