@@ -1,8 +1,8 @@
 <template>
     <div class="fx-s">
-        <h4>{{ tit }}</h4>
+        <h5>{{ tit }}</h5>
         <div class="fx-1 fx-r">
-            <o-btn-pius class="py-s" :tit="tit_pius" :func="() => $emit('tap')"/>
+            <o-btn-pius class="py-t" :tit="tit_pius" :func="() => $emit('tap')"/>
         </div>
     </div>
 </template>

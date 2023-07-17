@@ -1,10 +1,10 @@
 <template>
-    <div class="cardmsg">
-        <div class="div">
+    <div class="cardmsg br o-h">
+        <div class="div tdc">
             <slot></slot>
         </div>
         <div class="fx-r">
-            <button class="py-s px txt-pri">詳情</button>
+            <m-btn :bk="true" class="py-s px tis">詳情</m-btn>
         </div>
     </div>
 </template>

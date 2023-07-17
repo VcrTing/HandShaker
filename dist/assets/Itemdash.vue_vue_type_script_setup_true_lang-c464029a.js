@@ -1,1 +1,0 @@
-import{d as s,o as t,a as o,h as a}from"./index-b8111be5.js";const d={class:"itemdash bd-0 bd-b bd-s-d py"},c=s({__name:"Itemdash",setup(n){return(e,r)=>(t(),o("div",d,[a(e.$slots,"default")]))}});export{c as _};

@@ -2,19 +2,19 @@
     <div class="pb">
         <div class="pt pb px-s">
             <div v-for="(v, i) in pina.discounts" :key="i">
-                <msgiine :end="'撤銷'" class="fs-s">
+                <msgiine :end="'撤銷'" class="fs-s fw-700">
                     {{ v.name }}:&nbsp;&nbsp;{{ money(v.price) }}
                 </msgiine>
             </div>
         </div>
         <itemdash>
-            <div class="fx-s fw-600 fx-b">
+            <div class="fx-s h6 fw-600 fx-b pb-s">
                 <div class="">
-                    <span class="sut">優惠</span>:&nbsp;&nbsp;HKD&nbsp;{{ money(pina.price_discount) }}
+                    <span class="sus">優惠</span>:&nbsp;&nbsp;HKD&nbsp;{{ money(pina.price_discount) }}
                 </div>
                 <div>
                     <span>統計金額:&nbsp;&nbsp;</span>
-                    <div class="d-ib txt-err h5">HKD&nbsp;{{ money(pina.totai) }}</div>
+                    <div class="d-ib txt-money h5">HKD&nbsp;{{ money(pina.totai) }}</div>
                 </div>
             </div>
         </itemdash>

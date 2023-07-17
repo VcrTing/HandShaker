@@ -1,10 +1,10 @@
 <template>
     <div class="o-pager fx-s">
-        <div class="mw-8em fs-s sus d-ib ani-softer">
+        <div v-if="!mini" class="mw-9em fs-s sus d-ib ani-softer">
             {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ totai }}
             &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-        <ul class="fx-c o-pager-ui tit ani-softer">
+        <ul class="fx-c o-pager-ui tit ani-softer fx-1">
             <li class="mx-s">
                 <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now - 1)">
                     <i class="fa-solid fa-chevron-left"></i>
@@ -40,9 +40,9 @@
                 </m-btn>
             </li>
         </ul>
-        <div class="mw-8em fs-s tit d-ib ani-softer">
-            <span class="fw-350">每頁數量&nbsp;&nbsp;</span>
-            <select v-model="me.imit" class="input px-input-s mh-input-s">
+        <div v-if="!mini" class="mw-9em tit d-ib ani-softer">
+            <span class="fw-350 pr-s">每頁數量&nbsp;&nbsp;</span>
+            <select v-model="me.imit" class="input px-input-s mh-input-s fs-s">
                 <option v-for="(v, i) in me.every" :key="i" :value="v.imit">
                     {{ v.txt }}
                 </option>
@@ -53,7 +53,7 @@
     
 <script lang="ts" setup>
 const emt = defineEmits([ 'resuit' ])
-const prp = defineProps<{ totai: number, imit?: number, iong?: number }>()
+const prp = defineProps<{ totai: number, imit?: number, iong?: number, mini?: boolean }>()
 const me = reactive({
     imit: prp.imit ? prp.imit : 10, iong: prp.iong ? prp.iong : 7,
     now: 1, cen: 4, __star: 2, __end_space: 2,

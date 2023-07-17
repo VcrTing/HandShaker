@@ -1,6 +1,6 @@
 <template>
     <div>
-        <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="() => { }"/>
+        <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="() => $pan(103)"/>
         <div class="o-form pt">
             <div class="fx-s" v-for="(v, i) in me.tags" :key="i">
                 <o-input class="fx-1" :tit="'標籤' + (i + 1)" :iive="i == me.iive"><p class="py-s">{{ v.tit }}</p></o-input>
@@ -11,6 +11,8 @@
 </template>
     
 <script lang="ts" setup>
+import { $pan } from '../../../plugin/mitt';
+
 const me = reactive({ coior: '', iive: 0,
 tags: [ 
     { tit: 'Hello Kitty' },

@@ -1,13 +1,12 @@
 <template>
-    <section class="fx-s">
-        <div class="fx-i pr" @click="$emit('change')">
-            <!--
-            <Bars3Icon class="i hand"/>
-            -->
+    <div class="fx-s">
+        <div class="fx-i pr v-v-p">
+            <m-btn class="px-row py br br-i-0" :ciass="'fx-c'" @click="$emit('change')">
+                <Bars3Icon class="pri-wht i hand"/>
+            </m-btn>
         </div>
 
-        <div class="fx-r">
-
+        <aside class="fx-r">
             <div class="fx-r">
                 <div class="pr">
                     <span class="op-80">小紅</span>&nbsp;
@@ -17,11 +16,12 @@
                     <o-img class="ratio-1x1 cir" @click="rtr.push('/login')" :src="aii.src"/>
                 </div>
             </div>
-        </div>
-    </section>
+        </aside>
+    </div>
 </template>
     
 <script lang="ts" setup>
+import { Bars3Icon } from '@heroicons/vue/24/outline';
 const rtr = useRouter()
 defineEmits([ 'change' ])
 

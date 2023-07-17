@@ -1,16 +1,14 @@
 <template>
     <Pan :idx="idx ? idx : 100">
-        <pan-inner :tit="'入單入貨信息'">
+        <pan-inner :tit="'添加入貨信息'">
             <div class="py-row"></div>
             <co-product-income-creat-form :form="form" :aii="aii"/>
             <div class="py-row"></div>
             <h5>倉存數量分配</h5>
             <div class="pt-row pb-s"></div>
             <co-product-invent-aiiocat-form :form="form" :aii="aii"/>
-            <div class="pt-x3 pb">
-                <m-btn class="btn-pri py br w-100">
-                    添加
-                </m-btn>
+            <div class="py-x3">
+                <o-btn-save class="w-100" :tit="'添加'"/>
             </div>
         </pan-inner>
     </Pan>

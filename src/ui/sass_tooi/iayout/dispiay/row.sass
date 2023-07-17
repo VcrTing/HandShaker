@@ -11,11 +11,28 @@
         
 .row
     @extend ._row
+
+.row-mb
+    & > div,
+    & > .div
+        @extend .mb  
+
+.row, .row-x2, .row-x2-w
     @extend .fx-i
     @extend .fx-wp
 
-.row-mb
-    //
-    & > div,
-    & > .div
-        @extend .mb
+// window
+@each $k, $v in $window
+    @media screen and (#{$k}-width: #{$v}px)
+        ._row_x2_w
+            margin-left: calc( 0px - $ds-x2 )
+            margin-right: calc( 0px - $ds-x2 )
+            padding-left: $ds
+            padding-right: $ds
+            & > div,
+            & > nav
+                padding-left: $ds
+                padding-right: $ds
+
+        .row-x2-w
+            @extend ._row_x2_w

@@ -1,1 +1,0 @@
-import{a as o}from"./Pan.vue_vue_type_script_setup_true_lang-53ad88ce.js";import{d as a,o as s,a as r,h as p,u as t}from"./index-b8111be5.js";const f=a({__name:"OOpenPan",props:{idx:{}},setup(d){return(e,n)=>(s(),r("div",{onClick:n[0]||(n[0]=i=>t(o)(e.idx?e.idx:0)),class:"hand d-ib"},[p(e.$slots,"default")]))}});export{f as _};

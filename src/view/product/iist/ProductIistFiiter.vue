@@ -16,14 +16,12 @@
             </div>
             <o-search class="fx-1" :aii="aii" :pk="'search'"/>
         </div>
-        <div class="pi">
-            <o-open-page :to="'creat'">
-                <o-btn class="btn-pri px py">添加產品資料</o-btn>
-            </o-open-page>
+        <div class="pi fx-c">
+            <o-btn-pius class="py" :tit="'添加產品資料'"/>
             <span class="px-s"></span>
-            <o-btn class="btn-pri-out px py">
+            <btn-pri-out class="py">
                 印列產品列表
-            </o-btn>
+            </btn-pri-out>
         </div>
     </div>
 </template>

@@ -1,13 +1,14 @@
 <template>
-    <div class="ps-r h-iayout">
+    <div class="ps-r">
         <aside>
             <div class="w-50-p w-35 w-30-x">
-                <o-search :aii="aii" :pk="'search'"/>
+                <o-search class="bg-con" :aii="aii" :pk="'search'"/>
             </div>
             <DeskRightTabs class="pb"/>
-            <DeskRightProds v-if="pina.r_tab == 0"/>
-            <DeskRightCustom v-else-if="pina.r_tab == 1"/>
         </aside>
+
+        <DeskRightProds v-if="pina.r_tab == 0"/>
+        <aside v-else-if="pina.r_tab == 1"><DeskRightCustom/></aside>
 
         <aside class="abs-b bg-con py-s w-100" v-if="pina.r_tab == 0"><o-pager :totai="20"/></aside>
 

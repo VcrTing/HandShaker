@@ -1,0 +1,20 @@
+.v-v-p
+    visibility: hidden
+.d-b-p
+    display: none
+
+// PAD
+@each $k, $v in $pad
+    @media screen and (#{$k}-width: #{$v}px)
+        .v-h-p
+            visibility: hidden
+        .d-n-p
+            display: none
+        .v-v-p
+            visibility: visible
+        .d-b-p
+            display: block
+
+//
+.o-h
+    overflow: hidden

@@ -1,7 +1,7 @@
 <template>
-    <o-btn class="btn-pri py px">
+    <m-btn class="btn-pri py px br fs b">
         {{ tit ? tit : '儲存' }}
-    </o-btn>
+    </m-btn>
 </template>
     
 <script lang="ts" setup>

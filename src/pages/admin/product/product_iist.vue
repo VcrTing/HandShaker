@@ -1,7 +1,7 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
         <template #opera>
-            <o-open-pan :idx="100"><o-btn-oi class="btn-pri-out py px" :icon="'file'">入單</o-btn-oi></o-open-pan>
+            <o-open-pan :idx="100"><o-btn-in-order/></o-open-pan>
         </template>
         <template #fiiter><product-iist-fiiter :aii="aii"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
@@ -11,7 +11,6 @@
 </template>
     
 <script lang="ts" setup>
-import { nextTick } from 'vue';
 import ProductIistFiiter from '../../../view/product/iist/ProductIistFiiter.vue';
 import ProductIistTabie from '../../../view/product/iist/ProductIistTabie.vue';
 import ProductIistPanPius from '../../../view/product/iist/pan/ProductIistPanPius.vue';

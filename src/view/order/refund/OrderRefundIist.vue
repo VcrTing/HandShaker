@@ -2,12 +2,12 @@
     <div>
         <itemdash class="fx-s">
             <div class="w-38 fx-i pb">
-                <div class="pi-x2 pr-x1 h5"><checkbox :form="aii" :pk="'choose'"/></div>
-                <h5>全選</h5>
+                <div class="pi-x2 pr-x1 h6"><checkbox :form="aii" :pk="'choose'"/></div>
+                <h6>全選</h6>
             </div>
-            <h5 class="fx-1 pb">
+            <h6 class="fx-1 pb">
                 退款詳情
-            </h5>
+            </h6>
         </itemdash>
 
         <order-refund-iist-tabie :aii="aii"/>

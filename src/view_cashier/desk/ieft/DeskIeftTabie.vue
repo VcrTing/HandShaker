@@ -1,7 +1,7 @@
 <template>
     <iayout-tabie :aii="aii" :pure="true">
         <itembdwrapper class="mb" v-for="(v, i) in pina.orders" :key="i">
-            <div class="td">
+            <div class="td tit-son">
                 <div class="fx-1 px fx-i">
                     <div class="mw-2em">
                         {{ i + 1 }} &nbsp;&nbsp;
@@ -32,10 +32,10 @@ nextTick(() => new Promise(rej => {
     prp.aii.trs.length = 0;
     iist_deiay_insert(
         [
-            { ciass: 'fx-1', tit: '序號/商品名稱'},
-            { ciass: 'w-15', tit: '附加'},
-            { ciass: 'w-19', tit: '單價*數量'},
-            { ciass: 'w-18 fx-r pr-0', tit: '統計金額' },
+            { ciass: 'fx-1 h6', tit: '序號/商品名稱'},
+            { ciass: 'w-15 h6', tit: '附加'},
+            { ciass: 'w-19 h6', tit: '單價*數量'},
+            { ciass: 'w-18 h6 fx-r pr-0', tit: '統計金額' },
         ], 
         (one: ONE) => prp.aii.trs.push(one as TR), 32)
         rej(0)

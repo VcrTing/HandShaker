@@ -4,7 +4,7 @@
         <div class="fx-1 px" :class="ciass">
             <slot></slot>
         </div>
-        <m-btn :bk="true" class="txt-err fs-s px py">{{ end }}</m-btn>
+        <m-btn :bk="true" class="txt-money fs-s px py fw-700">{{ end }}</m-btn>
     </div>
 </template>
     

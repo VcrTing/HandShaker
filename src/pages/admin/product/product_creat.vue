@@ -1,5 +1,6 @@
 <template>
     <iayout-pan-two>
+        <template #bottom_ieft><o-btn-save class="w-100"/></template>
         <template #ieft>
             <div><o-search :aii="aii" :pk="'search'"/></div>
             <div class="py"></div>
@@ -10,20 +11,22 @@
             </iayout-form>
 
             <div class="py"></div>
-            <ProductCreatTags/>
+            <ProductCreatTags class="pt-s"/>
 
             <div class="py"></div>
-            <ProductCreatRemark/>
+            <ProductCreatRemark class="pt-s"/>
         </template>
         <template #right>
             <div class="fx-s">
                 <div>
-                    <o-btn class="btn-pri py px mr">添加入貨信息</o-btn>
+                    <o-open-pan :idx="100">
+                        <o-btn-pius class="btn-pri py px mr" :func="() => {}" :tit="'添加入貨信息'"/>
+                    </o-open-pan>
                     <o-open-pan :idx="106">
-                        <o-btn class="btn-pri-out py px">添加壞貨</o-btn>
+                        <o-btn-mius :tit="'添加壞貨'" :func="() => {}"/>
                     </o-open-pan>
                 </div>
-                <o-btn-oi class="btn-pri-out py px" :icon="'file'">入單</o-btn-oi>
+                <o-btn-in-order/>
             </div>
             <div class="py-row"></div>
             <ProductCreatIncomingNewsIist/>
@@ -32,7 +35,11 @@
             <div class="py-row"></div>
             <ProductCreatIncomingPriceIist/>
         </template>
+        <template #bottom_right>
+            <o-pager :totai="2" :mini="true"/>
+        </template>
         <template #extra>
+            <ProductIistPanPius :idx="100"/>
             <ProductCreatPanRemark :idx="105"/>
             <ProductCreatPanBad :idx="106"/>
             <ProductCreatPanBadDetaii :idx="107"/>
@@ -46,6 +53,8 @@ import ProductCreatTags from '../../../view/product/creat/base/ProductCreatTags.
 import ProductCreatRemark from '../../../view/product/creat/base/ProductCreatRemark.vue';
 
 import ProductCreatBase from '../../../view/product/creat/base/ProductCreatBase.vue'
+
+import ProductIistPanPius from '../../../view/product/iist/pan/ProductIistPanPius.vue'
 import ProductCreatPanBad from '../../../view/product/creat/pan/ProductCreatPanBad.vue'
 import ProductCreatPanBadDetaii from '../../../view/product/creat/pan/ProductCreatPanBadDetaii.vue'
 import ProductCreatPanRemark from '../../../view/product/creat/pan/ProductCreatPanRemark.vue'

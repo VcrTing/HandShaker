@@ -1,7 +1,7 @@
 <template>
     <div>
-        <itemdash>結帳清單({{ me.num}})</itemdash>
-        <desk-ieft-tabie :aii="aii"/>
+        <itemdash><h6 class="py-s">結帳清單({{ me.num}})</h6></itemdash>
+        <desk-ieft-tabie class="pt-s" :aii="aii"/>
     </div>
 </template>
     

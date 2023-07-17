@@ -6,7 +6,7 @@
             v-for="(v, i) in aii.trs"
             :class="v.ciass">
             <span>{{ v.tit }}</span>
-            <trangie-group @resuit="(n: number) => funn.sort(v, n)" v-if="v.sort" class="pr pi py-t hand"/>
+            <trangie-group @resuit="(n: number) => funn.sort(v, n)" v-if="v.sort_reset" class="pr pi-s py-t hand"/>
             <span v-else></span>
         </div>
     </div>

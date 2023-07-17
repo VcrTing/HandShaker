@@ -35,6 +35,6 @@ import { ArrowLongRightIcon } from '@heroicons/vue/24/outline';
 .co-profit-totai-bar
     background: #7DF1B0
     h2
-        font-size: 2.6em
+        font-size: 2.86em
         font-weight: 300
 </style>

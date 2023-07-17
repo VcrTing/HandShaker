@@ -8,16 +8,16 @@
         </template>
         <template #bottom_ieft>
             <itemdash/>
-            <o-btn-back class="w-100 mt"/>
+            <o-btn-back class="w-100 mt refund"/>
         </template>
         <template #bottom_right>
             <itemdash>
-                <h5>退款金額:&nbsp;&nbsp;&nbsp;<span class="txt-money err">HKD&nbsp;500.0</span></h5>
+                <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib ">HKD&nbsp;500.0</p></h6>
             </itemdash>
             <div class="fx-s mt">
-                <o-btn class="btn-tab fx-1 py">退款並退貨入庫</o-btn>
+                <o-btn class="btn-tab fx-1 py refund">退款並退貨入庫</o-btn>
                 <span class="px"></span>
-                <o-btn class="btn-pri fx-1 py">退款</o-btn>
+                <o-btn class="btn-pri fx-1 py refund">退款</o-btn>
             </div>
         </template>
     </iayout-pan-two>

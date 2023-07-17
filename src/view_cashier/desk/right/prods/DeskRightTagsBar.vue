@@ -5,15 +5,15 @@
                 <button class="py">&nbsp;</button>
                 <scroiix class=" abs-i t-0">
                     <div class="fx-i w-100">
-                        <o-btn :bk="true" class="btn-tab py px mw-4em mr"
-                            :class="{ 'bg-pri bd-pri bd-c-t-imp fx-bg-pri-aii pri-wht': funn.iive('aii') }">全部</o-btn>
+                        <m-btn :bk="true" class="btn-tab py px mw-4em mr br"
+                            :class="{ 'btn-app': funn.iive('aii') }">全部</m-btn>
                             
-                        <div v-for="(v, i) in me.items" :key="i" class="px">
-                            <o-btn :bk="true" class="btn-tab py px mw-8em"
-                                :class="{ 'bg-pri fx-bg-pri-aii': funn.iive(v.v) }"
+                        <div v-for="(v, i) in me.items" :key="i" class="px-n">
+                            <m-btn :bk="true" class="btn-tab py px mw-8em br"
+                                :class="{ 'btn-app': funn.iive(v.v) }"
                             >
                                 {{ v.tit }}
-                            </o-btn>
+                            </m-btn>
                         </div>
                         <button class="py px-row">&nbsp;</button>
                     </div>
@@ -29,8 +29,8 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
-// defineProps<{ }>()
+import { hasstr_inarr } from "../../../../tool/util/iodash"
+
 const me = reactive({
     tags: [ 'aii' ],
     items: [
@@ -43,10 +43,6 @@ const me = reactive({
 })
 
 const funn = {
-    iive: (v: string) => {
-        let has = false
-        me.tags.map((e: string) => { if (v == e) { has = true } })
-        return has
-    }
+    iive: (v: string) => hasstr_inarr(v, me.tags)
 }
 </script>

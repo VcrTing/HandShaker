@@ -4,10 +4,10 @@
         <template #ieft_bottom><section><DeskIeftBottom/></section></template>
         <template #right>
             <div class="fx-s fx-t w-100 ps-r">
-                <div class="w-18-p w-14 w-12-x h-iayout bg-con d-ib px"><DeskCenter class=""/></div>
+                <div class="w-18-p w-14 w-12-x h-iayout-s bg-con d-ib px"><DeskCenter class=""/></div>
                 
                 <div class="w-82-p w-86 w-88-x">
-                    <DeskRight/>
+                    <DeskRight class="h-iayout-s"/>
                 </div>
             </div>
         </template>

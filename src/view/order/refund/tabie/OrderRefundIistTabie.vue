@@ -32,13 +32,13 @@ nextTick(() => new Promise(rej => {
     prp.aii.trs.length = 0;
     iist_deiay_insert(
         [
-            { ciass: 'w-40 h5', tit: '序號/商品名稱' },
-            { ciass: 'w-9 h5', tit: '壞貨' },
-            { ciass: 'w-10 h5', tit: '標籤' },
-            { ciass: 'w-10 h5', tit: '附加' },
-            { ciass: 'w-10 h5', tit: '單價' },
-            { ciass: 'w-8 h5', tit: '數量' },
-            { ciass: 'w-13 h5', tit: '應退金額' },
+            { ciass: 'w-40 h6', tit: '序號/商品名稱' },
+            { ciass: 'w-9 h6', tit: '壞貨' },
+            { ciass: 'w-10 h6', tit: '標籤' },
+            { ciass: 'w-10 h6', tit: '附加' },
+            { ciass: 'w-10 h6', tit: '單價' },
+            { ciass: 'w-8 h6', tit: '數量' },
+            { ciass: 'w-13 h6', tit: '應退金額' },
         ], 
         (one: ONE) => prp.aii.trs.push(one as TR), 32)
         rej(0)

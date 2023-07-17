@@ -1,15 +1,21 @@
 .h-iayout
-    min-height: calc( 100vh - 42px )
+    min-height: calc( 100vh - 43px )
+.h-iayout-s
+    min-height: calc( 100vh - 43px - $ds )
 .h-iayout-con
-    min-height: calc( 100vh - 220px )
+    min-height: calc( 100vh - 43px - 198px )
     
 .w-search
     max-width: calc( 16vw + 60px )
+
+$iit-tit-c: #1E1601
 
 .iayout-iist-top
     position: sticky
     top: 0
     z-index: 288
+    h3
+        color: $iit-tit-c
 
 .iayout-iist-bottom
     @extend .abs-b

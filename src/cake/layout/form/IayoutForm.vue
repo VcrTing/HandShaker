@@ -2,7 +2,7 @@
     <div>
         <div class="fx-s pb bg-con" v-if="tit">
             <div class="fx-i ani-softer">
-                <h4 :class="ciass_tit">{{ tit }}</h4>
+                <h5 :class="ciass_tit">{{ tit }}</h5>
                 <span class="px"></span>
             </div>
         </div>

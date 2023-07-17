@@ -19,3 +19,22 @@ $err-fcs: #f12c21
     @extend .hand
     @extend .fx-hv-err
     @extend .fx-fcs-err
+
+// 金錢
+$money: #FF2D55
+$money-hv: #f6234a
+$money-fcs: #eb1e44
+
+.fx-hv-money:hover
+    color: $money-hv
+
+.fx-fcs-money:focus, .fx-fcs-money:active, .fx-fcs-money:focus-visible
+    color: $money-fcs
+
+.money
+    color: $money
+
+.txt-money
+    @extend .money
+    @extend .fx-hv-money
+    @extend .fx-fcs-money

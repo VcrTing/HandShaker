@@ -1,4 +1,4 @@
-$fonts: ( 'tit': $tit, 'tis': $tis, 'ttd': $ttd, 'sub': $sub, 'sut': $sut, 'sus': $sus, 'wht': $wht, 'pri': $pri, 'pri-wht': $pri-wht )
+$fonts: ( 'tit': $tit, 'tis': $tis, 'ttd': $ttd, 'sub': $sub, 'sut': $sut, 'sus': $sus, 'wht': $wht, 'pri': $pri, 'pri-wht': $pri-wht, 'tdc': $tdc )
 
 @each $k, $v in $fonts
     .#{$k}
@@ -8,11 +8,6 @@ $fonts: ( 'tit': $tit, 'tis': $tis, 'ttd': $ttd, 'sub': $sub, 'sut': $sut, 'sus'
     .#{$k}-hv:hover
         color: $v
      
-
-h1, h2, h3, h4, h5, h6
-    color: $tit
-// .h1, .h2, .h3, .h4, .h5, .h6
-
 
 // 其他文字顏色
 .refund

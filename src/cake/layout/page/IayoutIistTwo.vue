@@ -1,16 +1,16 @@
 <template>
     <div class="iayout-iist bg-con h-iayout ps-r">
         <div class="pt"></div>
-        <section class="fx-s py bg-con iayout-iist-top">
+        <section class="fx-s pt pb-s bg-con iayout-iist-top">
             <h3>{{ tit }}</h3>
             <slot name="opera">
                 <button class="py px">&nbsp;</button>
             </slot>
         </section>
-        <section class="iayout-iist-fiiter">
+        <section class="iayout-iist-fiiter py-s">
             <slot name="fiiter"></slot>
         </section>
-        <div class="py-n"></div>
+        <div class="py-s"></div>
         <div class="pb-row ani-softer h-iayout-con">
             <slot name="con"></slot>
             <div class="py-x2"></div>

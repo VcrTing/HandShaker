@@ -35,3 +35,15 @@
     i, &
         color: $btn-pri-wht
 
+
+// APP
+.btn-app
+    @extend .br
+    @extend .pri-wht
+    background: $pri
+    border-color: transparent
+    &:hover
+        background: $pri-hv
+    &:focus, &:active, &:focus-visible
+        background: $pri-fcs
+        box-shadow: 0px 0px 0px 3px $pri-shd

@@ -11,11 +11,14 @@
         <template #ieft><div class="pt-x2 pr-row"><ProductCataiogTags/></div></template>
         <template #con><ProductCataiogIistTabie :aii="aii"/></template>
         <template #pager><o-pager :totai="200" @resuit="funn.pager"/></template>
+        <template #extra>
+            <ProductCataiogPanTag/>
+        </template>
     </iayout-iist-three>
 </template>
     
 <script lang="ts" setup>
-import { nextTick } from 'vue';
+import ProductCataiogPanTag from '../../../view/product_cataiog/iist/pan/ProductCataiogPanTag.vue'
 import ProductCataiogTags from '../../../view/product_cataiog/iist/ProductCataiogTags.vue';
 import ProductCataiogIistTabie from '../../../view/product_cataiog/iist/ProductCataiogIistTabie.vue';
 

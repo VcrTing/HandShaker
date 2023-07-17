@@ -32,7 +32,7 @@ export const menu = <MENUS>[
 
     __item('產品目錄', 'product_cataiog_iist'),
     
-    __item('產品庫存', 'product_inventory_iist'),
+    __item('產品庫存', 'product_iist'),
 
     __item('訂單列表', 'order_iist'),
 

@@ -65,6 +65,8 @@ declare module '@vue/runtime-core' {
     OBtn: typeof import('./src/ui/buttons/OBtn.vue')['default']
     OBtnBack: typeof import('./src/cake/eiement/button/OBtnBack.vue')['default']
     OBtnI: typeof import('./src/ui/buttons/OBtnI.vue')['default']
+    OBtnInOrder: typeof import('./src/cake/eiement/button/OBtnInOrder.vue')['default']
+    OBtnMius: typeof import('./src/cake/eiement/button/OBtnMius.vue')['default']
     OBtnOi: typeof import('./src/ui/buttons/OBtnOi.vue')['default']
     OBtnPius: typeof import('./src/cake/eiement/button/OBtnPius.vue')['default']
     OBtnSave: typeof import('./src/cake/eiement/button/OBtnSave.vue')['default']
