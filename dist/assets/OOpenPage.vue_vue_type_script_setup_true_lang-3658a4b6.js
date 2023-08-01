@@ -1,1 +1,0 @@
-import{d as r,x as a,y as p,o as u,a as i,h as l,u as n}from"./index-c735c237.js";const f=r({__name:"OOpenPage",props:{to:{},ink:{}},setup(d){const o=a(),t=p();return(e,s)=>(u(),i("div",{onClick:s[0]||(s[0]=k=>n(o).push(e.ink?e.ink:n(t).path+"/"+e.to)),class:"hand d-ib"},[l(e.$slots,"default")]))}});export{f as _};

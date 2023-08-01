@@ -1,12 +1,25 @@
+
+$iayout-h: calc( 100vh - 43px )
+$iayout-s: calc( 100vh - 43px - $ds )
+$h-iayout-con: calc( 100vh - 43px - 168px )
+$h-iayout-con-x2: calc( 100vh - 43px - 202px )
+
 .h-iayout
-    min-height: calc( 100vh - 43px )
+    min-height: $iayout-h
+.h-iayout-max
+    max-height: $iayout-h
+
 .h-iayout-s
-    min-height: calc( 100vh - 43px - $ds )
+    min-height: $iayout-s
+.h-iayout-s-max
+    max-height: $iayout-s
 .h-iayout-con
-    min-height: calc( 100vh - 43px - 198px )
+    min-height: $h-iayout-con
+.h-iayout-con-x2
+    min-height: $h-iayout-con-x2
     
 .w-search
-    max-width: calc( 16vw + 60px )
+    max-width: calc( 16vw + 100px )
 
 $iit-tit-c: #1E1601
 
@@ -26,3 +39,5 @@ $iit-tit-c: #1E1601
     position: sticky
     bottom: 0
     z-index: 299
+
+// scroii

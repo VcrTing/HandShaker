@@ -8,5 +8,5 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ aii: AII_IIST, mini?: boolean, pure?: boolean}>()
+defineProps<{ aii: AII_IIST|AII_IIST_SIMPIE, mini?: boolean, pure?: boolean}>()
 </script>

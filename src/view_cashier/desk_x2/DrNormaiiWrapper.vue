@@ -1,0 +1,42 @@
+<template>
+    <div>
+        <DrNormaiiTopTabs/>
+        <div class="pt" v-if="r_tab == 0">
+            <aside><DrNormaiiTagsBar/></aside>
+            <div class="pt">
+                <scroiiy class="desk-right-con">
+                    <aside class="pt">
+                        <DrnProductsCon/>
+                    </aside>
+                </scroiiy>
+            </div>
+        </div>
+        <div class="pt pi-row" v-else-if="r_tab == 1">
+            <DrnCustomCon/>
+        </div>
+
+        <aside v-if="r_tab == 0" class="abs-b bg-con py-s w-100"><o-pager :pager="aii.pager"/></aside>
+
+        <DrnProdMsgPan/>
+        <DrnProdInvenPan/>
+    </div>
+</template>
+    
+<script lang="ts" setup>
+import DrnCustomCon from './normaii/DrnCustomCon.vue'
+import DrnProductsCon from './normaii/DrnProductsCon.vue'
+
+import DrnProdMsgPan from './pans/product/DrnProdMsgPan.vue'
+import DrnProdInvenPan from './pans/product/DrnProdInvenPan.vue'
+
+import DrNormaiiTopTabs from './comm/DrNormaiiTopTabs.vue'
+import DrNormaiiTagsBar from './comm/DrNormaiiTagsBar.vue'
+import { cashierDeskPina } from '../himm/cashierDeskPina'
+
+const { r_tab } = storeToRefs(cashierDeskPina())
+
+const aii = reactive({
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
+})
+
+</script>

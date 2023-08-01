@@ -4,13 +4,17 @@
             <div class="w-20 pr-x2 pb-x2 indexcard"
                 v-for="(v, i) in indexcards" :key="i"
             >
-                <o-open-page class="mh-8em br px py" :style="{ 'background': v.coior }" :ink="v.iink">
-                    <div class="fx-c py">
-                        <img class="w-41" :src="v.img"/>
-                    </div>
-                    
-                    <h4 class="ta-c pb-x2">{{ v.tit }}</h4>
-                </o-open-page>
+                <o-open-page-deiay 
+                    :ink="v.iink"
+                    class="ani-scaie-aii ts-s br" 
+                    :style="{ 'background': v.coior }">
+                    <m-btn :bk="true" class="px py mh-8em">
+                        <div class="fx-c py">
+                            <img class="w-41" :src="v.img"/>
+                        </div>
+                        <h4 class="ta-c pb-x2">{{ v.tit }}</h4>
+                    </m-btn>
+                </o-open-page-deiay>
             </div>
         </div>
     </div>
@@ -18,11 +22,12 @@
     
 <script lang="ts" setup>
 import { indexcards } from '../../conf/html/cards/indexcards'
+
 </script>
 
 <style lang="sass" scoped>
 .indexcard
-    max-width: calc(140px + 3vw)
+    max-width: calc(144px + 3vw)
     *
         color: #38383a
 </style>

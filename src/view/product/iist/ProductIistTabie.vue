@@ -1,15 +1,15 @@
 <template>
     <iayout-tabie :aii="aii">
         <div class="td" v-for="(v, i) in aii.many" :key="i">
-            <div class="w-9">{{ v.number }}</div>
+            <div class="w-9">{{ v.product_id }}</div>
             <div class="w-13">{{ v.name }}</div>
-            <div class="w-9">{{ v.shop }}</div>
-            <div class="w-15">{{ v.in_date }}&nbsp;{{ v.in_time }}</div>
-            <div class="w-11">{{ v.in_price }}</div>
-            <div class="w-11">{{ v.iow_price }}</div>
-            <div class="w-9">{{ v.price }}</div>
-            <div class="w-10">{{ v.stock_price }}</div>
-            <div class="w-6">{{ v.invent }}</div>
+            <div class="w-9">{{ v.new_supplier }}</div>
+            <div class="w-15">{{ v.new_restock_date }}</div>
+            <div class="w-11">{{ v.new_restock_price }}</div>
+            <div class="w-11">{{ v.new_lowest_price }}</div>
+            <div class="w-9">{{ v.new_selling_price }}</div>
+            <div class="w-10">{{ v.average_restock_price }}</div>
+            <div class="w-6">{{ v.total_stock }}</div>
             <div class="fx-1 ta-r">
                 <p class="hand">庫存詳情</p>
                 <div>
@@ -71,7 +71,7 @@ nextTick(() => new Promise(rej => {
 
 const funn = {
     edit: (v: ONE) => future(() => {
-        memberPina().save_member_of_edit(v); rtr.push('/admin/order_iist/edit')
+        memberPina().save('one_of_edit', v); rtr.push('/admin/order_iist/edit')
     }) ,
     trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
 }

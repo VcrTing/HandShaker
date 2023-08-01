@@ -1,0 +1,1 @@
+import{n as r}from"./conn-68b855b8.js";import{a,c as e}from"./net-tooi-8492b119.js";import{E as t}from"./errors_user-be6d0865.js";const n="users",i=async(s,o)=>a(t,async()=>(delete s.password,e(await r.put("users-pms",s,o+"")))),u=async s=>a(t,async()=>e(await r.pos(n,s)));export{u as a,i as s};

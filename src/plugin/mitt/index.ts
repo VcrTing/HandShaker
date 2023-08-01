@@ -6,6 +6,7 @@ import { mittPina } from './mittPina'
 // 
 const $mod = (n: number) => mittPina().mod(n);
 const $pan = (n: number) => mittPina().pan(n);
+const $toast = (str: string, mod?: TOAST_TYPE) => mittPina().toast(str, mod);
 
 const $_mod_on = (n: number, open?: Function, ciose?: Function) => {
     if (mittPina().MOD == n) {
@@ -33,6 +34,7 @@ export {
 
     $mod,
     $pan,
+    $toast,
 
     $_mod_on,
     $_pan_on,

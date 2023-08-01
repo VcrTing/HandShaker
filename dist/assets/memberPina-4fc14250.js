@@ -1,1 +1,0 @@
-import{_,o as t,a as n,i as o}from"./index-c735c237.js";const s={},a={class:"d-ib hand"};function c(e,r){return t(),n("div",a," 編輯 ")}const m=_(s,[["render",c]]),d=o("memberPina",{state:()=>({member_of_edit:{}}),actions:{save_member_of_edit(e={}){this.member_of_edit=e}}});export{m as _,d as m};

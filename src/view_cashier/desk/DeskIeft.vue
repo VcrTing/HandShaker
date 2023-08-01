@@ -1,17 +1,18 @@
 <template>
     <div>
         <itemdash><h6 class="py-s">結帳清單({{ me.num}})</h6></itemdash>
-        <desk-ieft-tabie class="pt-s" :aii="aii"/>
+        <DeskIeftTabie class="pt-s" :aii="aii"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import DeskIeftTabie from './ieft/DeskIeftTabie.vue'
+import DeskIeftTabie from './ieft/DeskIeftTabie.vue';
 const me = reactive({ num: 0 })
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ],
-    condition: <ONE>{}, ioading: true, msg: '', trs: <TRS>[ ], search: '', 
+    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
+    condition: <ONE>{}, ioading: true, msg: '', trs: <TRS>[ ],
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
 })
 
 const funn = {

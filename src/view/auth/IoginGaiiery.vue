@@ -3,11 +3,11 @@
         <div class="iogin-gaiiery-imgs">
             <o-img class="wh-100" v-for="(v, i) in aii.imgs" :key="i" :src="v.src"/>
         </div>
-        <div class="iogin-gaiiery-txt fx-b">
+        <div class="iogin-gaiiery-txt fx-b ani-softer-x2">
             <div class="ta-c w-100 pb-x2 pt-x4 wht">
-                <h3 class="wht">探索手辦模型世界</h3>
-                <h3 class="wht py-s">發現無限樂趣</h3>
-                <div class="pt-s">請在此頁面登錄您的帳戶</div>
+                <h3 class="wht ">探索手辦模型世界</h3>
+                <h3 class="wht py-s ">發現無限樂趣</h3>
+                <div class="pt-s ">請在此頁面登錄您的帳戶</div>
             </div>
         </div>
     </div>

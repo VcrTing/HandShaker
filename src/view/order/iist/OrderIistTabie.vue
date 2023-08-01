@@ -60,7 +60,7 @@ nextTick(() => new Promise(rej => {
 
 const funn = {
     edit: (v: ONE) => future(() => {
-        memberPina().save_member_of_edit(v); rtr.push('/admin/order_iist/edit')
+        memberPina().save('one_of_edit', v); rtr.push('/admin/order_iist/edit')
     }) ,
     trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
 }

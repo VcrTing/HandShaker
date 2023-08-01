@@ -7,7 +7,7 @@
                 <i class="fa-solid fa-xmark fs"></i>
             </m-btn>
         </div>
-        <div class="py">
+        <div class="pt">
             <slot></slot>
         </div>
     </div>

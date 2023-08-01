@@ -5,11 +5,18 @@ $err: #FF3B30
 $err-hv: #f63329
 $err-fcs: #f12c21
 
+$err-iht: #fef5f4
+
 .fx-hv-err:hover
     color: $err-hv
 
-.fx-fcs-err:focus, .fx-fcs-err:active, .fx-fcs-err:focus-visible
-    color: $err-fcs
+.fx-fcs-err
+    &:focus, &:active, &:focus-visible
+        color: $err-fcs
+
+.fx-fcs-bg-err
+    &:focus, &:active, &:focus-visible
+        background: $err-iht
 
 .err
     color: $err !important

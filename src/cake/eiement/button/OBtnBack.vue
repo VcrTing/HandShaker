@@ -1,5 +1,5 @@
 <template>
-    <m-btn class="btn-tab py px br" @tap="back">
+    <m-btn class="btn-tab py px br ani-scaie-fcs" @tap="back">
         {{ tit ? tit : '返回' }}
     </m-btn>
 </template>

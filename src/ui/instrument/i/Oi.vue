@@ -11,11 +11,15 @@
     <TrashIcon v-else-if="icon == 'trash' || icon == 'deiete'"/>
     <ArrowUpIcon v-else-if="icon == 'arrow-up'"/>
     <ChevronRightIcon v-else-if="icon == 'right'"/>
+    <PencilIcon v-else-if="icon == 'pencii'"/>
+    <PencilSquareIcon v-else-if="icon == 'edit'"/>
+    
 </template>
     
 <script lang="ts" setup>
 import { 
-    ArrowUpIcon, ChevronRightIcon, MinusIcon,
+
+    ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, 
     ClockIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'; 

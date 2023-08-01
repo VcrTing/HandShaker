@@ -20,3 +20,38 @@
     box-shadow: none
     opacity: 1
     transition: all 0s
+
+
+.btn-err-weak
+    color: $err
+    background: $err-iht
+    &:hover
+        color: $pri-wht
+        background: $err
+    @extend .fx-fcs-err
+
+
+$btn-die: rgba(0, 0, 0, 0.26)
+$btn-die-i: #B5B5B5
+
+$btn-die-bd: #DCDCDC
+$btn-die-bg: #EEEEEE
+
+.btn-die-imp
+    cursor: wait !important
+    color: $btn-die !important
+    background: $btn-die-bg !important
+    border-color: $btn-die-bd !important
+    .i, i
+        color: $btn-die-i !important
+
+// 刪除按鈕
+.btn-trash
+    color: $err
+    background: $err-iht
+    &:hover
+        color: $pri-wht
+        background: $err
+    &:focus, &:active, &:focus-visible
+        color: $pri-wht
+        background: $err-hv

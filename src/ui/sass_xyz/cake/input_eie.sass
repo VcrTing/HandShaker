@@ -5,6 +5,9 @@
 
 // 時間 選擇框
 .input-timed
+    .cell, .prev, .next
+        @extend .ani-scaie-aii
+
     .vuejs3-datepicker,
     .vuejs3-datepicker__value,
     .vuejs3-datepicker__content
@@ -27,6 +30,7 @@
         margin: 0px
         padding: 0px
         font-size: 1em
+        @extend .c-input
     //   
     .vuejs3-datepicker__icon,
     .vuejs3-datepicker__calendar-topbar
@@ -39,7 +43,7 @@
         overflow: hidden
         border-radius: 6px
         padding-bottom: 2px
-        box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.32)
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.36)
         
         span.day
             border-radius: 100% !important

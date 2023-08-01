@@ -1,6 +1,6 @@
 <template>
     <iayout-tabie :aii="aii" :pure="true">
-        <itembdwrapper class="mb" v-for="(v, i) in pina.orders" :key="i">
+        <itembdwrapper class="mb" v-for="(v, i) in orders" :key="i">
             <div class="td tit-son">
                 <div class="fx-1 px fx-i">
                     <div class="mw-2em">
@@ -20,13 +20,14 @@
 </template>
     
 <script lang="ts" setup>
+import { cashierDeskPina } from '../../himm/cashierDeskPina'
+
 import { iist_deiay_insert } from '../../../tool/app/anim'
-import { cashierDeskPina } from '../himm/cashierDeskPina'
 
 const prp = defineProps<{ aii: AII_IIST }>()
 
 // 數據
-const pina = cashierDeskPina()
+const { orders } = storeToRefs(cashierDeskPina())
 
 nextTick(() => new Promise(rej => {
     prp.aii.trs.length = 0;
@@ -40,5 +41,4 @@ nextTick(() => new Promise(rej => {
         (one: ONE) => prp.aii.trs.push(one as TR), 32)
         rej(0)
 }))
-
 </script>

@@ -1,0 +1,42 @@
+.ani-scaie-hv
+    @extend .ts
+    &:hover
+        transform: scale(1.01)
+.ani-scaie-fcs
+    @extend .ts
+    &:focus, &:active, &:focus-visible
+        animation: ani_scaie_fcs $duration_x1 ease-in-out
+@keyframes ani_scaie_fcs
+    0%
+        transform: scale(1)
+    60%
+        transform: scale(1.01)
+    85%
+        transform: scale(0.997)
+    100%
+        transform: scale(1)
+.ani-scaie-aii
+    @extend .ani-scaie-hv
+    @extend .ani-scaie-fcs
+
+// x2
+.ani-scaie-hv-x2
+    @extend .ts
+    &:hover
+        transform: scale(1.02)
+.ani-scaie-fcs-x2
+    @extend .ts
+    &:focus, &:active, &:focus-visible
+        animation: ani_scaie_fcs $duration_x1 ease-in-out
+@keyframes ani_scaie_fcs
+    0%
+        transform: scale(1)
+    60%
+        transform: scale(1.02)
+    85%
+        transform: scale(0.995)
+    100%
+        transform: scale(1)
+.ani-scaie-aii-x2
+    @extend .ani-scaie-hv-x2
+    @extend .ani-scaie-fcs-x2

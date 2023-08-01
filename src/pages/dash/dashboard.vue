@@ -101,7 +101,6 @@
                 </div>
             </div>
             
-            <o-pager :totai="100"/>
         </aside>
 
         <aside class="px py mt bg-con">

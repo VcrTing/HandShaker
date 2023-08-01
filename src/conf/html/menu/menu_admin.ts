@@ -30,7 +30,7 @@ export const menu = <MENUS>[
 
     __item('倉庫資料', 'warehouse_iist'),
 
-    __item('產品目錄', 'product_cataiog_iist'),
+    __item('產品標籤', 'product_cataiog_iist'),
     
     __item('產品庫存', 'product_iist'),
 

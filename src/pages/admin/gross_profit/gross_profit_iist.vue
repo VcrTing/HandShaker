@@ -11,7 +11,7 @@
             </aside>
             <div class="pt"></div>
             <GrossProfitIistTabie :aii="aii"/></template>
-        <template #pager><o-pager :totai="2" @resuit="funn.pager"/></template>
+        <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
         <template #extra><OrderIistPanDetaii/></template>
     </iayout-iist-two>
 </template>
@@ -26,8 +26,9 @@ const me = reactive({
 })
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ 1 ],
+    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
     condition: <ONE>{ 'time_period': '', 'status': '', 'cashier': '', 'date': '', 'search': '' },
 })
 

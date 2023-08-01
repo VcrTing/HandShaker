@@ -1,5 +1,6 @@
 <template>
     <div class="o-form">
+        <!--
         <div class="row fx-s">
             <div class="w-50">
                 <o-input :tit="'地域'" :err="errs.region">
@@ -12,26 +13,28 @@
                 </o-input>
             </div>
         </div>
-        <o-input :tit="'詳細地址'" :err="errs.address">
-            <input v-model="form.address" placeholder="請輸入"/>
+        -->
+        <o-input :tit="'詳細地址*'" :err="errs.address">
+            <textarea rows="4" v-model="form.address" placeholder="請輸入"/>
         </o-input>
     </div>
 </template>
     
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
-const pks = [ 'region', 'district', 'address' ]
-const me = reactive({ districts: <AREAS>[] })
+const pks = [ 'address' ]
+// const me = reactive({ districts: <AREAS>[] })
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
 watch(() => prp.aii.sign, () => {
-    pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
+    pks.map((k: string) => { 
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
     prp.aii.can = true
 })
 
-watch(() => prp.form.region, (n: string) => jude_err(errs, 'region', n, prp.aii))
-watch(() => prp.form.district, (n: string) => jude_err(errs, 'district', n, prp.aii))
+// watch(() => prp.form.region, (n: string) => jude_err(errs, 'region', n, prp.aii))
+// watch(() => prp.form.district, (n: string) => jude_err(errs, 'district', n, prp.aii))
 watch(() => prp.form.address, (n: string) => jude_err(errs, 'address', n, prp.aii))
 </script>

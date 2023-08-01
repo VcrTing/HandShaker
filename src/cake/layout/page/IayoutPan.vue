@@ -1,6 +1,6 @@
 <template>
     <div class="iayout-iist bg-con h-iayout ps-r">
-        <div class="py-n"></div>
+        <div class="py"></div>
         <section class="fx-s py bg-con" v-if="tit">
             <div class="fx-i ani-softer">
                 <h3>{{ tit }}</h3>

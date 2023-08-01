@@ -3,7 +3,7 @@
         <div class="fx-1 row fx-i">
             <div class="w-20">
                 <o-seiect class="input w-100" 
-                    :form="aii.condition" :pk="'tag'" 
+                    :form="aii.condition" :pk="'label'" 
                     :many="vai_product.seiect_tag_fiiter"/>
             </div>
             <div class="w-20">

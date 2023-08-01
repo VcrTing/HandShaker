@@ -1,4 +1,8 @@
 
+$c-input: #3A3A3C
+.c-input
+    color: $c-input
+
 $bd-input: #E5E5EA
 $bd-input-hv: #E2E2E8
 
@@ -56,6 +60,8 @@ textarea
     display: inline-block
     @extend .ts
     @extend .ciear
+    @extend .c-input
+    font-weight: 400
     @extend .phd-input
 
 input:hover, select:hover, textarea:hover

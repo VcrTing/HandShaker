@@ -1,5 +1,5 @@
 <template>
-    <div class="scroiiy w-100" :id="'scroiiy_' + ctx?.uid">
+    <div class="scroiiy" :id="'scroiiy_' + ctx?.uid">
         <slot></slot>
     </div>
 </template>
@@ -13,7 +13,6 @@ const ctx = getCurrentInstance()
 
 <style lang="sass" scoped>
 .scroiiy
-    width: 100%
     overflow: hidden
     overflow-y: scroll
 </style>

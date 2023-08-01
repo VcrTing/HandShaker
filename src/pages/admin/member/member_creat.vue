@@ -1,16 +1,15 @@
 <template>
-    <iayout-pan :ciass="'fx-t fx-i pt-row fx-wp'">
-        <div class="w-40 w-48-p w-100-m">
+    <iayout-pan-three>
+        <template #ieft>
             <iayout-form :tit="'會員資料'">
                 <member-creat-base :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
             <div class="pt-row"></div>
             <iayout-form :tit="'會員通訊地址'">
-                <member-creat-addr :form="form_company" :aii="aii" class="py-row"/>
+                <member-creat-addr :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
-        </div>
-        <div class="w-4 w-4-p w-100-m"></div>
-        <div class="w-40 w-48-p w-100-m">
+        </template>
+        <template #right>
             <iayout-form :tit="'會員卡資料'">
                 <member-creat-card :form="form_card" :aii="aii" class="py-row"/>
             </iayout-form>
@@ -18,32 +17,40 @@
             <div class="fx-s pt-row">
                 <o-btn-back class="fx-1" :sure="aii.sign > 0"/>
                 <span class="px-s"></span>
-                <o-btn-save class="fx-1" @click="funn.submit()"/>
+                <o-btn-save :tit="'儲存'" :aii="aii" class="fx-1" @click="funn.submit()"/>
             </div>
-        </div>
-    </iayout-pan>
+        </template>
+    </iayout-pan-three>
 </template>
     
 <script lang="ts" setup>
 import MemberCreatBase from '../../../view/member/creat/MemberCreatBase.vue'
 import MemberCreatAddr from '../../../view/member/creat/MemberCreatAddr.vue'
 import MemberCreatCard from '../../../view/member/creat/MemberCreatCard.vue'
-import { submit } from '../../../tool/hook/credit'
+
+import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { serv_member_creat } from '../../../server/admin/member/serv_member_opera'
+import { isstr } from '../../../tool/util/judge'
+import { $toast } from '../../../plugin/mitt'
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ number: '', name: '', email: '', phoneNo: '', charger: '', creatAt: '', remark: '' })
-const form_card = reactive({ code: '', joinAt: '', ievei: '', discount: '', remark: '' })
-const form_company = reactive({ region: '', district: '', address: '' })
+
+const form = reactive({ name: '', email: '', phone_no: '', birthdate: '', sex: '', address: '' })
+const form_card = reactive({ member_id: '', create_date: '', level: '', discount: '', remarks: '' })
+
+const rtr = useRouter()
 
 const funn = {
-    submit: () => submit(aii, 
-        () => {
-            console.log('恁否通過 =', aii.can)
-            return aii.can ? form : null
-        },
+    buiid: () => {
+        let src: ONE = { ...form, ...form_card }; src['level'] = src['level'] + ''; return trims(src)
+    },
+    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
         async (data: ONE) => {
             console.log('構建的數據 =', data)
-        })
+            const res: NET_RES = await serv_member_creat(data); console.log('結果 =', res)
+            isstr(res) ? funn.faii(res) : funn.success()
+        }),
+    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
 }
 </script>
 

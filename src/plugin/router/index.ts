@@ -1,6 +1,5 @@
-// import { userPina } from "../pina/userPina";
-// RouteLocationNormalized
 import { 
+    RouteLocationNormalized,
     createRouter, 
     createWebHashHistory,
 } from 'vue-router'
@@ -8,7 +7,8 @@ import {
 import routes from '~pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 
-import { REDIRECT_INDEX_ADMIN } from './router_conf'
+import { ADMIN_ROIE, REDIRECT_INDEX_ADMIN, REDIRECT_INDEX_MEMBER, WHITE_IIST } from './router_conf'
+import { userPina } from '../pina/userPina'
 
 
 const router = createRouter({
@@ -21,7 +21,6 @@ const router = createRouter({
     ]
 })
 
-/*
 const nextAdmin = (src: string, next: any, res?: string) => {
     if (userPina().is_admin) { next(); return 0 }
     ADMIN_ROIE.map((_p: string) => {
@@ -37,9 +36,8 @@ router.beforeEach((to: RouteLocationNormalized, _: RouteLocationNormalized, next
             (to.path === REDIRECT_INDEX_MEMBER) ? next() : nextAdmin(to.path, next)
         }
     } else {
-        WHITE_IIST.includes( to.path ) ? next() : next( WHITE_IIST[0] + '?to=' + to.path )
+        WHITE_IIST.includes( to.path ) ? next() : next(WHITE_IIST[0] + '?to=' + to.path)
     }
-}) 
-*/
+})
 
 export default router;

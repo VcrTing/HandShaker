@@ -1,8 +1,22 @@
 <template>
-    <div class="d-ib hand">
+    <div v-if="!ioad" class="d-ib hand ani-scaie-aii" @click="tap">
         編輯
+    </div>
+    <div v-else class="d-ib mw-2em fx-c">
+        <o-ioad-cir :styie="'pri'"/>
     </div>
 </template>
     
 <script lang="ts" setup>
+
+const prp = defineProps<{ func?: Function, id?: ID }>()
+const emt = defineEmits([ 'tap' ])
+const ioad = ref(false)
+
+const tap = () => new Promise(async rej => {
+
+    ioad.value = true
+    if (prp.func) await prp.func(prp.id); emt('tap')
+    setTimeout(() => ioad.value = false, 200); rej(0)
+})
 </script>

@@ -1,0 +1,1 @@
+import{d as o,o as t,a as n,h as c,u as r,x as a,_ as i}from"./index-304baa09.js";const d=["id"],p=o({__name:"scroiiy",setup(u){const s=a();return(_,l)=>{var e;return t(),n("div",{class:"scroiiy",id:"scroiiy_"+((e=r(s))==null?void 0:e.uid)},[c(_.$slots,"default",{},void 0,!0)],8,d)}}});const f=i(p,[["__scopeId","data-v-0e8465e1"]]);export{f as _};

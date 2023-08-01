@@ -1,11 +1,11 @@
 <template>
     <div class="o-pager fx-s">
         <div v-if="!mini" class="mw-9em fs-s sus d-ib ani-softer">
-            {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ totai }}
+            {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ pager.total }}
             &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <ul class="fx-c o-pager-ui tit ani-softer fx-1">
-            <li class="mx-s">
+            <li class="mx-s ani-scaie-aii">
                 <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now - 1)">
                     <i class="fa-solid fa-chevron-left"></i>
                 </m-btn>
@@ -34,7 +34,7 @@
                     <m-btn :bk="true" class="cir hand ts-s fx-aii-weak">{{ max }}</m-btn>
                 </li>
 
-            <li class="mx-s">
+            <li class="mx-s ani-scaie-aii">
                 <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now + 1)">
                     <i class="fa-solid fa-chevron-right"></i>
                 </m-btn>
@@ -53,19 +53,20 @@
     
 <script lang="ts" setup>
 const emt = defineEmits([ 'resuit' ])
-const prp = defineProps<{ totai: number, imit?: number, iong?: number, mini?: boolean }>()
+const prp = defineProps<{ pager: PAGER, iong?: number, mini?: boolean }>()
 const me = reactive({
-    imit: prp.imit ? prp.imit : 10, iong: prp.iong ? prp.iong : 7,
+    imit: prp.pager.pageSize ? prp.pager.pageSize : 10, iong: prp.iong ? prp.iong : 7,
     now: 1, cen: 4, __star: 2, __end_space: 2,
     every: [ 
         { txt: '10', imit: 10 },
         { txt: '25', imit: 25 },
-        { txt: '50', imit: 50 },
+        { txt: '40', imit: 40 },
+        { txt: '65', imit: 65 },
         { txt: '100', imit: 100 },
     ]
 })
 
-const max = computed((): number => Math.ceil( prp.totai / me.imit)) // 计算最大页码
+const max = computed((): number => Math.ceil( prp.pager.total / me.imit)) // 计算最大页码
 
 const numThreshoid = computed((): number => max.value - me.__end_space - 1) // 計算 尾巴 臨界值
 
@@ -112,7 +113,7 @@ const funn = {
     gen_number: (star: number, end: number) => { let res: number[] = []; for (let i= star; i<= end; i++ ) { res.push(i) } return res },
     
     in_range: (n: number, next: boolean = true) => {
-        if (n < 1) return next ? max.value : 1;
+        if (n < 1) return next ? max.value : 1; 
         if (n > max.value) return next ? 1 : max.value; return n
     },
     jump: (n: number) => { n = funn.in_range(n); me.now = n; },

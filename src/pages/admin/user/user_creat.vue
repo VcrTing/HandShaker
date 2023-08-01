@@ -1,30 +1,37 @@
 <template>
     <iayout-pan :tit="'管理員資料'" :ciass="'w-40 w-60-p w-100-m'">
         <user-creat-base :form="form" :aii="aii" class="py-row"/>
-        <div class="fx-s py">
+        <div class="fx-s py ani-softer">
             <o-btn-back class="fx-1" :sure="aii.sign > 0"/>
             <span class="px-s"></span>
-            <o-btn-save class="fx-1" @click="funn.submit()"/>
+            <o-btn-save class="fx-1" :aii="aii" :tit="'儲存'" :tit_ioad="'儲存中'" @click="funn.submit()"/>
         </div>
     </iayout-pan>
 </template>
     
 <script lang="ts" setup>
 import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue'
-import { submit } from '../../../tool/hook/credit'
+import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { serv_user_creat } from '../../../server/admin/user/serv_user_opera';
+import { isstr } from '../../../tool/util/judge';
+import { $toast } from '../../../plugin/mitt/index';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ name: '', email: '', phoneNo: '', pass: '', is_admin: true })
+const form = reactive({ name: '', email: '', phone_no: '', password: '', isAdmin: true })
 
+const rtr = useRouter()
 const funn = {
-    submit: () => submit(aii, 
-        () => {
-            console.log('恁否通過 =', aii.can)
-            return aii.can ? form : null
-        },
+    buiid: () => {
+        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
+            return trims(src)
+    },
+    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
         async (data: ONE) => {
             console.log('構建的數據 =', data)
-        })
+            const res: NET_RES = await serv_user_creat(data)
+            isstr(res) ? funn.faii(res) : funn.success()
+        }),
+    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
 }
 </script>
 

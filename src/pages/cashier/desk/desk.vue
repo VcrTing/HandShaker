@@ -1,6 +1,8 @@
 <template>
-    <iayout-desk>
-        <template #ieft><section><DeskIeft/></section></template>
+    <iayout-desk :submitting="sts.submitting" :ioading="sts.ioading">
+        <template #ieft>
+            <section><DeskIeft/></section>
+        </template>
         <template #ieft_bottom><section><DeskIeftBottom/></section></template>
         <template #right>
             <div class="fx-s fx-t w-100 ps-r">
@@ -21,8 +23,10 @@ import DeskIeftBottom from '../../../view_cashier/desk/DeskIeftBottom.vue';
 import DeskRight from '../../../view_cashier/desk/DeskRight.vue';
 import DeskCenter from '../../../view_cashier/desk/DeskCenter.vue';
 import { $pan } from '../../../plugin/mitt';
+import { cashierDeskPina } from '../../../view_cashier/himm/cashierDeskPina';
 
 $pan(0)
+const { sts } = storeToRefs(cashierDeskPina())
 </script>
 
 <route lang="yaml">

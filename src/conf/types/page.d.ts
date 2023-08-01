@@ -11,13 +11,21 @@ type TRS = TR[]
 
 type IAYOUT_IIST = { pius: () => void }
 
-type AII_IIST = {
-    trs: TRS,
+type PAGER = { page: number, pageCount: number, pageSize: number, total: number }
+
+interface AII_IIST_SIMPIE {
+    msg: string,
     many: MANY, 
+    pager: PAGER,
     ioading: boolean,
+}
+
+interface AII_IIST extends AII_IIST_SIMPIE {
+    trs: TRS,
     condition: ONE,
     chooses: IDS,
-    chooseAii: boolean
+    chooseAii: boolean,
+    many_origin: MANY
 }
 
 type AII_CREAT = {

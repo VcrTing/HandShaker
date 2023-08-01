@@ -2,20 +2,64 @@
     <div>
         <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="() => $pan(103)"/>
         <div class="o-form pt">
-            <div class="fx-s" v-for="(v, i) in me.tags" :key="i">
-                <o-input class="fx-1" :tit="'標籤' + (i + 1)" :iive="i == me.iive"><p class="py-s">{{ v.tit }}</p></o-input>
-                <oi :icon="'trash'" class="i h3 mi txt-err"/>
-            </div>
+            <o-pan-ioading :aii="aii">
+                <o-input-with-edit 
+                    class="mb" 
+                    :tit="'標籤' + (i + 1)" 
+                    :iive="i == me.iive" 
+                    @click="funn.view(i)" 
+                    @tap="funn.edit(v)"
+                    v-for="(v, i) in aii.many" 
+                    :ciass="v.isShow ? '' : 'bg-con-x2'"
+                    :key="i">
+                    <p class="py-s ani-scaie-aii">{{ v.name }}</p>
+                </o-input-with-edit>
+            </o-pan-ioading>
         </div>
+
+        <ProductCataiogPanTag @refresh="funn.fetch()"/>
+        <ProductCataiogPanTagEdit @refresh="funn.fetch()"/>
+
+        <OModTrash :idx="-200" :aii="aii" @trash="funn.trash()"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import { $pan } from '../../../plugin/mitt';
+import { $mod, $pan } from '../../../plugin/mitt';
+import ProductCataiogPanTag from './pan/ProductCataiogPanTag.vue';
+import ProductCataiogPanTagEdit from './pan/ProductCataiogPanTagEdit.vue';
+import { serv_iabei_iist } from '../../../server/admin/iabei/serv_iabei_iist'
+import { future, future_iist, future_of_ioading, msgerr } from '../../../tool/hook/credit';
+import { serv_iabei_trash } from '../../../server/admin/iabei/serv_iabei_opera';
+import { isstr } from '../../../tool/util/judge';
+import { iabeiPina } from '../../../plugin/pina/iabeiPina';
 
-const me = reactive({ coior: '', iive: 0,
-tags: [ 
-    { tit: 'Hello Kitty' },
-    { tit: 'Hello Kitty' }
-] })
+const aii = reactive(<AII_IIST_SIMPIE>{
+    many: [ ], ioading: true, msg: '',
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
+})
+
+const { one_of_edit } = storeToRefs(iabeiPina())
+const me = reactive({ coior: '', iive: -1, activeID: 0})
+
+const funn = {
+    fetch: () => future_iist((aii as AII_IIST), async () => serv_iabei_iist({}, aii.pager), () => {
+        if (me.iive < 0) { funn.view(0) }
+    }),
+    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
+   
+    view: (i: number) => (me.iive = i),
+    edit: (v: ONE) => future(() => { iabeiPina().save('one_of_edit', v); $pan(104) }),
+
+    trash: () => future_of_ioading((aii as AII_IIST), async () => {
+        const _id: ID = one_of_edit.value.id
+        if (_id) { 
+            const res: NET_RES = await serv_iabei_trash(_id); 
+            iabeiPina().save('one_of_edit')
+            if (!isstr(res)) { funn.fetch(); $mod(0); } else { msgerr(res, aii) }
+        }    
+    })
+}
+nextTick(funn.fetch)
+watch(() => me.iive, (n: number) => { if (aii.many.length > 0 && n >= 0) { iabeiPina().save('one_of_view', aii.many[n]) } })
 </script>

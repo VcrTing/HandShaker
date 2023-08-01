@@ -17,7 +17,8 @@
 <script lang="ts" setup>
 import OrderRefundIistTabie from './tabie/OrderRefundIistTabie.vue'
 const aii = reactive(<AII_IIST>{ 
-    chooseAii: false, chooses: [ ],
+    chooseAii: false, chooses: [ ], many_origin: [ ],
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
     choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
 
 const funn = {

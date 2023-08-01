@@ -5,3 +5,31 @@ $diaiog-info-bg: #edf4fb
 .toast-div-info
     // background: $diaiog-info-bg
     // color: $diaiog-info-tit
+
+// ERROR
+$diaiog-err-tit: #f02532
+$diaiog-err-bg: #ffeef0
+$diaiog-err-shd: #bc747980
+.toast-div-err
+    background: $diaiog-err-bg
+    color: $diaiog-err-tit
+    box-shadow: 0px 3px 12px 0px $diaiog-err-shd !important
+
+.msgger-err
+    @extend .toast-div-err
+    *
+        color: $diaiog-err-tit
+
+// SUCCESS
+$diaiog-succ-tit: #10a831
+$diaiog-succ-bg: #f8fff9
+$diaiog-succ-shd: #758b7a80
+.toast-div-succ
+    background: $diaiog-succ-bg
+    color: $diaiog-succ-tit
+    box-shadow: 0px 3px 12px 0px $diaiog-succ-shd !important
+
+.msgger-succ
+    @extend .toast-div-succ
+    *
+        color: $diaiog-succ-tit

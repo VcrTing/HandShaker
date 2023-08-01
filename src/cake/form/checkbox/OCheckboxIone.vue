@@ -1,5 +1,5 @@
 <template>
-    <m-btn @tap="() => aii[pk] = !aii[pk]" :bk="true" class="w-100 btn-weak o-checkbox-ione" :ciass="'fx-i px-input'">
+    <m-btn @click="() => aii[pk] = !aii[pk]" :bk="true" class="w-100 btn-weak o-checkbox-ione" :ciass="'fx-i px-input'">
         <input 
             class="hand"
             type="checkbox" 

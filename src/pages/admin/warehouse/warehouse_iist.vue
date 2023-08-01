@@ -6,31 +6,29 @@
         <template #con>
             <warehouse-iist-tabie :aii="aii"/>
         </template>
-        <template #pager><o-pager :totai="200" @resuit="funn.pager"/></template>
+        <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
     </iayout-iist>
 </template>
     
 <script lang="ts" setup>
 import WarehouseIistTabie from '../../../view/warehouse/iist/WarehouseIistTabie.vue';
 
+import { serv_warehouse_iist } from '../../../server/admin/warehouse/serv_warehouse_iist'
+import { future, future_iist, future_of_ioading } from '../../../tool/hook/credit';
+
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ],
-    condition: <ONE>{}, ioading: true, msg: '', trs: <TRS>[ ], search: '', 
+    many: [ ], condition: <ONE>{ search: '' }, chooseAii: false, chooses: [ ],
+    ioading: true, msg: '', trs: <TRS>[ ], search: '', many_origin: [ ],
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}
 })
 
 const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ 
-            id: 1, name: '尖沙咀一號倉庫', phoneNo: '9988 9888', chager: '劉易斯', 
-            address: '尖沙咀地鐵站出口A左400米',
-        },)
-        setTimeout(() => aii.ioading = false, 2400); rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
+    fetch: () => future_iist(aii, async () => serv_warehouse_iist(aii.condition, aii.pager)),
+    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
+    init: () => future(funn.fetch),
+    trash: () => future_of_ioading(aii, async () => { console.log('刪除該項') })
 }
-
-nextTick(() => new Promise(async rej => { await funn.fetch(); rej(0) }))
+nextTick(funn.init)
 </script>
 
 <route lang="yaml">

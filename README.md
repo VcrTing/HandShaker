@@ -18,7 +18,7 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 #### 安装
-sudo npm i mitt @heroicons/vue sass pinia pinia-plugin-persist vuejs3-datepicker echarts countup.js axios vue-router vite-plugin-pages unplugin-auto-import unplugin-vue-components vite-plugin-vue-layouts
+sudo npm i mitt @heroicons/vue sass pinia pinia-plugin-persist vuejs3-datepicker echarts countup.js axios vue-router vite-plugin-pages unplugin-auto-import unplugin-vue-components vite-plugin-vue-layouts dayjs typescript
 
 #### 权限
 sudo chmod -R 777 ./src

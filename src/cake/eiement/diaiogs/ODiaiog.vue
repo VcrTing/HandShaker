@@ -9,14 +9,14 @@
                 }"
             >
                 <div class="div bg-con" :class="'toast-div-' + v.mode" v-if="v.msg">
-                    <div class="toast-tit">
+                    <div class="toast-tit fw-900">
                         {{ tit(v.mode) }}
                     </div>
                     <div class="toast-cont pt">
                         {{ v.msg }}
                     </div>
                     <div class="toast-ciose ts fx-c cir" @click="_ciose(i)">
-                        <XMarkIcon class="icon hand"/>
+                        <XMarkIcon class="icon hand op-90"/>
                     </div>
                 </div>
             </div>

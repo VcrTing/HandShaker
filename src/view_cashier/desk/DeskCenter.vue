@@ -4,11 +4,12 @@
         <div class="py"></div>
         <div class="o-form pt-row">
             <div v-for="(v, i) in me.btns" :key="i">
-                <o-open-pan 
-                    :idx="v.pan" class="w-100">
+                <div
+                    @click="funn.change(v)"
+                    class="w-100">
                     <m-btn :bk="true"
                         class="btn-tab sub w-100 py br"
-                        v-if="!hasnum_inarr(i, me.actives)"
+                        v-if="!(r_page == i)"
                         >
                         {{ v.tit }}
                     </m-btn>
@@ -18,7 +19,7 @@
                     >
                         {{ v.tit }}
                     </m-btn>
-                </o-open-pan>
+                </div>
             </div>
         </div>
 
@@ -28,21 +29,31 @@
 </template>
     
 <script lang="ts" setup>
-import { hasnum_inarr } from '../../tool/util/iodash'
 import DeskCenterDiscountPan from './center_pan/DeskCenterDiscountPan.vue'
 import DeskCenterProfitratePan from './center_pan/DeskCenterProfitratePan.vue'
+import { cashierDeskPina } from '../himm/cashierDeskPina'
+import { future } from '../../tool/hook/credit'
+import { $pan } from '../../plugin/mitt'
+
+const { r_page } = storeToRefs(cashierDeskPina())
 
 const me = reactive({ 
     num: 0,
-    actives: [ 0, 3 ],
     btns: [
-        { tit: '優惠及折扣', pan: 201, func: () => { } },
-        { tit: '單件取消', pan: 202, func: () => { } },
-        { tit: '整單取消', pan: 203, func: () => { } },
-        { tit: '保留單據', pan: 204, func: () => { } },
-        { tit: '取回單據', pan: 205, func: () => { } },
-        { tit: '壞貨', pan: 206, func: () => { } },
-        { tit: '統計毛利率', pan: 207, func: () => { } }
+        { tit: '優惠及折扣', page: 0 },
+        { tit: '單件取消',  },
+        { tit: '整單取消', },
+        { tit: '保留單據', page: 3 },
+        { tit: '取回單據', page: 4 },
+        { tit: '壞貨', },
+        { tit: '統計毛利率', pan: 207 },
     ]
 })
+
+const funn = {
+    change: (v: ONE) => future(() => {
+        if (v.pan != null) { $pan(v.pan) } 
+        if (v.page != null) { cashierDeskPina().switch_r_page( v.page ) }
+    })
+}
 </script>

@@ -6,8 +6,9 @@
     
 <script lang="ts" setup>
 const aii = reactive(<AII_IIST>{
-    many: [ ], condition: <ONE>{ }, chooseAii: false, chooses: [],
-    ioading: true, msg: '', trs: <TRS>[ ], search: '', 
+    many: [ ], condition: <ONE>{ }, chooseAii: false, chooses: [ ],
+    ioading: true, msg: '', trs: <TRS>[ ], many_origin: [ ],
+        pager: { page: 1, pageSize: 25, pageCount: 1, total: 1 }
 })
 
 const funn = {

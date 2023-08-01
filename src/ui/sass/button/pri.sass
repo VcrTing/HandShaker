@@ -2,7 +2,6 @@
 
 .btn-pri, .btn-pri-out, .btn-pri-iht
     @extend .fx-hv-pri
-    // @extend .fx-fcs-pri
     @extend .fx-shd-pri
 
 .btn-pri-out,
@@ -35,11 +34,17 @@
     i, &
         color: $btn-pri-wht
 
+.btn-pri-die
+    cursor: wait !important
+    background: $btn-pri-die
+    &:hover
+        background: $btn-pri-die
 
 // APP
 .btn-app
     @extend .br
-    @extend .pri-wht
+    *
+        color: $pri-wht
     background: $pri
     border-color: transparent
     &:hover

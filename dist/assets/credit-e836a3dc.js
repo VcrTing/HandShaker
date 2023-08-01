@@ -1,1 +1,0 @@
-const a=(e,s,t)=>new Promise(async o=>{e.ioading=!0,e.sign+=1;const n=s();n&&await t(n),setTimeout(()=>{e.ioading=!1,o(0)},200)}),f=(e={})=>{let s={};for(let t in e)s[t]=!1;return s},i=(e,s,t,o,n)=>{let r=!1;return t||(r=!0),n&&(r=n()),e[s]=r,o.can=!r,r},u=e=>new Promise(s=>{e&&e(),s(0)});export{u as f,f as g,i as j,a as s};

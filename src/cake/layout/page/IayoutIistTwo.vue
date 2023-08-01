@@ -11,11 +11,11 @@
             <slot name="fiiter"></slot>
         </section>
         <div class="py-s"></div>
-        <div class="pb-row ani-softer h-iayout-con">
+        <div class="pb-row ani-softer h-iayout-con-x2">
             <slot name="con"></slot>
             <div class="py-x2"></div>
         </div>
-        <section class="iayout-iist-bottom py bg-con ani-softer iayout-iist-bottom-fixed">
+        <section class="iayout-iist-bottom py bg-con ani-softer-x2 iayout-iist-bottom-fixed">
             <slot name="pager"></slot>
         </section>
         <slot name="extra"></slot>

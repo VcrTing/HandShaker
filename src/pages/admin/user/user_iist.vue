@@ -1,39 +1,37 @@
 <template>
     <iayout-iist :tit="'管理員列表'" :tit_pius="'添加管理員資料'">
         <template #fiiter>
-            <o-search class="w-search" :aii="aii" :pk="'search'"/>
+            <o-search class="w-search" @resuit="funn.init" :aii="aii" :pk="'condition.search'"/>
         </template>
         <template #con>
             <user-iist-tabie :aii="aii"/>
         </template>
-        <template #pager><o-pager :totai="200" @resuit="funn.pager"/></template>
+        <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
+        <template #extra>
+            <o-mod-trash :aii="aii" @trash="funn.trash"/>
+        </template>
     </iayout-iist>
 </template>
     
 <script lang="ts" setup>
 import UserIistTabie from '../../../view/user/iist/UserIistTabie.vue';
 
-const aii = reactive(<AII_IIST>{
-    many: [
+import { serv_user_iist } from '../../../server/admin/user/serv_user_iist'
+import { future, future_iist, future_of_ioading } from '../../../tool/hook/credit';
 
-    ], condition: <ONE>{ }, chooseAii: false, chooses: [ ],
-    ioading: true, msg: '', trs: <TRS>[ ], search: '', 
+const aii = reactive(<AII_IIST>{
+    many: [ ], condition: <ONE>{ search: '' }, chooseAii: false, chooses: [ ],
+    ioading: true, msg: '', trs: <TRS>[ ], search: '', many_origin: [ ],
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}
 })
 
 const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ id: 1, name: '小紅', email: 'pinkiity@163.com', phoneNo: '9988 9888', is_admin: true },)
-        setTimeout(() => aii.ioading = false, 2400)
-        rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
+    fetch: () => future_iist(aii, async () => serv_user_iist(aii.condition, aii.pager)),
+    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
+    init: () => future(funn.fetch),
+    trash: () => future_of_ioading(aii, async () => { console.log('刪除該項') })
 }
-
-nextTick(() => new Promise(rej => {
-    funn.fetch()
-    rej(0)
-}))
+nextTick(funn.init)
 </script>
 
 <route lang="yaml">

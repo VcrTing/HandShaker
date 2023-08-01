@@ -6,16 +6,16 @@
         <div class="w-3 w-4-p"></div>
         <div class="w-35 w-40-p">
             <iayout-form :tit="'供應商公司地址'">
-                <suppiier-creat-company :form="form_company" :aii="aii" class="py-row"/>
+                <suppiier-creat-company :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
             <iayout-form :tit="'供應商工廠地址'">
-                <suppiier-creat-company :form="form_factory" :aii="aii" class="py-row"/>
+                <suppiier-creat-company :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
 
             <div class="fx-s pt-row">
                 <o-btn-back class="fx-1" :sure="aii.sign > 0"/>
                 <span class="px-s"></span>
-                <o-btn-save class="fx-1" @click="funn.submit()"/>
+                <o-btn-save class="fx-1" :aii="aii" :tit="'儲存'" @click="funn.submit()"/>
             </div>
         </div>
     </iayout-pan>
@@ -24,22 +24,32 @@
 <script lang="ts" setup>
 import SuppiierCreatBase from '../../../view/suppiier/creat/SuppiierCreatBase.vue'
 import SuppiierCreatCompany from '../../../view/suppiier/creat/SuppiierCreatCompany.vue'
-import { submit } from '../../../tool/hook/credit'
+
+import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { serv_suppiier_creat } from '../../../server/admin/suppiier/serv_suppiier_opera';
+import { isstr } from '../../../tool/util/judge';
+import { $toast } from '../../../plugin/mitt/index';
 
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ number: '', name: '', email: '', phoneNo: '', charger: '', creatAt: '', remark: '' })
-const form_company = reactive({ region: '', district: '', address: '' })
-const form_factory = reactive({ region: '', district: '', address: '' })
+const form = reactive({ supplier_id: '', name: '', email: '', phone_no: '', contact_person: '', create_date: '', 
+    office_address: '', factory_address: '', remarks: '' })
+// const office_address = reactive({ region: '', district: '', address: '' })
+// const factory_address = reactive({ region: '', district: '', address: '' })
+
+const rtr = useRouter()
 
 const funn = {
-    submit: () => submit(aii, 
-        () => {
-            console.log('恁否通過 =', aii.can)
-            return aii.can ? form : null
-        },
+    buiid: () => {
+        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';
+        return trims(src)
+    },
+    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
         async (data: ONE) => {
             console.log('構建的數據 =', data)
-        })
+            const res: NET_RES = await serv_suppiier_creat(data)
+            isstr(res) ? funn.faii(res) : funn.success()
+        }),
+    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
 }
 </script>
 

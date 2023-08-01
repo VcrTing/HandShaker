@@ -9,7 +9,7 @@
             <div class="mod-pan" @click.stop="() => { }">
                 <div>
                     <slot>
-                        MOD 內容
+                        
                     </slot>
                 </div>
             </div>

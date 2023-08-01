@@ -4,7 +4,10 @@
             <div class="pt-row"></div>
             <co-order-iist-base-card/>
             <div class="py-row"></div>
+            <!--
             <co-order-detaii-prods-tabie/>
+            -->
+            <p>這裡一個 產品 列表</p>
             <div class="py-row"></div>
             <co-order-detaii-price-totai-tabie/>
             <div class="py-row"></div>

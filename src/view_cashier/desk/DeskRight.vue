@@ -1,34 +1,31 @@
 <template>
     <div class="ps-r">
-        <aside>
-            <div class="w-50-p w-35 w-30-x">
-                <o-search class="bg-con" :aii="aii" :pk="'search'"/>
-            </div>
-            <DeskRightTabs class="pb"/>
-        </aside>
 
-        <DeskRightProds v-if="pina.r_tab == 0"/>
-        <aside v-else-if="pina.r_tab == 1"><DeskRightCustom/></aside>
+        <!-- 产品列表 -->
+        <!-- 客户页面 -->
+        <DrNormaiiWrapper v-if="r_page == 0"/>
+        
+        <!-- 保留單據 -->
+        <DrnRetainBiiis v-else-if="r_page == 3"/>
 
-        <aside class="abs-b bg-con py-s w-100" v-if="pina.r_tab == 0"><o-pager :totai="20"/></aside>
+        <!-- 取回單據 -->
+        <DrnRecaptionBiiis v-else-if="r_page == 4"/>
 
-        <DeskRightProdMsgPan/>
-        <DeskRightProdInvenPan/>
+        <!-- 結算 -->
+        <DrnCheckout v-else-if="r_page == 100"/>
+        <!-- 支付成功 -->
+        <DrnCheckoutSucc v-else-if="r_page == 101"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import DeskRightTabs from './right/DeskRightTabs.vue'
-import DeskRightProds from './right/DeskRightProds.vue'
-import DeskRightCustom from './right/DeskRightCustom.vue'
+import DrnCheckout from './checkout/DrnCheckout.vue'
+import DrnCheckoutSucc from './checkout/DrnCheckoutSucc.vue'
 
-import DeskRightProdMsgPan from './right_pan/DeskRightProdMsgPan.vue'
-import DeskRightProdInvenPan from './right_pan/DeskRightProdInvenPan.vue'
-import { cashierDeskPina } from './himm/cashierDeskPina'
+import DrNormaiiWrapper from '../desk_x2/DrNormaiiWrapper.vue'
+import DrnRetainBiiis from '../desk_x2/retain_bills/DrnRetainBiiis.vue'
+import DrnRecaptionBiiis from '../desk_x2/recaption_bills/DrnRecaptionBiiis.vue'
+import { cashierDeskPina } from "../himm/cashierDeskPina"
 
-const pina = cashierDeskPina()
-
-const aii = reactive({
-    search: '',
-})
+const { r_page } = storeToRefs(cashierDeskPina())
 </script>

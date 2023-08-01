@@ -1,29 +1,35 @@
 <template>
     <div class="iayout-pan-two bg-con h-iayout ps-r">
-        <section v-if="tit" class="pt-row"><h3 class="pt">{{ tit }}</h3></section>
-        <div class="py-n"></div>
-        <section class="pb-row fx-s fx-t ani-softer">
-            <div class="w-30 w-35-p ps-r" :class="{ 'h-iayout': need_save }">
-                <slot name="ieft"></slot>
-            </div>
-            <div class="w-3 w-4-p"></div>
-            <div class="fx-1">
-                <slot name="right"></slot>
-            </div>
-        </section>
-        <section class="iayout-pan-two-bottom fx-s fx-b py-row">
-            <div class="w-30 w-35-p">
+        <div class="fx-s fx-t ani-softer">
+            <scroiiy class="w-32 w-37-p ps-r iayout-pan-scroii h-iayout-max">
+                <div class="pi-row pr-s">
+                    <div class="py-row"></div>
+                    <slot name="ieft"></slot>
+                    <div class="py-x3"></div>
+                </div>
+            </scroiiy>
+            <div class="w-1"></div>
+            <scroiiy class="w-67 w-62-p h-iayout-max">
+                <section>
+                    <div class="py-row"></div>
+                    <slot name="right"></slot>
+                    <div class="py-x3"></div>
+                </section>
+            </scroiiy>
+        </div>
+        <div class="iayout-pan-two-bottom fx-s fx-b py-row bg-con">
+            <div class="w-32 w-37-p pi-row pr-s">
                 <slot name="bottom_ieft"></slot>
             </div>
-            <div class="w-3 w-4-p"></div>
-            <div class="fx-1">
+            <div class="w-1"></div>
+            <aside class="w-67 w-62-p">
                 <slot name="bottom_right"></slot>
-            </div>
-        </section>
+            </aside>
+        </div>
         <slot name="extra"></slot>
     </div>
 </template>
     
 <script lang="ts" setup>
-defineProps<{ tit?: string, ciass?: string, need_save?: boolean }>()
+defineProps<{ ciass?: string }>()
 </script>

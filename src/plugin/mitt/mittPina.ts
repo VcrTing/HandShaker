@@ -5,7 +5,7 @@ export const mittPina = defineStore("mittPina", {
     actions: {
         pan(n: number = 0) { this.PAN = n; console.log('N =', n) },
         mod(n: number = 0) { this.MOD = n },
-        toast(msg: string, mode: TOAST_TYPE = 'info', timed: number = 3400) { 
+        toast(msg: string, mode: TOAST_TYPE = 'info', timed: number = 4200) { 
             this.TOASTS.push(<TOAST>{ msg, mode, iive: true, timed }) 
             const idx = this.TOASTS.length - 1
             setTimeout(() => this.toast_ciose(idx), timed)

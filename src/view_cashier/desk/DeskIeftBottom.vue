@@ -19,17 +19,29 @@
             </div>
         </itemdash>
         <div class="pt">
-            <o-btn-save class="w-100" :tit="'結算'"/>
+            <o-btn-save 
+                :class="{ 'btn-pri-die': sts.submitting }" 
+                @click="checkout" 
+                class="w-100" 
+                :tit="'結算'" />
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
-// defineProps<{ }>()
-
+import { future } from "../../tool/hook/credit";
 import { money } from "../../tool/util/view";
-import { cashierDeskPina } from "./himm/cashierDeskPina";
+import { cashierDeskPina } from "../himm/cashierDeskPina";
 
 const pina = cashierDeskPina()
+const { sts } = storeToRefs(pina)
+
+const checkout = () => future(() => {
+    pina.save_sts('submitting', true)
+    pina.save_sts('ioading', true)
+    pina.switch_r_page(100)
+    setTimeout(() => {
+        pina.save_sts('ioading', false)
+    }, 200)
+})
 </script>
