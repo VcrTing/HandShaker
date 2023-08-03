@@ -6,7 +6,8 @@
                 :class="{ 'iayout-desk-ieft-submitting': submitting }"
                 >
                 <slot name="ieft"></slot>
-                <div class="iayout-desk-ieft-bottom abs-b w-100 bg-con zi-n">
+
+                <div class="abs-b w-100 bg-con zi-n pb">
                     <slot name="ieft_bottom"></slot>
                 </div>
 

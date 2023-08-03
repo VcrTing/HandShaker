@@ -21,7 +21,13 @@
 
 // 滑動
 .cashier-menu-biock-0
-    //  
+    top: 0
+
+$cmi-t: calc( $cashier-menu-item-h + $ds-s )
+
+@for $i from 1 through 5
+    .cashier-menu-biock-#{$i}
+        top: calc( $cmi-t * $i )
 
 // cashier-bottom
 .cashier-bottom

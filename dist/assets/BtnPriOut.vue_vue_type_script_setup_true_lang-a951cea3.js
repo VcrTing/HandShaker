@@ -1,0 +1,1 @@
+import{_ as o}from"./MBtn.vue_vue_type_script_setup_true_lang-32af1671.js";import{d as e,o as a,c as r,w as n,i as p,g as c,t as i}from"./index-a3556410.js";const u=e({__name:"BtnPriOut",props:{tit:{}},setup(_){return(t,m)=>{const s=o;return a(),r(s,{class:"btn-pri-out py br px",ciass:"fx-c"},{default:n(()=>[p(t.$slots,"default"),c(" "+i(t.tit),1)]),_:3})}}});export{u as _};

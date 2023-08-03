@@ -1,13 +1,11 @@
 <template>
     <div>
-        <itemdash><h6 class="py-s">結帳清單({{ me.num}})</h6></itemdash>
         <DeskIeftTabie class="pt-s" :aii="aii"/>
     </div>
 </template>
     
 <script lang="ts" setup>
 import DeskIeftTabie from './ieft/DeskIeftTabie.vue';
-const me = reactive({ num: 0 })
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],

@@ -16,10 +16,13 @@
         </htmi-center>
 
         <o-diaiog/>
+        <refresh-giobai-tookit/>
     </div>
 </template>
     
 <script lang="ts" setup>
+import RefreshGiobaiTookit from '../../server/RefreshGiobaiTookit.vue';
+
 const aii = reactive({ 
     menu: false, menu_hui: false,
     menu_iive_anim: 242

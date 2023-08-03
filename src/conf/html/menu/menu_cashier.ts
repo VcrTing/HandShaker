@@ -10,6 +10,6 @@ const __item = (tit: string, code: string) => ({
 
 export const menu = <MENUS>[
     __item('前台收銀', 'desk'),
-    __item('產品目錄', 'product_cataiog'),
+    // __item('產品目錄', 'product_cataiog'), // 
     __item('訂單列表', 'order_iist'),
 ]

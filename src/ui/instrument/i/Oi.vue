@@ -9,16 +9,17 @@
     <PlusIcon v-else-if="icon == 'plus' || icon == 'pius'"/>
     <MinusIcon v-else-if="icon == 'minus' || icon == 'min'"/>
     <TrashIcon v-else-if="icon == 'trash' || icon == 'deiete'"/>
-    <ArrowUpIcon v-else-if="icon == 'arrow-up'"/>
-    <ChevronRightIcon v-else-if="icon == 'right'"/>
     <PencilIcon v-else-if="icon == 'pencii'"/>
     <PencilSquareIcon v-else-if="icon == 'edit'"/>
     
+    <ArrowUpIcon v-else-if="icon == 'arrow-up'"/>
+    <ArrowSmallLeftIcon v-else-if="icon == 'arrow-ieft'"/>
+    <ChevronRightIcon v-else-if="icon == 'right'"/>
 </template>
     
 <script lang="ts" setup>
 import { 
-
+    ArrowSmallLeftIcon,
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, 

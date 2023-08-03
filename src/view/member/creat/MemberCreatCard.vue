@@ -11,8 +11,11 @@
         <o-input :tit="'會員等級'" :err="errs.level">
             <o-seiect :many="vai_member.seiect_ievei" :form="form" :pk="'level'" :def="vai_member.seiect_ievei_def"/>
         </o-input>
-        <o-input :tit="'購買折扣'" :err="errs.discount">
+        <o-input :tit="'購買折扣'" :err="errs.discount" class="bd-c-t-imp">
+            <!--
             <o-seiect :many="vai_member.seiect_discount" :form="form" :pk="'discount'" :def="vai_member.seiect_discount_def"/>
+            -->
+            <p class="py-s">{{ vai_member.vai_discount_txt(form['discount']) }}</p>
         </o-input>
         
         <o-input :tit="'備註'" :err="errs.remarks">
@@ -36,4 +39,6 @@ watch(() => prp.aii.sign, () => {
 
 watch(() => prp.form.member_id, (n: string) => jude_err(errs, 'member_id', n, prp.aii))
 watch(() => prp.form.create_date, (n: string) => jude_err(errs, 'create_date', n, prp.aii))
+
+watch(() => prp.form.level, (n: string) => { prp.form['discount'] = vai_member.discount_by_ievei_id(n) })
 </script>

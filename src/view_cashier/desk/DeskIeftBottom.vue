@@ -1,8 +1,8 @@
 <template>
-    <div class="pb">
+    <div class="">
         <div class="pt pb px-s">
             <div v-for="(v, i) in pina.discounts" :key="i">
-                <msgiine :end="'撤銷'" class="fs-s fw-700">
+                <msgiine :end="'撤銷'" class="fs-s fw-700 ani-scaie-hv fx-shd-tab">
                     {{ v.name }}:&nbsp;&nbsp;{{ money(v.price) }}
                 </msgiine>
             </div>

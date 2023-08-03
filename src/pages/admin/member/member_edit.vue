@@ -52,6 +52,7 @@ const funn = {
         }),
     success: () => rtr.back(),
     init: () => future(() => { 
+        console.log('ONE =', one_of_edit.value)
         if (!insert_form_if_id(one_of_edit.value, form)) { rtr.back() } aii.sign = 0; 
             insert_form(one_of_edit.value, form_card) }),
 }

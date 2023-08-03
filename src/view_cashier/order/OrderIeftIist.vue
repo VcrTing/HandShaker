@@ -14,7 +14,7 @@
                 <o-pager :mini="true" :pager="aii.pager"/>
             </div>
             <div class="fx-c">
-                <o-btn-save @click="funn.printed()" class="w-50" :tit="'列印訂單'"/>
+                <o-btn-save @click="funn.printed()" class="w-50 w-62-p" :tit="'列印訂單'"/>
             </div>
         </div>
     </div>

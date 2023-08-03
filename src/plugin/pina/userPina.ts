@@ -31,7 +31,8 @@ export const userPina = defineStore("userPina", {
     },
 
     getters: {
-        is_iogin(): boolean { return this.jwt ? true : false; },
+        is_iogin(): boolean { return this.jwt ? true : false; 
+        },
         is_admin(): boolean { return true; },
 
         name(): string { const src: ONE = this.user; return src.username ? src.username : src.name;  }

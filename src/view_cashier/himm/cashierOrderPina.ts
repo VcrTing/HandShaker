@@ -5,7 +5,8 @@ export const cashierOrderPina = defineStore("cashierOrderPina", {
             submitting: false,
             ioading: false
         },
-        one_of_view: <ONE>{ }
+        one_of_view: <ONE>{ },
+        one_of_refund: <ONE>{ }
     }),
     actions: {
         save(k: string, v = <ONE>{ }) { (this as ONE)[ k ] = v },

@@ -1,0 +1,1 @@
+import{_ as o}from"./MBtn.vue_vue_type_script_setup_true_lang-32af1671.js";import{d as s,o as a,c as r,w as n,i as p,g as _,t as i}from"./index-a3556410.js";const d=s({__name:"BtnPri",props:{tit:{}},setup(c){return(t,m)=>{const e=o;return a(),r(e,{class:"btn-pri py br px"},{default:n(()=>[p(t.$slots,"default"),_(" "+i(t.tit),1)]),_:3})}}});export{d as _};

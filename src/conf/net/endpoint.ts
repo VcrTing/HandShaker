@@ -13,6 +13,7 @@ export const ENDPOINT = <ONE> {
     'product_dei_iabei': 'products_delete_label', // 删除 标签
     'peoduct_add_iabei': 'products_add_label', // 增加标签
 
+    'ieveis': 'member-levels', // 所有等級
     'members': 'members', // 所有 成員
     'users': 'users', // 所有 用户
 

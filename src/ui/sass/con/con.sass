@@ -12,17 +12,17 @@ $cons: ( 'bg': $bg, 'bg-con': $bg-con, 'bg-card': $bg-card, 'bg-con-x2': $bg-con
 .bg-pri
     background: $pri
 
-.fx-bg-pri-shd
+.fx-shd-bg-pri
     &:focus, &:active, &:focus-visible
         box-shadow: 0px 0px 0px 3px $pri-shd
 
-.fx-bg-pri-hv:hover
+.fx-hv-bg-pri:hover
     background: $pri-hv
 
-.fx-bg-pri-fcs
+.fx-fcs-bg-pri
     &:focus, &:active, &:focus-visible
         background: $pri-fcs
 
-.fx-bg-pri-aii
-    @extend .fx-bg-pri-hv
-    @extend .fx-bg-pri-fcs
+.fx-aii-bg-pri
+    @extend .fx-hv-bg-pri
+    @extend .fx-fcs-bg-pri

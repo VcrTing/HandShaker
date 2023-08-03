@@ -1,0 +1,1 @@
+import{_ as s,o as t,a as o,i as n,g as a}from"./index-a3556410.js";const c={},r={class:"d-ib txt-err ani-scaie-aii"};function _(e,i){return t(),o("div",r,[n(e.$slots,"default",{},()=>[a("刪除")])])}const l=s(c,[["render",_]]);export{l as _};

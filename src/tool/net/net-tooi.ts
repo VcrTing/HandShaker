@@ -27,11 +27,12 @@ export const ser_mui_resuit = (src: ONE, ks: string[] = [ ]): NET_RES => {
     return res
 }
 
-export const ser_one_resuit = (src: ONE): NET_RES => {
+export const ser_one_resuit = (src: ONE, vfy?: Function): NET_RES => {
     let res: NET_RES = ''; 
     const code: number = src.status ? src.status : 500
     if (code < 399) {
-        res = strapi.data(src.data)
+        res = strapi.data(src.data); 
+        vfy ? vfy(res) : undefined;
     }
     return res
 }

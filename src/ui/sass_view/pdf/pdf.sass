@@ -1,0 +1,63 @@
+
+$pdf-hr: #e5e5ea
+$pdf-bd: #e5e5ea
+
+// 基礎 DISTANCE
+.pi-pdf
+    padding-left: 1em
+.pi-pdf-s
+    padding-left: 0.4em
+.pr-pdf
+    padding-right: 1em
+
+.pt-pdf
+    padding-top: 0.8em
+.pt-pdf-x2
+    padding-top: 1.6em
+.pb-pdf
+    padding-bottom: 0.8em
+
+.px-pdf
+    @extend .pi-pdf
+    @extend .pr-pdf
+
+.py-pdf
+    @extend .pt-pdf
+    @extend .pb-pdf
+
+// 全局定義
+.pdf-wrapper
+    font-size: 14px
+    @extend .px-pdf
+    @extend .py-pdf
+    *
+        line-height: 1.38em
+    .fs-s-pdf
+        font-size: 0.84em
+        line-height: 1.24em
+
+    h2
+        font-size: 1.8em
+    h3
+        font-size: 1.52em
+    h4
+        font-size: 1.28em
+    h5
+        font-size: 1.16em
+    
+    h2, h3, h4, h5, h6
+        line-height: 1.12em
+
+// 其他工具
+.pt-1em
+    padding-top: 1em
+.pt-2em
+    padding-top: 2em
+
+.pdf-hr
+    width: 100%
+    height: 1px
+    background: $pdf-hr
+
+.pdf-bd
+    border: 1px solid $pdf-bd

@@ -11,15 +11,9 @@
                 </o-tabie-ioading>
             </div>
         </div>
-        <div class="abs-b i-0 w-100 pb">
-            <div class="fx-c px-x3 py">
-                <div class="w-70 w-100-p fx-c">
-                    <o-btn-back class="fx-1" :func="() => { }"/>
-                    <span class="px"></span>
-                    <o-btn-save class="fx-1" :tit="'確認'"/>
-                </div>
-            </div>
-        </div>
+        <o-save-back-btns-group ciass="abs-b pb px-row"
+            :tit_save="'確認'"
+        />
     </div>
 </template>
     

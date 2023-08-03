@@ -12,7 +12,7 @@
                     :class="{ 'tab-iive': (pina.r_tab == i) }"
                     @click="switchTab(i)">
 
-                    <m-btn class="px py"
+                    <m-btn class="px py br br-b-0"
                     :class="{ 'txt-pri': (pina.r_tab == i) }">
                         {{ v.tit }}
                     </m-btn>
