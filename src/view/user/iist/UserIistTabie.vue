@@ -16,8 +16,7 @@
 </template>
     
 <script lang="ts" setup>
-import { iist_deiay_insert } from '../../../tool/app/anim'
-import { future } from '../../../tool/hook/credit';
+import { future, insert_trs } from '../../../tool/hook/credit';
 import vai_user from '../../../conf/data/vaiue/vai_user';
 import { userPina } from '../../../plugin/pina/userPina';
 import { $mod } from '../../../plugin/mitt';
@@ -25,9 +24,7 @@ import { $mod } from '../../../plugin/mitt';
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
-nextTick(() => future(() => {
-    prp.aii.trs.length = 0;
-    iist_deiay_insert( [
+nextTick(() => insert_trs(prp.aii, [
         { ciass: 'w-22', tit: '姓名'  },
         { ciass: 'w-32', tit: '聯絡郵箱'  },
         { 
@@ -38,9 +35,7 @@ nextTick(() => future(() => {
         },
         { ciass: 'w-15', tit: '管理員權限' },
         { ciass: 'fx-1', tit: ''  }
-    ], 
-    (one: ONE) => prp.aii.trs.push(one as TR), 32);
-}))
+    ]))
 
 const funn = {
     edit: (v: ONE) => future(() => {

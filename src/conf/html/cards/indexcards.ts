@@ -11,6 +11,7 @@ export const indexcards = [
 
     __item_card('管理員資料', 'user_iist', '#F9EAE9'),
     __item_card('會員資料', 'member_iist', '#E5EFF9'),
+    __item_card('會員等級設置', 'ievei_iist', '#ECECF6'),
 
     { tit: '建立產品', type: 'menu', coior: '#F3ECF7', code: 'product_iist', iink: 'product_iist/creat', img: ROOT + 'product_creat.png' },
 

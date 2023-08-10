@@ -3,7 +3,7 @@
         <div class="py"></div>
         <section class="fx-s py bg-con iayout-iist-top">
             <div class="fx-i ani-softer">
-                <h3>{{ tit }}</h3>
+                <h3 class="iayout-tit">{{ tit }}</h3>
                 <span class="px"></span>
                 <o-btn-pius class="py" :tit="tit_pius" v-if="tit_pius"/>
                 <span class="px"></span>

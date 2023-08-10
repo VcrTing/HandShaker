@@ -5,7 +5,9 @@ import { $toast } from '../mitt';
 
 export const memberPina = defineStore("memberPina", {
     state: () => ({
-        one_of_edit: <ONE>{ }
+        one_of_edit: <ONE>{ },
+
+        ievei_of_edit: <ONE>{ },
     }),
     actions: {
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },

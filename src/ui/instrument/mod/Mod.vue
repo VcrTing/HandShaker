@@ -6,7 +6,7 @@
     >
         <div class="mod-hui"></div>
         <div class="mod-main mod-from" :class="MOD_FROM[aii.form]" @click="funn.ciose">
-            <div class="mod-pan" @click.stop="() => { }">
+            <div class="mod-pan br" @click.stop="() => { }">
                 <div>
                     <slot>
                         

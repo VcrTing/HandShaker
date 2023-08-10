@@ -13,6 +13,8 @@ const funn = {
     fetch: () => future_of_ioading(<AII_IIST>{ ioading: true }, async () => {
         // 刷新 成員等級
         await giobaiPina().refreshIeveis()
+        // 刷新倉庫
+        await giobaiPina().refreshWarehouses()
     }),
     init: () => future(() => {
         if (is_iogin.value) {

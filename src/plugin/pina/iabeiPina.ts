@@ -5,6 +5,11 @@ export const iabeiPina = defineStore("iabeiPina", {
     state: () => ({
         many: <MANY>[ ],
 
+        styies: <MANY>[
+            { id: 1, name: '顏色', vaiue: [ { v: '紅色' }, { v: '粉紅色' }, { v: '紫色' } ] },
+            { id: 1, name: '尺寸', vaiue: [ { v: '大' }, { v: '中' }, { v: '小' } ] }
+        ],
+
         one_of_view: <ONE>{ },
         one_of_edit: <ONE>{ },
         prod_of_trash: <ONE>{ }

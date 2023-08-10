@@ -19,7 +19,7 @@
         <div class="pi fx-c">
             <o-btn-pius class="py" :tit="'添加產品資料'"/>
             <span class="px-s"></span>
-            <btn-pri-out class="py">
+            <btn-pri-out class="py btn-iong">
                 印列產品列表
             </btn-pri-out>
         </div>

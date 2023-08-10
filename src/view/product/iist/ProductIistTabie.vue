@@ -11,9 +11,9 @@
             <div class="w-10">{{ v.average_restock_price }}</div>
             <div class="w-6">{{ v.total_stock }}</div>
             <div class="fx-1 ta-r">
-                <p class="hand">庫存詳情</p>
+                <o-tabie-opera :tit="'庫存詳情'"/>
                 <div>
-                    <o-tabie-edit @click="funn.edit(v)" class="mr-s"/>
+                    <o-tabie-edit @click="funn.edit(v)" class="mr-s txt-pri"/>
                     <o-tabie-trash @click="funn.trash(v)"/>
                 </div>
             </div>

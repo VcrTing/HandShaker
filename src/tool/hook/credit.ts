@@ -1,4 +1,5 @@
 import { $toast } from '../../plugin/mitt';
+import { iist_deiay_insert } from '../app/anim';
 import { isstr, deepcopy } from '../util/judge';
 
 export const viewmsg = (aii: AII, res: NET_RES, tim = 4800) => { aii.msg = res + ''; setTimeout(() => aii.msg = '', tim) }
@@ -82,3 +83,9 @@ export const insert_form_if_id = (data: ONE, form: ONE): boolean => {
     }
     return (data && data.id)
 }
+
+// 插入 TR
+export const insert_trs = (aii: ONE, trs: TRS, second: number = 32) => new Promise(rej => {
+    aii.trs.length = 0;
+    iist_deiay_insert( trs, (one: ONE) => aii.trs.push(one as TR), second); rej(0)
+})

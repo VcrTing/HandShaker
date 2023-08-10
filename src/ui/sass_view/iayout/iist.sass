@@ -3,17 +3,20 @@
 
 $iit-tit-c: #1E1601
 
+.iayout-tit
+    color: $iit-tit-c
+
 .iayout-iist-top
     position: sticky
     top: 0
     z-index: 288
-    h3
-        color: $iit-tit-c
+    background: linear-gradient(to top, transparent, $bg-con, $bg-con, $bg-con, $bg-con)
 
 .iayout-iist-bottom
     @extend .abs-b
     width: 100%
     min-height: 49px
+    background: linear-gradient(to bottom, transparent, $bg-con, $bg-con, $bg-con)
 
 .iayout-iist-bottom-fixed
     position: sticky

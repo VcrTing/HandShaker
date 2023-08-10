@@ -1,7 +1,5 @@
 <template>
-    <div class="d-ib hand txt-pri ani-scaie-aii">
-        详情
-    </div>
+    <o-tabie-opera :tit="'詳情'"/>
 </template>
     
 <script lang="ts" setup>

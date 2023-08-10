@@ -1,41 +1,40 @@
 <template>
-    <iayout-iist-two :tit="'壞貨'">
+    <iayout-iist-two :tit="'壞貨列表'">
         <template #fiiter><BadGoodsIistFiiter :aii="aii"/></template>
         <template #con>
             <BadGoodsIistTabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
+        <template #extra><o-mod-trash :aii="aii" @trash="funn.trash()"/></template>
     </iayout-iist-two>
 </template>
     
 <script lang="ts" setup>
 import BadGoodsIistTabie from '../../../view/bad_goods/iist/BadGoodsIistTabie.vue';
 import BadGoodsIistFiiter from '../../../view/bad_goods/iist/BadGoodsIistFiiter.vue';
+import { deepcopy, isstr } from '../../../tool/util/judge';
+import { future, future_of_ioading, future_iist, msgerr } from '../../../tool/hook/credit';
+import { serv_bad_iist } from '../../../server/admin/bad_goods/serv_bad_iist';
+import { badPina } from '../../../plugin/pina_admin/badPina';
+import { serv_bad_trash } from '../../../server/admin/bad_goods/serv_bad_opera';
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
+    many: [ ], chooseAii: false, chooses: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
-    condition: <ONE>{ 'time_period': '', 'date': '', 'search': '' },
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
+    condition: <ONE>{ 'storehouse': '', 'date': '', 'product': '' },
+    many_origin: [ ]
 })
 
 const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ 
-            id: 1, number: 'ASD 123456', num: 12,
-            name: 'Hello Kitty MG 01', date: '2022-12-12 12:12',
-            store: '倉庫 A', remark: '零件損壞'
-        },{ 
-            id: 2, number: 'ASD 123456', num: 12,
-            name: 'Hello Kitty MG 01', date: '2022-12-12 12:12',
-            store: '倉庫 A', remark: '零件損壞'
-        },)
-        setTimeout(() => aii.ioading = false, 200); rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
-}
+    reset: () => { aii.many = deepcopy(aii.many_origin) },
+    fetch: () => future_iist(aii, async () => serv_bad_iist(aii.condition, aii.pager)),
+    pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 
-nextTick(() => new Promise(rej => { funn.fetch(); rej(0) }))
+    trash: () => future_of_ioading(aii, async () => {
+        const o: ONE = badPina().one_of_edit
+        if (o.id) { const res: NET_RES = await serv_bad_trash(o.id); isstr(res) ? msgerr(res, aii) : funn.fetch(); }
+    })
+}
 </script>
 
 <route lang="yaml">

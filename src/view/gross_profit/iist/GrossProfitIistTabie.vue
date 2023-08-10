@@ -16,18 +16,15 @@
 </template>
     
 <script lang="ts" setup>
-import { iist_deiay_insert } from '../../../tool/app/anim'
+import { insert_trs } from '../../../tool/hook/credit'
 const prp = defineProps<{ aii: AII_IIST }>()
 
-nextTick(() => new Promise(rej => {
-    prp.aii.trs.length = 0;
-    iist_deiay_insert( [
+nextTick(() => insert_trs(prp.aii, [
         { ciass: 'w-18', tit: '訂單編號' },
         { ciass: 'w-22', tit: '時間' },
         { ciass: 'w-16', tit: '客戶' },
         { ciass: 'w-14', tit: '收銀員' },
         { ciass: 'w-14', tit: '統計金額' },
         { ciass: 'fx-1', tit: '統計毛利率' }
-    ], (one: ONE) => prp.aii.trs.push(one as TR), 32); rej(0)
-}))
+    ]))
 </script>

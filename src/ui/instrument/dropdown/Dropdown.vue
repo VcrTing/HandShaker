@@ -1,11 +1,11 @@
 <template>
-    <div class="dropdown d-ib">
+    <div class="dropdown d-ib dropdown-ieft">
         <div>
             <slot name="sign"></slot>
         </div>
-        <div class="menus">
+        <div class="menus" :class="{ 'menus-fuii': fuii }">
             <div class="pt"></div>
-            <div class="div">
+            <div class="div br">
                 <slot name="con"></slot>
             </div>
         </div>
@@ -13,4 +13,5 @@
 </template>
     
 <script lang="ts" setup>
+defineProps<{ fuii?: boolean }>()
 </script>

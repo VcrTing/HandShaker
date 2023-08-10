@@ -20,16 +20,12 @@
 <script lang="ts" setup>
 import { nextTick } from 'vue';
 import { memberPina } from '../../../plugin/pina_admin/memberPina'
-import { iist_deiay_insert } from '../../../tool/app/anim'
-import { future } from '../../../tool/hook/credit';
+import { future, insert_trs } from '../../../tool/hook/credit';
 
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
-nextTick(() => new Promise(rej => {
-    prp.aii.trs.length = 0;
-    iist_deiay_insert(
-        [
+nextTick(() => insert_trs(prp.aii, [
             { ciass: 'w-15', tit: '訂單編號', sort: true,
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },
@@ -53,10 +49,7 @@ nextTick(() => new Promise(rej => {
                 sort_reset: () => { console.log('RESET sort') }
             },
             { ciass: 'fx-1', tit: '', sort: false }
-        ], 
-        (one: ONE) => prp.aii.trs.push(one as TR), 32)
-        rej(0)
-}))
+        ]))
 
 const funn = {
     edit: (v: ONE) => future(() => {

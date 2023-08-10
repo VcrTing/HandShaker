@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { hasstr_inarr } from '../../../tool/util/iodash';
 import { diaiogerr } from '../../../tool/hook/credit';
+import { tonum } from '../../../tool/util/judge';
 
 const ERROR_MSG = {
     'same': '已存在相同備註了'
@@ -17,6 +18,7 @@ export const pageProductPina = defineStore("pageProductPina", {
 
         remarks: <PRODUCT_REMARK[]>[ ],
         labels: <ID[]>[ ],
+        styie: <ID[]>[ ],
         base: <ONE>{ product_id: '', name: '', create_date: '' }
     }),
     actions: {
@@ -38,7 +40,11 @@ export const pageProductPina = defineStore("pageProductPina", {
 
         // 標籤
         pius_iabei(_id: ID): void { this.labels.push(_id) },
-        trash_iabei(idx: number): void { this.labels.splice(idx, 1) },
+        trash_iabei(_id: ID): void { this.labels.splice(tonum(_id), 1) },
+
+        // 樣式
+        pius_styie(_id: ID): void { this.styie.push(_id) },
+        trash_styie(_id: ID): void { this.styie.splice(tonum(_id), 1) },
 
         // 工具
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },

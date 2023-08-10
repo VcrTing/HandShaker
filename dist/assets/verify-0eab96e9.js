@@ -1,1 +1,0 @@
-const s=e=>{let t=/[`~!$^&*(“”‘’'、`～·！—_|=;？，。\\)<>?:"{},\/;'[\]]/;return t.test(e)?!1:(t=new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"),t.test(e))},r=(e,t=400)=>{let a=!0;return(e.length<4||e.length>t)&&(a=!1),a},n=e=>r(e+"",15);export{s as a,r as b,n as v};

@@ -15,14 +15,13 @@
 </template>
     
 <script lang="ts" setup>
-import { iist_deiay_insert } from '../../../tool/app/anim'
 import { suppiierPina } from '../../../plugin/pina_admin/suppiierPina';
+import { insert_trs } from '../../../tool/hook/credit';
 
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
-nextTick(() => new Promise(rej => { prp.aii.trs.length = 0;
-    iist_deiay_insert( [
+nextTick(() => insert_trs(prp.aii, [
             { ciass: 'w-10', tit: '供應商編號', sort: false },
             { ciass: 'w-20', tit: '供應商名稱', sort: false },
             { ciass: 'w-13', tit: '聯絡電話', sort: false },
@@ -33,9 +32,7 @@ nextTick(() => new Promise(rej => { prp.aii.trs.length = 0;
                 sort_down: () => { console.log('DOWN sort') },
                 sort_reset: () => { console.log('RESET sort') }},
             { ciass: 'fx-1', tit: '', sort: false }
-        ], 
-        (one: ONE) => prp.aii.trs.push(one as TR), 32); rej(0)
-}))
+        ]))
 
 const funn = {
     editFuture: async (id: ID) => { await suppiierPina().fetchOne(id) },

@@ -19,3 +19,5 @@ export const vrf_pass = (v: string) => {
     if (v.length < 6 || v.length > 200) { res = false } 
     return res
 }
+
+export const vrf_discount = (v: number) => (0 < v) && (v <= 1)

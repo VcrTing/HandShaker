@@ -13,24 +13,19 @@
 </template>
     
 <script lang="ts" setup>
-import { future } from '../../../tool/hook/credit';
-import { iist_deiay_insert } from '../../../tool/app/anim'
+import { future, insert_trs } from '../../../tool/hook/credit';
 import { warehousePina } from '../../../plugin/pina_admin/warehousePina';
 
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
-nextTick(() => new Promise(rej => {
-    prp.aii.trs.length = 0;
-    iist_deiay_insert( [
+nextTick(() => insert_trs(prp.aii, [
             { ciass: 'w-25', tit: '倉庫名稱', sort: false },
             { ciass: 'w-20', tit: '倉庫聯絡人', sort: false },
             { ciass: 'w-19', tit: '倉庫聯絡人電話', sort: false },
             { ciass: 'w-26', tit: '倉庫地址', sort: false },
             { ciass: 'fx-1', tit: '', sort: false },
-        ], 
-        (one: ONE) => prp.aii.trs.push(one as TR), 32); rej(0)
-}))
+        ]))
 
 const funn = {
     edit: (v: ONE) => future(() => { warehousePina().save('one_of_edit', v); 

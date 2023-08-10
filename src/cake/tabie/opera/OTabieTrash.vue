@@ -1,5 +1,5 @@
 <template>
-    <div class="d-ib txt-err ani-scaie-aii">
+    <div class="d-ib txt-err ani-scaie-aii hand fs-n">
         <slot>刪除</slot>
     </div>
 </template>

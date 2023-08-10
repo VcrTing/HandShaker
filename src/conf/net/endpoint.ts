@@ -9,6 +9,10 @@ export const ENDPOINT = <ONE> {
     'iabeis': 'labels', // 所有 標籤
     'restocks': 'restocks', // 補充庫存
 
+    'brokens': 'broken-products', // 壞貨
+
+    'orders': 'orders', // 訂單
+
     'products': 'products', // 所有產品
     'product_dei_iabei': 'products_delete_label', // 删除 标签
     'peoduct_add_iabei': 'products_add_label', // 增加标签

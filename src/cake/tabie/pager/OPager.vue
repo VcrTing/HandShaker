@@ -1,13 +1,15 @@
 <template>
     <div class="o-pager fx-s">
-        <div v-if="!mini" class="mw-9em fs-s sus d-ib ani-softer">
-            {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;{{ pager.total }}
-            &nbsp;&nbsp;&nbsp;&nbsp;
+        <div v-if="!mini" class="mw-10em d-ib ani-softer">
+            <div class="fs-s sus">
+                {{me.now}}-{{ max }}&nbsp;&nbsp;of&nbsp;&nbsp;&nbsp;{{ pager.total }}
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
         </div>
         <ul class="fx-c o-pager-ui tit ani-softer fx-1">
             <li class="mx-s ani-scaie-aii">
                 <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now - 1)">
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-chevron-left fs-n"></i>
                 </m-btn>
             </li>
 
@@ -36,12 +38,12 @@
 
             <li class="mx-s ani-scaie-aii">
                 <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now + 1)">
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <i class="fa-solid fa-chevron-right fs-n"></i>
                 </m-btn>
             </li>
         </ul>
-        <div v-if="!mini" class="mw-9em tit d-ib ani-softer">
-            <span class="fw-350 pr-s">每頁數量&nbsp;&nbsp;</span>
+        <div v-if="!mini" class="mw-10em tit d-ib ani-softer fx-r">
+            <span class="fw-350 pr-s">每頁數量&nbsp;&nbsp;&nbsp;</span>
             <select v-model="me.imit" class="input px-input-s mh-input-s fs-s">
                 <option v-for="(v, i) in me.every" :key="i" :value="v.imit">
                     {{ v.txt }}
@@ -59,6 +61,7 @@ const me = reactive({
     now: 1, cen: 4, __star: 2, __end_space: 2,
     every: [ 
         { txt: '10', imit: 10 },
+        { txt: '15', imit: 15 },
         { txt: '25', imit: 25 },
         { txt: '40', imit: 40 },
         { txt: '65', imit: 65 },

@@ -24,6 +24,9 @@ export const menu = <MENUS>[
 
     __item('會員資料', 'member_iist'),
 
+    __item('會員等級設置', 'ievei_iist'),
+
+
     { tit: '產品資料', type: 'iabei' },
 
     __item('供應商資料', 'suppiier_iist'),

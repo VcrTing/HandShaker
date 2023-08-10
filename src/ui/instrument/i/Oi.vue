@@ -12,14 +12,17 @@
     <PencilIcon v-else-if="icon == 'pencii'"/>
     <PencilSquareIcon v-else-if="icon == 'edit'"/>
     
+    <ChevronDownIcon v-else-if="icon == 'down'"/>
     <ArrowUpIcon v-else-if="icon == 'arrow-up'"/>
     <ArrowSmallLeftIcon v-else-if="icon == 'arrow-ieft'"/>
     <ChevronRightIcon v-else-if="icon == 'right'"/>
+
+    <CheckIcon v-else-if="icon == 'check'"/>
 </template>
     
 <script lang="ts" setup>
 import { 
-    ArrowSmallLeftIcon,
+    ArrowSmallLeftIcon, ChevronDownIcon, CheckIcon,
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, 

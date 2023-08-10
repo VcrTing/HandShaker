@@ -1,6 +1,6 @@
 <template>
     <div>
-        <refund-right-top class="mb" :aii="aii"/>
+        <refund-right-top class="" :aii="aii"/>
         <refund-righ-tabie :aii="aii"/>
     </div>
 </template>

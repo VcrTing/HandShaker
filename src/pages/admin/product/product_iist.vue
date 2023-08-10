@@ -1,7 +1,7 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
         <template #opera>
-            <o-open-pan :idx="100"><o-btn-in-order/></o-open-pan>
+            <o-open-pan :idx="100"><o-btn-in-order class="btn-iong"/></o-open-pan>
         </template>
         <template #fiiter><product-iist-fiiter :aii="aii"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
