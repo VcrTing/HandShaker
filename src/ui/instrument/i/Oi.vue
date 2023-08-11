@@ -18,11 +18,12 @@
     <ChevronRightIcon v-else-if="icon == 'right'"/>
 
     <CheckIcon v-else-if="icon == 'check'"/>
+    <MagnifyingGlassIcon v-else-if="icon == 'search'"/>
 </template>
     
 <script lang="ts" setup>
 import { 
-    ArrowSmallLeftIcon, ChevronDownIcon, CheckIcon,
+    ArrowSmallLeftIcon, ChevronDownIcon, CheckIcon, MagnifyingGlassIcon,
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, 

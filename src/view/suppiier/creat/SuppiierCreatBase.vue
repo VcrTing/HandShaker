@@ -1,5 +1,9 @@
 <template>
     <div class="o-form">
+        <o-input-i :tit="'建檔日期'" :err="errs.create_date" :icon="'date'">
+            <o-time :form="form" :pk="'create_date'"/>
+        </o-input-i>
+        
         <o-input :tit="'供應商編號*'" :err="errs.supplier_id">
             <input v-model="form.supplier_id" placeholder="請輸入"/>
         </o-input>
@@ -16,9 +20,6 @@
             <input v-model="form.contact_person" placeholder="請輸入"/>
         </o-input>
         
-        <o-input-i :tit="'建檔日期'" :err="errs.create_date" :icon="'date'">
-            <o-time :form="form" :pk="'create_date'"/>
-        </o-input-i>
         <o-input :tit="'備註'" :err="errs.remarks">
             <textarea rows="3" v-model="form.remarks" placeholder="請輸入"></textarea>
         </o-input>

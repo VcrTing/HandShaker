@@ -1,7 +1,5 @@
 <template>
-    <div class="d-ib txt-err ani-scaie-aii hand fs-n">
-        <slot>刪除</slot>
-    </div>
+    <btn-icon class="mi-s ani-scaie-aii-x2" :icon="'trash'" :ciass_i="'txt-err'"/>
 </template>
     
 <script lang="ts" setup>

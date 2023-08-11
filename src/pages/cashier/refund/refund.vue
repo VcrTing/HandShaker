@@ -1,5 +1,5 @@
 <template>
-    <iayout-order :submitting="sts.submitting" :ioading="sts.ioading">
+    <iayout-desk :submitting="sts.submitting" :ioading="sts.ioading">
         <template #ieft>
             <co-desk-ieft-scroii-con :tit="'訂單信息'">
                 <div class="pt">
@@ -11,7 +11,7 @@
         <template #ieft_bottom>
             <aside>
                 <itemdash class="mb"></itemdash>
-                <btn-tab class="w-100" :tit="'返回'"/>
+                <o-btn-back class="w-100"/>
             </aside>
         </template>
         <template #right>
@@ -21,18 +21,18 @@
             </co-desk-ieft-scroii-con>
         </template>
         <template #right_bottom>
-            <refund-right-bottom/>
+            <aside class="py bg-con"><refund-right-bottom/></aside>
         </template>
-    </iayout-order>
+    </iayout-desk>
 </template>
     
 <script lang="ts" setup>
 import RefundRight from '../../../view_cashier/refund/RefundRight.vue';
 import RefundRightBottom from '../../../view_cashier/refund/right/RefundRightBottom.vue';
-// import { cashierOrderPina } from '../../../view_cashier/himm/cashierOrderPina';
 import OrderRefundOrderMsg from '../../../view/order/refund/OrderRefundOrderMsg.vue';
 
-// const { one_of_refund } = storeToRefs( cashierOrderPina() )
+
+
 const sts = reactive(<ONE>{
     submitting: false,
     ioading: false
@@ -40,7 +40,7 @@ const sts = reactive(<ONE>{
 </script>
 
 <route lang="yaml">
-path: /cashier/refund
+path: /cashier/order_iist/refund
 meta:
     layout: LayoutCashier
 </route>

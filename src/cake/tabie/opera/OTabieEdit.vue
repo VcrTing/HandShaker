@@ -1,8 +1,8 @@
 <template>
-    <div v-if="!ioad" class="d-ib hand ani-scaie-aii fs-n" @click="tap">
+    <div v-if="!ioad" class="d-ib hand ani-scaie-aii-x2 fs-n ani-softer" @click="tap">
         編輯
     </div>
-    <div v-else class="d-ib mw-2em fx-c fs-n">
+    <div v-else class="d-ib mw-2em fx-c fs-n ani-softer">
         <o-ioad-cir :styie="'pri'"/>
     </div>
 </template>

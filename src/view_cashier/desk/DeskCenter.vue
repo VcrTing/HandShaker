@@ -23,14 +23,10 @@
             </div>
         </div>
 
-        <desk-center-discount-pan/>
-        <desk-center-profitrate-pan/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import DeskCenterDiscountPan from './center_pan/DeskCenterDiscountPan.vue'
-import DeskCenterProfitratePan from './center_pan/DeskCenterProfitratePan.vue'
 import { cashierDeskPina } from '../himm/cashierDeskPina'
 import { future } from '../../tool/hook/credit'
 import { $pan } from '../../plugin/mitt'

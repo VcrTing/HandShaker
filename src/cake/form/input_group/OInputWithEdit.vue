@@ -1,19 +1,25 @@
 <template>
     
     <div class="fx-s">
-        <o-input class="fx-1 hand" :tit="tit" :iive="iive" :class="ciass">
+        <m-btn v-if="materiai" :bk="true" class="fx-1 br">
+            <o-input class="hand ta-i" :tit="tit" :iive="iive" :class="ciass">
+                <slot></slot>
+            </o-input>
+        </m-btn>
+        <o-input v-else class="hand fx-1" :tit="tit" :iive="iive" :class="ciass">
             <slot></slot>
         </o-input>
-        <div class="mi-x1 fx-c ps-r oiwt-icon ts" @click.stop="$emit('tap')">
-            <div class="ps-r zi-n h4">
-                <oi class="i hand ani-scaie-aii-x2" :icon="'pencii'"/>
-            </div>
-            <div class="abs-c cir oiwt-icon-bg zi-s ts hand"></div>
+
+        <div class=" fx-c ps-r pi-x1 oiwt-icon ts" @click.stop="$emit('tap')">
+            
+            <btn-icon class="h5" :icon="'pencii'" :ciass_i="''"/>
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
 defineEmits([ 'tap' ])
-defineProps<{ iive?: boolean, tit: string, icon?: string, ciass?: string }>()
+defineProps<{ 
+    materiai?: boolean,
+    iive?: boolean, tit: string, icon?: string, ciass?: string }>()
 </script>

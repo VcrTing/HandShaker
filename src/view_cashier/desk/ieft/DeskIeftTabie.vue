@@ -1,7 +1,7 @@
 <template>
     <iayout-tabie :aii="aii" :pure="true">
-        <div class="mb fx-aii-tab br ani-scaie-aii" v-for="(v, i) in orders" :key="i">
-            <m-btn :bk="true" class="w-100 ta-i br">
+        <div class="py-s br ani-scaie-aii" v-for="(v, i) in orders" :key="i">
+            <m-btn :bk="true" class="w-100 ta-i br fx-aii-tab">
                 <itembdwrapper>
                     <div class="td tit-son">
                         <div class="fx-1 px fx-i">

@@ -1,0 +1,1 @@
+const n=(t,s,o=100,e=0)=>new Promise(r=>{setTimeout(()=>{if(t.length<=e){r(!0);return}else s&&s(t[e],e),e+=1,n(t,s,o,e),r(!1)},o)}),u=(t,s,o=100,e=0)=>new Promise(r=>{setTimeout(()=>{if(t<=e){r(!0);return}else s&&s(),e+=1,u(t,s,o,e),r(!1)},o)});export{u as a,n as i};

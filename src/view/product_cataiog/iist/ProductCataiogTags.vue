@@ -3,17 +3,22 @@
         <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="() => $pan(103)"/>
         <div class="o-form pt">
             <o-pan-ioading :aii="aii">
-                <o-input-with-edit 
+                <div
                     class="mb" 
-                    :tit="'標籤' + (i + 1)" 
-                    :iive="i == me.iive" 
-                    @click="funn.view(i)" 
-                    @tap="funn.edit(v)"
-                    v-for="(v, i) in aii.many" 
-                    :ciass="v.isShow ? '' : 'bg-con-x2'"
-                    :key="i">
-                    <p class="py-s ani-scaie-aii">{{ v.name }}</p>
-                </o-input-with-edit>
+                    :key="i"
+                    v-for="(v, i) in aii.many" >
+
+                    <o-input-with-edit 
+                        :materiai="true"
+                        :tit="'標籤' + (i + 1)" 
+                        :iive="i == me.iive" 
+                        @click="funn.view(i)" 
+                        @tap="funn.edit(v)"
+                        :ciass="v.isShow ? '' : 'bg-con-x2'">
+
+                        <p class="py-s ani-scaie-aii">{{ v.name }}</p>
+                    </o-input-with-edit>
+                </div>
             </o-pan-ioading>
         </div>
 

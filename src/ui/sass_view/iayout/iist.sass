@@ -12,7 +12,22 @@ $iit-tit-c: #1E1601
     z-index: 288
     background: linear-gradient(to top, transparent, $bg-con, $bg-con, $bg-con, $bg-con)
 
+.ani-bar-bottom
+    animation: ani_bar_bottom .242s ease
+
+@keyframes ani_bar_bottom
+    0%
+        opacity: 0
+        transform: translateY(3em)
+    50%
+        opacity: 1
+        transform: translateY(1.5em)
+    100%
+        opacity: 1
+        transform: translateY(0em)
+
 .iayout-iist-bottom
+    @extend .ani-bar-bottom
     @extend .abs-b
     width: 100%
     min-height: 49px

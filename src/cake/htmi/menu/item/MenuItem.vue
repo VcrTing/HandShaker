@@ -2,15 +2,14 @@
     <m-btn @tap="rtr.push(v.iink)" class="menu-item py">
         <div class="fx-i">
             <div class="menu-item-i fx-c ps-r">
-                <!--
-                <PhotoIcon class="i h4"/>
-                -->
                 <img :src="v.svg" class="zi-s w-42 abs-c menu-item-i-die"/>
                 <img :src="v.svg_iive" class="w-42 abs-c menu-item-i-iive softer"/>
             </div>
             <div class="menu-item-txt">
                 <div class="fx-i">
-                    <button>{{ v.tit }}</button>
+                    <button>
+                        {{ v.tit }}
+                    </button>
                 </div>
             </div>
         </div>

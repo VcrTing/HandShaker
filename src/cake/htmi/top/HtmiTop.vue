@@ -1,7 +1,7 @@
 <template>
     <div class="fx-s">
         <div class="fx-i pr v-v-p">
-            <m-btn class="px-row py br br-i-0" :ciass="'fx-c'" @click="$emit('change')">
+            <m-btn @click="$emit('change')" class="px-row py br br-i-0" :ciass="'fx-c'" >
                 <Bars3Icon class="pri-wht i hand"/>
             </m-btn>
         </div>
@@ -13,7 +13,7 @@
                     <span v-if="pina.is_admin">&nbsp;(管理員)</span>
                 </div>
                 <div class="top-avatar">
-                    <o-img class="ratio-1x1 cir" @click="iogout()" :src="aii.src"/>
+                    <o-img class="ratio-1x1 cir hand" @click="iogout()" :src="aii.src"/>
                 </div>
             </div>
         </aside>
@@ -26,6 +26,8 @@ import { userPina } from '../../../plugin/pina/userPina';
 const rtr = useRouter()
 const pina = userPina()
 defineEmits([ 'change' ])
+
+// 
 
 const iogout = () => { pina.iogout(); rtr.push('/login') }
 

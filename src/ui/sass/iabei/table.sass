@@ -13,12 +13,13 @@ table,
     tr, .tr
         font-weight: 900
         color: $tabie-tr-c
+        button
+            @extend .fs
+            font-weight: 900
     td, .td
         color: $tabie-td-c
 
     tr, .tr, td, .td
-
-        @extend .mh-input
         display: flex
         align-items: center
         justify-content: start
@@ -33,22 +34,24 @@ $tabie-tr-bg: rgba(0, 0, 0, 0.02) // #f8f8f8
 $tabie-tr-bd: rgba(0, 0, 0, 0.06)
 $tabie-tr-rip-bg: rgba(0, 0, 0, 0.06)
 
-$tabie-min-h: 39px 
+$tabie-min-h: 43px 
 
 $tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
 
 .tabie-def
     tr, .tr, td, .td
         @extend .px
-        @extend .py-s
-        min-height: $tabie-min-h
         background: transparent
         border: none
         border-bottom: 1px solid transparent
     tr, .tr
         background: $tabie-tr-bg
         border-color: $tabie-tr-bd
+        button, p
+            min-height: $tabie-min-h
     td, .td
+        @extend .py-s
+        min-height: $tabie-min-h
         border-color: $tabie-td-bd
 
     tr, .tr, td, .td,

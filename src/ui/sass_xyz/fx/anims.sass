@@ -1,0 +1,64 @@
+// 動畫 頁面
+.ani-page
+    opacity: 1
+    animation: ani_page .362s ease-in
+@keyframes ani_page
+    0%
+        opacity: 0
+        transform: scale(0.998)
+    100%
+        opacity: 1
+        transform: scale(1)
+
+// 卡片 動畫
+.ani-card
+    opacity: 1
+    animation: ani_card .362s ease-in-out
+@keyframes ani_card
+    0%
+        opacity: 0.6
+        transform: scale(0.98)
+    60%
+        opacity: 0.9
+        transform: scale(1.02)
+    100%
+        opacity: 1
+        transform: scale(1)
+
+// 動畫 項目
+.ani-item
+    opacity: 1
+    animation: ani_item .362s ease-in
+@keyframes ani_item
+    0%
+        opacity: 0.4
+        transform: scale(0.998) translateY($ds)
+    100%
+        opacity: 1
+        transform: scale(1) translateY(0px)
+
+/// 特效 
+.ani-menu-item
+    opacity: 1
+    animation: ani_menu_item .062s ease-in-out
+
+@keyframes ani_menu_item
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+.ani-menu-item-cashier
+    opacity: 1
+    animation: ani_menu_item_cashier .362s ease-in-out
+@keyframes ani_menu_item_cashier
+    0%
+        opacity: 0
+        transform: scale(0.98)
+    50%
+        opacity: 1
+        transform: scale(1.02)
+    100%
+        opacity: 1
+        transform: scale(1)
+        

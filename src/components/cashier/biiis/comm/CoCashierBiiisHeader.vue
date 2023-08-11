@@ -6,7 +6,7 @@
             <span v-if="num">&nbsp;({{ num }})</span>
         </h5>
         <div class="fx-1">
-            <m-btn @click="$emit('trash')" class="btn-tab wh-1em-x2 h5 br-s" :ciass="'fx-c'">
+            <m-btn @click="ciose()" class="btn-tab wh-1em-x2 h5 br-s" :ciass="'fx-c'">
                 <oi :icon="'x'" class="i"/>
             </m-btn>
         </div>
@@ -14,6 +14,14 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ num?: number, tit?: string }>()
-defineEmits([ 'trash' ])
+import { future } from "../../../../tool/hook/credit"
+import { cashierDeskPina } from "../../../../view_cashier/himm/cashierDeskPina"
+
+const emt = defineEmits([ 'ciose' ])
+defineProps<{ num?: number, tit?: string, num_back?: number }>()
+
+const ciose = () => future(() => {
+    cashierDeskPina().regress_index();
+    emt('ciose')
+})
 </script>

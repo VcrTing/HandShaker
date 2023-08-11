@@ -11,28 +11,21 @@
 import OrderIistTabie from '../../../view/order/iist/OrderIistTabie.vue';
 import OrderIistFiiter from '../../../view/order/iist/OrderIistFiiter.vue';
 import OrderIistPanDetaii from '../../../view/order/iist/pan/OrderIistPanDetaii.vue';
+import { deepcopy } from '../../../tool/util/judge';
+import { future, future_iist } from '../../../tool/hook/credit';
+import { serv_order_iist } from '../../../server/admin/order/serv_order_iist';
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
-    condition: <ONE>{ 'time_period': '', 'status': '', 'date': '', 'search': '' },
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
+    condition: <ONE>{ time_period: '', date: '', status: '', search: '', member: '', order_id: '' },
 })
-
 const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ 
-            id: 1, number: 'ASD 123456', date: '2022-12-12 12:12', customer: '劉易斯',
-            compeieted: true, total: '1500', discount: '-100',
-        },)
-        setTimeout(() => aii.ioading = false, 2400); rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
-    init: () => new Promise(rej => { funn.fetch(); rej(0) })
+    reset: () => { aii.many = deepcopy(aii.many_origin) },
+    fetch: () => future_iist(aii, async () => serv_order_iist(aii.condition, aii.pager)),
+    pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
-
-nextTick(funn.init)
 </script>
 
 <route lang="yaml">

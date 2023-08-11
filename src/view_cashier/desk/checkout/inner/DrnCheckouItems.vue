@@ -4,12 +4,15 @@
             <cioseitem class="drn-checkout-item bs-x3 ani-scaie-hv">
                 <div class="fx-i pi-row">
                     <h6 class="mxw-3em ta-c">小計</h6>
-                    <h5 class="fw-700">&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;1190.0</h5>
+                    <h5 class="fw-700">&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{{ money(1200) }}</h5>
                 </div>
             </cioseitem>
         </div>
         <aside class="py">
-            <div v-for="(v, i) in cards" :key="i">
+            <div 
+                class="op-0"
+                :class="{ 'ani-item': me.ani >= i }"
+                v-for="(v, i) in cards" :key="i">
                 <cioseitem class="drn-checkout-item bd mb-s ani-scaie-hv">
                     <div class="fx-i pi-row">
                         <div class="pr fx-i">
@@ -25,6 +28,8 @@
     
 <script lang="ts" setup>
 import { paymentcard_by_id } from '../../../../conf/html/cards/paymentcards';
+import { iist_deiay_insert_s } from '../../../../tool/app/anim';
+import { money } from '../../../../tool/util/view';
 
 const cards = computed(() => {
     return me.items ? me.items.map((e: ONE) => {
@@ -34,7 +39,7 @@ const cards = computed(() => {
 })
 
 const me = reactive({
-    note: { price: 1900.0 },
+    note: { price: 1900.0 }, ani: 0,
     items: [
         { payment: 1, price: 0.0 },
         { payment: 2, price: 0.0 },
@@ -43,4 +48,5 @@ const me = reactive({
     ]
 })
 
+nextTick(() => iist_deiay_insert_s(me.items.length, () => (me.ani += 1), 32))
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="desk-right-custom bg-con ps-r">
+    <div class="desk-right-custom bg-con ps-r br-ti">
         <div class="py-x3">
             <h3 class="ta-c py">客戶信息</h3>
             <div class="px-x3 py-x2 fx-c">

@@ -1,18 +1,20 @@
 <template>
     <div class="pb">
-        <itembdwrapper class="fx-s fw-600 mb px-row">
+        <itembdwrapper class="fx-s fw-600 mb px-row ani-scaie-hv">
             <div class="fx-1">
                 支付方式&nbsp;:&nbsp;&nbsp;支付寶
             </div>
             <div class="">
-                實在&nbsp;:&nbsp;&nbsp;<div class="txt-money fw-700 d-ib h6">HKD&nbsp;1500.0</div>
+                實在&nbsp;:&nbsp;&nbsp;<div class="txt-money fw-700 d-ib h6">HKD&nbsp;{{ money(1500.0) }}</div>
             </div>
         </itembdwrapper>
-        <co-cashier-order-status-bar/>
+        <co-cashier-order-status-bar class="ani-scaie-hv"/>
     </div>
 </template>
     
 <script lang="ts" setup>
+import { money } from '../../../tool/util/view';
+
 // import { reactive } from 'vue'
 // defineProps<{ }>()
 </script>

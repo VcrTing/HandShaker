@@ -11,6 +11,6 @@ type strings = string[]
 type numbers = number[]
 
 type ID = string | number
-type IDS = string[] | number[]
+type IDS = ID[]
 
 type ADDRESS = { region: string, district: string, address: string }

@@ -14,6 +14,7 @@ import IeveiCreatBase from '../../../view/ievei/creat/IeveiCreatBase.vue'
 import { msgerr, submit, trims } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge';
 import { serv_ievei_creat } from '../../../server/admin/ievei/serv_ievei_opera';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ name: '', discount: '' })
@@ -22,11 +23,11 @@ const rtr = useRouter()
 const funn = {
     buiid: () => (aii.can ? trims(form) : null),
     submit: () => submit(aii, funn.buiid,
-        async (data: ONE) => { console.log('構建的數據 =', data)
+        async (data: ONE) => {
             const res: NET_RES = await serv_ievei_creat(data)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => rtr.back(),
+    success: () => { giobaiPina().refreshIeveis(); rtr.back() },
 }
 </script>
 

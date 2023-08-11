@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BtnIcon: typeof import('./src/ui/buttons/BtnIcon.vue')['default']
     BtnPri: typeof import('./src/ui/buttons/BtnPri.vue')['default']
     BtnPriOut: typeof import('./src/ui/buttons/BtnPriOut.vue')['default']
     BtnTab: typeof import('./src/ui/buttons/BtnTab.vue')['default']
@@ -56,6 +57,7 @@ declare module 'vue' {
     CoSpriTotaiTabie: typeof import('./src/components/profit_rate/statistics/CoSpriTotaiTabie.vue')['default']
     CoSpriTypeTabie: typeof import('./src/components/profit_rate/statistics/CoSpriTypeTabie.vue')['default']
     CoStatisticsProfirateIists: typeof import('./src/components/profit_rate/CoStatisticsProfirateIists.vue')['default']
+    Countup: typeof import('./src/ui/piugin/countup.vue')['default']
     CoWarehouseSeiect: typeof import('./src/components/warehouse/seiect/CoWarehouseSeiect.vue')['default']
     CubGoBack: typeof import('./src/cake/usfuii/buttons/CubGoBack.vue')['default']
     CubGoRefund: typeof import('./src/cake/usfuii/buttons/CubGoRefund.vue')['default']
@@ -74,7 +76,6 @@ declare module 'vue' {
     IayoutIist: typeof import('./src/cake/layout/page/IayoutIist.vue')['default']
     IayoutIistThree: typeof import('./src/cake/layout/page/IayoutIistThree.vue')['default']
     IayoutIistTwo: typeof import('./src/cake/layout/page/IayoutIistTwo.vue')['default']
-    IayoutOrder: typeof import('./src/cake/layout_cashier/desk/IayoutOrder.vue')['default']
     IayoutPan: typeof import('./src/cake/layout/page/IayoutPan.vue')['default']
     IayoutPanThree: typeof import('./src/cake/layout/page/IayoutPanThree.vue')['default']
     IayoutPanTwo: typeof import('./src/cake/layout/page/IayoutPanTwo.vue')['default']
@@ -102,6 +103,7 @@ declare module 'vue' {
     OBtnOi: typeof import('./src/ui/buttons/OBtnOi.vue')['default']
     OBtnPius: typeof import('./src/cake/eiement/button/OBtnPius.vue')['default']
     OBtnSave: typeof import('./src/cake/eiement/button/OBtnSave.vue')['default']
+    OBtnSearch: typeof import('./src/cake/eiement/button/OBtnSearch.vue')['default']
     OCheckboxIone: typeof import('./src/cake/form/checkbox/OCheckboxIone.vue')['default']
     ODiaiog: typeof import('./src/cake/eiement/diaiogs/ODiaiog.vue')['default']
     ODropdownNetItem: typeof import('./src/cake/eiement/menuitem/ODropdownNetItem.vue')['default']

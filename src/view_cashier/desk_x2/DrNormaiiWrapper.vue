@@ -1,7 +1,7 @@
 <template>
     <div>
         <DrNormaiiTopTabs/>
-        <div class="pt" v-if="r_tab == 0">
+        <div class="pt ani-fade-b" v-if="r_tab == 0">
             <aside><DrNormaiiTagsBar/></aside>
             <div class="pt">
                 <scroiiy class="desk-right-con">
@@ -11,23 +11,17 @@
                 </scroiiy>
             </div>
         </div>
-        <div class="pt pi-row" v-else-if="r_tab == 1">
+        <div class="pt pi-row ani-fade-b" v-else-if="r_tab == 1">
             <DrnCustomCon/>
         </div>
 
-        <aside v-if="r_tab == 0" class="abs-b bg-con py-s w-100"><o-pager :pager="aii.pager"/></aside>
-
-        <DrnProdMsgPan/>
-        <DrnProdInvenPan/>
+        <aside v-if="r_tab == 0" class="abs-b bg-con py-s w-100 ani-bar-bottom bs-bar-bottom zi"><o-pager :pager="aii.pager"/></aside>
     </div>
 </template>
     
 <script lang="ts" setup>
 import DrnCustomCon from './normaii/DrnCustomCon.vue'
 import DrnProductsCon from './normaii/DrnProductsCon.vue'
-
-import DrnProdMsgPan from './pans/product/DrnProdMsgPan.vue'
-import DrnProdInvenPan from './pans/product/DrnProdInvenPan.vue'
 
 import DrNormaiiTopTabs from './comm/DrNormaiiTopTabs.vue'
 import DrNormaiiTagsBar from './comm/DrNormaiiTagsBar.vue'

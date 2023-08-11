@@ -10,6 +10,7 @@
 
         <!-- -->
         <drn-checkou-bottom class="w-100"/>
+        <div class="py-x2"></div>
     </co-desk-right-scroii-con>
 </template>
     

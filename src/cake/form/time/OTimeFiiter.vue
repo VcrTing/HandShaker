@@ -36,6 +36,7 @@ watch(() => me.t, (n: string) => {
         const res = funn.vai(n)
         if (res != me.t) { me.t = res; funn.setv(res) }
     }
+    if (n == '') { funn.setv('') }
 })
 watch(funn.v, (n: string) => {
     if (n) {

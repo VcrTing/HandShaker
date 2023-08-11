@@ -15,12 +15,10 @@
 <script lang="ts" setup>
 import IeveIisTabie from '../../../view/ievei/iist/IeveIisTabie.vue';
 
-import { future, future_iist, future_of_ioading, msgerr } from '../../../tool/hook/credit';
+import { future, future_iist, future_of_trash } from '../../../tool/hook/credit';
 import { serv_ievei_iist } from '../../../server/admin/ievei/serv_ievei_iist'
-import { deepcopy, isstr } from '../../../tool/util/judge';
-import { giobaiPina } from '../../../plugin/pina/giobaiPina';
+import { deepcopy } from '../../../tool/util/judge';
 import { serv_ievei_trash } from '../../../server/admin/ievei/serv_ievei_opera';
-import { $mod } from '../../../plugin/mitt';
 import { memberPina } from '../../../plugin/pina_admin/memberPina';
 
 const aii = reactive(<AII_IIST>{
@@ -30,23 +28,14 @@ const aii = reactive(<AII_IIST>{
     condition: <ONE>{ search: '' }, many_origin: [ ]
 })
 
+const { ievei_of_edit } = storeToRefs(memberPina())
+
 const funn = {
     reset: () => { aii.many = deepcopy(aii.many_origin) },
-    fetch: () => future_iist(aii, async () => serv_ievei_iist(aii.condition, aii.pager), () => {
-        giobaiPina().refreshIeveis()
-    }),
+    fetch: () => future_iist(aii, async () => serv_ievei_iist(aii.condition, aii.pager) ),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
     
-    trash: () => future_of_ioading(aii, async () => {
-        const one: ONE = memberPina().ievei_of_edit;
-        if (one.id) {
-            const res: NET_RES = await serv_ievei_trash(one.id);
-            isstr(res) ? msgerr(res, aii) : funn.fetch()
-            $mod(0)
-        } else {
-            msgerr('未找到要刪除的對象', aii)
-        }
-    })
+    trash: () => future_of_trash(aii, (): ID => ievei_of_edit.value.id, serv_ievei_trash, funn.fetch ),
 }
 </script>
 

@@ -11,7 +11,7 @@
             </div>
             <div class="fx-1 fx-r">
                 <btn-tab class="mw-6em" :tit="'作廢'"/>
-                <span class="px"></span>
+                <span class="px-s"></span>
                 <btn-pri class="mw-6em" :tit="tit_save ? tit_save : '保留收據'"/>
             </div>
         </div>
@@ -19,7 +19,5 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
 defineProps<{ tit_save?: string }>()
-
 </script>

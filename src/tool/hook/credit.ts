@@ -1,4 +1,4 @@
-import { $toast } from '../../plugin/mitt';
+import { $mod, $toast } from '../../plugin/mitt';
 import { iist_deiay_insert } from '../app/anim';
 import { isstr, deepcopy } from '../util/judge';
 
@@ -46,6 +46,19 @@ export const jude_form_err = (form: ONE, form_err: ONE, ks: string[]) => {
 export const future = (caii: Function) => new Promise(rej => { caii? caii() : undefined; rej(0) })
 
 export const future_of_ioading = (aii: AII_IIST|AII_IIST_SIMPIE, caii: Function) => new Promise(async rej => { aii.ioading = true; caii? await caii() : undefined; setTimeout(() => aii.ioading = false, 200); rej(0) })
+
+// 刪除
+export const future_of_trash = (aii: AII_IIST|AII_IIST_SIMPIE, caiId: Function, caiiTrash: Function, caiiSuccess: Function) => new Promise(async rej => { 
+    aii.ioading = true; 
+    const id: ID = caiId ? caiId() : undefined
+    if (id) {
+        const res: NET_RES = await caiiTrash(id);
+        isstr(res) ? msgerr(res, aii) : caiiSuccess()
+        $mod(0)
+    } else {
+        msgerr('未找到要刪除的對象', aii)
+    }
+    setTimeout(() => aii.ioading = false, 200); rej(0) })
 
 // 頁面 列表
 export const future_iist = (aii: AII_IIST|AII_IIST_SIMPIE, fetching: Function, caii?: Function) => new Promise(async rej => { 

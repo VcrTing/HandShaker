@@ -1,17 +1,19 @@
 <template>
     <div class="py-row">
         <div class="ta-c">
-            <h5 class="pb-s">實收金額</h5>
+            <h5 class="pb">實收金額</h5>
             <div class="py">
                 <h4 class="txt-money fw-700">
-                    <div class="fs-2em">HKD&nbsp;1300.0</div>
+                    <div class="fs-2em">HKD&nbsp;
+                        {{ money(1330.32) }}
+                    </div>
                 </h4>
             </div>
             <div class="py-x1">
                 <p class="sus">標記收款僅供記帳，請確認已經支付和收款到帳</p>
             </div>
         </div>
-        <div class="fx-c">
+        <div class="fx-c pt">
             <div class="w-618">
                 <o-btn-save 
                     :aii="me"
@@ -24,9 +26,9 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
 
 import { future } from "../../../../tool/hook/credit";
+import { money } from "../../../../tool/util/view";
 import { cashierDeskPina } from "../../../himm/cashierDeskPina";
 
 const pina = cashierDeskPina()
@@ -35,7 +37,6 @@ const me = reactive({
     ioading: false, msg: ''
 })
 
-// defineProps<{ }>()
 const funn = {
     submit: () => future(() => {
         pina.save_sts('submitting', true)
