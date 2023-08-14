@@ -1,0 +1,1 @@
+import{e as o}from"./iodash-0df31692.js";import{d as t,H as a,o as s,a as n}from"./index-9a233275.js";import"./judge-0b511643.js";const _=t({__name:"[...all]",setup(r){const e=a();return o(e.path,"admin")&&console.log("ADMIN 頁面"),(c,l)=>(s(),n("div",null," AII "))}});export{_ as default};

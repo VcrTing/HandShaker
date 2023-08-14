@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.5.1",
     "@heroicons/vue": "^2.0.18",
     "axios": "^1.4.0",
     "countup.js": "^2.7.0",
