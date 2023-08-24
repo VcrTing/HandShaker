@@ -6,7 +6,7 @@
                 :aii="aii" 
                 :pk="'condition.search'"/>
         </template>
-        <template #con><member-iist-tabie :aii="aii" @reset="funn.reset()"/></template>
+        <template #con><member-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
     </iayout-iist>
 </template>
@@ -16,7 +16,6 @@ import MemberIistTabie from '../../../view/member/iist/MemberIistTabie.vue';
 
 import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_member_iist } from '../../../server/admin/member/serv_member_iist'
-import { deepcopy } from '../../../tool/util/judge';
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ],
@@ -27,7 +26,6 @@ const aii = reactive(<AII_IIST>{
 })
 
 const funn = {
-    reset: () => { aii.many = deepcopy(aii.many_origin) },
     fetch: () => future_iist(aii, async () => serv_member_iist(aii.condition, aii.pager)),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }

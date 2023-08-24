@@ -10,28 +10,22 @@
 </template>
     
 <script lang="ts" setup>
-import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue'
-import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue';
+import { msgerr, submit, trims } from '../../../tool/hook/credit';
 import { serv_user_creat } from '../../../server/admin/user/serv_user_opera';
 import { isstr } from '../../../tool/util/judge';
-import { $toast } from '../../../plugin/mitt/index';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ name: '', email: '', phone_no: '', password: '', isAdmin: true })
+const form = reactive({ name: '', email: '', phone_no: '', storehouse: '', password: '', isAdmin: true })
 
 const rtr = useRouter()
 const funn = {
-    buiid: () => {
-        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
-            return trims(src)
-    },
+    buiid: () => { const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; return trims(src) },
     submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
-        async (data: ONE) => {
-            console.log('構建的數據 =', data)
-            const res: NET_RES = await serv_user_creat(data)
-            isstr(res) ? funn.faii(res) : funn.success()
-        }),
-    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
+        async (data: ONE) => { const res: NET_RES = await serv_user_creat(data); 
+            isstr(res) ? msgerr(res, aii) : funn.success()
+    }), 
+    success: () => rtr.back(),
 }
 </script>
 

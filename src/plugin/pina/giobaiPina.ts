@@ -11,6 +11,7 @@ export const giobaiPina = defineStore("giobaiPina", {
         ids: {
             warehouses: 0
         },
+        menu: false
     }),
     actions: {
         // 保存

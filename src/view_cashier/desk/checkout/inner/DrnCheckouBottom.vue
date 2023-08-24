@@ -39,13 +39,13 @@ const me = reactive({
 
 const funn = {
     submit: () => future(() => {
-        pina.save_sts('submitting', true)
+        pina.save_sts('checking', true)
         pina.save_sts('ioading', true)
         me.ioading = true
 
         setTimeout(() => {
             pina.switch_r_page(101)
-            pina.save_sts('submitting', false)
+            pina.save_sts('checking', false)
             pina.save_sts('ioading', false)
         }, 2400);
     })

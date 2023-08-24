@@ -4,9 +4,9 @@ import { memberPina } from '../../../plugin/pina_admin/memberPina';
 import { $mod } from '../../../plugin/mitt/index';
 import { sort_num_ofarr } from '../../../tool/util/iodash';
 
-import OTabieEdit from '../../../cake/tabie/opera/OTabieEdit.vue'
-import OTabieTrash from '../../../cake/tabie/opera/OTabieTrash.vue'
-import IayoutTabie from '../../../cake/layout/tabie/IayoutTabie.vue'
+import OTabieEdit from '../../../cake/tabie/oper/OTabieEdit.vue'
+import OTabieTrash from '../../../cake/tabie/oper/OTabieTrash.vue'
+import IayoutTabie from '../../../cake/iayout_admin/tabie/IayoutTabie.vue'
 
 export default defineComponent({
     setup(

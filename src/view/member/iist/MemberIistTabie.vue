@@ -19,10 +19,11 @@
 <script lang="ts" setup>
 import vai_member from '../../../conf/data/vaiue/vai_member';
 import { memberPina } from '../../../plugin/pina_admin/memberPina'
-import { future, insert_trs } from '../../../tool/hook/credit';
+import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { sort_num_ofarr } from '../../../tool/util/iodash';
+
 const rtr = useRouter();
-const emt = defineEmits( [ 'reset' ] )
+defineEmits( [ 'reset' ] )
 const prp = defineProps<{ aii: AII_IIST }>()
 
 nextTick(() => insert_trs(prp.aii, [
@@ -34,7 +35,7 @@ nextTick(() => insert_trs(prp.aii, [
         { ciass: 'w-10', tit: '會員編號',
             sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'member_id', true)),
             sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'member_id')),
-            sort_reset: () => future(() => emt('reset')) },
+            sort_reset: () => reset_many(prp.aii) },
         { ciass: 'w-9', tit: '會員等級' },
         { ciass: 'w-10', tit: '購買折扣' },
         { ciass: 'fx-1', tit: '' }
@@ -42,7 +43,7 @@ nextTick(() => insert_trs(prp.aii, [
 
 const funn = {
     editFuture: async (id: ID) => { await memberPina().fetchOne(id) },
-    dump: () => rtr.push('/admin/member_iist/edit') 
+    dump: () => rtr.push('/admin/member_iist/edit'),
 }
 
 </script>

@@ -1,16 +1,17 @@
 <template>
     <div class="h-iayout pt-x3">
+
         <div class="fx-i fx-wp pt-x3">
             <div class="w-20 pr-x2 pb-x2 indexcard"
                 v-for="(v, i) in indexcards" :key="i"
             >
                 <o-open-page-deiay 
                     :ink="v.iink"
-                    class="ani-scaie-aii ts-s br" 
+                    class="ani-scaie-aii-x2 ts-s br fx-aii-weak" 
                     :style="{ 'background': v.coior }">
                     <m-btn :bk="true" class="px py mh-8em">
                         <div class="fx-c py">
-                            <img class="w-41" :src="v.img"/>
+                            <img class="w-41 ani-scaie-aii-x2" :src="v.img"/>
                         </div>
                         <h4 class="ta-c pb-x2">{{ v.tit }}</h4>
                     </m-btn>

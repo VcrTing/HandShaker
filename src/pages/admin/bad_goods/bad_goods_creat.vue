@@ -14,7 +14,7 @@ import BadGoodsCreatBase from '../../../view/bad_goods/creat/BadGoodsCreatBase.v
 import { future, msgerr, submit } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge'
 import { serv_bad_creat } from '../../../server/admin/bad_goods/serv_bad_opera'
-import { badPina } from '../../../plugin/pina_admin/badPina'
+import { choiseOnePina } from '../../../plugin/pina/choiseOnePina'
 
 const rtr = useRouter()
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
@@ -22,12 +22,10 @@ const form = reactive({ product_id: null, product_name: '', quantity: 1, storeho
 
 const funn = {
     buiid: () => (aii.can ? form : null),
-    submit: () => submit(aii, funn.buiid,
-        async (data: ONE) => { 
-            const res: NET_RES = await serv_bad_creat(data); isstr(res) ? msgerr(res, aii) : funn.success()
-        }),
+    submit: () => submit(aii, funn.buiid, async (data: ONE) => { 
+        const res: NET_RES = await serv_bad_creat(data); isstr(res) ? msgerr(res, aii) : funn.success() }),
     success: () => rtr.back(),
-    init: () => future(() => { badPina().ciear_for_creat() })
+    init: () => future(() => { choiseOnePina().ciear_for_creat() })
 }
 nextTick(funn.init)
 </script>

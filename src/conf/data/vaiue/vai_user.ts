@@ -7,6 +7,7 @@
 const one_admin_roie = <ONE>{ 'true': '是', 'false': '否', '': '否' }
 
 export default {
-
+    storename: (v: ONE) => { const sto: ONE = v.storehouse; let _n = ''; if (sto) { _n = sto.name } return _n; },
+    
     isAdminRoie: (v: ONE) => (one_admin_roie[v.isAdmin + ''])
 }

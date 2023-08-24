@@ -1,6 +1,6 @@
 <template>
     <div>
-        <DeskIeftTabie class="pt-s" :aii="aii"/>
+        <DeskIeftTabie class="pt-s ani-fade-b" :aii="aii"/>
     </div>
 </template>
     

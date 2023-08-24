@@ -38,7 +38,7 @@
     
 <script lang="ts" setup>
 import { $mod } from "../../../../plugin/mitt/index";
-import { badPina } from "../../../../plugin/pina_admin/badPina";
+import { choiseOnePina } from "../../../../plugin/pina/choiseOnePina";
 import { serv_product_iist } from "../../../../server/admin/product/serv_product_iist";
 import { future, future_iist, insert_trs } from "../../../../tool/hook/credit"
 
@@ -54,16 +54,14 @@ const funn = {
         console.log('搜索條件 =', aii.condition)
     }),
     choise: (v: ONE) => future(() => { 
-        if (v.id) { 
-            badPina().save('product_of_choise', v)
-            badPina().save('product_id', v.id); $mod(0) }
+        if (v.id) { choiseOnePina().save_product_choise(v); $mod(0) }
     }),
     ciear: () => future(() => {
-        aii.condition.search = ''; const src: MANY = badPina().products
+        aii.condition.search = ''; const src: MANY = choiseOnePina().products
         if (src && src.length) { funn.fetch() } else { aii.many = src }
     }),
     fetch: () => future_iist(aii, async () => serv_product_iist(aii.condition, aii.pager), (res: ONE) => {
-        if (res.data) { badPina().save('products', res.data) }
+        if (res.data) { choiseOnePina().save_products(res.data) }
     }),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }

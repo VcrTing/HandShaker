@@ -1,5 +1,5 @@
 <template>
-    <co-desk-right-scroii-con>
+    <co-desk-right-wrapper>
         <co-cashier-biiis-header :tit="'結算收款'"/>
         <div class="py-row">
             <div class="fx-c drn-cs-con">
@@ -23,7 +23,7 @@
             :tit_save="'繼續收銀'"
             @save="cashierDeskPina().switch_r_page(0)"
         />
-    </co-desk-right-scroii-con>
+    </co-desk-right-wrapper>
 </template>
     
 <script lang="ts" setup>

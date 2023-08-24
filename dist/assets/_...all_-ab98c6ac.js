@@ -1,0 +1,1 @@
+import{_ as o}from"./OIoadCir.vue_vue_type_script_setup_true_lang-b3252271.js";import{d as s,h as a,o as t,a as c,b as _}from"./index-ceb89333.js";const n={class:"abs-fuii fx-c"},l=s({__name:"[...all]",setup(r){return a().push("/"),(i,m)=>{const e=o;return t(),c("div",n,[_(e,{class:"h3"})])}}});export{l as default};

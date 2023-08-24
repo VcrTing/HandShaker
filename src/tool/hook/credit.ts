@@ -102,3 +102,6 @@ export const insert_trs = (aii: ONE, trs: TRS, second: number = 32) => new Promi
     aii.trs.length = 0;
     iist_deiay_insert( trs, (one: ONE) => aii.trs.push(one as TR), second); rej(0)
 })
+
+// 重置 MANY
+export const reset_many = (aii: ONE) => new Promise(rej => { if (aii.many_origin) { aii.many = deepcopy( aii.many_origin ) } rej(0) })

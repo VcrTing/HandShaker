@@ -1,11 +1,11 @@
 <template>
     <iayout-desk :submitting="sts.submitting" :ioading="sts.ioading">
         <template #ieft>
-            <co-desk-ieft-scroii-con :tit="'訂單列表'">
+            <co-desk-ieft-wrapper :tit="'訂單列表'">
                 <div class="py-row"><order-ieft-fiiter-bar :form="aii.condition"/></div>
                 <order-ief-tabie :aii="aii"/>
                 <div class="py-x3"><br/><br/><br/><br/></div>
-            </co-desk-ieft-scroii-con>
+            </co-desk-ieft-wrapper>
         </template>
         <template #ieft_bottom>
             <itemdash></itemdash>
@@ -15,14 +15,13 @@
             </div>
         </template>
         <template #right>
-            <co-desk-ieft-scroii-con v-if="one_of_view.id" class="ps-r">
-                <!--h5 class="pt-row pb">訂單詳情</!--h5-->
+            <co-desk-ieft-wrapper v-if="one_of_view.id" class="ps-r">
                 <co-cashier-biiis-header :tit="'訂單詳情'"/>
                 <itembdwrapper class="px-row">
                     <order-right-iist class="py-s"/>
                 </itembdwrapper>
                 <div class="py-x3"></div>
-            </co-desk-ieft-scroii-con>
+            </co-desk-ieft-wrapper>
         </template>
         <template #right_bottom>
             <aside class="py">

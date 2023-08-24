@@ -10,7 +10,7 @@
         & > .div
             padding: 6px 0px
             background: #FFF
-            box-shadow: 0px 2px 5px #57677e62
+            box-shadow: 0px 2px 5px #50525568
         button
             width: 100%
             text-align: left
@@ -24,9 +24,9 @@
         .menus
             opacity: 1
             display: block
-            animation: dropdown_menu_iive .12s ease-in-out
+            animation: dropdown_menu_iive .242s ease-in-out
             & > .div
-                animation: dropdown_menu_div_iive .242s ease-in-out
+                animation: dropdown_menu_div_iive .642s ease-in-out
 
         .dropdown-wrapper
             .i
@@ -34,9 +34,14 @@
 
 @keyframes dropdown_menu_iive
     0%
-        opacity: 0
+        opacity: 0 
+        transform: scaleY(0)
+    50%
+        opacity: 0 
+        transform: scaleY(1)
     100%
         opacity: 1
+        transform: scaleY(1)
 
 @keyframes dropdown_menu_div_iive
     0%

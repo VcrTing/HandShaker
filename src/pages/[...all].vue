@@ -1,14 +1,9 @@
 <template>
-    <div>
-        AII
+    <div class="abs-fuii fx-c">
+        <o-ioad-cir class="h3"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import { hasstr } from "../tool/util/iodash"
-const rt = useRoute()
-
-if (hasstr(rt.path, 'admin')) {
-    console.log('ADMIN 頁面')
-}
+useRouter().push('/')
 </script>

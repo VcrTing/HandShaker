@@ -25,14 +25,14 @@
     
 <script lang="ts" setup>
 import { $mod } from "../../../plugin/mitt";
-import { badPina } from "../../../plugin/pina_admin/badPina";
+import { choiseOnePina } from "../../../plugin/pina/choiseOnePina";
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
 
 const pks = [ 'product_id', 'quantity', 'storehouse_id', 'date', 'remarks' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 const errs = reactive(gen_form_err(prp.form));
 
-const { product_id, storehouse_id, product_of_choise } = storeToRefs(badPina())
+const { product_id, storehouse_id, product_of_choise } = storeToRefs(choiseOnePina())
 
 watch(product_id, (n: ID) => (prp.form['product_id'] = n))
 watch(storehouse_id, (n: ID) => { prp.form['storehouse_id'] = n; console.log('storeID 改动 =', n) })
@@ -48,7 +48,6 @@ watch(() => prp.aii.sign, () => {
     prp.aii.can = true
 })
 
-// watch(() => prp.form.code, (n: string) => jude_err(errs, 'product_id', n, prp.aii))
 watch(() => prp.form.quantity, (n: string) => jude_err(errs, 'quantity', n, prp.aii))
 watch(() => prp.form.date, (n: string) => jude_err(errs, 'date', n, prp.aii))
 </script>

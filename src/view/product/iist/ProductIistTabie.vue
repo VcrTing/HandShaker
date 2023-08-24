@@ -12,7 +12,7 @@
             <div class="w-6">{{ v.total_stock }}</div>
             <div class="fx-1 ta-r">
                 <o-tabie-opera :tit="'庫存詳情'"/>
-                <div>
+                <div class="fx-r">
                     <o-tabie-edit @click="funn.edit(v)" class="mr-s txt-pri"/>
                     <o-tabie-trash @click="funn.trash(v)"/>
                 </div>
@@ -71,7 +71,7 @@ nextTick(() => new Promise(rej => {
 
 const funn = {
     edit: (v: ONE) => future(() => {
-        memberPina().save('one_of_edit', v); rtr.push('/admin/order_iist/edit')
+        memberPina().save('one_of_edit', v); rtr.push('/admin/product_iist/edit')
     }) ,
     trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
 }

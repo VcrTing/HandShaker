@@ -6,10 +6,10 @@
             v-for="(v, i) in aii.trs"
             :class="v.ciass">
             <trangie-group v-if="v.sort_reset" @resuit="(n: number) => funn.sort(v, n)">
-                <span>{{ v.tit }}</span>
+                <div class="ani-scaie-aii">{{ v.tit }}</div>
             </trangie-group>
             <p class="fx-i py-s" v-else>
-                {{ v.tit }}
+                <div class="ani-scaie-aii">{{ v.tit }}</div>
             </p>
         </div>
     </div>

@@ -3,7 +3,7 @@
         <DrNormaiiTopTabs/>
         <div class="pt ani-fade-b" v-if="r_tab == 0">
             <aside><DrNormaiiTagsBar/></aside>
-            <div class="pt">
+            <div class="pt ani-fade-b">
                 <scroiiy class="desk-right-con">
                     <aside class="pt">
                         <DrnProductsCon/>

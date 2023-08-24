@@ -19,7 +19,7 @@
 import { TEST } from '../../conf';
 import IOGO from '../../assets/menu/IOGO.png'
 import ioginForm from '../../view/auth/ioginForm.vue';
-import { future, insert_form, submit, viewmsg } from '../../tool/hook/credit'
+import { future, insert_form, submit, msgerr } from '../../tool/hook/credit'
 import { ACCOUNTS } from '../../conf/net/net-conf'
 import { isstr } from '../../tool/util/judge';
 import { userLogin, deaiUserLogin } from '../../server/auth/iogin';
@@ -33,7 +33,7 @@ const funn = {
         () => { return aii.can ? form : null },
         async (_: ONE) => {
             const res: NET_RES = await deaiUserLogin( await userLogin(form.name, form.pass) )
-            if (isstr(res)) { viewmsg(aii, res + '') } 
+            if (isstr(res)) { msgerr(res, aii) } 
             else { funn.success() }
         }),
     init: () => future(() => {

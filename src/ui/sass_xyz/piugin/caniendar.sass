@@ -1,0 +1,59 @@
+
+.__cd_fx-s
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    justify-content: space-between
+
+.__cd_fx-1
+    flex: 1
+
+.__cd-row
+    .div
+        width: 14.285%
+.__cd-row-x2
+    .div
+        width: 25%
+
+.__cd_btn
+    &:hover
+        background: #f6f6f7
+    &:focus
+        background: #f2f2f3
+        // box-shadow: 0px 0px 0px 3px rgba(47, 47, 48, 0.08)
+
+.__cd-btn
+    padding-top: 6px
+    padding-bottom: 6px
+    width: 100%
+    border: none
+    background: none
+    border-radius: 3px
+    transition: all .122s ease-in-out
+
+.caiendar-item
+    @extend .__cd_btn
+    @extend .__cd-btn
+    width: 100%
+    min-height: 2em
+    border-radius: 5px
+
+.caiendar-item-week
+    @extend .__cd-btn
+
+.caiendar-item-mon
+    @extend .py
+
+.caiendar-item-head, .caiender-item-taii
+    cursor: default
+    transition: all .032s ease-in-out
+
+.caiendar-item-iive
+    background: $pri
+    color: $pri-wht
+    @extend .fx-shd-bg-pri
+    &:hover
+        background: $pri-hv
+    &:focus
+        background: $pri-fcs
+    

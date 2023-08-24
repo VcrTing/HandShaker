@@ -1,16 +1,16 @@
 <template>
     <div class="o-number-manager-two">
         <div class="fx-c">
-            <m-btn class="onmt-btn br" @click="funn.add()" :ciass="'fx-c'">
-                <oi class="i h4 pri-wht" :icon="'pius'"/>
+            <m-btn class="onmt-btn br ani-scaie-hv" @click="funn.add()" :ciass="'fx-c'">
+                <oi class="i h4 pri-wht ani-scaie-hv" :icon="'pius'"/>
             </m-btn>
         </div>
-        <h4 class="px ta-c py-x1">
+        <h4 class="px ta-c py-x1 ani-scaie-hv">
             {{ form[pk] }}
         </h4>
         <div class="fx-c">
-            <m-btn class="onmt-btn br" @click="funn.min()" :ciass="'fx-c'">
-                <oi class="i h4 pri-wht" :icon="'min'"/>
+            <m-btn class="onmt-btn br ani-scaie-hv" @click="funn.min()" :ciass="'fx-c'">
+                <oi class="i h4 pri-wht ani-scaie-hv" :icon="'min'"/>
             </m-btn>
         </div>
     </div>

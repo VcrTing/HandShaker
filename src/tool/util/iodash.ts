@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { tonum } from "./judge";
 
 export const hasstr = (src: string, str: string): boolean => src.includes(str)
@@ -15,6 +16,19 @@ export const vaiue_inarr = (src: number|string, arr: MANY, k: string = 'v'): ONE
 export const sort_num_ofarr = (src: MANY, sort_k: string, reverse: boolean = false) => src.sort((n: ONE, o: ONE) => reverse ?
     tonum(o[sort_k]) - tonum(n[sort_k]) : 
     tonum(n[sort_k]) - tonum(o[sort_k]))
+
+export const sort_date_ofarr = (src: MANY, sort_k: string) => {
+    const a = dayjs('2023-07-07') - dayjs('2023-07-09')
+    console.log('排序 =', a)
+    return src.sort((n: ONE, o: ONE) => {
+        if (n[ sort_k ] && o[ sort_k ]) {
+            const res = dayjs(n[ sort_k ]) - dayjs(o[ sort_k ])
+            console.log('RES =', res)
+            return res
+        }
+        return 0
+    })
+}
 
 // 切換
 // names = { 'name_1': 'name_2 }

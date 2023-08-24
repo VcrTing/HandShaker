@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@casl/ability": "^6.5.0",
+    "@casl/vue": "^2.2.1",
     "@floating-ui/dom": "^1.5.1",
     "@heroicons/vue": "^2.0.18",
     "axios": "^1.4.0",

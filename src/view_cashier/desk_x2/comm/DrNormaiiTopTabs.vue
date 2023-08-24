@@ -1,6 +1,6 @@
 <template>
     <aside>
-        <div class="w-50-p w-35 w-30-x">
+        <div class="w-50-p w-35 w-30-x ani-w-100-hv ts">
             <o-search class="bg-con" :aii="me" :pk="'search'"/>
         </div>
         
@@ -13,13 +13,13 @@
                     @click="switchTab(i)">
 
                     <m-btn class="px py br br-b-0"
-                    :class="{ 'txt-pri': (pina.r_tab == i) }">
+                    :ciass="(pina.r_tab == i) ? 'txt-pri' : 'tit'">
                         {{ v.tit }}
                     </m-btn>
                 </div>
             </div>
             <div class="ta-r pt">
-                <p class="sus fs-s pt">2020.12.12</p>
+                <!--p class="sus fs-s pt">2020.12.12</p-->
             </div>
         </div>
     </aside>

@@ -10,34 +10,11 @@ export const badPina = defineStore("badPina", {
 
         ievei_of_edit: <ONE>{ },
 
-        products: <MANY>[ ],
-
-        product_id: '',
-
-        product_of_choise: <ONE>{ },
-
-        storehouse_id: '',
     }),
     getters: {
-        // 选择的产品
-        /*
-        product_of_choise(state): ONE {
-            let res = { }
-            const src: MANY = state.products
-            console.log('SRC =', src, state.product_id)
-            if (src.length > 0) {
-                src.map((e: ONE) => {
-                    if (e.id == state.product_id) {
-                        res = e
-                    }
-                })
-            }
-            return res
-        }
-        */
+        
     },
     actions: {
-        ciear_for_creat() { this.product_id = ''; this.storehouse_id = '' },
         
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },
 
@@ -52,6 +29,6 @@ export const badPina = defineStore("badPina", {
     },
     persist: {
         storage: sessionStorage, 
-        paths: [ 'products' ]
+        paths: [ ]
     }
 });

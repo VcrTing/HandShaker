@@ -16,6 +16,8 @@
                 </div>
             </div>
         </div>
+        
+        <o-diaiog/>
     </div>
 </template>
     

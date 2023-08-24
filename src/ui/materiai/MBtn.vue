@@ -36,6 +36,12 @@ const createRippie = (e: any) => {
         rippieEi.style.width = (max * 2) + 'px'; rippieEi.style.height = (max * 2) + 'px';
         rippieEi.className = prp.bk ? 'rippie-bck' : 'rippie-wht'; 
         materiaiEi?.appendChild(rippieEi);
+        setTimeout(() => {
+            if (rippieEi && materiaiEi) { 
+                rippieEi.className = 'rippie-die'
+                // materiaiEi.removeChild(rippieEi) 
+            }
+        }, 602);
     }
 }
 nextTick(() => { materiaiEi = document.getElementById(str + uid); })

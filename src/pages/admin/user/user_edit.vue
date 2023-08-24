@@ -15,26 +15,25 @@ import { future, insert_form_if_id, msgerr, submit, trims } from '../../../tool/
 import { serv_user_edit } from '../../../server/admin/user/serv_user_opera';
 import { userPina } from '../../../plugin/pina/userPina';
 import { isstr } from '../../../tool/util/judge';
+import { choiseOnePina } from '../../../plugin/pina/choiseOnePina';
 
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(userPina())
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: -1 })
-const form = reactive(<ONE>{ name: '', email: '', phone_no: '', password: '', isAdmin: true })
+const form = reactive(<ONE>{ name: '', email: '', phone_no: '', storehouse: '', password: '', isAdmin: true })
 
 const funn = {
-    buiid: () => {
-        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
-            return trims(src)
-    },
+    buiid: () => { const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; return trims(src) },
     submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
-        async (data: ONE) => { 
-            console.log('構建的數據 =', data)
+        async (data: ONE) => { console.log('構建的數據 =', data)
             const res: NET_RES = await serv_user_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
     success: () => rtr.back(),
-    init: () => future(() => { if (!insert_form_if_id(one_of_edit.value, form)) { rtr.back() } aii.sign = 0; }),
+    init: () => future(() => { 
+        if (!insert_form_if_id(one_of_edit.value, form)) { rtr.back() } 
+        aii.sign = 0; choiseOnePina().save_storehouse_id(form.storehouse) }),
 }
 nextTick(funn.init)
 </script>
