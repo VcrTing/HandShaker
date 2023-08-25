@@ -1,1 +1,0 @@
-import{d as s,o as t,a as o,i as a}from"./index-ceb89333.js";const d={class:"itemdash bd-0 bd-b bd-c-x2 bd-s-d py"},_=s({__name:"Itemdash",setup(n){return(e,r)=>(t(),o("div",d,[a(e.$slots,"default")]))}});export{_};

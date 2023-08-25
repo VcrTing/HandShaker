@@ -34,7 +34,7 @@ nextTick(funn.init)
 </script>
 
 <route lang="yaml">
-path: /admin/product_iist
+path: /admin/product_inventory_iist
 meta:
     layout: LayoutMain
 </route>

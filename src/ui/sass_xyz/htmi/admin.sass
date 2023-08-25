@@ -28,9 +28,12 @@ $admin-menu-w-max: calc(2.5em + $ds-x2 + $ds-x2 + 5vw)
     @extend .ts
     background: $admin-menu-bg
 
+.pi-htmi-admin
+    padding-left: $admin-cont-pi
+
 .admin-top,
 .admin-center
-    padding-left: $admin-cont-pi
+    @extend .pi-htmi-admin
 
 // 定义
 // 小于 1288 px 的时候
@@ -39,12 +42,7 @@ $admin-menu-w-max: calc(2.5em + $ds-x2 + $ds-x2 + 5vw)
     .htmi-die
         .admin-menu
             margin-left: $admin-menu-w-r
-        .admin-top,
-        .admin-center
-            padding-left: 0
-
-    .htmi-iive
-        .admin-top,
-        .admin-center
-            padding-left: 0
+    .pi-htmi-admin
+        padding-left: 0px
+            
 

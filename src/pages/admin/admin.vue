@@ -9,7 +9,7 @@
                     :ink="v.iink"
                     class="ani-scaie-aii-x2 ts-s br fx-aii-weak" 
                     :style="{ 'background': v.coior }">
-                    <m-btn :bk="true" class="px py mh-8em">
+                    <m-btn :bk="true" class="px py mh-8em br">
                         <div class="fx-c py">
                             <img class="w-41 ani-scaie-aii-x2" :src="v.img"/>
                         </div>

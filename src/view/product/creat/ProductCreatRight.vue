@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 入貨 -->
         <div class="py-row"></div>
         <div class="tabie tabie-def">
             <o-tr :aii="{ trs: [
@@ -7,11 +8,25 @@
                 { ciass: 'w-18', tit: '最新入貨價錢' },
                 { ciass: 'w-18', tit: '最新最低價錢' },
                 { ciass: 'w-14', tit: '最新售價' },
-                { ciass: 'w-10', tit: '庫存' },
-                { ciass: 'fx-1', tit: '壞貨' },
+                { ciass: 'w-10', tit: '入貨數' },
+                { ciass: 'fx-1', tit: '本月壞貨' },
             ] }"/>
             <div class="mh-8em"></div>
         </div>
+
+        <!-- 倉庫 -->
+        <div class="py-row"></div>
+        <div class="tabie tabie-def">
+            <o-tr :aii="{ trs: [
+                { ciass: 'w-20', tit: '倉庫名稱' },
+                { ciass: 'w-14', tit: '產品數量' },
+                { ciass: 'w-14', tit: '聯繫電話' },
+                { ciass: 'fx-1', tit: '倉庫地址' },
+            ] }"/>
+            <div class="mh-8em"></div>
+        </div>
+        
+        <!-- 入貨 -->
         <div class="py-row"></div>
         <div class="tabie tabie-def">
             <o-tr :aii="{ trs: [
@@ -24,6 +39,8 @@
             ] }"/>
             <div class="mh-8em"></div>
         </div>
+
+        <!-- 總價 -->
         <div class="py-row"></div>
         <div class="tabie tabie-def">
             <o-tr-pure :trs="[ { tit: '入貨價平均價', ciass: 'w-100' } ]"/>

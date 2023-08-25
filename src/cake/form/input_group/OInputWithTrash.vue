@@ -6,7 +6,7 @@
         </o-input>
         <div class="mi fx-c ps-r oiwt-icon ts" @click.stop="$emit('tap')">
             
-            <btn-icon class="h5" :icon="icon ? icon : 'trash'" :ciass_i="'txt-pri'"/>
+            <btn-icon class="h5" :icon="icon ? icon : 'trash'" :ciass_i="'txt-err'"/>
         </div>
     </div>
 </template>

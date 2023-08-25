@@ -20,6 +20,9 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 #### 安装
 sudo npm i mitt @heroicons/vue sass pinia pinia-plugin-persist vuejs3-datepicker echarts countup.js axios vue-router vite-plugin-pages unplugin-auto-import unplugin-vue-components vite-plugin-vue-layouts dayjs typescript countup.js @floating-ui/dom @casl/ability @casl/vue
 
+#### 資源
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.css">
+
 #### 权限
 sudo chmod -R 777 ./src
 sudo chmod -R 777 ./src/*

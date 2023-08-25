@@ -1,21 +1,31 @@
 <template>
     <div class="tr b ani-softer" v-if="aii.trs && aii.trs.length > 0">
-        <div 
-            class="pr-s fx-s"
+        <div
+            class="pr-s"
             :key="i" 
             v-for="(v, i) in aii.trs"
             :class="v.ciass">
-            <div class="fx-i fx-1" v-if="i==0">
-                <slot></slot>
-                <span class="pi">{{ v.tit }}</span>
-            </div>
-            <div v-else>{{ v.tit }}</div>
-            <trangie-group @resuit="(n: number) => funn.sort(v, n)" v-if="v.sort" class="pr pi py-t hand"/>
-            <span v-else></span>
+
+            <trangie-group v-if="v.sort_reset" @resuit="(n: number) => funn.sort(v, n)">
+
+                <div class="fx-i fx-1" v-if="i==0">
+                    <slot></slot>
+                    <div class="d-ib pi ani-scaie-aii">{{ v.tit }}</div>
+                </div>
+                <div class="ani-scaie-aii">{{ v.tit }}</div>
+            </trangie-group>
+
+            <p class="fx-i py-s" v-else>
+
+                <div class="fx-i fx-1" v-if="i==0">
+                    <slot></slot>
+                    <div class="d-ib pi ani-scaie-aii">{{ v.tit }}</div>
+                </div>
+            </p>
         </div>
     </div>
     <div v-else class="tr ani-softer">
-
+        
     </div>
 </template>
     

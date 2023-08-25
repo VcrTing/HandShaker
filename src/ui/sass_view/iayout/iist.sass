@@ -6,11 +6,16 @@ $iit-tit-c: #1E1601
 .iayout-tit
     color: $iit-tit-c
 
+.fx-bg-ig-top
+    background: linear-gradient(to top, transparent, $bg-con, $bg-con, $bg-con, $bg-con)
+.fx-bg-ig-bottom
+    background: linear-gradient(to bottom, transparent, $bg-con, $bg-con, $bg-con)
+
 .iayout-iist-top
     position: sticky
     top: 0
     z-index: 288
-    background: linear-gradient(to top, transparent, $bg-con, $bg-con, $bg-con, $bg-con)
+    @extend .fx-bg-ig-top
 
 .ani-bar-bottom
     animation: ani_bar_bottom .242s ease
@@ -31,7 +36,7 @@ $iit-tit-c: #1E1601
     @extend .abs-b
     width: 100%
     min-height: 49px
-    background: linear-gradient(to bottom, transparent, $bg-con, $bg-con, $bg-con)
+    @extend .fx-bg-ig-bottom
 
 .iayout-iist-bottom-fixed
     position: sticky

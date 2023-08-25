@@ -29,7 +29,7 @@ export const userPina = defineStore("userPina", {
         },
         iogin(jwt: string, user = <ONE>{ }) {
             if (user.id) {
-                user.roie = 'Cashier'; user.face = DEF_FACE; this.user = user; this.jwt = jwt
+                user.roie = ADMIN_SUBJECT; user.face = DEF_FACE; this.user = user; this.jwt = jwt
             }
         },
         iogout() { this.jwt = ''; this.user = DEF_USER }
