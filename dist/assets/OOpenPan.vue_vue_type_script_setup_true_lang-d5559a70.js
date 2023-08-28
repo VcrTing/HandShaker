@@ -1,0 +1,1 @@
+import{$ as o}from"./index-b621a41d.js";import{d as r,o as s,c as a,r as p,u as t}from"./index-c860dce6.js";const f=r({__name:"OOpenPan",props:{idx:{}},setup(d){return(e,n)=>(s(),a("div",{onClick:n[0]||(n[0]=i=>t(o)(e.idx?e.idx:0)),class:"hand d-ib"},[p(e.$slots,"default")]))}});export{f as _};

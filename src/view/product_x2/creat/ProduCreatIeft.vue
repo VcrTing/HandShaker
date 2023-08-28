@@ -23,10 +23,10 @@ import ProduCeTags from '../_com_form/ProduCeTags.vue';
 import ProduCeStyie from '../_com_form/ProduCeStyie.vue';
 import ProduCeRemark from '../_com_form/ProduCeRemark.vue';
 
-import { pageProductPina } from '../../../pages/admin/product/pageProductPina';
+import { pageProductPina } from '../../../pages/admin/product_inventory/pageProductPina';
 
 const pina = pageProductPina()
 
 defineProps<{ aii: ONE }>()
 const { remarks, labels, styie, base } = storeToRefs(pina)
-</script>
+</script>../../../pages/admin/product_inventory/pageProductPina

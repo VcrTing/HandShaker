@@ -17,11 +17,11 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from "../../../../pages/admin/product/pageProductPina"
+import { pageProductPina } from "../../../../pages/admin/product_inventory/pageProductPina"
 
 defineEmits( [ 'save' ] )
 
 defineProps<{ idx?: number, remark: PRODUCT_REMARK, edit?: boolean }>()
 
 const { diaiog_remark } = storeToRefs(pageProductPina())
-</script>
+</script>../../../../pages/admin/product_inventory/pageProductPina

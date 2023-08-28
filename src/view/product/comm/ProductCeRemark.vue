@@ -13,7 +13,7 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from "../../../pages/admin/product/pageProductPina";
+import { pageProductPina } from "../../../pages/admin/product_inventory/pageProductPina";
 import { $pan } from "../../../plugin/mitt/index";
 import { future } from "../../../tool/hook/credit";
 
@@ -23,4 +23,4 @@ const edit = (v: PRODUCT_REMARK) => future(() => {
     pageProductPina().save('form_remark_of_edit', v)
     $pan(106)
 })
-</script>
+</script>../../../pages/admin/product_inventory/pageProductPina

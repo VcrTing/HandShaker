@@ -79,3 +79,14 @@ input:hover, select:hover, textarea:hover
 .input
     @extend .mh-input
 
+.o-input-td
+    min-height: auto
+    padding-left: $ds
+    padding-right: 0px
+    margin-right: $ds
+
+// 小于 1288 px 的时候
+@media screen and ( max-width: 1288px )
+    .o-input-td
+        margin-right: $ds-s
+        padding-left: $ds-s

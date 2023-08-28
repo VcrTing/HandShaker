@@ -7,7 +7,7 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from '../../../../pages/admin/product/pageProductPina';
+import { pageProductPina } from '../../../../pages/admin/product_inventory/pageProductPina';
 import { $pan } from '../../../../plugin/mitt/index';
 import { future } from '../../../../tool/hook/credit';
 import { isstr } from '../../../../tool/util/judge';
@@ -19,4 +19,4 @@ const pius = () => future(() => {
     const res: NET_RES = pageProductPina().pius_remark()
     if (!isstr(res)) $pan(0);
 })
-</script>
+</script>../../../../pages/admin/product_inventory/pageProductPina

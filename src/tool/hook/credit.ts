@@ -42,6 +42,9 @@ export const jude_form_err = (form: ONE, form_err: ONE, ks: string[]) => {
     } return true
 }
 
+// 判斷
+export const can_form = (form: ONE, ks: string[], res: boolean = true): boolean => { ks.map((s: string) => { if (!form[s]) { res = false } }); return res }
+
 // 
 export const future = (caii: Function) => new Promise(rej => { caii? caii() : undefined; rej(0) })
 

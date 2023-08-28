@@ -4,8 +4,8 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from '../../../pages/admin/product/pageProductPina'
+import { pageProductPina } from '../../../pages/admin/product_inventory/pageProductPina'
 import ProduCePanRemark from '../_com_pan/ProduCePanRemark.vue'
 import ProduCePanRemarkEdit from '../_com_pan/ProduCePanRemarkEdit.vue'
 const pina = pageProductPina()
-</script>
+</script>../../../pages/admin/product_inventory/pageProductPina

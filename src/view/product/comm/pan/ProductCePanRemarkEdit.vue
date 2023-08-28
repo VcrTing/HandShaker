@@ -9,7 +9,7 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from '../../../../pages/admin/product/pageProductPina';
+import { pageProductPina } from '../../../../pages/admin/product_inventory/pageProductPina';
 import { $pan } from '../../../../plugin/mitt/index';
 import { future } from '../../../../tool/hook/credit';
 import PcePanReamrkForm from '../pan_form/PcePanReamrkForm.vue';
@@ -19,4 +19,4 @@ const { form_remark_of_edit } = storeToRefs(pageProductPina())
 const edit = () => future(() => { $pan(0) })
 
 const trash = () => future(() => { pageProductPina().trash_remark(); $pan(0) })
-</script>
+</script>../../../../pages/admin/product_inventory/pageProductPina

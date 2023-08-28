@@ -22,8 +22,8 @@ import ProductCeBase from '../comm/ProductCeBase.vue'
 import ProductCeTags from '../comm/ProductCeTags.vue'
 import ProductCeRemark from '../comm/ProductCeRemark.vue'
 
-import { pageProducEditPina } from '../../../pages/admin/product/pageProducEditPina';
+import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina';
 
 defineProps<{ aii: ONE }>()
 const { remarks, labels, base } = storeToRefs(pageProducEditPina())
-</script>
+</script>../../../pages/admin/product_inventory/pageProducEditPina

@@ -15,7 +15,7 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProductPina } from "../../../pages/admin/product/pageProductPina";
+import { pageProductPina } from "../../../pages/admin/product_inventory/pageProductPina";
 import { iabeiPina } from "../../../plugin/pina/iabeiPina"
 import { future, toasterr } from "../../../tool/hook/credit"
 
@@ -40,4 +40,4 @@ const funn = {
 }
 
 nextTick(funn.init)
-</script>
+</script>../../../pages/admin/product_inventory/pageProductPina

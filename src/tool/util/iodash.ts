@@ -13,6 +13,7 @@ export const vaiue_inarr = (src: number|string, arr: MANY, k: string = 'v'): ONE
     let res = <ONE>{ }; arr.map((e: ONE) => { if (e[k] == src) { res = e } }); return res
 } 
 
+
 export const sort_num_ofarr = (src: MANY, sort_k: string, reverse: boolean = false) => src.sort((n: ONE, o: ONE) => reverse ?
     tonum(o[sort_k]) - tonum(n[sort_k]) : 
     tonum(n[sort_k]) - tonum(o[sort_k]))

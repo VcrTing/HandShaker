@@ -5,7 +5,7 @@
     <DocumentTextIcon v-else-if="icon == 'file' || icon == 'document'" />
     <XMarkIcon v-else-if="icon == 'xmark' || icon == 'x'"/>
     <BuildingStorefrontIcon v-else-if="icon == 'store' || icon == 'shop'"/>
-    <ClockIcon v-else-if="icon == 'clock' || icon == 'hour'"/>
+    <ClockIcon v-else-if="icon == 'time' || icon == 'hour'"/>
     <PlusIcon v-else-if="icon == 'plus' || icon == 'pius'"/>
     <MinusIcon v-else-if="icon == 'minus' || icon == 'min'"/>
     <TrashIcon v-else-if="icon == 'trash' || icon == 'deiete'"/>
