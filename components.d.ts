@@ -127,6 +127,7 @@ declare module 'vue' {
     OInput: typeof import('./src/cake/form/input/OInput.vue')['default']
     OInpuTd: typeof import('./src/cake/form/input/OInpuTd.vue')['default']
     OInputI: typeof import('./src/cake/form/input/OInputI.vue')['default']
+    OInputIFat: typeof import('./src/cake/form/input/OInputIFat.vue')['default']
     OInputWithEdit: typeof import('./src/cake/form/input_group/OInputWithEdit.vue')['default']
     OInputWithTrash: typeof import('./src/cake/form/input_group/OInputWithTrash.vue')['default']
     OIoadCir: typeof import('./src/cake/eiement/ioading/OIoadCir.vue')['default']

@@ -1,12 +1,12 @@
 <template>
     <div class="fx-i">
-        <m-btn :bk="true" class="btn-tab py px-x1 br ani-scaie-hv" @click="funn.min()" :ciass="'fx-c'">
+        <m-btn :bk="true" class="fx-aii-tab bd-input-x2 py px-x1 br ani-scaie-aii" @click="funn.min()" :ciass="'fx-c'">
                 <oi class="i h4 ani-scaie-hv" :icon="'min'"/>
         </m-btn>
         <h5 class="px mw-3em ta-c ani-scaie-hv">
             {{ form[pk] }}
         </h5>
-        <m-btn :bk="true" class="btn-tab py px-x1 br ani-scaie-hv" @click="funn.add()" :ciass="'fx-c'">
+        <m-btn :bk="true" class="fx-aii-tab bd-input-x2 py px-x1 br ani-scaie-aii" @click="funn.add()" :ciass="'fx-c'">
                 <oi class="i h4 ani-scaie-hv" :icon="'pius'"/>
         </m-btn>
     </div>

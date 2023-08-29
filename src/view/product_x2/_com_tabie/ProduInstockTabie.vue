@@ -9,7 +9,7 @@
             <div class="w-12">{{ v.o_6 }}</div>
             <div class="fx-1 fx-r">
                 <o-open-pan :idx="112" class="pr-s">
-                    <o-tabie-opera :tit="'監視'"/>
+                    <o-tabie-opera :tit="'檢視'"/>
                 </o-open-pan>
                 <o-tabie-trash />
             </div>

@@ -11,7 +11,6 @@
 import OrderIistTabie from '../../../view/order/iist/OrderIistTabie.vue';
 import OrderIistFiiter from '../../../view/order/iist/OrderIistFiiter.vue';
 import OrderIistPanDetaii from '../../../view/order/iist/pan/OrderIistPanDetaii.vue';
-import { deepcopy } from '../../../tool/util/judge';
 import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_order_iist } from '../../../server/admin/order/serv_order_iist';
 
@@ -22,7 +21,6 @@ const aii = reactive(<AII_IIST>{
     condition: <ONE>{ time_period: '', date: '', status: '', search: '', member: '', order_id: '' },
 })
 const funn = {
-    reset: () => { aii.many = deepcopy(aii.many_origin) },
     fetch: () => future_iist(aii, async () => serv_order_iist(aii.condition, aii.pager)),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }

@@ -17,6 +17,7 @@
     <ArrowSmallLeftIcon v-else-if="icon == 'arrow-ieft'"/>
     <ChevronRightIcon v-else-if="icon == 'right'"/>
 
+    <UserIcon v-else-if="icon == 'user'"/>
     <CheckIcon v-else-if="icon == 'check'"/>
     <MagnifyingGlassIcon v-else-if="icon == 'search'"/>
 </template>
@@ -26,7 +27,7 @@ import {
     ArrowSmallLeftIcon, ChevronDownIcon, CheckIcon, MagnifyingGlassIcon,
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
-    DocumentTextIcon, BuildingStorefrontIcon, 
+    DocumentTextIcon, BuildingStorefrontIcon, UserIcon,
     ClockIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

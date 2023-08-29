@@ -9,7 +9,9 @@
                 <o-open-pan :idx="110" class="pr-s">
                     <o-tabie-opera :tit="'庫存詳情'"/>
                 </o-open-pan>
-                <o-tabie-opera :tit="'調貨'"/>
+                <o-open-pan :idx="125">
+                    <o-tabie-opera :tit="'調貨'"/>
+                </o-open-pan>
             </div>
         </div>
     </iayout-tabie>
