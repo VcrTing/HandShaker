@@ -12,7 +12,7 @@
                 </iayout-form>
                 
                 <iayout-form :tit="'樣式及庫存分配數量'" class="pt pb-x3 op-0" :class="{ 'ani-page': aii.ani >= 2 }">
-                    <piis-styie-inventory-iist :aii="sii"/>
+                    <piis-styie-inventory-tabie :aii="sii"/>
                 </iayout-form>
 
                 <div><btn-tab @click="funn.pius()" class="w-100 py-s" :tit="'添加樣式'"/></div>
@@ -33,7 +33,7 @@ import { iist_deiay_insert_s } from '../../../tool/app/anim';
 import { can_form, future } from '../../../tool/hook/credit';
 import PiisBase from './form/PiisBase.vue';
 import PiisPrice from './form/PiisPrice.vue';
-import PiisStyieInventoryIist from './inventory/PiisStyieInventoryIist.vue';
+import PiisStyieInventoryTabie from './inventory/PiisStyieInventoryTabie.vue';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0, ani: 0 })
 const form = reactive({ date: '', time: '', number: '', name: '' })
@@ -42,8 +42,8 @@ const form_price = reactive({ in_price: '', iow_price: '', price: '' })
 const sii = reactive({ msg: '', many: [ 
     { idx: 1, styie: 1, store: 1, num: 10, edit: false, ioading: false },
     { idx: 2, styie: 1, store: 1, num: 100, edit: true, ioading: false }
-],  trashIdx: 0,
-pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })
+],  
+trashIdx: 0, pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })
 
 const ks: string[] = [ 'styie', 'store', 'num' ]
 
