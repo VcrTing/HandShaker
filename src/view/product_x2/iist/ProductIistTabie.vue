@@ -13,8 +13,10 @@
             <div class="fx-1 ta-r">
                 <o-tabie-opera :tit="'庫存詳情'"/>
                 <div class="fx-r">
-                    <o-tabie-edit @click="funn.edit(v)" class="mr-s txt-pri"/>
+                    <o-tabie-edit :id="v.id" :func="funn.editFuture" @tap="funn.dump" class="txt-pri"/>
+                    <!--
                     <o-tabie-trash @click="funn.trash(v)"/>
+                    -->
                 </div>
             </div>
         </div>
@@ -23,9 +25,8 @@
     
 <script lang="ts" setup>
 import { nextTick } from 'vue';
-import { memberPina } from '../../../plugin/pina_admin/memberPina'
+import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina';
 import { iist_deiay_insert } from '../../../tool/app/anim'
-import { future } from '../../../tool/hook/credit';
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
@@ -70,10 +71,9 @@ nextTick(() => new Promise(rej => {
 }))
 
 const funn = {
-    edit: (v: ONE) => future(() => {
-        memberPina().save('one_of_edit', v); rtr.push('/admin/product_iist/edit')
-    }) ,
-    trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
+    editFuture: async (id: ID) => { await pageProducEditPina().fetchOne(id) },
+    dump: () => rtr.push('/admin/product_inventory_iist/edit'),
+    // trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
 }
 
 </script>

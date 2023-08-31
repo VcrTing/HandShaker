@@ -1,1 +1,0 @@
-import{m}from"./dayjs.min-bdea528d.js";const a=e=>{if(e){let r=Number.parseFloat(e+"");if(r>1e3){let o=Number.parseInt(r/1e3+""),t=r-o*1e3;return t=t&&t.toFixed(2),o+","+(t||"000.00")}return r.toFixed(2)}return"0.00"},n=e=>m(e).format("YYYY-MM-DD"),Y=(e="")=>e?n(e):m().format("YYYY-MM-DD");export{a as m,Y as n};

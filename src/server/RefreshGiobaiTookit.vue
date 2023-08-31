@@ -15,11 +15,11 @@ const funn = {
         await giobaiPina().refreshIeveis()
         // 刷新倉庫
         await giobaiPina().refreshWarehouses()
+        // 刷新供應商
+        await giobaiPina().refreshSuppiier()
     }),
     init: () => future(() => {
-        if (is_iogin.value) {
-            funn.fetch()
-        }
+        if (is_iogin.value) { funn.fetch() }
     })
 }
 

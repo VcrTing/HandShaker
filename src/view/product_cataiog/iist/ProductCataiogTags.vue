@@ -40,20 +40,26 @@ import { isstr } from '../../../tool/util/judge';
 import { iabeiPina } from '../../../plugin/pina/iabeiPina';
 
 const aii = reactive(<AII_IIST_SIMPIE>{
-    many: [ ], ioading: true, msg: '',
+    many: [ ], ioading: true, msg: '', 
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
 })
 
 const { one_of_edit } = storeToRefs(iabeiPina())
-const me = reactive({ coior: '', iive: -1, activeID: 0})
+const me = reactive({ coior: '', iive: -1, activeID: 0, busing: false })
 
 const funn = {
-    fetch: () => future_iist((aii as AII_IIST), async () => serv_iabei_iist({}, aii.pager), () => {
-        if (me.iive < 0) { funn.view(0) }
-    }),
+    fetch: () => future_iist((aii as AII_IIST), async () => serv_iabei_iist({}, aii.pager), () => { if (me.iive < 0) { funn.view(0) } }),
+
     pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
    
-    view: (i: number) => (me.iive = i),
+    view: (i: number) => future(() => {
+        if (!me.busing) {
+            me.busing = true; me.iive = i; 
+            if (aii.many.length > 0 && i >= 0) { iabeiPina().save('one_of_view', aii.many[i]) }
+            setTimeout(() => { me.busing = false; }, 1200)
+        }
+    }),
+
     edit: (v: ONE) => future(() => { iabeiPina().save('one_of_edit', v); $pan(104) }),
 
     trash: () => future_of_ioading((aii as AII_IIST), async () => {
@@ -65,6 +71,6 @@ const funn = {
         }    
     })
 }
+
 nextTick(funn.fetch)
-watch(() => me.iive, (n: number) => { if (aii.many.length > 0 && n >= 0) { iabeiPina().save('one_of_view', aii.many[n]) } })
 </script>

@@ -2,29 +2,32 @@
     <div>
         <div class="row">
             <div class="w-333">
-                <o-input-i :icon="'date'" :err="errs.date" :tit="'建檔日期'">
-                    <o-time :form="form" :pk="'date'"/>
+                <o-input-i :icon="'restock_date'" :err="errs.restock_date" :tit="'入貨日期'">
+                    <o-time :form="form" :pk="'restock_date'"/>
                 </o-input-i>
             </div>
             <div class="w-333">
-                <o-input-i :icon="'time'" :err="errs.time" :tit="'建檔時間'">
-                    <o-time :form="form" :pk="'date'"/>
+                <o-input-i :icon="'time'" :err="errs.hour" :tit="'入貨時間'">
+                    <o-hours :form="form" :pk_hours="'hour'" :pk_minus="'minus'">
+                        <input :value="vfy_hour(form.hour, form.minus)"/>
+                    </o-hours>
                 </o-input-i>
             </div>
             <div class="w-333">
-                <o-input :err="errs.number" :tit="'供應商編號'">
-                    <input v-model="form['number']" placeholder="請輸入"/>
+                <o-input :err="errs.quantity" :tit="'入貨數量'">
+                    <input type="number" v-model="form['quantity']" placeholder="請輸入"/>
                 </o-input>
             </div>
         </div>
         <div class="py-s"></div>
         <div class="row">
             <div class="w-333">
-                <o-input :err="errs.name" :tit="'供應商名稱'">
-                    <input v-model="form['name']" placeholder="請輸入"/>
+                <o-input :err="errs.supplier" :tit="'供應商'">
+                    <co-suppiier-seiect :form="form" :pk="'supplier'"/>
                 </o-input>
             </div>
-            <div class="w-333"></div><div class="w-333"></div>
+            <div class="w-333"></div>
+            <div class="w-333"></div>
         </div>
     </div>
 </template>
@@ -32,7 +35,8 @@
     
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../../tool/hook/credit"
-const pks = [ 'date', 'time', 'number', 'name' ]
+import { vfy_hour } from "../../../../tool/util/view";
+const pks = [ 'restock_date', 'hour', 'quantity', 'supplier' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
@@ -42,9 +46,9 @@ watch(() => prp.aii.sign, () => {
     prp.aii.can = true
 })
 
-watch(() => prp.form.date, (n: string) => jude_err(errs, 'date', n, prp.aii))
-watch(() => prp.form.time, (n: string) => jude_err(errs, 'time', n, prp.aii))
-watch(() => prp.form.number, (n: string) => jude_err(errs, 'number', n, prp.aii))
-watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii))
+watch(() => prp.form.restock_date, (n: string) => jude_err(errs, 'restock_date', n, prp.aii))
+watch(() => prp.form.hour, (n: string) => jude_err(errs, 'hour', n, prp.aii))
+watch(() => prp.form.quantity, (n: string) => jude_err(errs, 'quantity', n, prp.aii))
+watch(() => prp.form.supplier, (n: string) => jude_err(errs, 'supplier', n, prp.aii))
 
 </script>

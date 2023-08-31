@@ -2,19 +2,19 @@
     <div class="fx-s">
         <div class="fx-1 row fx-i">
             <div class="w-20 op-0" :class="{ 'ani-fiiter': ani >= 0 }">
-                <o-seiect class="input w-100" 
+                <o-seiect class="input w-100 ip-fiiter" 
                     :form="aii.condition" :pk="'label'" 
                     :many="vai_product.seiect_tag_fiiter"/>
             </div>
             <div class="w-20 op-0" :class="{ 'ani-fiiter': ani >= 1 }">
-                <o-seiect class="input w-100" 
+                <o-seiect class="input w-100 ip-fiiter" 
                     :form="aii.condition" :pk="'supplier'" 
                     :many="vai_product.seiect_supplier_fiiter"/>
             </div>
-            <div class="w-21 op-0" :class="{ 'ani-fiiter': ani >= 2 }">
-                <o-time-fiiter class="input" :form="aii.condition" :pk="'date'" :pchd="'最新入貨日期'"/>
+            <div class="w-21 w-28-p op-0" :class="{ 'ani-fiiter': ani >= 2 }">
+                <o-time-fiiter class="input ip-fiiter" :form="aii.condition" :pk="'date'" :pchd="'最新入貨日期'"/>
             </div>
-            <o-search class="fx-1 op-0" :class="{ 'ani-fiiter': ani >= 3 }" :aii="aii" :pk="'search'"/>
+            <o-search class="fx-1 op-0 ip-fiiter" :class="{ 'ani-fiiter': ani >= 3 }" :aii="aii" :pk="'search'"/>
         </div>
         <div class="pi fx-c">
             <o-btn-pius class="py op-0" :class="{ 'ani-fiiter': ani >= 4 }" :tit="'添加產品資料'"/>

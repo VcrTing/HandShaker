@@ -15,6 +15,12 @@ export const money = (v: ID) => {
 
 export const vfy_time = (v: string) => dayjs(v).format('YYYY-MM-DD')
 
+export const vfy_number = (v: number): string => ((v < 10 ? '0' : '') + v)
+
+export const vfy_hour = (hour: number, minus: number = 0, strict: boolean = false) => (vfy_number(hour) + (strict ? ':' : ' : ') + vfy_number(minus))
+
+export const has_hour = (hour: number) => (hour != 0)
+
 export const is_date_big = (time_1: string, time_2: string) => dayjs(time_1).isAfter( dayjs(time_2) )
 
 export const now = (v: string = '') => v ? vfy_time(v) : dayjs().format('YYYY-MM-DD')

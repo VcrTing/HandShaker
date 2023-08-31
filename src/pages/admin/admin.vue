@@ -18,12 +18,23 @@
                 </o-open-page-deiay>
             </div>
         </div>
+
+        <!--
+        <div class="pt-x2 pi-x2 ">
+            <div class="w-25">
+                <o-hours class="w-100" :form="me" :pk_hours="'hour'" :pk_minus="'minus'">
+                    <p>{{ vfy_hour(me.hour, me.minus) }}</p>
+                </o-hours>
+            </div>
+        </div>
+        -->
     </div>
 </template>
     
 <script lang="ts" setup>
 import { indexcards } from '../../conf/html/cards/indexcards'
-
+// import { vfy_hour } from '../../tool/util/view'
+// const me = reactive({ hour: 0, minus: 0, iive: false })
 </script>
 
 <style lang="sass" scoped>

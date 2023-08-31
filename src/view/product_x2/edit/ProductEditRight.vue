@@ -16,7 +16,8 @@
         <div class="py-row"></div>
         <div class="tabie tabie-def">
             <o-tr-pure :trs="trs_inprice"/>
-            <div class="td"><div class="w-100">1999.93</div></div>
+            <div class="td"><div class="w-100">
+                {{ one_of_edit.total_broken_products }}</div></div>
         </div>
     </div>
 </template>
@@ -26,6 +27,9 @@ import { trs_inprice } from '../_com/product_trs'
 import ProduInstockTabie from '../_com_tabie/ProduInstockTabie.vue'
 import ProduWarehouseTabie from '../_com_tabie/ProduWarehouseTabie.vue'
 import ProduNewInstockTabie from '../_com_tabie/ProduNewInstockTabie.vue'
+import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina'
+
+const { one_of_edit } = storeToRefs(pageProducEditPina())
 
 const instock = reactive({ msg: '', many: [ { } ],  pager: <PAGER>{}, ioading: false, trs: <TRS>[ ] })
 const warehouse = reactive({ msg: '', many: [ { } ],  pager: <PAGER>{}, ioading: false, trs: <TRS>[ ] })

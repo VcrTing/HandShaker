@@ -9,7 +9,7 @@
 
         <ProduCeTags class="pt-s" :pina="pina" :iabeis="labels"/> <div v-if="labels.length <= 0" class="py-x2"></div>
 
-        <ProduCeStyie class="pt-s" :pina="pina" :styie="styie"/> <div v-if="styie.length <= 0" class="py-x2"></div>
+        <ProduCeStyie class="pt-s" :pina="pina" :variations="variations"/> <div v-if="variations.length <= 0" class="py-x2"></div>
 
         <ProduCeRemark class="pt-s" :pina="pina" :remarks="remarks"/> <div v-if="remarks.length <= 0" class="py-x2"></div>
 
@@ -28,5 +28,5 @@ import { pageProductPina } from '../../../pages/admin/product_inventory/pageProd
 const pina = pageProductPina()
 
 defineProps<{ aii: ONE }>()
-const { remarks, labels, styie, base } = storeToRefs(pina)
-</script>../../../pages/admin/product_inventory/pageProductPina
+const { remarks, labels, variations, base } = storeToRefs(pina)
+</script>

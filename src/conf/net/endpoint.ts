@@ -15,11 +15,15 @@ export const ENDPOINT = <ONE> {
 
     'products': 'products', // 所有產品
     'product_dei_iabei': 'products_delete_label', // 删除 标签
-    'peoduct_add_iabei': 'products_add_label', // 增加标签
+    'product_add_iabei': 'products_add_label', // 增加标签
+
+    'variations': 'variations', // 樣式
 
     'ieveis': 'member-levels', // 所有等級
     'members': 'members', // 所有 成員
     'users': 'users', // 所有 用户
 
-    'users-pms': 'users-permissions/users'
+    'users-pms': 'users-permissions/users',
+
+    'instock': 'restocks', // 入貨
 }

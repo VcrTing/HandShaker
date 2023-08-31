@@ -45,11 +45,13 @@ $tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
         border: none
         border-bottom: 1px solid transparent
     tr, .tr
+        z-index: 49
         background: $tabie-tr-bg
         border-color: $tabie-tr-bd
         button, p
             min-height: $tabie-min-h
     td, .td
+        z-index: 30
         @extend .py-s
         min-height: $tabie-min-h
         border-color: $tabie-td-bd
@@ -57,8 +59,10 @@ $tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
     tr, .tr, td, .td,
     tr > div, .tr > div,
     td > div, .td > div
-        z-index: 49
         position: relative
+    tr > div, .tr > div,
+    td > div, .td > div
+        z-index: 30
 
     tr > div::after, .tr > div::after
         @extend .middie

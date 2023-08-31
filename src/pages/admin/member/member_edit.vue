@@ -36,14 +36,14 @@ import { memberPina } from '../../../plugin/pina_admin/memberPina'
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 
 const form = reactive(<ONE>{ name: '', email: '', phone_no: '', birthdate: '', sex: '', address: '' })
-const form_card = reactive(<ONE>{ member_id: '', create_date: '', level: '', discount: '', remarks: '' })
+const form_card = reactive(<ONE>{ member_id: '', create_date: '', member_level: '', discount: '', remarks: '' })
 
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(memberPina())
 
 const funn = {
     buiid: () => {
-        let src: ONE = { ...form, ...form_card }; src['level'] = src['level'] + ''; return trims(src)
+        let src: ONE = { ...form, ...form_card }; src['member_level'] = src['member_level'] + ''; return trims(src)
     },
     submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
         async (data: ONE) => {

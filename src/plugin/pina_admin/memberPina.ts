@@ -12,8 +12,11 @@ export const memberPina = defineStore("memberPina", {
     actions: {
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },
         async fetchOne(id: ID): NET_RES_FUTURE {
-            const res: NET_RES = await serv_member_one(id)
-            if (!isstr(res)) { this.one_of_edit = res as ONE } else { $toast(res + '') } 
+            let res: NET_RES = await serv_member_one(id)
+            if (!isstr(res)) { 
+                res = res as ONE;
+                res.member_level = res.member_level ? res.member_level.id : 1
+                this.one_of_edit = res } else { $toast(res + '') } 
             return res
         }
     }

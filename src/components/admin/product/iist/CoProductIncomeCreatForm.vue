@@ -4,7 +4,9 @@
             <o-time :form="form" :pk="'in_date'"/>
         </o-input-i>
         <o-input-i :tit="'入庫時間'" :err="errs.in_time" :icon="'hour'">
+            <!--
             <o-hours :form="form" :pk="'in_time'"/>
+            -->
         </o-input-i>
 
         <o-input :tit="'供應商編號'" :err="errs.suppiier_number">

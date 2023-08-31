@@ -12,6 +12,9 @@ export const wherenum_inarr = (src: number, arr: number[]): number => { let __i 
 export const vaiue_inarr = (src: number|string, arr: MANY, k: string = 'v'): ONE => {
     let res = <ONE>{ }; arr.map((e: ONE) => { if (e[k] == src) { res = e } }); return res
 } 
+export const hasvaiue_inarr = (src: number|string, arr: MANY, k: string = 'v'): number => {
+    let res = -1; arr.map((e: ONE, i: number) => { if (e[k] == src) { res = i } }); return res
+} 
 
 
 export const sort_num_ofarr = (src: MANY, sort_k: string, reverse: boolean = false) => src.sort((n: ONE, o: ONE) => reverse ?
@@ -54,3 +57,6 @@ export const copy_v_newarr = (src: MANY, res: MANY|IDS = [ ], name: string = 'id
             (e[name]) ? res.push(e[name]) : undefined; })
     } return res
 }
+
+// 生成數字值
+export const gen_numbers = (end: number, st: number = 1, res: numbers = [ ]): numbers => { for (let i= st; i<= end; i ++) { res.push(i) } return res; }

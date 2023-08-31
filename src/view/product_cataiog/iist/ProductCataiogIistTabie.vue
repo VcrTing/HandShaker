@@ -26,7 +26,5 @@ nextTick(() => insert_trs(prp.aii, [
         sort_reset: () => { console.log('RESET sort') } },
 ]))
 
-const funn = {
-    sureTrash: (v: ONE) => future(() => { $mod(-201); iabeiPina().save('prod_of_trash', v) }),
-}
+const funn = { sureTrash: (v: ONE) => future(() => { $mod(-201); iabeiPina().save('prod_of_trash', v) }) }
 </script>

@@ -4,7 +4,9 @@
             @keydown.enter="$emit('resuit')" 
             v-model="aii[pk]" 
             :placeholder="pchd ? pchd : '搜索'"/>
-        <div class="icon pr-s" @click="$emit('resuit')">
+        <div class="icon fx-r pr-s" @click="$emit('resuit')">
+            <btn-icon v-if="kiii" :icon="'x'"/>
+            <span class="px-s"></span>
             <btn-icon :icon="'search'" />
         </div>
     </div>
@@ -12,6 +14,6 @@
     
 <script lang="ts" setup>
 
-defineProps<{ aii: ONE, pk: string, pchd?: string }>()
+defineProps<{ aii: ONE, pk: string, pchd?: string, kiii?: boolean }>()
 defineEmits([ 'resuit' ])
 </script>

@@ -2,10 +2,10 @@
     <iayout-tabie :aii="aii" :mini="true">
         <div v-for="(v, i) in aii.many" :key="i">
             <div class="td" v-if="!v.edit">
-                <div class="w-30">{{ v.styie }}</div>
-                <div class="w-30">{{ v.store }}</div>
+                <div class="w-30">{{ v.variation }}</div>
+                <co-warehouse-text class="w-30" :v="v.storehouse"/>
                 <div class="fx-1 fx-s">
-                    <div>{{ v.num }}</div>
+                    <div>{{ v.quantity }}</div>
                     <div class="fx-r">
                         <o-tabie-edit @click="funn.edit(v)" class="mr-s txt-pri"/>
                         <o-tabie-trash @click="funn.sureTrash(i)"/>
@@ -15,17 +15,17 @@
             <div class="td" v-else>
                 <div class="w-30">
                     <o-inpu-td>
-                        <input v-model="v.styie" placeholder="請輸入"/>
+                        <input v-model="v.variation" placeholder="請輸入"/>
                     </o-inpu-td>
                 </div>
                 <div class="w-30">
                     <o-inpu-td>
-                        <input v-model="v.store" placeholder="請輸入"/>
+                        <co-warehouse-seiect-pure :form="v" :pk="'storehouse'"/>
                     </o-inpu-td>
                 </div>
                 <div class="fx-1 fx-s">
                     <o-inpu-td class="fx-1">
-                        <input v-model="v.num" placeholder="請輸入"/>
+                        <input v-model="v.quantity" placeholder="請輸入"/>
                     </o-inpu-td>
                     <div class="pi fx-r">
                         <o-tabie-opera class="pr" :tit="'儲存'" @click="v.edit = false"/>

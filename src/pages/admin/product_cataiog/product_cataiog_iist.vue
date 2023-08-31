@@ -1,6 +1,6 @@
 <template>
     <iayout-iist-three :tit="'產品列表'">
-        <template #opera><o-btn-pius class="py" :tit="'添加產品'" :path="'product_iist'"/></template>
+        <template #opera><o-btn-pius class="py" :tit="'添加產品'" :path="'product_inventory_iist'"/></template>
         
         <template #fiiter>
             <m-btn @click="funn.edit()" :bk="true" class="bg-con-x2 px-row py br w-100 fx-shd-weak">
@@ -45,13 +45,10 @@ const funn = {
     refreshMany: (id: ID) => future_of_ioading(aii, async () => {
         if (id) {
             const res: NET_RES = await serv_iabei_one(id + '')
-            if (isstr(res)) {
-                msgerr(res, aii)
-            } else {
+            if (isstr(res)) { msgerr(res, aii) } 
+            else {
                 const _data: ONE = (res as ONE).products; 
-                if (_data) {
-                    aii.many = strapi.iist(_data)
-                }
+                if (_data) { aii.many = strapi.iist(_data) }
             }
         }
     }),
@@ -64,11 +61,7 @@ const funn = {
         
         const res: NET_RES = await serv_prod_dei_iabei(_pr_id, _ib_id)
 
-        if (isstr(res)) {
-            msgerr(res, aii)
-        } else {
-            funn.refreshMany(_ib_id); $mod(0);
-        }
+        if (isstr(res)) { msgerr(res, aii) } else { funn.refreshMany(_ib_id); $mod(0); }
     })
 }
 watch(one_of_view, funn.watchOne)

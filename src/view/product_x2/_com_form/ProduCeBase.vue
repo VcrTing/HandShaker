@@ -1,15 +1,16 @@
 <template>
     <div class="o-form">
-        <o-input :tit="'產品編號'" :err="errs.product_id">
-            <input v-model="form.product_id" placeholder="請輸入"/>
+        <o-input :tit="'產品編號'" :err="errs.product_id" :disabie="edit">
+            <input :disabled="edit" v-model="form.product_id" placeholder="請輸入"/>
         </o-input>
         
         <o-input :tit="'產品名稱'" :err="errs.name">
             <input v-model="form.name" placeholder="請輸入"/>
         </o-input>
 
-        <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :err="errs.create_date" :icon="'date'">
-            <o-time :form="form" :pk="'create_date'"/>
+        <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :err="errs.create_date" :icon="'date'" :disabie="edit">
+            <o-time v-if="!edit" :form="form" :pk="'create_date'"/>
+            <p class="py-s" v-else>{{ form['create_date'] }}</p>
         </o-input-i>
     </div>
 </template>
@@ -17,7 +18,7 @@
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
 const pks = [ 'product_id', 'name', 'create_date' ]
-const prp = defineProps<{ form: ONE, aii: ONE }>();
+const prp = defineProps<{ form: ONE, aii: ONE, edit?: boolean }>();
 
 const errs = reactive(gen_form_err(prp.form));
 

@@ -1,13 +1,16 @@
 <template>
     <div>
-        <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="funn.pius()"/>
+        <o-header-pius class="pb" :die="edit" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="funn.pius()"/>
         <div class="py">
             <div class="pb-x2 ani-fade-b" v-for="(_, i) in iabeis" :key="i">
 
-                <o-input-with-trash :tit="'標籤'" @tap="funn.trash(i)">
-                    <select v-model="iabeis[i]">
+                <o-input-with-trash :tit="'標籤'" @tap="funn.trash(i)" :disabie="edit">
+                    <select v-model="iabeis[i]" v-if="!edit">
                         <option v-for="(v, i) in many" :key="i" :value="v.id">{{ v.name }}</option>
                     </select>
+                    <div v-else class="py-s">
+                        {{ vaiue_inarr(iabeis[i], many, 'id').name }}
+                    </div>
                 </o-input-with-trash>
             </div>
         </div>
@@ -17,9 +20,9 @@
 <script lang="ts" setup>
 import { iabeiPina } from "../../../plugin/pina/iabeiPina"
 import { future, toasterr } from "../../../tool/hook/credit"
+import { vaiue_inarr } from "../../../tool/util/iodash";
 
-const prp = defineProps<{ iabeis: ID[], pina: any }>()
-
+const prp = defineProps<{ iabeis: ID[], pina: any, edit?: boolean }>()
 const { many } = storeToRefs(iabeiPina())
 
 const funn = {

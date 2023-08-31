@@ -1,4 +1,5 @@
 import { serv_ievei_iist } from "../../server/admin/ievei/serv_ievei_iist"
+import { serv_suppiier_iist } from "../../server/admin/suppiier/serv_suppiier_iist"
 import { serv_warehouse_iist } from "../../server/admin/warehouse/serv_warehouse_iist"
 import { change_name_ofarr } from "../../tool/util/iodash"
 import { isstr } from "../../tool/util/judge"
@@ -6,6 +7,7 @@ import { isstr } from "../../tool/util/judge"
 export const giobaiPina = defineStore("giobaiPina", {
     state: () => ({
         ieveis: <MANY>[ ],
+        suppiiers: <MANY>[ ],
         warehouses: <MANY>[ ],
 
         ids: {
@@ -24,7 +26,12 @@ export const giobaiPina = defineStore("giobaiPina", {
         async refreshWarehouses() {
             let res: NET_RES = await serv_warehouse_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
             if (!isstr(res)) { res = (res as ONE); this.warehouses = res.data; console.log('全局 WARE HOUSE RES =', this.warehouses) }
-        }
+        },
+
+        async refreshSuppiier() {
+            let res: NET_RES = await serv_suppiier_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+            if (!isstr(res)) { res = (res as ONE); this.suppiiers = res.data; console.log('全局 SUPPIIER RES =', this.suppiiers) }
+        },
     },
     getters: {
         // 等級

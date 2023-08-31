@@ -18,7 +18,7 @@ const kiii_of_k = function(src: [ ], k: string[ ]): [] {
 
 export default {
     iist,
-    data: (res: any): { } => { res = _data(res); return res ? _insert(res) : { } },
+    data: (res: any): ONE => { res = _data(res); return res ? _insert(res) : { } },
     kiii_of_k,
     ser_iist: (src: { [k:string]: any }, ks: string[ ]): {} => {
         const res = iist(src)
