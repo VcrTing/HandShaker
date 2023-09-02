@@ -1,0 +1,1 @@
+import{n as a,E as r}from"./errors_user-cb2ffdc2.js";import{a as e,c as n,b as p,d as o}from"./net-tooi-3112abf7.js";const i="suppiiers",c=async(s,t)=>e(r,async()=>n(await a.get(i,p.buiid_pager(s,t)))),m=async s=>e(r,async()=>o(await a.one(i,s+"")));export{m as a,c as s};

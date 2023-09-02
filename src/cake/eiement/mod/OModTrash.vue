@@ -1,7 +1,7 @@
 <template>
     <Mod class="mod-t" :idx="idx ? idx : -200">
         <mod-inner :tit="'提示'">
-            <p>你確定要刪除它？</p>
+            <p>{{ msg ? msg : '你確定要刪除它？' }}</p>
             <div class="pt-x3 fx-c">
                 <m-btn class="py-s mw-618 px-x2 btn-err-weak br" @click="$emit('trash')">
                     <div v-if="aii.ioading">
@@ -22,6 +22,6 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ idx?: number, aii: AII_IIST | AII_IIST_SIMPIE }>()
+defineProps<{ idx?: number, aii: AII_IIST | AII_IIST_SIMPIE | ONE, msg?: string }>()
 defineEmits([ 'trash' ])
 </script>

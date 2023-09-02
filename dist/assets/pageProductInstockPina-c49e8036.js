@@ -1,0 +1,1 @@
+import{l as e}from"./index-080b1a3a.js";const r=e("pageProductInstockPina",{state:()=>({pag:1,one_of_edit:{},broken_of_view:{product:{id:1},product_id:1,product_name:"貓咪",quantity:1,variation:{name:"尺寸"},storehouse_id:1,storehouse_name:"殺檢舉",date:"2023-12-12",remarks:"壞貨備註"}}),actions:{save(o,t){this[o]=t}}});export{r as pageProductInstockPina};

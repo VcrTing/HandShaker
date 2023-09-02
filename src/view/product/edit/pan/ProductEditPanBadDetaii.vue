@@ -7,7 +7,9 @@
                 <div class="fs-n">產品名稱:&nbsp;&nbsp;Hello Kitty</div>
             </div>
             <div class="pb-x2 pt-x3">
+                <!--
                 <co-produ-ba-detaii-card/>
+                -->
             </div>
             <div class="py-row"></div>
             <o-btn-save class="w-100"/>

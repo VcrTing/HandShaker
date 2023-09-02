@@ -18,7 +18,7 @@ import { choiseOnePina } from '../../../plugin/pina/choiseOnePina'
 
 const rtr = useRouter()
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ product_id: null, product_name: '', quantity: 1, storehouse_id: null, date: '', remarks: '' })
+const form = reactive({ product_id: null, variation: 0, product_name: '', quantity: 1, storehouse_id: null, date: '', remarks: '' })
 
 const funn = {
     buiid: () => (aii.can ? form : null),

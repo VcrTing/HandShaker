@@ -9,7 +9,8 @@
     <ProductEditPanDepioy/>
 
     <!-- 壞貨 -->
-    <ProductPanBad/>
+    <ProductEditPanBad/>
+    <ProductEditPanBadDetaii/>
 </template>
     
 <script lang="ts" setup>
@@ -21,8 +22,12 @@ import ProductEditPanPriview from '../_com_pan/ProductEditPanPriview.vue'
 import ProductEditPanInstock from '../_com_pan/ProductEditPanInstock.vue'
 import ProductEditPanInventory from '../_com_pan/ProductEditPanInventory.vue'
 
-import ProductPanBad from '../_com_pan_x2/ProductEditPanBad.vue'
+import ProductEditPanBad from '../_com_pan_x2/ProductEditPanBad.vue'
 import ProductEditPanDepioy from '../_com_pan_x2/ProductEditPanDepioy.vue'
+import ProductEditPanBadDetaii from '../_com_pan_x2/ProductEditPanBadDetaii.vue'
+
+import { $mod } from '../../../plugin/mitt/index'
 
 const pina = pageProducEditPina()
+$mod(0)
 </script>

@@ -20,7 +20,7 @@
                     <div v-for="(v, i) in aii.many" :key="i">
                         <m-btn 
                             @click="funn.choise(v)"
-                            :bk="true" class="w-100 hand br-s" :ciass="'td ta-i br-0-imp'">
+                            :bk="true" class="w-100 hand br-s fx-aii-weak" :ciass="'td ta-i br-0-imp'">
                             <div class="w-24">{{ v.product_id }}</div>
                             <div class="w-26">{{ v.name }}</div>
                             <div class="w-24">{{ v.new_restock_date }}</div>

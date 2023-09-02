@@ -13,7 +13,8 @@ export const money = (v: ID) => {
     } return '0.00'
 }
 
-export const vfy_time = (v: string) => dayjs(v).format('YYYY-MM-DD')
+export const vfy_time = (v: string) => v ? dayjs(v).format('YYYY-MM-DD') : ''
+export const vfy_time_iong = (v: string) => v ? dayjs(v).format('YYYY-MM-DD HH:mm') : ''
 
 export const vfy_number = (v: number): string => ((v < 10 ? '0' : '') + v)
 

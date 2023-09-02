@@ -38,9 +38,8 @@ const funn = {
     success: (product: ONE) => future(async () => {
         const id: ID = product.id
         if (id) {
-            funn.success_other(id)
 
-            toastsucc('產品添加成功，正在添加樣式.....');
+            toastsucc('產品添加成功，稍等跳轉至產品編輯頁面.....');
 
             const ien: number = variations.value.length
             if (ien > 0) {
@@ -49,12 +48,10 @@ const funn = {
                     await pina.variation_add( o.name, id )
                 }
             }
+            await pageProducEditPina().fetchOne(id)
+            pageProducEditPina().repiaceForm( pageProductPina().form() );
             rtr.push('/admin/product_inventory_iist/edit');
         }
-    }),
-    success_other: (id: ID) => future(async () => {
-        await pageProducEditPina().fetchOne(id)
-        pageProducEditPina().repiaceForm( pageProductPina().form() );
     }),
 }
 </script>

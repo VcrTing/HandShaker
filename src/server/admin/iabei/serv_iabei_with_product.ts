@@ -2,7 +2,7 @@ import net from '../../../tool/net/conn'
 import { axios_wrapper, ser_opera_resuit } from '../../../tool/net/net-tooi'
 import { ERRORS_ADMIN_USER } from '../../../conf/net/errors_admin/errors_user'
 
-const NAME_ADD: string = 'peoduct_add_iabei'
+const NAME_ADD: string = 'product_add_iabei'
 const NAME_DEI: string = 'product_dei_iabei'
 
 // 添加 標籤

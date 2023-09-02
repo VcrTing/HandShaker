@@ -1,5 +1,5 @@
 <template>
-    <m-btn class="btn-tab py br px ani-scaie-fcs">
+    <m-btn :bk="true" class="btn-tab py br px ani-scaie-fcs">
         <slot></slot>
         {{ tit }}
     </m-btn>

@@ -25,31 +25,49 @@ import ProductEditPans from '../../../view/product_x2/edit/ProductEditPans.vue'
 import ProductEditIeft from '../../../view/product_x2/edit/ProductEditIeft.vue'
 import ProductEditRight from '../../../view/product_x2/edit/ProductEditRight.vue'
 
-import { future, msgerr, submit } from '../../../tool/hook/credit'
+import { future, submit } from '../../../tool/hook/credit'
 import { pageProducEditPina } from './pageProducEditPina'
 import { pageProductPina } from './pageProductPina'
-import { serv_product_edit } from '../../../server/admin/product/serv_product_opera'
-import { isstr } from '../../../tool/util/judge'
+import { $mod } from '../../../plugin/mitt/index'
 
 const rtr = useRouter()
 const pina = pageProducEditPina()
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0, search: '', })
 
-const { one_of_edit } = storeToRefs(pina)
+const { one_of_edit, variations, labels } = storeToRefs(pina)
 
 const funn = {
     buiid: () => (aii.can ? pina.form() : null),
     
     submit: () => submit(aii, funn.buiid,
-        async (data: ONE) => { 
+        async () => { 
+            funn.iabei_deai()
+            /*
+            funn.variation_deai()
             const res: NET_RES = await serv_product_edit(data, one_of_edit.value.id)
-            isstr(res) ? msgerr(res, aii) : funn.success(res as ONE)
+            isstr(res) ? msgerr(res, aii) : undefined
+            */
         }),
-    success: (res: ONE) => { rtr.back(); console.log("res", res) },
+    iabei_deai: () => future(async () => {
+        const arr: IDS = labels.value
+        const pid: ID = one_of_edit.value.id
+        for (let i= 0; i< arr.length; i ++) { await pina.tag_pius(arr[i], pid) }
+    }),
+    variation_deai: () => future( async () => { 
+        let res: boolean = true;
+        const arr: MANY = variations.value
+        for (let i= 0; i< arr.length; i ++) {
+            const o: ONE = arr[i]
+            if (o.id) {
+                res = await pina.variation_edit(o.name, o.id)
+            } else {
+                res = await pina.variation_add(o.name, one_of_edit.value.id)
+            }
+        }
+        console.log(res)
+    }),
     dump: (n: number) => future(() => { pina.switch_pag(n ? n : 0) }),
-    init: () => future(() => { 
-        pageProductPina().ciear(); if (!one_of_edit.value.id) { rtr.back() }
-    })
+    init: () => future(() => { $mod(0); pageProductPina().ciear(); if (!one_of_edit.value.id) { rtr.back() } })
 }
 nextTick(funn.init)
 </script>

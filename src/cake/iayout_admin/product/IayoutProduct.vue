@@ -7,7 +7,7 @@
                 <slot name="ieft"></slot>
             </div>
         </div>
-        <div class="w-68 w-63-p py-row px op-0"
+        <div class="w-68 w-63-p py-row pi-row pr op-0"
             :class="{ 'ani-page': ani >= 1 }"
         >
             <div class="pt">

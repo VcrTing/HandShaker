@@ -2,9 +2,9 @@
     <iayout-tabie :aii="aii">
         <div class="td" v-for="(v, i) in aii.many" :key="i">
             <div class="w-9">{{ v.product_id }}</div>
-            <div class="w-13">{{ v.name }}</div>
-            <div class="w-9">{{ v.new_supplier }}</div>
-            <div class="w-15">{{ v.new_restock_date }}</div>
+            <div class="w-12">{{ v.name }}</div>
+            <div class="w-10">{{ v.new_supplier }}</div>
+            <div class="w-15 pr-s">{{ vfy_time_iong(v.new_restock_date) }}</div>
             <div class="w-11">{{ v.new_restock_price }}</div>
             <div class="w-11">{{ v.new_lowest_price }}</div>
             <div class="w-9">{{ v.new_selling_price }}</div>
@@ -24,9 +24,11 @@
 </template>
     
 <script lang="ts" setup>
-import { nextTick } from 'vue';
 import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina';
 import { iist_deiay_insert } from '../../../tool/app/anim'
+import { vfy_time_iong } from '../../../tool/util/view';
+
+
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
@@ -38,8 +40,8 @@ nextTick(() => new Promise(rej => {
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },
                 sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'w-13', tit: '產品名稱' },
-            { ciass: 'w-9', tit: '供應商' },
+            { ciass: 'w-12', tit: '產品名稱' },
+            { ciass: 'w-10', tit: '供應商' },
             { ciass: 'w-15', tit: '最新入貨時間',
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },

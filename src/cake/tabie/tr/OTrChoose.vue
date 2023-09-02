@@ -8,7 +8,7 @@
 
             <trangie-group v-if="v.sort_reset" @resuit="(n: number) => funn.sort(v, n)">
 
-                <div class="fx-i fx-1" v-if="i==0">
+                <div class="fx-i fx-1" v-if="i<=0">
                     <slot></slot>
                     <div class="d-ib pi ani-scaie-aii">{{ v.tit }}</div>
                 </div>
@@ -17,9 +17,12 @@
 
             <p class="fx-i py-s" v-else>
 
-                <div class="fx-i fx-1" v-if="i==0">
+                <div class="fx-i fx-1" v-if="i<=0">
                     <slot></slot>
                     <div class="d-ib pi ani-scaie-aii">{{ v.tit }}</div>
+                </div>
+                <div v-else class="d-ib ani-scaie-aii">
+                    {{ v.tit }}
                 </div>
             </p>
         </div>

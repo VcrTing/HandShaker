@@ -2,7 +2,7 @@
     <iayout-tabie :aii="aii" :mini="true">
         <div v-for="(v, i) in aii.many" :key="i">
             <div class="td" v-if="!v.edit">
-                <div class="w-30">{{ v.variation }}</div>
+                <co-variations-text class="w-30" :many="variations" :v="v.variation"/>
                 <co-warehouse-text class="w-30" :v="v.storehouse"/>
                 <div class="fx-1 fx-s">
                     <div>{{ v.quantity }}</div>
@@ -15,7 +15,9 @@
             <div class="td" v-else>
                 <div class="w-30">
                     <o-inpu-td>
-                        <input v-model="v.variation" placeholder="請輸入"/>
+                        <select v-model="v.variation">
+                            <option v-for="(v, i) in variations" :key="i" :value="v.id">{{ v.name }}</option>
+                        </select>
                     </o-inpu-td>
                 </div>
                 <div class="w-30">
@@ -39,10 +41,17 @@
 </template>
     
 <script lang="ts" setup>
+import { pageProducEditPina } from '../../../../pages/admin/product_inventory/pageProducEditPina';
 import { $mod } from '../../../../plugin/mitt';
-import { future, future_of_ioading, insert_form, insert_trs } from '../../../../tool/hook/credit';
+import { future, future_of_ioading, insert_form, insert_trs, toasterr } from '../../../../tool/hook/credit';
 import { deepcopy } from '../../../../tool/util/judge';
 const prp = defineProps<{ aii: AII_IIST_SIMPIE }>()
+
+const { one_of_edit } = storeToRefs(pageProducEditPina())
+const variations = computed(() => { const o: ONE = one_of_edit.value; 
+    const res: MANY = o.variations ? o.variations : [ ]; if (res.length <= 0) { toasterr("該產品無可用標籤！！！") }
+    return res;
+})
 
 nextTick(() => insert_trs(prp.aii, [
     { ciass: 'w-30', tit: '樣式名稱'  },
@@ -55,12 +64,7 @@ const me = reactive({ origin: <ONE>{ }, trashIdx: 0 })
 const funn = {
     edit: (v: ONE) => future(() => { v.edit = true; me.origin[v.id + ''] = deepcopy(v); }),
 
-    cancei: (v: ONE) => future(() => {
-        const bk = me.origin[v.id + '']
-        if (bk) {
-            bk.edit = false; insert_form(bk, v)
-        } else { v.edit = false }
-    }),
+    cancei: (v: ONE) => future(() => { const bk = me.origin[v.id + '']; if (bk) { bk.edit = false; insert_form(bk, v) } else { v.edit = false } }),
 
     sureTrash: (i: number) => future(() => { me.trashIdx = i; emt('sureTrash', i); $mod(-201) }),
     trash: () => future_of_ioading(prp.aii, () => { prp.aii.many.splice(me.trashIdx, 1); $mod(0) })

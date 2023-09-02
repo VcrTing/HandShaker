@@ -1,10 +1,10 @@
 <template>
     <div>
-        <o-header-pius class="pb" :die="edit" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="funn.pius()"/>
+        <o-header-pius class="pb" :tit="'標籤'" :tit_pius="'添加標籤'" @tap="funn.pius()"/>
         <div class="py">
             <div class="pb-x2 ani-fade-b" v-for="(_, i) in iabeis" :key="i">
 
-                <o-input-with-trash :tit="'標籤'" @tap="funn.trash(i)" :disabie="edit">
+                <o-input-with-trash :tit="'標籤'" @tap="funn.trash(i)">
                     <select v-model="iabeis[i]" v-if="!edit">
                         <option v-for="(v, i) in many" :key="i" :value="v.id">{{ v.name }}</option>
                     </select>

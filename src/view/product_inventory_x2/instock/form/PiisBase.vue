@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="w-333">
-                <o-input-i :icon="'restock_date'" :err="errs.restock_date" :tit="'入貨日期'">
+                <o-input-i :icon="'date'" :err="errs.restock_date" :tit="'入貨日期'">
                     <o-time :form="form" :pk="'restock_date'"/>
                 </o-input-i>
             </div>

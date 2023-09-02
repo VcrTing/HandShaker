@@ -4,9 +4,12 @@
         <div class="py">
             <div class="pb-x2 ani-fade-b" v-for="(v, i) in variations" :key="i">
 
-                <o-input-with-trash :tit="'樣式'" @tap="funn.trash(i)">
+                <o-input-with-trash v-if="!v.__kiii_trash" :tit="'樣式'" @tap="funn.trash(i)">
                     <input v-model="v.name" placeholder="請輸入樣式名稱"/>
                 </o-input-with-trash>
+                <o-input v-else :tit="'樣式'">
+                    <input v-model="v.name" placeholder="請輸入樣式名稱"/>
+                </o-input>
             </div>
         </div>
     </div>
@@ -15,7 +18,7 @@
 <script lang="ts" setup>
 import { future } from "../../../tool/hook/credit"
 
-const prp = defineProps<{ variations: MANY, pina: any }>()
+const prp = defineProps<{ variations: MANY, pina: any, edit?: boolean }>()
 
 const funn = {
     pius: () => future(() => {

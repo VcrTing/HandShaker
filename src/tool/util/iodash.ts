@@ -48,7 +48,7 @@ export const change_name_ofarr = (src: MANY, names: ONE) => {
 }
 
 // 默認值
-export const def_v_inarr = (src: MANY, name: string = 'v') => (src.length > 0) ? src[ 0 ][ name ] : ''
+export const def_v_inarr = (src: MANY, name: string = 'v') => (src.length > 0) ? src[ 0 ][ name ] : null
 
 // 複製值
 export const copy_v_newarr = (src: MANY, res: MANY|IDS = [ ], name: string = 'id') => {

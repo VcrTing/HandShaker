@@ -1,14 +1,15 @@
 <template>
     <div class="o-form">
-        <o-input :tit="'產品編號'" :err="errs.product_id" :disabie="edit">
-            <input :disabled="edit" v-model="form.product_id" placeholder="請輸入"/>
+        <o-input :tit="'產品編號'" :err="errs.product_id" :class="{ 'ani-scaie-hv': edit }" :disabie="edit">
+            <input v-if="!edit" v-model="form.product_id" placeholder="請輸入"/>
+            <p v-else class="py-s">{{ form.product_id }}</p>
         </o-input>
         
         <o-input :tit="'產品名稱'" :err="errs.name">
             <input v-model="form.name" placeholder="請輸入"/>
         </o-input>
 
-        <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :err="errs.create_date" :icon="'date'" :disabie="edit">
+        <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :class="{ 'ani-scaie-hv': edit }" :err="errs.create_date" :icon="'date'" :disabie="edit">
             <o-time v-if="!edit" :form="form" :pk="'create_date'"/>
             <p class="py-s" v-else>{{ form['create_date'] }}</p>
         </o-input-i>

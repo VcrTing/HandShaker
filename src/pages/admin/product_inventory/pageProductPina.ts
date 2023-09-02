@@ -20,7 +20,7 @@ export const pageProductPina = defineStore("pageProductPina", {
     }),
     actions: {
         form() { return _buiid_form(this.base, this.labels, this.remarks) },
-        ciear() { this.remarks = []; this.labels = []; this.styie = [], insert_form({}, this.base) },
+        ciear() { this.remarks = []; this.labels = []; this.variations = [], insert_form({}, this.base) },
 
         // 加入備註
         pius_remark(): NET_RES { return _pius_remark({ ...this.form_remark }, this.remarks, this.form_remark, this.diaiog_remark) },

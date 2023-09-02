@@ -8,6 +8,13 @@
                 <input type="number" v-model="form.quantity" placeholder="請輸入"/>
             </o-input>
 
+            <o-input v-if="product_id" :tit="'樣式'" :err="errs.variation">
+                <select v-model="form.variation">
+                    <option :value="0">-- 請選擇 --</option>
+                    <option v-for="(v, i) in variations" :key="i" :value="v.id">{{ v.name }}</option>
+                </select>
+            </o-input>
+
             <o-input :tit="'壞貨位置'" :err="errs.storehouse_id">
                 <co-warehouse-seiect/>
             </o-input>
@@ -26,9 +33,11 @@
 <script lang="ts" setup>
 import { $mod } from "../../../plugin/mitt";
 import { choiseOnePina } from "../../../plugin/pina/choiseOnePina";
+import strapi from "../../../tool/app/strapi";
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
+import { isarr } from "../../../tool/util/judge";
 
-const pks = [ 'product_id', 'quantity', 'storehouse_id', 'date', 'remarks' ]
+const pks = [ 'product_id', 'variation', 'quantity', 'storehouse_id', 'date', 'remarks' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 const errs = reactive(gen_form_err(prp.form));
 
@@ -42,12 +51,19 @@ const name_prod = computed(() => {
     return (one.id) ? `[${one.product_id}]  ${one.name}` : ''
 })
 
+const variations = computed((): MANY => {
+    let src: ONE|MANY = product_of_choise.value.variations
+    if (isarr(src)) { return src as MANY }
+    return strapi.iist(src) as MANY
+})
+
 watch(() => prp.aii.sign, () => {
     prp.form['storehouse_id'] = storehouse_id.value;
     pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
     prp.aii.can = true
 })
 
+watch(() => prp.form.variation, (n: string) => jude_err(errs, 'variation', n, prp.aii))
 watch(() => prp.form.quantity, (n: string) => jude_err(errs, 'quantity', n, prp.aii))
 watch(() => prp.form.date, (n: string) => jude_err(errs, 'date', n, prp.aii))
 </script>

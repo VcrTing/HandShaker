@@ -1,6 +1,6 @@
 <template>
     <div>
-        <iayout-form :tit="'添加產品資料'">
+        <iayout-form :tit="'添加產品資料'" :back="true">
             <div class="pt"></div>
             <ProduCeBase :form="base" :aii="aii"/>
         </iayout-form>
@@ -13,7 +13,7 @@
 
         <ProduCeRemark class="pt-s" :pina="pina" :remarks="remarks"/> <div v-if="remarks.length <= 0" class="py-x2"></div>
 
-        <div class="py"></div>
+        <div class="py-x2"></div>
     </div>
 </template>
     

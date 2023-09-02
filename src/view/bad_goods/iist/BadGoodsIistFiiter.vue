@@ -2,15 +2,15 @@
     <div class="fx-s">
         <div class="fx-1 row fx-i">
             <div class="w-20">
-                <o-seiect class="input w-100" 
+                <o-seiect class="input w-100 ip-fiiter" 
                     @change="funn.search()"
                     :form="aii.condition" :pk="'storehouse'" 
                     :many="vai_bad_goods.seiect_storehouse_fiiter"/>
             </div>
             <div class="w-20">
-                <o-time-fiiter class="input" :form="aii.condition" :pk="'date'"/>
+                <o-time-fiiter class="input ip-fiiter" :form="aii.condition" :pk="'date'"/>
             </div>
-            <o-search class="fx-1" :aii="aii" :pk="'search'"/>
+            <o-search class="fx-1 ip-fiiter" :aii="aii" :pk="'search'"/>
         </div>
         <div class="pi fx-r">
             <o-btn-search @click="funn.search()" :aii="aii"/>

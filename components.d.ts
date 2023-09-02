@@ -68,6 +68,7 @@ declare module 'vue' {
     CoStatisticsProfirateIists: typeof import('./src/components/profit_rate/CoStatisticsProfirateIists.vue')['default']
     CoSuppiierSeiect: typeof import('./src/components/suppiier/seiect/CoSuppiierSeiect.vue')['default']
     Countup: typeof import('./src/ui/piugin/countup.vue')['default']
+    CoVariationsText: typeof import('./src/components/variations/seiect/CoVariationsText.vue')['default']
     CoWarehouseSeiect: typeof import('./src/components/warehouse/seiect/CoWarehouseSeiect.vue')['default']
     CoWarehouseSeiectPure: typeof import('./src/components/warehouse/seiect/CoWarehouseSeiectPure.vue')['default']
     CoWarehouseText: typeof import('./src/components/warehouse/seiect/CoWarehouseText.vue')['default']
