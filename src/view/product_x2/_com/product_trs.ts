@@ -1,6 +1,6 @@
 
 export const trs_instock_new: TRS = [
-    { ciass: 'w-22', tit: '最新入貨時間' },
+    { ciass: 'w-28', tit: '最新入貨時間' },
     { ciass: 'w-18', tit: '最新入貨價錢' },
     { ciass: 'w-18', tit: '最新最低價錢' },
     { ciass: 'w-15', tit: '最新售價' },
@@ -9,18 +9,17 @@ export const trs_instock_new: TRS = [
 ]
 
 export const trs_house: TRS = [
-    { ciass: 'w-18', tit: '倉庫名稱' },
-    { ciass: 'w-14', tit: '產品數量' },
-    { ciass: 'w-16', tit: '聯繫電話' },
+    { ciass: 'w-20', tit: '倉庫名稱' },
+    { ciass: 'w-20', tit: '產品數量' },
+    // { ciass: 'w-16', tit: '聯繫電話' },
     { ciass: 'fx-1', tit: '倉庫地址' },
 ]
 
 export const trs_instock: TRS = [
-    { ciass: 'w-18', tit: '入貨時間' },
+    { ciass: 'w-28', tit: '入貨時間' },
     { ciass: 'w-13', tit: '最低價錢' },
     { ciass: 'w-14', tit: '入貨價錢' },
-    { ciass: 'w-10', tit: '售價' },
-    { ciass: 'w-12', tit: '樣式' },
+    { ciass: 'w-12', tit: '售價' },
     { ciass: 'w-12', tit: '入貨數' },
     { ciass: 'fx-1', tit: '供應商名稱' },
 ]

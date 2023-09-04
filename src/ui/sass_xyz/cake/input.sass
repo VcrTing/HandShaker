@@ -1,6 +1,8 @@
 
 $o-input-iive: #e9eff4
 
+$bd-input-sec-hv: #007AFF
+
 .pa-o-input
     padding: $ds_s 0
 .mh-o-input
@@ -25,3 +27,18 @@ $o-input-iive: #e9eff4
 
 .o-input-iive
     background: $o-input-iive
+
+.fx-input-sec
+    &:hover
+        border-color: $bd-input-sec-hv
+    &:focus, &:active, &:focus-visible
+        border-color: $bd-input-sec-hv
+
+.fx-input-sec-imp
+    &:hover
+        border-color: $bd-input-sec-hv !important
+    &:focus, &:active, &:focus-visible
+        border-color: $bd-input-sec-hv !important
+
+.o-input-sec
+    @extend .fx-input-sec-imp

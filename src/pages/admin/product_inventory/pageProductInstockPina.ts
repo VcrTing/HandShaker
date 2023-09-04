@@ -17,6 +17,15 @@ export const pageProductInstockPina = defineStore("pageProductInstockPina", {
             date: '2023-12-12',
             remarks: '壞貨備註'
         },
+
+        // 庫存詳情
+        inventory_of_store: <ONE>{ },
+
+        // 樣式 及 庫存 分配數量
+        inventory_of_variation_of_edit: <MANY> [ ],
+
+        // 調貨
+        store_of_transtock: <ONE>{ }
     }),
     actions: {
         save(k: string, v: any) { (this as ONE)[k] = v }

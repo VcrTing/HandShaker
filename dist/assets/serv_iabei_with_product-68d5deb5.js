@@ -1,1 +1,0 @@
-import{n as r,E as t}from"./errors_user-cb2ffdc2.js";import{a as _,s as e}from"./net-tooi-3112abf7.js";const i="product_add_iabei",o="product_dei_iabei",c=async(a,s)=>_(t,async()=>e(await r.put(i,{},a+"/"+s))),d=async(a,s)=>_(t,async()=>e(await r.put(o,{},a+"/"+s)));export{c as a,d as s};

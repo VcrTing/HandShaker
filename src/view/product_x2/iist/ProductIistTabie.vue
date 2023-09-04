@@ -9,14 +9,11 @@
             <div class="w-11">{{ v.new_lowest_price }}</div>
             <div class="w-9">{{ v.new_selling_price }}</div>
             <div class="w-10">{{ v.average_restock_price }}</div>
-            <div class="w-6">{{ v.total_stock }}</div>
-            <div class="fx-1 ta-r">
-                <o-tabie-opera :tit="'庫存詳情'"/>
-                <div class="fx-r">
-                    <o-tabie-edit :id="v.id" :func="funn.editFuture" @tap="funn.dump" class="txt-pri"/>
-                    <!--
-                    <o-tabie-trash @click="funn.trash(v)"/>
-                    -->
+            <div class="fx-1 fx-s">
+                <div>{{ v.total_stock }}</div>
+                <div class="d-ib fx-wp pi ta-r">
+                    <o-tabie-opera class="w-100" :tit="'庫存詳情'"/>
+                    <o-tabie-edit class="w-100 txt-pri"  :id="v.id" :func="funn.editFuture" @tap="funn.dump"/>
                 </div>
             </div>
         </div>
@@ -46,27 +43,17 @@ nextTick(() => new Promise(rej => {
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },
                 sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'w-11', tit: '最新入貨價錢',
-                sort_up: () => { console.log('UP sort') },
-                sort_down: () => { console.log('DOWN sort') },
-                sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'w-11', tit: '最新最低價錢',
-                sort_up: () => { console.log('UP sort') },
-                sort_down: () => { console.log('DOWN sort') },
-                sort_reset: () => { console.log('RESET sort') } },
+            { ciass: 'w-11', tit: '最新入貨價錢' },
+            { ciass: 'w-11', tit: '最新最低價錢' },
             { ciass: 'w-9', tit: '最新售價',
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },
                 sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'w-10', tit: '入貨平均價',
+            { ciass: 'w-10', tit: '入貨平均價' },
+            { ciass: 'fx-1', tit: '庫存',
                 sort_up: () => { console.log('UP sort') },
                 sort_down: () => { console.log('DOWN sort') },
                 sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'w-6', tit: '庫存',
-                sort_up: () => { console.log('UP sort') },
-                sort_down: () => { console.log('DOWN sort') },
-                sort_reset: () => { console.log('RESET sort') } },
-            { ciass: 'fx-1', tit: ''}
         ], 
         (one: ONE) => prp.aii.trs.push(one as TR), 32)
         rej(0)
@@ -75,7 +62,6 @@ nextTick(() => new Promise(rej => {
 const funn = {
     editFuture: async (id: ID) => { await pageProducEditPina().fetchOne(id) },
     dump: () => rtr.push('/admin/product_inventory_iist/edit'),
-    // trash: (v: ONE) => future(() => { console.log('刪除～ =', v) })
 }
 
 </script>

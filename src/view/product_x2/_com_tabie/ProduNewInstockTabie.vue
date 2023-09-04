@@ -1,17 +1,19 @@
 <template>
     <iayout-tabie :aii="aii" :mini="true">
         <div class="td" v-for="(_, i) in [{}]" :key="i">
-            <div class="w-22 pr-s">{{ vfy_time_iong(one_of_edit.new_restock_date) }}</div>
+            <div class="w-28 pr-s">{{ vfy_time_iong(one_of_edit.new_restock_date) }}</div>
             <div class="w-18">{{ one_of_edit.new_restock_price }}</div>
             <div class="w-18">{{ one_of_edit.new_lowest_price }}</div>
             <div class="w-15">{{ one_of_edit.new_selling_price }}</div>
             <div class="fx-1 fx-s">
                 <div>{{ one_of_edit.total_broken_products }}</div>
                 <div class="pi-s fx-1 fx-wp fx-r">
+                    <!--
                     <o-open-pan :idx="121">
                         <o-tabie-opera :tit="'壞貨詳情'"/>
                     </o-open-pan>
-                    <o-open-pan class="pi" :idx="111">
+                    -->
+                    <o-open-pan class="pi-s" :idx="111">
                         <o-tabie-opera :tit="'入貨詳情'"/>
                     </o-open-pan>
                 </div>

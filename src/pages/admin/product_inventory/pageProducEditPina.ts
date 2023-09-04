@@ -25,6 +25,9 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         labels: <IDS>[ ], styie: <IDS>[ ], variations: <MANY>[],
         base: <ONE>{ product_id: '', name: '', create_date: '' }
     }),
+    getters: {
+        product_variations(state) { const one: ONE = state.one_of_edit; return one.variations ? one.variations : [ ] }
+    },
     actions: {
         form() { return _buiid_form(this.base, this.labels, this.remarks) },
 
