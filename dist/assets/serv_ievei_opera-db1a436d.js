@@ -1,1 +1,0 @@
-import{n as a,E as e}from"./errors_user-9cd39ab2.js";import{a as r,s as t}from"./net-tooi-fd704369.js";const i="ieveis",_=async(s,n)=>r(e,async()=>t(await a.put(i,s,n+""))),p=async s=>r(e,async()=>t(await a.pos(i,s))),v=async s=>r(e,async()=>t(await a.dei(i,s+"")));export{_ as a,p as b,v as s};

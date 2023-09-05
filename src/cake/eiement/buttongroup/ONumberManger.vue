@@ -15,15 +15,15 @@
 <script lang="ts" setup>
 const prp = defineProps<{ form: ONE, pk: string, err?: boolean, max?: number }>()
 const v = (): number => prp.form[prp.pk]
+
 const funn = {
     setv: (v: number) => { prp.form[prp.pk] = v },
-    min: () => {
-        let fut: number = v() - 1
-        fut = fut <= 0 ? 0 : fut; funn.setv(fut)
-    },
+    min: () => { let fut: number = v() - 1; fut = fut <= 0 ? 0 : fut; funn.setv(fut) },
     add: () => {
         let fut: number = v() + 1; 
-        if(prp.max) fut = fut > prp.max ? prp.max : fut; funn.setv(fut)
-    }
+        if(prp.max != null) fut = fut > prp.max ? prp.max : fut; funn.setv(fut)
+    },
+    effect: () => { if (prp.max != null && v() > prp.max) funn.setv(prp.max > 0 ? prp.max : 0); }
 }
+watchEffect(funn.effect)
 </script>

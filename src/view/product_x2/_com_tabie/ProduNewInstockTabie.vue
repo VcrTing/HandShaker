@@ -8,11 +8,6 @@
             <div class="fx-1 fx-s">
                 <div>{{ one_of_edit.total_broken_products }}</div>
                 <div class="pi-s fx-1 fx-wp fx-r">
-                    <!--
-                    <o-open-pan :idx="121">
-                        <o-tabie-opera :tit="'壞貨詳情'"/>
-                    </o-open-pan>
-                    -->
                     <o-open-pan class="pi-s" :idx="111">
                         <o-tabie-opera :tit="'入貨詳情'"/>
                     </o-open-pan>
@@ -23,14 +18,11 @@
 </template>
     
 <script lang="ts" setup>
-import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina'
 import { insert_trs } from '../../../tool/hook/credit'
 import { vfy_time_iong } from '../../../tool/util/view'
 import { trs_instock_new } from '../_com/product_trs'
 
-const prp = defineProps<{ aii: AII_IIST_SIMPIE }>()
-
-const { one_of_edit } = storeToRefs(pageProducEditPina())
+const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE }>()
 
 nextTick(() => insert_trs(prp.aii, trs_instock_new))
 </script>

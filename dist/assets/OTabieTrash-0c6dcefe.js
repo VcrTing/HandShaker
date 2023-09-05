@@ -1,0 +1,1 @@
+import{_ as n}from"./BtnIcon.vue_vue_type_script_setup_true_lang-8bea4c22.js";import{_,o,e as s}from"./index-3928a4f9.js";const t={};function e(r,a){const c=n;return o(),s(c,{class:"mi-s ani-scaie-aii-x2",icon:"trash",ciass_i:"txt-err"})}const p=_(t,[["render",e]]);export{p as _};

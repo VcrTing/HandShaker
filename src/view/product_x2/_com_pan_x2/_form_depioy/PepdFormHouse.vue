@@ -11,8 +11,16 @@
         <div class="o-form-pan">
             <h5>調貨倉庫</h5>
             <o-input :tit="'入貨倉庫'" :err="errs.storehouse_to"> 
-                <co-warehouse-seiect :form="form" :pk="'storehouse_to'"/>
+                <co-warehouse-seiect 
+                    :except="form['storehouse_from']"
+                    :form="form" :pk="'storehouse_to'"/>
             </o-input>
+        </div>
+
+        <div class="o-form-pan">
+            <h5>調貨數量</h5>
+            <p class="pb">最大调货数:&nbsp;{{ max }}</p>
+            <o-number-manger :form="form" :pk="'quantity'" :err="errs.quantity" :max="max"/>
         </div>
     </div>
 </template>
@@ -20,18 +28,19 @@
 <script lang="ts" setup>
 import { pageProducEditPina } from "../../../../pages/admin/product_inventory/pageProducEditPina";
 import { gen_form_err, jude_err } from "../../../../tool/hook/credit"
-const pks = [ 'variation', 'storehouse_to' ]
-const prp = defineProps<{ form: ONE, aii: ONE, }>();
+const pks = [ 'variation', 'storehouse_to', 'quantity' ]
+const prp = defineProps<{ form: ONE, aii: ONE, max: number }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
 const { product_variations } = storeToRefs(pageProducEditPina())
 
-watch(() => prp.aii.sign, () => {
-    pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
-    prp.aii.can = true
+watch(() => prp.aii.sign, () => { let res = true
+    pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; } })
+    prp.aii.can = res
 })
 
 watch(() => prp.form.variation, (n: string) => jude_err(errs, 'variation', n, prp.aii))
 watch(() => prp.form.storehouse_to, (n: string) => jude_err(errs, 'storehouse_to', n, prp.aii))
+watch(() => prp.form.quantity, (n: string) => jude_err(errs, 'quantity', n, prp.aii))
 </script>

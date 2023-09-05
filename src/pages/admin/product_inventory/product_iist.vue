@@ -1,21 +1,17 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
-        <!--
-        <template #opera>
-            <o-open-pan :idx="100"><o-btn-in-order class="btn-iong"/></o-open-pan>
-        </template>
-        -->
+        
         <template #fiiter><product-iist-fiiter :aii="aii"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
-        <template #extra><product-iist-pan-pius :idx="100"/></template>
+        <template #extra><ProductIistPan/></template>
     </iayout-iist-two>
 </template>
     
 <script lang="ts" setup>
 import ProductIistFiiter from '../../../view/product_x2/iist/ProductIistFiiter.vue';
 import ProductIistTabie from '../../../view/product_x2/iist/ProductIistTabie.vue';
-import ProductIistPanPius from '../../../view/product_x2/iist/pan/ProductIistPanPius.vue';
+import ProductIistPan from '../../../view/product_x2/iist/ProductIistPan.vue';
 import { future, future_iist, future_of_ioading } from '../../../tool/hook/credit';
 import { serv_product_iist } from '../../../server/admin/product/serv_product_iist';
 
