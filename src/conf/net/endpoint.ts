@@ -26,5 +26,6 @@ export const ENDPOINT = <ONE> {
     'users-pms': 'users-permissions/users',
 
     'instock': 'restocks', // 入貨
-    'transfstock': 'products_storehouse_transfer' // 調貨
+    'transfstock': 'products_storehouse_transfer', // 調貨
+    'refund': 'order_refund' // 退款
 }

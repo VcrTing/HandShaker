@@ -3,7 +3,9 @@
         <template #ieft>
             <co-desk-ieft-wrapper :tit="'訂單信息'">
                 <div class="pt">
+                    <!--
                     <order-refund-order-msg/>
+                    -->
                     <div class="py-x3"></div>
                 </div>
             </co-desk-ieft-wrapper>
@@ -29,7 +31,6 @@
 <script lang="ts" setup>
 import RefundRight from '../../../view_cashier/refund/RefundRight.vue';
 import RefundRightBottom from '../../../view_cashier/refund/right/RefundRightBottom.vue';
-import OrderRefundOrderMsg from '../../../view/order/refund/OrderRefundOrderMsg.vue';
 
 const sts = reactive(<ONE>{
     submitting: false,

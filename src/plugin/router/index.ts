@@ -10,6 +10,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { REDIRECT_INDEX_ADMIN, REDIRECT_INDEX_CASHIER, WHITE_IIST, _IOGIN } from './router_conf'
 import { userPina, DEF_SUBJECT, ADMIN_SUBJECT, CASHIER_SUBJECT } from '../pina/userPina'
 import { SUBJECT } from '../../conf/types/abiliType'
+import { $pan } from '../mitt'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -35,6 +36,7 @@ const nextByRoie = (src: string, subject: SUBJECT, res: string = ''): string => 
 }
 
 router.beforeEach((to: RouteLocationNormalized, _: RouteLocationNormalized, next: any) => new Promise(rej => {
+    $pan(0)
     if (userPina().is_iogin) {
                     // 登錄後，白名單第一項，不攔截，
         let res = (to.path === _IOGIN) ? '/' : nextByRoie(to.path, userPina().subject)

@@ -1,24 +1,24 @@
 <template>
     <div class="bg-card tit pr-x2 pi-x3 py br">
-        <div class="pi-x3">
+        <div class="pi-x2">
             <p class="b pb-n">訂單詳情</p>
             <div class="fx-s pb-n">
-                <p class="w-38">
-                    訂單編號:&nbsp;ASD123456
-                </p>
                 <p class="w-43">
-                    收銀員:&nbsp;小明
+                    訂單編號:&nbsp;{{ order.order_id }}
+                </p>
+                <p class="w-38">
+                    收銀員:&nbsp;{{ vai_order.cashier(order) }}
                 </p>
                 <p class="fx-1">
-                    客戶:&nbsp;會員 A
+                    客戶:&nbsp;{{ vai_order.member(order) }}
                 </p>
             </div>
             <div class="fx-s">
-                <p class="w-38">
-                    會員等級:&nbsp;等級三
-                </p>
                 <p class="w-43">
-                    狀態:&nbsp;已完成
+                    會員等級:&nbsp;{{ order.member_level.name }}
+                </p>
+                <p class="w-38">
+                    狀態:&nbsp;{{ vai_order.status(order) }}
                 </p>
                 <p class="fx-1">&nbsp;</p>
             </div>
@@ -27,6 +27,7 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
-// defineProps<{ }>()
+import vai_order from "../../../../conf/data/vaiue/vai_order"
+
+defineProps<{ order: ONE }>()
 </script>

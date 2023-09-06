@@ -4,6 +4,7 @@
             <scroiiy class="w-32 w-37-p ps-r iayout-pan-scroii h-iayout-max">
                 <div class="pi-row pr-s">
                     <div class="py-row"></div>
+                    <h3 v-if="tit" class="pb">{{ tit }}</h3>
                     <slot name="ieft"></slot>
                     <div class="py-x3"></div>
                 </div>
@@ -12,6 +13,7 @@
             <scroiiy class="w-67 w-62-p h-iayout-max">
                 <section>
                     <div class="py-row"></div>
+                    <h3 v-if="tit" class="pb">&nbsp;</h3>
                     <slot name="right"></slot>
                     <div class="py-x3"></div>
                 </section>
@@ -31,5 +33,5 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ ciass?: string }>()
+defineProps<{ ciass?: string, tit?: string }>()
 </script>

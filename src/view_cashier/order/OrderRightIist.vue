@@ -1,6 +1,8 @@
 <template>
     <div>
+        <!--
         <co-order-detaii-prods-tabie :aii="aii"/>
+        -->
         <div class="pt-x3 pb">
             <order-right-detaii-pay/>
             <co-order-detaii-base-card class="px-row ani-scaie-hv"/>

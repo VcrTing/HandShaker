@@ -1,27 +1,37 @@
 <template>
-    <Pan :idx="idx ? idx : 101" :huge="true">
+    <Pan :idx="101" :big="true">
         <pan-inner :tit="'訂單詳情'">
             <div class="pt-row"></div>
-            <co-order-iist-base-card/>
+            <co-order-iist-base-card :order="one_of_view"/>
             <div class="py-row"></div>
-            <!--
-            <co-order-detaii-prods-tabie/>
-            -->
-            <p>這裡一個 產品 列表</p>
+
+            <co-order-detaii-prods-tabie :order="one_of_view"/>
             <div class="py-row"></div>
-            <co-order-detaii-price-totai-tabie/>
+            <co-order-detaii-price-totai-tabie :order="one_of_view"/>
             <div class="py-row"></div>
-            <div class="fx-c pt">
-                <div class="w-50 fx-s">
-                    <cub-go-refund class="btn-tab fx-1 py br refund"/>
-                    <span class="px"></span>
-                    <m-btn class="btn-pri fx-1 py br">印列訂單</m-btn>
-                </div>
+
+            <div class="py-x2 fx-c">
+                <o-save-back-btns-group class="w-50 w-618-p" :tit_back="'退款 / 退貨'" @back="funn.refund()"/>
             </div>
         </pan-inner>
     </Pan>
 </template>
     
 <script lang="ts" setup>
-defineProps<{ idx?: number }>()
+import { pageOrderPina } from "../../../../pages/admin/order/pageOrderPina";
+import { future } from "../../../../tool/hook/credit";
+
+const rtr = useRouter()
+const { one_of_view } = storeToRefs(pageOrderPina())
+
+const funn = {
+    refund: () => future(async () => {
+        const one: ONE = one_of_view.value; 
+        
+        await pageOrderPina().fetchOne(one.id, 'one_of_refund')
+
+        console.log('one_of_refund =', pageOrderPina().one_of_refund)
+        rtr.push('/admin/order_iist/refund')
+    })
+}
 </script>

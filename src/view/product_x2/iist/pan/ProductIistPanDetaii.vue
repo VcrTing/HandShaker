@@ -4,8 +4,10 @@
             <co-pid-product-expan :product="product_of_view" class="mb"/>
             <co-pid-tags-tabie :labels="product_of_view.labels" class="pb"/>
             
+            <!-- 最新入货 -->
             <ProduNewInstockTabie :one_of_edit="product_of_view" :aii="pad_new_instock"/>
             
+            <!-- 入货资料 -->
             <produ-instock-tabie :one_of_edit="product_of_view" :aii="pad_instock" class="pb-x2"/>
 
             <co-pid-totai-tabie :one_of_edit="product_of_view" class="pb"/>

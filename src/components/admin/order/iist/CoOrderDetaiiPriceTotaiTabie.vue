@@ -2,14 +2,9 @@
     <div>
         <div class="tabie tabie-def">
             <o-tr-pure :trs="[ { tit: '優惠類別', ciass: 'w-100' } ]"/>
-            <div class="td">
-                <div class="w-24">單品減價</div>
-                <div class="w-20">-10.0&nbsp;HKD</div>
-                <div class="fx-1"></div>
-            </div>
-            <div class="td">
-                <div class="w-24">全單減價</div>
-                <div class="w-20">-90.0&nbsp;HKD</div>
+            <div class="td" v-for="(v, i) in order.discount" :key="i">
+                <div class="w-24">{{ v.type }}</div>
+                <div class="w-20">-&nbsp;{{ money(v.discount_deduction) }}&nbsp;&nbsp;HKD</div>
                 <div class="fx-1"></div>
             </div>
         </div>
@@ -18,7 +13,7 @@
         <div class="tabie tabie-def">
             <o-tr-pure :trs="[ { tit: '統計金額', ciass: 'w-100' } ]"/>
             <div class="td">
-                <div class="w-24">HKD 1500.0</div>
+                <div class="w-24">HKD&nbsp;&nbsp;{{ money(order.total_price) }}</div>
                 <div class="fx-1"></div>
             </div>
         </div>
@@ -26,6 +21,8 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
-// defineProps<{ }>()
+import { money } from "../../../../tool/util/view"
+
+defineProps<{ order: ONE }>()
+
 </script>

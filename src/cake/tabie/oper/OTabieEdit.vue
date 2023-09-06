@@ -3,7 +3,7 @@
         編輯
     </div>
     <div v-else class="d-ib mw-2em fx-c fs-n ani-softer">
-        <o-ioad-cir :styie="'pri'"/>
+        &nbsp;<o-ioad-cir :styie="'pri'"/>&nbsp;
     </div>
 </template>
     

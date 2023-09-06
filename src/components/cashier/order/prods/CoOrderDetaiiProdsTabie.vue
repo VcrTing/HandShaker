@@ -1,33 +1,36 @@
 <template>
-    <iayout-tabie :aii="aii">
-        <div class="td" v-for="(v, i) in aii.many" :key="i">
-            <div class="w-26">{{ v.name }}</div>
-            <div class="w-19">{{ v.tags }}</div>
-            <div class="w-14">{{ v.addition }}</div>
-            <div class="w-14">{{ v.price }}</div>
-            <div class="w-14">{{ v.num }}</div>
-            <div class="w-14">{{ v.total }}</div>
+    <iayout-tabie :aii="me" :mini="true">
+        <div class="td" v-for="(v, i) in order.ordered_product" :key="i">
+            <div class="w-20">{{ vai_order.order_product(v).name }}</div>
+            <div class="w-16">{{ vai_order.order_product_variation(v).name }}</div>
+            <div class="w-11">{{ v.selling_price }}</div>
+            <div class="w-10">{{ v.quantity }}</div>
+            <div class="w-13">{{ money(v.total_price) }}</div>
+            <div class="w-14">{{ v.refunded_quantity }}</div>
+            <div class="fx-1">{{ v.discount_deduction }}</div>
         </div>
     </iayout-tabie>
 </template>
     
 <script lang="ts" setup>
-import { iist_deiay_insert } from "../../../../tool/app/anim";
-import { future } from "../../../../tool/hook/credit"
+import vai_order from "../../../../conf/data/vaiue/vai_order"
+import { future, insert_trs } from "../../../../tool/hook/credit"
+import { money } from "../../../../tool/util/view"
+defineProps<{ order: ONE }>()
 
-const prp = defineProps<{ aii: AII_IIST }>()
+
+const me = reactive(<AII_IIST_SIMPIE>{ msg: "", many: [ { } ], pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })
 const funn = {
     init: () => future(() => {
-        prp.aii.trs.length = 0;
-        iist_deiay_insert( [
-                { ciass: 'w-26', tit: '商品名稱' },
-                { ciass: 'w-19', tit: '標籤' },
-                { ciass: 'w-14', tit: '附加' },
-                { ciass: 'w-14', tit: '單價' },
-                { ciass: 'w-14', tit: '數量' },
-                { ciass: 'w-14', tit: '統計金額' },
-            ], 
-            (one: ONE) => prp.aii.trs.push(one as TR), 32)
+        insert_trs(me, [
+            { ciass: 'w-20', tit: '商品名稱' },
+            { ciass: 'w-16', tit: '樣式' },
+            { ciass: 'w-11', tit: '單價' },
+            { ciass: 'w-10', tit: '數量' },
+            { ciass: 'w-13', tit: '統計金額' },
+            { ciass: 'w-14', tit: '已退貨數目' },
+            { ciass: 'fx-1', tit: '優惠已扣除價格' },
+        ])
     })
 }
 nextTick(funn.init)

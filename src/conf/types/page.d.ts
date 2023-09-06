@@ -19,6 +19,10 @@ interface AII_IIST_SIMPIE {
     pager: PAGER,
     ioading: boolean,
 }
+/*
+
+    msg: "", many: [ { } ], pager: <PAGER>{ }, ioading: false,
+*/
 
 interface AII_IIST extends AII_IIST_SIMPIE {
     trs: TRS,

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <itemdash class="fx-s">
+        <itemdash class="fx-s mb-s">
             <div class="w-38 fx-i pb">
                 <div class="pi-x2 pr-x1 h6"><checkbox :form="aii" :pk="'choose'"/></div>
                 <h6>全選</h6>
             </div>
-            <h6 class="fx-1 pb">
-                退款詳情
-            </h6>
+            <div class="fx-1 pb">
+                退款產品列表
+            </div>
         </itemdash>
 
         <order-refund-iist-tabie :aii="aii"/>
@@ -16,30 +16,29 @@
     
 <script lang="ts" setup>
 import OrderRefundIistTabie from './tabie/OrderRefundIistTabie.vue'
+const prp = defineProps<{ order: ONE }>()
+
 const aii = reactive(<AII_IIST>{ 
     chooseAii: false, chooses: [ ], many_origin: [ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1 }, 
     choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
 
 const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ id: 1,
-            in_date: '2022-12-12', in_time: '15:00', 
-            in_price: '500', iow_price: '90', 
-            price: 200, stock_price: 120, 
-            invent: 30, broken: 10
-        },{ id: 1,
-            in_date: '2022-12-12', in_time: '15:00', 
-            in_price: '500', iow_price: '90', 
-            price: 200, stock_price: 120, 
-            invent: 30, broken: 10
-        },)
-        setTimeout(() => aii.ioading = false, 2400)
-        rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
+    effect: () => {
+        const o: ONE = prp.order ? prp.order : { }
+        const many: MANY = o.ordered_product ? o.ordered_product : [ ]
+        if (many.length > 0) {
+            aii.many.length = 0; many.map((e: ONE) => { aii.many.push( e ) })
+            aii.ioading = false
+        }
+    },
+    resuit: () => {
+        console.log('CHOOSE =', aii.chooses)
+        return aii.chooses
+    }
 }
 
-nextTick(() => new Promise(rej => { funn.fetch(); rej(0) }))
+watchEffect(funn.effect)
+
+defineExpose(funn)
 </script>

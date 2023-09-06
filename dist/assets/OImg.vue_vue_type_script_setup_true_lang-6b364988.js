@@ -1,1 +1,0 @@
-import{d as o,o as r,c as n,p as s}from"./index-3928a4f9.js";const p=o({__name:"OImg",props:{src:{}},setup(c){return(e,a)=>(r(),n("div",{class:"__div_img",style:s({background:"url("+e.src+")","background-size":"cover","background-position":"center"})},null,4))}});export{p as _};
