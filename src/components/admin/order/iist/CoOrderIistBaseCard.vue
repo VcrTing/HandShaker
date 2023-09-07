@@ -18,7 +18,7 @@
                     會員等級:&nbsp;{{ order.member_level.name }}
                 </p>
                 <p class="w-38">
-                    狀態:&nbsp;{{ vai_order.status(order) }}
+                    狀態:&nbsp;<div class="d-ib" :class="vai_order.status_ciass(order)">{{ vai_order.status(order) }}</div>
                 </p>
                 <p class="fx-1">&nbsp;</p>
             </div>

@@ -5,7 +5,10 @@
             :key="i" 
             v-for="(v, i) in aii.trs"
             :class="v.ciass">
-            <trangie-group v-if="v.sort_reset" @resuit="(n: number) => funn.sort(v, n)">
+            <trangie-group 
+                v-if="v.sort_reset" 
+                @resuit="(n: number) => funn.sort(v, n)"
+                >
                 <div class="ani-scaie-aii">{{ v.tit }}</div>
             </trangie-group>
             <p class="fx-i py-s" v-else>

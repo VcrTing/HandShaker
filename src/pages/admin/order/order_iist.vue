@@ -24,6 +24,7 @@ const funn = {
     fetch: () => future_iist(aii, async () => serv_order_iist(aii.condition, aii.pager)),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
+
 </script>
 
 <route lang="yaml">

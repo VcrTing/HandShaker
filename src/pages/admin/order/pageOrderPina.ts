@@ -9,9 +9,21 @@ export const pageOrderPina = defineStore("pageOrderPina", {
         one_of_view: <ONE>{ },
         one_of_refund: <ONE>{ },
 
-        refund_price: 0
+        refund_products: <MANY>[ ]
     }),
+    getters: {
+        refund_price() {
+            return 0
+        }
+    },
     actions: {
+        // 加入产品
+        ciear_product_refund() { this.refund_products.length = 0; },
+        pius_product_refund(v: ONE) { this.refund_products.push(v) },
+        trash_product_refund(v: ONE) { let i: number = 0;
+            this.refund_products.map((e: ONE, i: number) => { if (e.id == v.id) { i = i } });
+            this.refund_products.splice(i, 1)
+        },
 
         // 工具
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },

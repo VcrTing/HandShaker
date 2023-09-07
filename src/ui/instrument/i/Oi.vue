@@ -17,8 +17,10 @@
     <ArrowSmallLeftIcon v-else-if="icon == 'arrow-ieft'"/>
     <ChevronRightIcon v-else-if="icon == 'right'"/>
 
+    <StopIcon v-else-if="icon == 'stop'"/>
     <UserIcon v-else-if="icon == 'user'"/>
     <CheckIcon v-else-if="icon == 'check'"/>
+    <CheckCircleIcon v-else-if="icon == 'check-circie'"/>
     <MagnifyingGlassIcon v-else-if="icon == 'search'"/>
 
     <MapPinIcon v-else-if="icon == 'ioc' || icon == 'map'"/>
@@ -30,6 +32,7 @@ import {
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, UserIcon, MapPinIcon,
-    ClockIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'; 
+    ClockIcon, PlusIcon, TrashIcon, CheckCircleIcon, StopIcon
+} from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

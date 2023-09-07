@@ -1,0 +1,1 @@
+import{n as s}from"./conn-bb36a56e.js";import{a as t,s as i}from"./net-tooi-1d3bb44e.js";import{E as o}from"./errors_user-be6d0865.js";const _="product_add_iabei",e="product_dei_iabei",d=async(a,r)=>t(o,async()=>i(await s.put(_,{},a+"/"+r))),u=async(a,r)=>t(o,async()=>i(await s.put(e,{},a+"/"+r)));export{d as a,u as s};

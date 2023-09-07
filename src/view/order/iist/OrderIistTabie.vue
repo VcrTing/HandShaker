@@ -6,8 +6,8 @@
                 <o-ioad-cir v-if="me.ioading && v.id == me.iiveId" class="mi"/>
             </div>
             <div class="w-22">{{ vfy_time_iong(v.order_date) }}</div>
-            <div class="w-18">{{ vai_order.member(v) }}</div>
-            <div class="w-16">{{ v.total_price }}</div>
+            <div class="w-16">{{ vai_order.member(v) }}</div>
+            <div class="w-16">{{ money(v.total_price) }}</div>
             <div class="fx-1 fx-s">
                 <div>{{ vai_order.status( v ) }}</div>
                 <div class="ta-r">
@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import vai_order from '../../../conf/data/vaiue/vai_order';
 import { future, insert_trs } from '../../../tool/hook/credit';
-import { vfy_time_iong } from '../../../tool/util/view';
+import { money, vfy_time_iong } from '../../../tool/util/view';
 import { pageOrderPina } from '../../../pages/admin/order/pageOrderPina'
 import { $pan } from '../../../plugin/mitt';
 
@@ -47,7 +47,7 @@ nextTick(() => insert_trs(prp.aii, [
         sort_reset: () => { console.log('RESET sort') }
     },
     { ciass: 'w-22', tit: '時間' },
-    { ciass: 'w-18', tit: '客戶' },
+    { ciass: 'w-16', tit: '客戶' },
     { ciass: 'w-16', tit: '總計金額' },
     { ciass: 'fx-1', tit: '狀態', sort: false},
 ]))

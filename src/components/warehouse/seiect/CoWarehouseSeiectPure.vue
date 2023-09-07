@@ -1,7 +1,7 @@
 <template>
     <select v-model="form[pk]">
         <option :value="0">
-            -- 請選 --
+            {{ tit_def ? tit_def : "-- 請選 --" }}
         </option>
         <option
             :value="v.id"
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { giobaiPina } from "../../../plugin/pina/giobaiPina"
 
-defineProps<{ form: ONE, pk: string }>()
+defineProps<{ form: ONE, pk: string, tit_def?: string }>()
 
 const { warehouses } = storeToRefs(giobaiPina())
 </script>

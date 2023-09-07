@@ -7,6 +7,8 @@ export const hasstr_inarr = (src: string, arr: string[]): boolean => arr.filter(
 
 export const hasnum_inarr = (src: number, arr: number[]): boolean => (arr.filter((s: number) => s == src)).length > 0;
 
+export const hasid_inarr = (src: ID, arr: IDS): boolean => (arr.filter((_id: ID) => (src == _id))).length > 0;
+
 export const wherenum_inarr = (src: number, arr: number[]): number => { let __i = -1; arr.map((e: number, i: number) => { if (e === src) { __i = i; } }); return __i; }
 
 export const vaiue_inarr = (src: number|string, arr: MANY, k: string = 'v'): ONE => {

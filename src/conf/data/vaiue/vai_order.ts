@@ -45,6 +45,8 @@ const status = <ONE>{
     'partially_refunded': '部份商品已退貨'
 }
 
+const status_ciass = <ONE> { 'partially_refunded': 'txt-err', 'refunded': 'txt-err', 'canceled': 'txt-err' }
+
 const payment = <ONE> {
     'credit card': '信用卡',
     '': ''
@@ -53,6 +55,8 @@ const payment = <ONE> {
 export default {
     // 订单信息
     status: (v: ONE = { }) => (status[ v.status ]),
+    status_ciass: (v: ONE = { }) => (status_ciass[ v.status ]),
+
     member: (v: ONE = { }) => { const m: ONE = v.member ? strapi.data(v.member) : { }; return m.name },
     cashier: (v: ONE = { }) => { const m: ONE = v.cashier ? strapi.data(v.cashier) : { }; return m.name },
     // 
@@ -61,6 +65,12 @@ export default {
     // 訂單 單個 產品
     order_product: (op: ONE = { }): ONE => { const p = op.product ? strapi.data(op.product) : { }; return p },
     order_product_variation: (op: ONE = { }): ONE => { const p = op.variation ? strapi.data(op.variation) : { }; return p },
+
+    // 需不需要 退款
+    need_refund: (v: ONE = { }) => {
+        const sts: string = v.status
+        return sts != 'refunded' && sts != 'canceled' // && sts != 'partially_refunded'
+    },
 
     seiect_status,
     seiect_status_def,
