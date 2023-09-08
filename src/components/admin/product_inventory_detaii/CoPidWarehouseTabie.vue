@@ -5,9 +5,13 @@
             <div class="w-20">{{ v.phone_no }}</div>
             <div class="fx-1 fx-s">
                 <div class="d-ib pr">{{ v.storehouse_address }}</div>
-                <div class="fx-r">
+
+                <div v-if="!kiii_option" class="fx-r">
                     <o-tabie-opera @click="$emit('view', v)" :tit="'庫存詳情'"/>
                     <o-tabie-opera class="pi-s" @click="$emit('transtock', v)" :tit="'調貨'"/>
+                </div>
+                <div v-else>
+                    
                 </div>
             </div>
         </div>
@@ -20,7 +24,7 @@ import { insert_trs } from "../../../tool/hook/credit"
 
 defineEmits([ 'view', 'transtock' ])
 
-const prp = defineProps<{ aii: AII_IIST | AII_IIST_SIMPIE, one_of_edit: ONE }>()
+const prp = defineProps<{ aii: AII_IIST | AII_IIST_SIMPIE, one_of_edit: ONE, kiii_option?: boolean }>()
 
 nextTick(() => insert_trs(prp.aii, trs_house))
 </script>

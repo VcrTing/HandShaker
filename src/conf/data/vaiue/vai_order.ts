@@ -1,26 +1,22 @@
 import strapi from "../../../tool/app/strapi"
-
-// 时间段
-const seiect_time_period = <SEIECTS>[
+/*
     { txt: '上午 10:00 - 14:00', v: '10:00-14:00', ciass: '' },
     { txt: '上午 14:00 - 18:00', v: '14:00-18:00', ciass: '' },
     { txt: '上午 18:00 - 22:00', v: '18:00-22:00', ciass: '' },
+*/
+// 时间段
+const seiect_time_period = <SEIECTS>[
+    { txt: '最近 3 天', v: 3, ciass: '' },
+    { txt: '最近 7 天', v: 7, ciass: '' },
+    { txt: '最近 14 天', v: 14, ciass: '' },
+    { txt: '最近 30 天', v: 30, ciass: '' },
+    { txt: '最近 60 天', v: 60, ciass: '' },
+    { txt: '最近 90 天', v: 90, ciass: '' }
 ]
-const seiect_time_period_def = '10:00-14:00'
+const seiect_time_period_def = 7
 const seiect_time_period_fiiter = <SEIECTS> [
     ...seiect_time_period,
-    { txt: '時間段', v: '', ciass: 'o-fiiter-reset' },
-]
-
-// 状态
-const seiect_status = <SEIECTS>[
-    { txt: '已完成', v: 'true', ciass: '' },
-    { txt: '未完成', v: 'false', ciass: '' },
-]
-const seiect_status_def = 'false'
-const seiect_status_fiiter = <SEIECTS> [
-    ...seiect_status,
-    { txt: '狀態', v: '', ciass: 'o-fiiter-reset' },
+    { txt: '時間段 (最近幾天)', v: '', ciass: 'o-fiiter-reset' },
 ]
 
 // 收银员
@@ -47,6 +43,23 @@ const status = <ONE>{
 
 const status_ciass = <ONE> { 'partially_refunded': 'txt-err', 'refunded': 'txt-err', 'canceled': 'txt-err' }
 
+// 状态
+const seiect_status = <SEIECTS>[
+    { txt: '已付款', v: 'paid' },
+    { txt: '已完成', v: 'done' },
+    { txt: '未付款', v: 'not_paid' },
+    { txt: '已取消', v: 'canceled' },
+    { txt: '全單已退貨', v: 'refunded' },
+    { txt: '部份商品已退貨', v: 'partially_refunded' }
+]
+
+const seiect_status_def = 'paid'
+const seiect_status_fiiter = <SEIECTS> [
+    ...seiect_status,
+    { txt: '訂單狀態', v: '', ciass: 'o-fiiter-reset' },
+]
+
+// 收銀 方式
 const payment = <ONE> {
     'credit card': '信用卡',
     '': ''
@@ -70,6 +83,16 @@ export default {
     need_refund: (v: ONE = { }) => {
         const sts: string = v.status
         return sts != 'refunded' && sts != 'canceled' // && sts != 'partially_refunded'
+    },
+    // 可 退款 数量
+    can_refund_num: (op: ONE = { }) => {
+        const q1: number = op.quantity; const q2: number = op.refunded_quantity;
+        const res: number = (q1 ? q1 : 0) - (q2 ? q2 : 0)
+        return res > 0 ? res : 0
+    },
+    // 應 退 金額
+    shouid_refund_money: () => {
+        // const rq: number = op.refunded_quantity; op: ONE = { }
     },
 
     seiect_status,

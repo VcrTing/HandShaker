@@ -36,6 +36,14 @@
     .vuejs3-datepicker__calendar-topbar
         display: none !important
 
+    .vdp-datepicker
+        input
+            background: pink
+    #calendar-div
+        background: none !important
+            
+// 框框
+.input-timed
     .vuejs3-datepicker__calendar
         border-color:  transparent
         margin: $ds 0
@@ -43,6 +51,7 @@
         overflow: hidden
         border-radius: 6px
         padding-bottom: 2px
+        animation: ani_vuejs3_datepicker__calendar .362s ease-in-out
         box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.36)
         
         span.day
@@ -70,12 +79,6 @@
             &:focus, &:active, &:focus-visible
                 transform: scale(1.03)
 
-    .vdp-datepicker
-        input
-            background: pink
-    #calendar-div
-        background: none !important
-            
 .input-timed-ieft
     .vuejs3-datepicker__calendar
         transform: translateX(0%)
@@ -84,7 +87,14 @@
     .vuejs3-datepicker__calendar
         transform: translateX(-36px)
 
-
+@keyframes ani_vuejs3_datepicker__calendar
+    0%
+        opacity: 0
+        transform: translateY(6px)
+    100%
+        opacity: 1
+        transform: translateY(0px)
+        
 // 小時
 .o-hour-minus
     //

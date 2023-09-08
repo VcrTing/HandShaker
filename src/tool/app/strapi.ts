@@ -23,6 +23,7 @@ export default {
     ser_iist: (src: { [k:string]: any }, ks: string[ ]): {} => {
         const res = iist(src)
         return {
+            __resuit: src,
             data: res ? kiii_of_k(res, ks) : [ ],
             page: src.meta ? src.meta.pagination: { }
         }

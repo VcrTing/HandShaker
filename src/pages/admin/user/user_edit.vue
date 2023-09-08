@@ -26,7 +26,7 @@ const form = reactive(<ONE>{ name: '', email: '', phone_no: '', storehouse: '', 
 const funn = {
     buiid: () => { const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; return trims(src) },
     submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
-        async (data: ONE) => { console.log('構建的數據 =', data)
+        async (data: ONE) => { // console.log('構建的數據 =', data)
             const res: NET_RES = await serv_user_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),

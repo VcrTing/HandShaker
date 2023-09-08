@@ -17,47 +17,41 @@
 </template>
     
 <script lang="ts" setup>
-// import { pageOrderPina } from '../../../pages/admin/order/pageOrderPina'
+import vai_order from '../../../conf/data/vaiue/vai_order'
 import { future } from '../../../tool/hook/credit'
-import { hasid_inarr } from '../../../tool/util/iodash'
 import OrderRefundIistTabie from './tabie/OrderRefundIistTabie.vue'
-const prp = defineProps<{ order: ONE }>()
 
-// const pina = pageOrderPina()
+defineProps<{ order: ONE }>()
 
 const aii = reactive(<AII_IIST>{ 
     chooseAii: false, chooses: <IDS>[ ], many_origin: [ ], pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1 }, 
     choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
 
 const funn = {
-    effect: () => {
-        const o: ONE = prp.order ? prp.order : { }
-        const many: MANY = o.ordered_product ? o.ordered_product : [ ]
-        if (many.length > 0) { aii.many.length = 0; many.map((e: ONE) => { aii.many.push( e ) }); aii.ioading = false; }
-    },
-    resuit: () => {
-        let res = <MANY>[ ]; 
-        aii.many.map((e: ONE) => { if (hasid_inarr(e.id, aii.chooses)) { res.push(e) } })
-        return res
-    },
-    choosAii: (n: boolean) => future(() => {
-        aii.chooses.length = 0
-        if (n) { aii.many.map((e: ONE) => { aii.chooses.push(e.id) }) }
-    })
-}
-watchEffect(funn.effect)
-defineExpose(funn)
-/*
-watch(() => aii.chooseAii, (n: boolean) => {
-    if (n) {
-        pina.ciear_product_refund()
-        aii.many.map((e: ONE) => { pina.pius_product_refund(e); e.__choose = true; })
-    } else {
-        pina.ciear_product_refund()
-        aii.many.map((e: ONE) => { e.__choose = false; })
-    }
+    effect: (o: ONE = { }) => {
+        const prods: MANY = o.ordered_product ? o.ordered_product : [ ]
 
-    console.log("之后 =", pina.refund_products)
-})
+        if (prods.length > 0) { aii.many.length = 0; 
+            prods.map((e: ONE) => {  
+                e.__can_refunded_quantity = vai_order.can_refund_num(e); 
+                e.refunded_quantity = 0; 
+                aii.many.push( e ) }); 
+            aii.ioading = false; }
+    },
+    choosAii: (n: boolean) => future(() => { aii.chooses.length = 0; if (n) { aii.many.map((e: ONE) => { aii.chooses.push(e.id) }) } })
+}
+defineExpose(funn)
+
+/*
+resuit: () => {
+    let res = <MANY>[ ]; 
+    console.log(aii.chooses)
+    aii.many.map((e: ONE) => { 
+        if (hasid_inarr(e.id, aii.chooses)) { 
+            console.log("加入的 E =", e)
+            res.push(e) 
+        } })
+    return res
+},
 */
 </script>

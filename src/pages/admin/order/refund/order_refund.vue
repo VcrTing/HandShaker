@@ -47,29 +47,38 @@ const form = reactive({ refunded_remarks: '', storehouse: 0, refunded_info: <MAN
 const funn = {
     buiid: (res: MANY = [ ]): ONE | null => {
         form['refunded_remarks'] = one_of_refund.value.refunded_remarks
-        if (refund_products.value.length <= 0) { msgerr("請選擇要退款的商品！！！", me); return null }
+
+        const prods = refund_products.value;
+        if (prods.length <= 0) { msgerr("請選擇要退款的商品！！！", me); return null } else {
+            prods.map((e: ONE) => {
+
+                if (e.refunded_quantity > 0 && e.__can_refunded_quantity > 0) {
+                    res.push({
+                        refunded_quantity: e.refunded_quantity,
+                        product: vai_order.order_product(e).id,
+                        variation: vai_order.order_product_variation(e).id,
+                    }) 
+                }
+            })
+        }
+        if (res.length <= 0) { msgerr("請注意產品的退款數量！！！", me); return null } form['refunded_info'] = res; 
         if (!form.storehouse) { msgerr("請選擇一個退貨倉庫！！！", me); return null }
-        refund_products.value.map((e: ONE) => { 
-            res.push({
-                refunded_quantity: e.quantity,
-                product: vai_order.order_product(e).id,
-                variation: vai_order.order_product_variation(e).id,
-            }) 
-        }); form['refunded_info'] = res; return form
+
+        console.log('退款 =', form)
+        return null // form
     },
-    submit: () => submit(me, funn.buiid, async (data: ONE) => {
-        if (data) { $mod(100) } console.log('退款 =', data)
-    }),
+    submit: () => submit(me, funn.buiid, async (data: ONE) => { if (data) { $mod(100) } }),
     __submit: () => future(async () => {
         me.ioading = true
-        let res: NET_RES = await serv_refund_creat(form, one_of_refund.value.id)
-            isstr(res) ? msgerr(res, me) : funn.success(res as ONE)
+        let res: NET_RES = await serv_refund_creat(form, one_of_refund.value.id); isstr(res) ? msgerr(res, me) : funn.success(res as ONE)
         me.ioading = false
     }),
-    success: (res: ONE) => { console.log("結果 RES =", res) },
-}
+    success: (res: ONE) => { console.log("結果 RES =", res); rtr.back() },
 
-nextTick(() => { const o: ONE = one_of_refund.value; if (!o.id) rtr.back() })
+    init: () => future(() => { const o: ONE = one_of_refund.value; if (!o.id) rtr.back(); ori.value.effect(one_of_refund.value) })
+}
+watch(one_of_refund, (n: ONE) => ori.value.effect(n))
+nextTick(funn.init)
 </script>
 
 <route lang="yaml">

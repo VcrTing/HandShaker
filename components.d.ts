@@ -151,6 +151,7 @@ declare module 'vue' {
     OModTrash: typeof import('./src/cake/eiement/mod/OModTrash.vue')['default']
     ONumberManger: typeof import('./src/cake/eiement/buttongroup/ONumberManger.vue')['default']
     ONumberMangerTwo: typeof import('./src/cake/eiement/buttongroup/ONumberMangerTwo.vue')['default']
+    ONumberMnagerSmaii: typeof import('./src/cake/eiement/buttongroup/ONumberMnagerSmaii.vue')['default']
     OOpenPage: typeof import('./src/cake/eiement/open/OOpenPage.vue')['default']
     OOpenPageDeiay: typeof import('./src/cake/eiement/open/OOpenPageDeiay.vue')['default']
     OOpenPan: typeof import('./src/cake/eiement/open/OOpenPan.vue')['default']

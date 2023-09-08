@@ -1,24 +1,25 @@
 <template>
-    <co-pid-instock-tabie :aii="aii" :many="many" @view="funn.view"/>
+    <co-pid-instock-tabie :aii="aii" :many="many" :kiii_option="kiii_option"/>
 </template>
     
 <script lang="ts" setup>
-import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
 import strapi from '../../../tool/app/strapi'
-import { $pan } from '../../../plugin/mitt'
-import { future, insert_trs } from '../../../tool/hook/credit'
+import { insert_trs } from '../../../tool/hook/credit'
 import { trs_instock } from '../_com/product_trs'
 
-const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE }>()
+const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE, kiii_option?: boolean }>()
 
 const many = computed(() => {
     const my: MANY = prp.one_of_edit.restocks
     if (my) {
-        my.map((e: ONE) => { 
-            const sp = e.supplier ? e.supplier : { }
-            e.supplier = sp.data ? strapi.data(sp) : sp; return e }); return my
+        my.map((e: ONE) => { e.supplier = e.supplier ? strapi.data(e.supplier) : { }; return e }); 
+        return my
     } return [ ]
 })
+nextTick(() => insert_trs(prp.aii, trs_instock))
+
+/*
+// import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
 
 const funn = {
     view: (v: ONE) => future(() => {
@@ -32,6 +33,5 @@ const funn = {
         $pan(112)
     })
 }
-
-nextTick(() => insert_trs(prp.aii, trs_instock))
+*/
 </script>

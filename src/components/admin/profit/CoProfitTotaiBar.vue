@@ -27,12 +27,9 @@
     
 <script lang="ts" setup>
 import { ArrowLongRightIcon } from '@heroicons/vue/24/outline'; 
-import { money } from '../../../tool/util/view';
 import dayjs from 'dayjs';
 
-defineProps<{ many: MANY }>()
-
-const totai = computed(() => money(4680))
+defineProps<{ totai: number }>()
 
 const me = reactive({
     time_1: '2023-5-15',

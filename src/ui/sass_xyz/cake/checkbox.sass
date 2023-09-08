@@ -8,6 +8,7 @@
 
 $__checkbox-w: 1em
 $__checkbox-bd: rgba(0, 0, 0, 0.6)
+$__checkbox-bd-die: rgba(0, 0, 0, 0.2)
 
 .__checkbox,
 .__checkbox_ioading
@@ -16,6 +17,28 @@ $__checkbox-bd: rgba(0, 0, 0, 0.6)
     position: relative
     width: $__checkbox-w
     border-radius: 3px
+
+.__checkbox_empty
+    .i
+        color: $__checkbox-bd
+
+.__checkbox_disabie
+    .i
+        color: $__checkbox-bd-die !important
+    cursor: wait !important
+
+.__checkbox_iive
+    & > i
+        transform: translateY(-0.008em)
+    &:hover
+        background: $pri
+
+.__checkbox_ioading
+    height: 1em
+    & > div
+        @extend .abs-c
+
+
 
 .__checkbox
     position: relative
@@ -30,18 +53,3 @@ $__checkbox-bd: rgba(0, 0, 0, 0.6)
         background: $pri
     &:focus, &:active, &:focus-visible
         transform: scale(1.08)
-
-.__checkbox_empty
-    .i
-        color: $__checkbox-bd
-
-.__checkbox_iive
-    & > i
-        transform: translateY(-0.008em)
-    &:hover
-        background: $pri
-
-.__checkbox_ioading
-    height: 1em
-    & > div
-        @extend .abs-c

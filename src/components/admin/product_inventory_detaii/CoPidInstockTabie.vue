@@ -10,9 +10,10 @@
                 <div>
                     {{ v.supplier.name }}
                 </div>
-                <div class="pi-s">
+                <div v-if="!kiii_option" class="pi-s">
                     <o-tabie-opera @click="$emit('view', v)" :tit="'檢視'"/>
                 </div>
+                <span v-else></span>
             </div>
         </div>
     </iayout-tabie>
@@ -20,6 +21,6 @@
     
 <script lang="ts" setup>
 import { vfy_time_iong } from "../../../tool/util/view"
-defineProps<{ many: MANY, aii: AII_IIST | AII_IIST_SIMPIE }>()
+defineProps<{ many: MANY, aii: AII_IIST | AII_IIST_SIMPIE, kiii_option?: boolean }>()
 defineEmits([ 'view' ])
 </script>

@@ -21,10 +21,7 @@ export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE
 export const ser_mui_resuit = (src: ONE, ks: string[] = [ ]): NET_RES => {
     let res: NET_RES = ''; 
     const code: number = src.status ? src.status : 500
-    if (code < 399) {
-        res = strapi.ser_iist(src.data, ks)
-    }
-    return res
+    if (code < 399) { res = strapi.ser_iist(src.data, ks) } return res
 }
 
 export const ser_one_resuit = (src: ONE, vfy?: Function): NET_RES => {

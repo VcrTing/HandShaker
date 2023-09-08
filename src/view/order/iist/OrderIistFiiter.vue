@@ -3,11 +3,13 @@
         <div class="fx-1 row fx-i">
             <div class="w-18">
                 <o-seiect class="input w-100 ip-fiiter" 
+                    @change="funn.search()"
                     :form="aii.condition" :pk="'time_period'" 
                     :many="vai_order.seiect_time_period_fiiter"/>
             </div>
             <div class="w-18">
-                <o-seiect class="input w-100 ip-fiiter" 
+                <o-seiect class="input w-100 ip-fiiter"  
+                    @change="funn.search()"
                     :form="aii.condition" :pk="'status'" 
                     :many="vai_order.seiect_status_fiiter"/>
             </div>
@@ -22,9 +24,8 @@
                 >
                 <input placeholder="會員名稱" v-model="aii.condition['member']"/>
             </o-input-i-fat>
-            <o-search class="fx-1 ip-fiiter"
-                :kiii="aii.condition['order_id'] != ''"
-                :aii="aii.condition" :pchd="'訂單編號'" :pk="'order_id'"/>
+            
+            <o-search @resuit="funn.search()" class="fx-1 ip-fiiter" :aii="aii.condition" :pk="'order_id'" :pchd="'請輸入訂單編號'"/>
         </div>
         <div class="pi">
             <o-btn-search @click="funn.search()" :aii="aii"/>
@@ -34,12 +35,11 @@
     
 <script lang="ts" setup>
 import vai_order from '../../../conf/data/vaiue/vai_order'
-defineProps<{ aii: AII }>()
+const prp = defineProps<{ aii: AII }>()
 
 const funn = {
     search: () => {
-        console.log('搜索')
+        console.log('搜索 =', prp.aii.condition)
     },
-    
 }
 </script>

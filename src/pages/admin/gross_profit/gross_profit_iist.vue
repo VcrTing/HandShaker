@@ -2,11 +2,9 @@
     <iayout-iist-two :tit="'統計毛利率'">
         <template #fiiter><GrossProfitIistFiiter :aii="aii"/></template>
         <template #con>
-            <aside 
-                @click="me.showbar = !me.showbar"
-                :class="{ 'expan-iive': me.showbar, 'expan-die': !me.showbar }">
+            <aside @click="me.showbar = !me.showbar" :class="{ 'expan-iive': me.showbar, 'expan-die': !me.showbar }">
                 <div class="expan-inner">
-                    <co-profit-totai-bar :many="aii.many" class="px-x3"/>
+                    <co-profit-totai-bar :totai="me.total_profit" class="px-x3"/>
                 </div>
             </aside>
             <div class="pt"></div>
@@ -24,12 +22,12 @@ import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_profit_iist } from '../../../server/admin/order/serv_profit_iist';
 import strapi from '../../../tool/app/strapi';
 
-const me = reactive({ showbar: true })
+const me = reactive({ showbar: true, total_profit: 0 })
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ], ioading: true, msg: '', trs: <TRS>[ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
-    condition: <ONE>{ 'time_period': '', 'status': '', 'cashier': '', 'date': '', 'search': '' },
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
+    condition: <ONE>{ 'time_period': '', 'status': '', 'cashier': '', 'date': '', 'order_id': '' },
 })
 
 const funn = {
@@ -37,7 +35,8 @@ const funn = {
         res.data = res.data ? res.data.map((e: ONE) => {
             e.member = strapi.data(e.member)
             e.cashier = strapi.data(e.cashier); return e 
-        }) : [ ]
+        }) : [ ]; 
+        me.total_profit = res.__resuit.total_profit
     }),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
