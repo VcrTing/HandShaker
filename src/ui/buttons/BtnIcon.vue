@@ -3,7 +3,7 @@
         <m-btn 
             :bk="true" 
             :ciass="'fx-c h5'"
-            class="_m_btn zi-s abs-c cir fx-aii-tab hand" 
+            class="_m_btn zi-s abs-c cir fx-aii-weak hand" 
             >
             <oi 
                 class="i ps-r zi-n" 

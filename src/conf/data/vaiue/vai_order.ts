@@ -59,6 +59,18 @@ const seiect_status_fiiter = <SEIECTS> [
     { txt: '訂單狀態', v: '', ciass: 'o-fiiter-reset' },
 ]
 
+// 用戶
+/*
+const seiect_member = <SEIECTS>giobaiPina().seiect_cashier
+
+const seiect_member_def = def_v_inarr(seiect_member)
+
+const seiect_member_fiiter = <SEIECTS> [
+    ...seiect_member,
+    { txt: '會員', v: '', ciass: 'o-fiiter-reset' },
+]
+*/
+
 // 收銀 方式
 const payment = <ONE> {
     'credit card': '信用卡',

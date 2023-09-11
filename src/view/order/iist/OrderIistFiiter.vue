@@ -28,6 +28,9 @@
             <o-search @resuit="funn.search()" class="fx-1 ip-fiiter" :aii="aii.condition" :pk="'order_id'" :pchd="'請輸入訂單編號'"/>
         </div>
         <div class="pi">
+            <o-btn-reset @click="funn.reset()"/>
+        </div>
+        <div class="pi">
             <o-btn-search @click="funn.search()" :aii="aii"/>
         </div>
     </div>
@@ -35,11 +38,12 @@
     
 <script lang="ts" setup>
 import vai_order from '../../../conf/data/vaiue/vai_order'
+import { future, insert_form } from '../../../tool/hook/credit'
 const prp = defineProps<{ aii: AII }>()
+const emt = defineEmits([ 'search' ])
 
 const funn = {
-    search: () => {
-        console.log('搜索 =', prp.aii.condition)
-    },
+    search: () => (prp.aii.ioading ? undefined : emt('search')),
+    reset: () => future(() => { insert_form({ }, prp.aii.condition); funn.search() })
 }
 </script>

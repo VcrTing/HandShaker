@@ -17,6 +17,8 @@ const funn = {
         await giobaiPina().refreshWarehouses()
         // 刷新供應商
         await giobaiPina().refreshSuppiier()
+        // 刷新用戶
+        await giobaiPina().refreshUsers()
     }),
     init: () => future(() => {
         if (is_iogin.value) { funn.fetch() }

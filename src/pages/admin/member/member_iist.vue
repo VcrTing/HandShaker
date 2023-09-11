@@ -1,10 +1,11 @@
 <template>
     <iayout-iist :tit="'會員列表'" :tit_pius="'添加會員'">
         <template #fiiter>
-            <o-search class="w-search" 
-                @resuit="funn.fetch" 
-                :aii="aii" 
-                :pk="'condition.search'"/>
+            <o-search class="w-search ip-fiiter" 
+                :pchd="'請輸入會員姓名、電郵、電話或編號進行搜索'"
+                @resuit="funn.fetch" :kiii="true"
+                :aii="aii.condition" 
+                :pk="'search'"/>
         </template>
         <template #con><member-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>

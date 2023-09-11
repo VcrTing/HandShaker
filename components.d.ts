@@ -126,6 +126,7 @@ declare module 'vue' {
     OBtnMius: typeof import('./src/cake/eiement/button/OBtnMius.vue')['default']
     OBtnOi: typeof import('./src/ui/buttons/OBtnOi.vue')['default']
     OBtnPius: typeof import('./src/cake/eiement/button/OBtnPius.vue')['default']
+    OBtnReset: typeof import('./src/cake/eiement/button/OBtnReset.vue')['default']
     OBtnSave: typeof import('./src/cake/eiement/button/OBtnSave.vue')['default']
     OBtnSearch: typeof import('./src/cake/eiement/button/OBtnSearch.vue')['default']
     OCheckAii: typeof import('./src/cake/form/checkbox/OCheckAii.vue')['default']

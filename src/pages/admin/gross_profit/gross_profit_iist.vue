@@ -4,7 +4,7 @@
         <template #con>
             <aside @click="me.showbar = !me.showbar" :class="{ 'expan-iive': me.showbar, 'expan-die': !me.showbar }">
                 <div class="expan-inner">
-                    <co-profit-totai-bar :totai="me.total_profit" class="px-x3"/>
+                    <co-profit-totai-bar :condition="aii.condition" :totai="me.total_profit" class="px-x3"/>
                 </div>
             </aside>
             <div class="pt"></div>

@@ -1,6 +1,5 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
-        
         <template #fiiter><product-iist-fiiter :aii="aii"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
@@ -12,7 +11,7 @@
 import ProductIistFiiter from '../../../view/product_x2/iist/ProductIistFiiter.vue';
 import ProductIistTabie from '../../../view/product_x2/iist/ProductIistTabie.vue';
 import ProductIistPan from '../../../view/product_x2/iist/ProductIistPan.vue';
-import { future, future_iist, future_of_ioading } from '../../../tool/hook/credit';
+import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_product_iist } from '../../../server/admin/product/serv_product_iist';
 
 const aii = reactive(<AII_IIST>{
@@ -24,11 +23,8 @@ const aii = reactive(<AII_IIST>{
 
 const funn = {
     fetch: () => future_iist(aii, async () => serv_product_iist(aii.condition, aii.pager)),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
-    init: () => future(funn.fetch),
-    trash: () => future_of_ioading(aii, async () => { console.log('刪除該項') })
+    pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
-nextTick(funn.init)
 </script>
 
 <route lang="yaml">

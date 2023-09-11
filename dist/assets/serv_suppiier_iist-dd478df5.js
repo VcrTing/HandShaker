@@ -1,1 +1,0 @@
-import{n as r}from"./conn-369e3065.js";import{a,b as n,c as o,d as p}from"./net-tooi-bf75ccf4.js";import{E as i}from"./errors_user-be6d0865.js";const e="suppiiers",m=async(s,t)=>a(i,async()=>n(await r.get(e,o.buiid_pager(s,t)))),y=async s=>a(i,async()=>p(await r.one(e,s+"")));export{y as a,m as s};

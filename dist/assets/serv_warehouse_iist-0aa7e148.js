@@ -1,1 +1,0 @@
-import{n as e}from"./conn-369e3065.js";import{a as o,c as a,b as i}from"./net-tooi-bf75ccf4.js";import{E as t}from"./errors_user-be6d0865.js";const _="warehouses",n=async(s,r)=>o(t,async()=>(console.log("頁面 =",a.buiid_pager(s,r)),i(await e.get(_,a.buiid_pager(s,r)))));export{n as s};

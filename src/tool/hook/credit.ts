@@ -92,7 +92,7 @@ export const buiid_address = (addrs: ADDRESS): string => {
 }
 
 // 輸入 數據
-export const insert_form = (data: ONE, form: ONE): void => { for (let k in form) { form[k] = data[k] } }
+export const insert_form = (data: ONE, form: ONE, def: any = ''): void => { for (let k in form) { form[k] = data[k] ? data[k] : def } }
 export const insert_form_if_id = (data: ONE, form: ONE): boolean => {
     if (data.id) {
         for (let k in form) { form[k] = data[k] }

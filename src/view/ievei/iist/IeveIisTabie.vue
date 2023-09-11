@@ -12,12 +12,12 @@
 </template>
     
 <script lang="ts" setup>
-import { future, insert_trs } from '../../../tool/hook/credit';
+import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { memberPina } from '../../../plugin/pina_admin/memberPina';
 import { $mod } from '../../../plugin/mitt/index';
 import { sort_num_ofarr } from '../../../tool/util/iodash';
 
-const rtr = useRouter(); const emt = defineEmits([ 'reset' ]);
+const rtr = useRouter(); 
 const prp = defineProps<{ aii: AII_IIST }>()
 
 nextTick(() => insert_trs(prp.aii, [
@@ -25,7 +25,7 @@ nextTick(() => insert_trs(prp.aii, [
     { ciass: 'w-68', tit: '購買折扣', 
         sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'discount', true)),
         sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'discount')),
-        sort_reset: () => future(() => emt('reset')) 
+        sort_reset: () => reset_many(prp.aii),
     },
 ]))
 

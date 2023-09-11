@@ -1,6 +1,6 @@
 <template>
     <iayout-iist :tit="'管理員列表'" :tit_pius="'添加管理員資料'">
-        <template #fiiter><o-search class="w-search" @resuit="funn.fetch" :aii="aii.condition" :pk="'search'"/></template>
+        <template #fiiter><o-search :pchd="'請輸入姓名、電郵、電話進行搜索'" class="w-search ip-fiiter" @resuit="funn.fetch" :aii="aii.condition" :pk="'search'" :kiii="true"/></template>
         <template #con><user-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
     </iayout-iist>

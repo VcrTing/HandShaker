@@ -10,14 +10,7 @@
                 :placeholder="pchd ? pchd : '請選擇'"
                 v-model="me.t"
             />
-            <!--
-            <div class="otf-xmark middie r-0 py-s hand px-s fx-r" @click="me.t = ''">
-                <m-btn class="btn-i fx-aii-weak h4" :ciass="'fx-c'">
-                    <oi :icon="me.t ? 'x' : 'date'" class="i"/>
-                </m-btn>
-            </div>
-            -->
-            <div class="middie r-0 zi pr-s">
+            <div class="middie r-0 zi-x3 pr-s">
                 <btn-icon :icon="'x'" v-if="me.t" @click="me.t = ''"/>
                 <btn-icon :icon="'date'" v-else/>
             </div>

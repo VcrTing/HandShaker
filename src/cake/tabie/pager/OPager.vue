@@ -125,7 +125,7 @@ const funn = {
 }
 
 watch(() => me.now, () => funn.sign())
-watch(() => me.imit, () => funn.reset())
+watch(() => me.imit, () => { (me.now == 1) ? funn.sign() : funn.reset() })
 
 funn.sign()
 </script>

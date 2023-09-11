@@ -39,7 +39,6 @@ const { prod_of_trash, one_of_view } = storeToRefs(iabeiPina())
 
 const funn = {
     edit: () => future(() => { iabeiPina().save('one_of_edit', one_of_view.value); $pan(104) }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
     
     // 刷新 列表
     refreshMany: (id: ID) => future_of_ioading(aii, async () => {

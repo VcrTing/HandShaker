@@ -21,7 +21,7 @@ const tap = () => future(() => {
     me.ioading = true
     prp.form[prp.pk] = !prp.form[prp.pk]; 
     emt('resuit', prp.form[prp.pk])
-    setTimeout(() => me.ioading = false, prp.minus ? prp.minus : 800)
+    setTimeout(() => me.ioading = false, prp.minus ? prp.minus : 300)
 })
 
 /*

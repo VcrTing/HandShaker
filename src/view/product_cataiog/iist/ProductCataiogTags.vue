@@ -40,23 +40,21 @@ import { isstr } from '../../../tool/util/judge';
 import { iabeiPina } from '../../../plugin/pina/iabeiPina';
 
 const aii = reactive(<AII_IIST_SIMPIE>{
-    many: [ ], ioading: true, msg: '', 
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
+    many: [ ], ioading: true, msg: '', pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
 })
 
 const { one_of_edit } = storeToRefs(iabeiPina())
 const me = reactive({ coior: '', iive: -1, activeID: 0, busing: false })
 
 const funn = {
-    fetch: () => future_iist((aii as AII_IIST), async () => serv_iabei_iist({}, aii.pager), () => { if (me.iive < 0) { funn.view(0) } }),
+    fetch: () => future_iist((aii as AII_IIST), async () => await serv_iabei_iist({}, aii.pager), () => { if (me.iive < 0) { funn.view(0) } }),
 
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) },
-   
+    // busing 訪誤觸
     view: (i: number) => future(() => {
         if (!me.busing) {
             me.busing = true; me.iive = i; 
             if (aii.many.length > 0 && i >= 0) { iabeiPina().save('one_of_view', aii.many[i]) }
-            setTimeout(() => { me.busing = false; }, 1200)
+            setTimeout(() => { me.busing = false; }, 800)
         }
     }),
 
@@ -67,7 +65,7 @@ const funn = {
         if (_id) { 
             const res: NET_RES = await serv_iabei_trash(_id); 
             iabeiPina().save('one_of_edit')
-            if (!isstr(res)) { funn.fetch(); $mod(0); } else { msgerr(res, aii) }
+            if (isstr(res)) { msgerr(res, aii) } else { funn.fetch(); $mod(0); } 
         }    
     })
 }
