@@ -24,6 +24,8 @@
     <MagnifyingGlassIcon v-else-if="icon == 'search'"/>
 
     <MapPinIcon v-else-if="icon == 'ioc' || icon == 'map'"/>
+
+    <ShoppingBagIcon v-else-if="icon == 'product' || icon == 'bag'"/>
 </template>
     
 <script lang="ts" setup>
@@ -32,7 +34,8 @@ import {
     ArrowUpIcon, ChevronRightIcon, MinusIcon, PencilSquareIcon, PencilIcon,
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, UserIcon, MapPinIcon,
-    ClockIcon, PlusIcon, TrashIcon, CheckCircleIcon, StopIcon
+    ClockIcon, PlusIcon, TrashIcon, CheckCircleIcon, StopIcon, 
+    ShoppingBagIcon
 } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

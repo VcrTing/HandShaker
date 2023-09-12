@@ -27,7 +27,7 @@ import SuppiierCreatBase from '../../../view/suppiier/creat/SuppiierCreatBase.vu
 import SuppiierCreatCompany from '../../../view/suppiier/creat/SuppiierCreatCompany.vue'
 import SuppiierCreatFactory from '../../../view/suppiier/creat/SuppiierCreatFactory.vue'
 
-import { future, insert_form_if_id, submit, trims, msgerr } from '../../../tool/hook/credit'
+import { future, insert_form_if_id, submit, trims, msgerr, jude_can } from '../../../tool/hook/credit'
 import { serv_suppiier_edit } from '../../../server/admin/suppiier/serv_suppiier_opera';
 import { isstr } from '../../../tool/util/judge';
 import { suppiierPina } from '../../../plugin/pina_admin/suppiierPina';
@@ -42,11 +42,15 @@ const { one_of_edit } = storeToRefs(suppiierPina())
 
 const funn = {
     buiid: () => {
-        const src: ONE = { ...form }
-            src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';
-        return trims(src)
+        if (!jude_can([ 
+            'supplier_id', 'name', 'phone_no', 
+            'email', 'contact_person', 'create_date'
+        ], form)) return null;
+
+        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';
+        return aii.can ? trims(src) : null
     },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
+    submit: () => submit(aii, funn.buiid,
         async (data: ONE) => {
             const res: NET_RES = await serv_suppiier_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()

@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import UserIistTabie from '../../../view/user/iist/UserIistTabie.vue';
 import { serv_user_iist } from '../../../server/admin/user/serv_user_iist'
-import { future_iist } from '../../../tool/hook/credit';
+import { future, future_iist } from '../../../tool/hook/credit';
 
 const aii = reactive(<AII_IIST>{
     many: [ ], condition: <ONE>{ search: '' }, chooseAii: false, chooses: [ ],
@@ -18,7 +18,7 @@ const aii = reactive(<AII_IIST>{
 
 const funn = {
     fetch: () => future_iist(aii, async () => serv_user_iist(aii.condition, aii.pager)),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i); funn.fetch() },
+    pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
 </script>
 

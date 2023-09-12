@@ -160,6 +160,7 @@ declare module 'vue' {
     OPager: typeof import('./src/cake/tabie/pager/OPager.vue')['default']
     OPager_OID: typeof import('./src/cake/tabie/pager/OPager_OID.vue')['default']
     OPanIoading: typeof import('./src/cake/tabie/ioad/OPanIoading.vue')['default']
+    OProdInput: typeof import('./src/cake/form/input_eie/OProdInput.vue')['default']
     OSaveBackBtnsGroup: typeof import('./src/cake/eiement/buttongroup/OSaveBackBtnsGroup.vue')['default']
     OSearch: typeof import('./src/cake/form/input_eie/OSearch.vue')['default']
     OSearchBiock: typeof import('./src/cake/form/input_eie/OSearchBiock.vue')['default']

@@ -48,6 +48,7 @@ const funn = {
             }
 
             rtr.push('/admin/product_inventory_iist');
+            pageProductPina().ciear()
         }
     }),
 }

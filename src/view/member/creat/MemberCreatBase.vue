@@ -29,10 +29,10 @@ const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
-watch(() => prp.aii.sign, () => {
+watch(() => prp.aii.sign, () => { prp.aii.can = false; let res: boolean = true;
     pks.map((k: string) => { 
-        if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
-    prp.aii.can = true
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false } })
+    prp.aii.can = res
 })
 
 watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii))
@@ -42,7 +42,4 @@ watch(() => prp.form.phone_no, (n: string) => jude_err(errs, 'phone_no', n, prp.
 watch(() => prp.form.email, (n: string) => jude_err(errs, 'email', n, prp.aii, () => {
     return !vrf_emaii(n)
 }))
-
-// watch(() => prp.form.sex, (n: string) => jude_err(errs, 'sex', n, prp.aii))
-// watch(() => prp.form.birthday, (n: string) => jude_err(errs, 'birthday', n, prp.aii))
 </script>

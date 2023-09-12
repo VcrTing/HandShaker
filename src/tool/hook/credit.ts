@@ -17,7 +17,7 @@ export const submit = (aii: AII, buiid: BUIID_FUNC, submit: SUBMIT_FUNC ) => new
         if (aii.sign >= 0) aii.sign += 1;
         const data: ONE | null = buiid()
         if (data) await submit(data);
-        setTimeout(() => { aii.ioading =  false; rej(0) }, 20)
+        setTimeout(() => { aii.ioading =  false; rej(0) }, 400)
     }
 })
 
@@ -44,10 +44,8 @@ export const jude_form_err = (form: ONE, form_err: ONE, ks: string[]) => {
 }
 
 // 判斷 是否 can
-export const jude_can = (pks: string[], caii: Function) => {
-    let res: boolean = true
-    for (let i= 0; i< pks.length; i++ ) { if (!caii(pks[i])) { res = false; break } }
-    return res
+export const jude_can = (pks: string[], form: ONE) => {
+    for (let i= 0; i< pks.length; i++ ) { if (!form[pks[i]]) { return false } } return true
 }
 
 // 判斷

@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import WarehouseCreatBase from '../../../view/warehouse/creat/WarehouseCreatBase.vue'
 
-import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { jude_can, submit, trims, viewmsg } from '../../../tool/hook/credit'
 import { serv_warehouse_creat } from '../../../server/admin/warehouse/serv_warehouse_opera';
 import { isstr } from '../../../tool/util/judge';
 import { $toast } from '../../../plugin/mitt/index';
@@ -24,12 +24,13 @@ const form = reactive({ name: '', contact_person: '', phone_no: '', address: '' 
 const rtr = useRouter()
 const funn = {
     buiid: () => {
+        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'address' ], form)) return null;
+        
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
-            return trims(src)
+            return aii.can ? trims(src) : null
     },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
+    submit: () => submit(aii, funn.buiid,
         async (data: ONE) => {
-            console.log('構建的數據 =', data)
             const res: NET_RES = await serv_warehouse_creat(data)
             isstr(res) ? funn.faii(res) : funn.success()
         }),

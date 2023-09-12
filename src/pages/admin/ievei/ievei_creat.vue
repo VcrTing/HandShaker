@@ -11,7 +11,7 @@
     
 <script lang="ts" setup>
 import IeveiCreatBase from '../../../view/ievei/creat/IeveiCreatBase.vue'
-import { msgerr, submit, trims } from '../../../tool/hook/credit'
+import { jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge';
 import { serv_ievei_creat } from '../../../server/admin/ievei/serv_ievei_opera';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
@@ -19,9 +19,13 @@ import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ name: '', discount: '' })
 
+
 const rtr = useRouter()
 const funn = {
-    buiid: () => (aii.can ? trims(form) : null),
+    buiid: () => {
+        if (!jude_can([ 'name', 'discount' ], form)) return null;
+        return (aii.can ? trims(form) : null)
+    },
     submit: () => submit(aii, funn.buiid,
         async (data: ONE) => {
             const res: NET_RES = await serv_ievei_creat(data)

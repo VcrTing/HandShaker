@@ -11,7 +11,7 @@
     
 <script lang="ts" setup>
 import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue'
-import { future, insert_form_if_id, msgerr, submit, trims } from '../../../tool/hook/credit'
+import { future, insert_form_if_id, jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { serv_user_edit } from '../../../server/admin/user/serv_user_opera';
 import { userPina } from '../../../plugin/pina/userPina';
 import { isstr } from '../../../tool/util/judge';
@@ -25,8 +25,12 @@ const aii = reactive({ ioading: false, msg: '', can: false, sign: -1 })
 const form = reactive(<ONE>{ name: '', email: '', phone_no: '', storehouse: '', password: '', isAdmin: true })
 
 const funn = {
-    buiid: () => { const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; return trims(src) },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
+    buiid: () => { 
+        if (!jude_can([ 'name', 'email', 'password', 'storehouse' ], form)) return null;
+        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; 
+        return (aii.can ? trims(src) : null)
+    },
+    submit: () => submit(aii, funn.buiid,
         async (data: ONE) => { // console.log('構建的數據 =', data)
             const res: NET_RES = await serv_user_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()

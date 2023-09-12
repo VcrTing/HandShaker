@@ -11,7 +11,7 @@
     
 <script lang="ts" setup>
 import IeveiCreatBase from '../../../view/ievei/creat/IeveiCreatBase.vue'
-import { future, insert_form_if_id, msgerr, submit, trims } from '../../../tool/hook/credit'
+import { future, insert_form_if_id, jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge';
 import { memberPina } from '../../../plugin/pina_admin/memberPina';
 import { serv_ievei_edit } from '../../../server/admin/ievei/serv_ievei_opera';
@@ -24,7 +24,10 @@ const form = reactive({ name: '', discount: '' })
 const { ievei_of_edit } = storeToRefs(memberPina())
 
 const funn = {
-    buiid: () => (aii.can ? trims(form) : null),
+    buiid: () => {
+        if (!jude_can([ 'name', 'discount' ], form)) return null;
+        return (aii.can ? trims(form) : null)
+    },
     submit: () => submit(aii, funn.buiid,
         async (data: ONE) => {
             const res: NET_RES = await serv_ievei_edit(data, ievei_of_edit.value.id)

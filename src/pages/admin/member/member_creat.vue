@@ -29,10 +29,9 @@ import MemberCreatBase from '../../../view/member/creat/MemberCreatBase.vue'
 import MemberCreatAddr from '../../../view/member/creat/MemberCreatAddr.vue'
 import MemberCreatCard from '../../../view/member/creat/MemberCreatCard.vue'
 
-import { future, submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { future, jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { serv_member_creat } from '../../../server/admin/member/serv_member_opera'
 import { isstr } from '../../../tool/util/judge'
-import { $toast } from '../../../plugin/mitt'
 import { now } from '../../../tool/util/view'
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
@@ -43,14 +42,18 @@ const rtr = useRouter()
 
 const funn = {
     buiid: () => {
-        let src: ONE = { ...form, ...form_card }; src['member_level'] = src['member_level'] + ''; return trims(src)
+        if (!jude_can([ 'name', 'email', 'phone_no', 'address' ], form)) return null;
+        if (!jude_can([ 'member_id' ], form_card)) return null;
+
+        let src: ONE = { ...form, ...form_card }; src['member_level'] = src['member_level'] + ''; 
+        return aii.can ? trims(src) : null
     },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
-        async (data: ONE) => { console.log('構建的數據 =', data)
-            const res: NET_RES = await serv_member_creat(data); console.log('結果 =', res)
-            isstr(res) ? funn.faii(res) : funn.success()
+    submit: () => submit(aii, funn.buiid,
+        async (data: ONE) => { 
+            const res: NET_RES = await serv_member_creat(data);
+            isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
+    success: () => rtr.back(),
     init: () => future(() => { form_card.create_date = now(); form.birthdate = now('2000-01-01') })
 }
 nextTick(funn.init)

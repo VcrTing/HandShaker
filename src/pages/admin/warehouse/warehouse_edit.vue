@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import WarehouseCreatBase from '../../../view/warehouse/creat/WarehouseCreatBase.vue'
 
-import { future, insert_form_if_id, submit, trims, msgerr } from '../../../tool/hook/credit'
+import { future, insert_form_if_id, submit, trims, msgerr, jude_can } from '../../../tool/hook/credit'
 import { serv_warehouse_edit } from '../../../server/admin/warehouse/serv_warehouse_opera';
 import { isstr } from '../../../tool/util/judge';
 import { warehousePina } from '../../../plugin/pina_admin/warehousePina';
@@ -24,10 +24,14 @@ const form = reactive(<ONE>{ name: '', contact_person: '', phone_no: '', address
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(warehousePina())
 const funn = {
-    buiid: () => { const src: ONE = { ...form }; return trims(src) },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
+    buiid: () => {
+        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'address' ], form)) return null;
+        
+        const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
+            return aii.can ? trims(src) : null
+    },
+    submit: () => submit(aii, funn.buiid,
         async (data: ONE) => { 
-            console.log('構建的數據 =', data)
             const res = await serv_warehouse_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),

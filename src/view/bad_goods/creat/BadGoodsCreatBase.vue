@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="o-form">
-            <o-input :tit="'壞貨產品'" :err="errs.product_id" @click="$mod(1000)">
+            <o-input-i :tit="'壞貨產品'" :err="errs.product_id" :icon="'product'" @click="$mod(1000)">
                 <input @click.stop="$mod(1000)" :value="name_prod" placeholder="請點擊後打開選擇框"/>
-            </o-input>
+            </o-input-i>
             <o-input :tit="'數量'" :err="errs.quantity">
                 <input type="number" v-model="form.quantity" placeholder="請輸入"/>
             </o-input>

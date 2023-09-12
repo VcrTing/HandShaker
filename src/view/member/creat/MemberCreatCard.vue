@@ -31,10 +31,11 @@ const pks = [ 'member_id', 'create_date' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
-watch(() => prp.aii.sign, () => {
+
+watch(() => prp.aii.sign, () => { prp.aii.can = false; let res: boolean = true;
     pks.map((k: string) => { 
-        if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
-    prp.aii.can = true
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false } })
+    prp.aii.can = res
 })
 
 watch(() => prp.form.member_id, (n: string) => jude_err(errs, 'member_id', n, prp.aii))

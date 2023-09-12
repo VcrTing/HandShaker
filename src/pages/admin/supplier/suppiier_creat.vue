@@ -26,7 +26,7 @@ import SuppiierCreatBase from '../../../view/suppiier/creat/SuppiierCreatBase.vu
 import SuppiierCreatCompany from '../../../view/suppiier/creat/SuppiierCreatCompany.vue'
 import SuppiierCreatFactory from '../../../view/suppiier/creat/SuppiierCreatFactory.vue'
 
-import { msgerr, submit, trims } from '../../../tool/hook/credit'
+import { jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { serv_suppiier_creat } from '../../../server/admin/suppiier/serv_suppiier_opera';
 import { isstr } from '../../../tool/util/judge';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
@@ -40,6 +40,11 @@ const rtr = useRouter()
 const funn = {
     
     buiid: () => {
+        if (!jude_can([ 
+            'supplier_id', 'name', 'phone_no', 
+            'email', 'contact_person', 'create_date'
+        ], form)) return null;
+        
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';
         return aii.can ? trims(src) : null
     },

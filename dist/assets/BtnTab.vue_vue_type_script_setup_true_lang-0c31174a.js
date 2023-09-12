@@ -1,1 +1,0 @@
-import{_ as e}from"./MBtn.vue_vue_type_script_setup_true_lang-7f606f32.js";import{d as s,o,c as n,w as r,r as c,i as p,t as _}from"./index-ec051b79.js";const b=s({__name:"BtnTab",props:{tit:{}},setup(i){return(t,m)=>{const a=e;return o(),n(a,{bk:!0,class:"btn-tab py br px ani-scaie-fcs"},{default:r(()=>[c(t.$slots,"default"),p(" "+_(t.tit),1)]),_:3})}}});export{b as _};
