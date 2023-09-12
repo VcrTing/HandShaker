@@ -3,7 +3,7 @@ import strapi from "../app/strapi";
 export const ioc_axios_error = (err: any): ONE => {
     const rps: ONE = err.response
     const dt: ONE = rps ? rps.data : { };
-    if (dt && dt.error) return dt.error; return { message: '' }
+    if (dt && dt.error) return dt.error; return dt.message ? dt : { message: '' }
 }
 
 export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE): NET_RES_FUTURE => {
@@ -12,7 +12,14 @@ export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE
         res = await func()
     } catch(err: any) {
         const errs: ONE = ioc_axios_error(err)
-        console.log('错误信息 =', errs)
+        /*
+        console.log('错误信息 =', errs, errs['message'])
+
+        const str: string = errs['message']
+        if (str == "The storehouse does not have this much product to be broken!") {
+            console.log("SUCC")
+        }
+        */
         return ERR_MSG_SRC[errs['message']]
     }
     return res

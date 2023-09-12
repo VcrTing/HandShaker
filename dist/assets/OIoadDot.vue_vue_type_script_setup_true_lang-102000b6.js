@@ -1,1 +1,0 @@
-import{d as e,o as t,e as a,n as d,b as o}from"./index-faaf2242.js";const i=o("div",{class:"oid_1"},".",-1),_=o("div",{class:"oid_2"},".",-1),n=o("div",{class:"oid_3"},".",-1),c=[i,_,n],m=e({__name:"OIoadDot",props:{styie:{}},setup(r){return(s,l)=>(t(),a("div",{class:d(["o-ioad-dot","o-ioad-dot-"+s.styie?s.styie:"def"])},c,2))}});export{m as _};

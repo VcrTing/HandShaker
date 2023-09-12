@@ -1,3 +1,4 @@
+import { serv_iabei_iist } from "../../server/admin/iabei/serv_iabei_iist"
 import { serv_ievei_iist } from "../../server/admin/ievei/serv_ievei_iist"
 import { serv_suppiier_iist } from "../../server/admin/suppiier/serv_suppiier_iist"
 import { serv_user_iist } from "../../server/admin/user/serv_user_iist"
@@ -9,6 +10,7 @@ export const giobaiPina = defineStore("giobaiPina", {
     state: () => ({
         users: <MANY>[ ],
         ieveis: <MANY>[ ],
+        iabeis: <MANY>[ ],
         suppiiers: <MANY>[ ],
         warehouses: <MANY>[ ],
 
@@ -18,6 +20,8 @@ export const giobaiPina = defineStore("giobaiPina", {
         menu: false
     }),
     actions: {
+        ciear() { },
+        
         // 保存
         saveId(k: string, v: ID) { (this as ONE).ids[k] = v ? v : 0 },
 
@@ -41,6 +45,11 @@ export const giobaiPina = defineStore("giobaiPina", {
             let res: NET_RES = await serv_user_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
             if (!isstr(res)) { res = (res as ONE); this.users = res.data; console.log('全局 USER RES =', this.users) }
         },
+        // 標籤
+        async refreshIabeis() {
+            let res: NET_RES = await serv_iabei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+            if (!isstr(res)) { res = (res as ONE); this.iabeis = res.data; console.log('全局 IABEIS RES =', this.iabeis) }
+        },
 
     },
     getters: {
@@ -60,6 +69,16 @@ export const giobaiPina = defineStore("giobaiPina", {
             }); return res as SEIECTS
         },
 
+        // 標籤
+        seiect_iabeis(state): SEIECTS {
+            const res = change_name_ofarr(state.iabeis, { 'name': 'txt', 'id': 'v' }); return res as SEIECTS
+        },
+
+        // 供應商
+        seiect_supiiers(state): SEIECTS {
+            const res = change_name_ofarr(state.suppiiers, { 'name': 'txt', 'id': 'v' }); return res as SEIECTS
+        },
+
         // 收銀員
         seiect_cashier(state): SEIECTS {
             const res = change_name_ofarr(state.warehouses, { 'name': 'txt', 'id': 'v' }); return res as SEIECTS
@@ -70,6 +89,6 @@ export const giobaiPina = defineStore("giobaiPina", {
     },
     persist: {
         storage: sessionStorage, 
-        paths: [ 'ieveis', 'suppiiers', 'warehouses' ]
+        paths: [ 'users', 'ieveis', 'iabeis', 'suppiiers', 'warehouses' ]
     }
 })

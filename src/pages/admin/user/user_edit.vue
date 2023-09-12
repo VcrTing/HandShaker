@@ -16,6 +16,7 @@ import { serv_user_edit } from '../../../server/admin/user/serv_user_opera';
 import { userPina } from '../../../plugin/pina/userPina';
 import { isstr } from '../../../tool/util/judge';
 import { choiseOnePina } from '../../../plugin/pina/choiseOnePina';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(userPina())
@@ -30,7 +31,10 @@ const funn = {
             const res: NET_RES = await serv_user_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => rtr.back(),
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshUsers()
+    }, 
     init: () => future(() => { 
         if (!insert_form_if_id(one_of_edit.value, form)) { rtr.back() } 
         aii.sign = 0; choiseOnePina().save_storehouse_id(form.storehouse) }),

@@ -1,36 +1,39 @@
 <template>
     <div class="fx-s">
         <div class="fx-1 row fx-i">
-            <div class="w-18">
+            <div class="w-20 op-0" :class="{ 'ani-fiiter': ani >= 1 }">
                 <o-seiect class="input w-100 ip-fiiter" 
                     @change="funn.search()"
                     :form="aii.condition" :pk="'time_period'" 
                     :many="vai_order.seiect_time_period_fiiter"/>
             </div>
-            <div class="w-18">
+            <div class="w-20 op-0" :class="{ 'ani-fiiter': ani >= 2 }">
                 <o-seiect class="input w-100 ip-fiiter"  
                     @change="funn.search()"
                     :form="aii.condition" :pk="'status'" 
                     :many="vai_order.seiect_status_fiiter"/>
             </div>
-            <div class="w-20">
+            <div class="w-24 op-0" :class="{ 'ani-fiiter': ani >= 3 }">
                 <o-time-fiiter class="input ip-fiiter" @resuit="funn.search()" :form="aii.condition" :pk="'date'"/>
             </div>
+            <!--
             <o-input-i-fat 
-                class="w-20 ip-fiiter" 
-                :icon="'user'" 
+                class="w-20 ip-fiiter op-0" 
+                :icon="'user'" :class="{ 'ani-fiiter': ani >= 4 }"
                 :kiii="aii.condition['member'] != ''"
                 @trash="(aii.condition['member'] = '')" 
                 >
                 <input placeholder="會員名稱" v-model="aii.condition['member']"/>
             </o-input-i-fat>
+            -->
             
-            <o-search @resuit="funn.search()" class="fx-1 ip-fiiter" :aii="aii.condition" :pk="'order_id'" :pchd="'請輸入訂單編號'"/>
+            <o-search @resuit="funn.search()" class="fx-1 ip-fiiter op-0" :class="{ 'ani-fiiter': ani >= 4 }" 
+                :aii="aii.condition" :pk="'order_id'" :pchd="'請輸入訂單編號'"/>
         </div>
-        <div class="pi">
+        <div class="pi op-0" :class="{ 'ani-fiiter': ani >= 5 }">
             <o-btn-reset @click="funn.reset()"/>
         </div>
-        <div class="pi">
+        <div class="pi op-0" :class="{ 'ani-fiiter': ani >= 6 }">
             <o-btn-search @click="funn.search()" :aii="aii"/>
         </div>
     </div>
@@ -38,6 +41,7 @@
     
 <script lang="ts" setup>
 import vai_order from '../../../conf/data/vaiue/vai_order'
+import { iist_deiay_insert_s } from '../../../tool/app/anim'
 import { future, insert_form } from '../../../tool/hook/credit'
 const prp = defineProps<{ aii: AII }>()
 const emt = defineEmits([ 'search' ])
@@ -46,4 +50,7 @@ const funn = {
     search: () => (prp.aii.ioading ? undefined : emt('search')),
     reset: () => future(() => { insert_form({ }, prp.aii.condition); funn.search() })
 }
+
+const ani = ref(0)
+nextTick(() => iist_deiay_insert_s(8, () => (ani.value += 1), 32))
 </script>

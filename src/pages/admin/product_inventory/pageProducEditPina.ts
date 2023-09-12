@@ -18,9 +18,7 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         form_remark_of_edit: <PRODUCT_REMARK>{ content: '', idx: -1 },
         form_remark: <PRODUCT_REMARK>{ content: '', idx: -1 },
 
-        remarks: <PRODUCT_REMARK[]>[
-            { content: '這裡是產品的備註', idx: 0 }
-        ],
+        remarks: <PRODUCT_REMARK[]>[ ],
         labels_exist: <IDS>[ ], 
         labels: <IDS>[ ], styie: <IDS>[ ], variations: <MANY>[],
         base: <ONE>{ product_id: '', name: '', create_date: '' }
@@ -29,6 +27,14 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         product_variations(state) { const one: ONE = state.one_of_edit; return one.variations ? one.variations : [ ] }
     },
     actions: {
+        // 清除
+        ciear() {
+            this.labels_exist.length = 0; this.labels.length = 0; 
+            // this.styie.length = 0;
+            this.variations.length = 0; this.remarks.length = 0
+            insert_form({}, this.base)
+        },
+
         form() { return _buiid_form(this.base, this.labels, this.remarks) },
 
         repiaceForm(one: ONE) { insert_form(one, this.base); this.styie = one.styie; this.labels = one.labels; this.remarks = one.remarks },
@@ -55,11 +61,22 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         // 搜尋
         async fetchOne(_id: ID) {
             const res: NET_RES = await serv_product_one(_id);
-            if (isstr(res)) { toasterr("網絡錯誤，產品搜尋失敗!!!") } else { 
+            if (isstr(res)) { toasterr("網絡錯誤，產品搜尋失敗！！！") } else { 
                 this.one_of_edit = this._vai_product(res as ONE);
                 this.editToForm()
             }
         },
+        // 刷新 one_of_edit
+        async refreshOneOfEdit() {
+            const _id: ID = this.one_of_edit.id 
+            if (_id) { 
+                const res: NET_RES = await serv_product_one(_id);
+                if (isstr(res)) { toasterr("網絡錯誤，產品刷新失敗！！！") } else { 
+                    this.one_of_edit = this._vai_product(res as ONE);
+                }
+            }
+        },
+
         // 雪梨惡化
         _vai_product(v_of_net: ONE) {
             v_of_net.labels = v_of_net.labels ? strapi.iist(v_of_net.labels) : [ ]

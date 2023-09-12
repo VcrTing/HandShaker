@@ -53,6 +53,7 @@ declare module 'vue' {
     CoOrderDetaiiProdsTabie: typeof import('./src/components/cashier/order/prods/CoOrderDetaiiProdsTabie.vue')['default']
     CoOrderIistBaseCard: typeof import('./src/components/admin/order/iist/CoOrderIistBaseCard.vue')['default']
     CoOrderPdf: typeof import('./src/components/pdf/order/CoOrderPdf.vue')['default']
+    CoPidBadTabie: typeof import('./src/components/admin/product_inventory_detaii/CoPidBadTabie.vue')['default']
     CoPidInstockTabie: typeof import('./src/components/admin/product_inventory_detaii/CoPidInstockTabie.vue')['default']
     CoPidNewInstockTabie: typeof import('./src/components/admin/product_inventory_detaii/CoPidNewInstockTabie.vue')['default']
     CoPidProductExpan: typeof import('./src/components/admin/product_inventory_detaii/CoPidProductExpan.vue')['default']

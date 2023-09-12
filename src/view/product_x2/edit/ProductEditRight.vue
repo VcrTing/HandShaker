@@ -2,7 +2,7 @@
     <div>
         <!-- 入貨 -->
         <div class="py-row"></div>
-        <produ-new-instock-tabie :aii="instock_new" :one_of_edit="one_of_edit"/>
+        <produ-new-instock-tabie :aii="instock_new" :one_of_edit="one_of_edit" :kiii_option="true"/>
 
         <!-- 倉庫 -->
         <div class="py-row"></div>

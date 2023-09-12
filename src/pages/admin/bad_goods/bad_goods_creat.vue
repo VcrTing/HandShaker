@@ -23,7 +23,9 @@ const form = reactive({ product_id: null, variation: 0, product_name: '', quanti
 const funn = {
     buiid: () => (aii.can ? form : null),
     submit: () => submit(aii, funn.buiid, async (data: ONE) => { 
-        const res: NET_RES = await serv_bad_creat(data); isstr(res) ? msgerr(res, aii) : funn.success() }),
+        const res: NET_RES = await serv_bad_creat(data); 
+        isstr(res) ? msgerr(res, aii) : funn.success() 
+    }),
     success: () => rtr.back(),
     init: () => future(() => { choiseOnePina().ciear_for_creat() })
 }

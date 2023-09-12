@@ -3,8 +3,9 @@
         <m-btn :bk="true" class="fx-aii-tab bd-input-x2 py-s px-s br ani-scaie-aii" @click="funn.min()" :ciass="'fx-c'">
             <oi class="i ani-scaie-hv" :class="{ 'txt-err': err }" :icon="'min'"/>
         </m-btn>
-        <p class="px mw-2em ta-c ani-scaie-hv" :class="ciass_num">
-            <span :class="{ 'txt-err': err }">{{ form[pk] }}</span>
+        <p class="px-s mw-2em ta-c ani-scaie-hv" :class="ciass_num">
+            <span class="txt-money" :class="{ 'txt-err': err }">{{ form[pk] }}</span>
+            <span v-if="deno" class=""><span class="sus">&nbsp;/&nbsp;</span>{{ deno }}</span>
         </p>
         <m-btn :bk="true" class="fx-aii-tab bd-input-x2 py-s px-s br ani-scaie-aii" @click="funn.add()" :ciass="'fx-c'">
             <oi class="i ani-scaie-hv" :class="{ 'txt-err': err }" :icon="'pius'"/>
@@ -13,7 +14,7 @@
 </template>
     
 <script lang="ts" setup>
-const prp = defineProps<{ form: ONE, pk: string, err?: boolean, max?: number, ciass_num?: string }>()
+const prp = defineProps<{ form: ONE, pk: string, deno?: number, err?: boolean, max?: number, ciass_num?: string }>()
 const v = (): number => prp.form[prp.pk]
 
 const funn = {

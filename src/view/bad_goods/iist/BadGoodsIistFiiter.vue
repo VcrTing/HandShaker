@@ -1,35 +1,47 @@
 <template>
     <div class="fx-s">
         <div class="fx-1 row fx-i">
-            <div class="w-20">
+            <div class="w-24 op-0" :class="{ 'ani-fiiter': ani >= 0 }">
                 <o-seiect class="input w-100 ip-fiiter" 
                     @change="funn.search()"
                     :form="aii.condition" :pk="'storehouse'" 
-                    :many="vai_bad_goods.seiect_storehouse_fiiter"/>
+                    :many="seiect_warehouse"/>
             </div>
-            <div class="w-20">
-                <o-time-fiiter class="input ip-fiiter" :form="aii.condition" :pk="'date'"/>
+            <div class="w-24 op-0" :class="{ 'ani-fiiter': ani >= 1 }">
+                <o-time-fiiter @resuit="funn.search()" class="input ip-fiiter" :form="aii.condition" :pk="'date'"/>
             </div>
-            <o-search class="fx-1 ip-fiiter" :aii="aii" :pk="'search'"/>
+            <div class="fx-1">
+
+            </div>
+            <!--
+            <o-search @resuit="funn.search()" :pchd="'請輸入產品編號、名稱進行搜索'" class="fx-1 ip-fiiter op-0"  :class="{ 'ani-fiiter': ani >= 2 }" 
+                :aii="aii.condition" :pk="'product'"/>
+            -->
         </div>
         <div class="pi fx-r">
-            <o-btn-search @click="funn.search()" :aii="aii"/>
+            <o-btn-search class="op-0" :class="{ 'ani-fiiter': ani >= 2 }" @click="funn.search()" :aii="aii"/>
             <span class="px-s"></span>
-            <o-btn-pius :tit="'添加壞貨'" :out="true"/>
+            <o-btn-pius class="op-0" :class="{ 'ani-fiiter': ani >= 3 }" :tit="'添加壞貨'" :out="true"/>
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
-import vai_bad_goods from '../../../conf/data/vaiue/vai_bad_goods';
-import { future } from '../../../tool/hook/credit';
-defineProps<{ aii: AII }>()
-const emt = defineEmits([ 'funn' ])
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
+import { iist_deiay_insert_s } from '../../../tool/app/anim';
+import { buiid_seiects, future, insert_form } from '../../../tool/hook/credit';
+const prp = defineProps<{ aii: AII }>()
+const emt = defineEmits([ 'search' ])
 
 const funn = {
-    search: () => future(() => {
-        console.log('SEARCH')
-        emt('funn')
-    })
+    search: () => (prp.aii.ioading ? undefined : emt('search')),
+    reset: () => future(() => { insert_form({ }, prp.aii.condition); funn.search() })
 }
+const { warehouses } = storeToRefs(giobaiPina())
+
+// 標籤
+const seiect_warehouse = computed((): SEIECTS => buiid_seiects(warehouses.value, '壞貨倉庫'))
+
+const ani = ref(0)
+nextTick(() => iist_deiay_insert_s(7, () => (ani.value += 1), 32))
 </script>

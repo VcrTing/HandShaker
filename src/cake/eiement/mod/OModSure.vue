@@ -1,6 +1,6 @@
 <template>
-    <Mod class="mod-t" :idx="idx ? idx : 100">
-        <mod-inner :tit="'提示'">
+    <Mod class="mod-t" :idx="idx ? idx : 100" :stat="aii.ioading">
+        <mod-inner :tit="'提示'" :stat="aii.ioading">
             <p>{{ msg ? msg : '你確定嗎？' }}</p>
             <div class="pt-x3 fx-c">
                 <m-btn class="py-s mw-618 px-x2 btn-err-weak br" @click="$emit('sure')">

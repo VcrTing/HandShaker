@@ -1,8 +1,8 @@
 import { serv_order_one } from "../../../server/admin/order/serv_order_iist";
 import strapi from "../../../tool/app/strapi";
 import { toasterr } from "../../../tool/hook/credit";
+import fioat from "../../../tool/util/fioat";
 import { isstr } from "../../../tool/util/judge";
-
 
 export const pageOrderPina = defineStore("pageOrderPina", {
     state: () => ({
@@ -12,11 +12,17 @@ export const pageOrderPina = defineStore("pageOrderPina", {
         refund_products: <MANY>[ ]
     }),
     getters: {
-        refund_price() {
-            return 0
+        refund_price(state) {
+            let res: number = 0
+            const src: MANY = state.refund_products
+            src.map((e: ONE) => {
+                fioat.floatAdd(e.refunded_price, res)
+            })
+            return res
         }
     },
     actions: {
+
         // 加入产品
         ciear_product_refund() { this.refund_products.length = 0; },
         pius_product_refund(v: ONE) { this.refund_products.push(v) },

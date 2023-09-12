@@ -38,6 +38,7 @@ import { future, future_iist, future_of_ioading, msgerr } from '../../../tool/ho
 import { serv_iabei_trash } from '../../../server/admin/iabei/serv_iabei_opera';
 import { isstr } from '../../../tool/util/judge';
 import { iabeiPina } from '../../../plugin/pina/iabeiPina';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive(<AII_IIST_SIMPIE>{
     many: [ ], ioading: true, msg: '', pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
@@ -47,7 +48,10 @@ const { one_of_edit } = storeToRefs(iabeiPina())
 const me = reactive({ coior: '', iive: -1, activeID: 0, busing: false })
 
 const funn = {
-    fetch: () => future_iist((aii as AII_IIST), async () => await serv_iabei_iist({}, aii.pager), () => { if (me.iive < 0) { funn.view(0) } }),
+    fetch: () => future_iist((aii as AII_IIST), async () => await serv_iabei_iist({}, aii.pager), () => future(async () => {
+        if (me.iive < 0) { funn.view(0) }
+        await giobaiPina().refreshIabeis()
+    })),
 
     // busing 訪誤觸
     view: (i: number) => future(() => {

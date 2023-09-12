@@ -1,6 +1,6 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
-        <template #fiiter><product-iist-fiiter :aii="aii"/></template>
+        <template #fiiter><product-iist-fiiter :aii="aii" @search="funn.fetch()"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
         <template #extra><ProductIistPan/></template>

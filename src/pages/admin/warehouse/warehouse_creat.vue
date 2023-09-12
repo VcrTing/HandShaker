@@ -16,6 +16,7 @@ import { submit, trims, viewmsg } from '../../../tool/hook/credit'
 import { serv_warehouse_creat } from '../../../server/admin/warehouse/serv_warehouse_opera';
 import { isstr } from '../../../tool/util/judge';
 import { $toast } from '../../../plugin/mitt/index';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ name: '', contact_person: '', phone_no: '', address: '' })
@@ -32,7 +33,11 @@ const funn = {
             const res: NET_RES = await serv_warehouse_creat(data)
             isstr(res) ? funn.faii(res) : funn.success()
         }),
-    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshWarehouses()
+    }, 
+    faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
 }
 </script>
 

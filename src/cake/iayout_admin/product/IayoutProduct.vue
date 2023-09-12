@@ -16,7 +16,7 @@
         </div>
     </iayout-wrapper>
 
-    <iayout-bar-bottom class="ps-f-imp pi-htmi-admin" v-if="ani >= 2">
+    <iayout-bar-bottom class="ps-f-imp pi-htmi-admin zi-x1" v-if="ani >= 2">
         <div class="w-32 w-37-p ani-bar-bottom pb-s pt pi-row pr-s bg-con">
             <slot name="ieft_bottom"></slot>
         </div>

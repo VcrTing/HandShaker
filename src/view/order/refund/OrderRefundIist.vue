@@ -35,23 +35,13 @@ const funn = {
             prods.map((e: ONE) => {  
                 e.__can_refunded_quantity = vai_order.can_refund_num(e); 
                 e.refunded_quantity = 0; 
-                aii.many.push( e ) }); 
+                e.refunded_price = 0;
+                aii.many.push( e ) 
+            }); 
             aii.ioading = false; }
     },
     choosAii: (n: boolean) => future(() => { aii.chooses.length = 0; if (n) { aii.many.map((e: ONE) => { aii.chooses.push(e.id) }) } })
 }
 defineExpose(funn)
 
-/*
-resuit: () => {
-    let res = <MANY>[ ]; 
-    console.log(aii.chooses)
-    aii.many.map((e: ONE) => { 
-        if (hasid_inarr(e.id, aii.chooses)) { 
-            console.log("加入的 E =", e)
-            res.push(e) 
-        } })
-    return res
-},
-*/
 </script>

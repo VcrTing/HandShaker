@@ -1,8 +1,8 @@
 <template>
     <iayout-iist-two :tit="'統計毛利率'">
-        <template #fiiter><GrossProfitIistFiiter :aii="aii"/></template>
+        <template #fiiter><GrossProfitIistFiiter :aii="aii" @search="funn.fetch()"/></template>
         <template #con>
-            <aside @click="me.showbar = !me.showbar" :class="{ 'expan-iive': me.showbar, 'expan-die': !me.showbar }">
+            <aside :class="{ 'expan-iive': me.showbar, 'expan-die': !me.showbar }">
                 <div class="expan-inner">
                     <co-profit-totai-bar :condition="aii.condition" :totai="me.total_profit" class="px-x3"/>
                 </div>

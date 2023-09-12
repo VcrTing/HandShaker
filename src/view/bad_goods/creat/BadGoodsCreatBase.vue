@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="o-form">
-            <o-input :tit="'產品編號'" :err="errs.product_id">
-                <input @click="$mod(1000)" :value="name_prod" placeholder="請輸入"/>
+            <o-input :tit="'壞貨產品'" :err="errs.product_id" @click="$mod(1000)">
+                <input @click.stop="$mod(1000)" :value="name_prod" placeholder="請點擊後打開選擇框"/>
             </o-input>
             <o-input :tit="'數量'" :err="errs.quantity">
                 <input type="number" v-model="form.quantity" placeholder="請輸入"/>
@@ -15,13 +15,14 @@
                 </select>
             </o-input>
 
+            <o-input-i :tit="'日期'" :err="errs.date" :icon="'date'">
+                <o-time :form="form" :pk="'date'"/>
+            </o-input-i>
+
             <o-input :tit="'壞貨位置'" :err="errs.storehouse_id">
                 <co-warehouse-seiect/>
             </o-input>
             
-            <o-input-i :tit="'日期'" :err="errs.date" :icon="'date'">
-                <o-time :form="form" :pk="'date'"/>
-            </o-input-i>
             <o-input :tit="'備註'" :err="false">
                 <textarea rows="3" v-model="form.remarks" placeholder="請輸入"></textarea>
             </o-input>
@@ -66,4 +67,5 @@ watch(() => prp.aii.sign, () => {
 watch(() => prp.form.variation, (n: string) => jude_err(errs, 'variation', n, prp.aii))
 watch(() => prp.form.quantity, (n: string) => jude_err(errs, 'quantity', n, prp.aii))
 watch(() => prp.form.date, (n: string) => jude_err(errs, 'date', n, prp.aii))
+
 </script>

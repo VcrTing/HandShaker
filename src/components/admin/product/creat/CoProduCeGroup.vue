@@ -10,7 +10,7 @@
             </o-open-pan>
         </div>
         <o-btn-in-order 
-            @click="$emit('inorder')" 
+            @click="$emit('instock')" 
             :class="{ 'btn-die-imp': die }"/>
     </div>
 </template>

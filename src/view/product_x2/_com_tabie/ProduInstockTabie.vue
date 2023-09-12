@@ -1,10 +1,20 @@
 <template>
-    <co-pid-instock-tabie :aii="aii" :many="many" :kiii_option="kiii_option"/>
+    <div>
+        <co-pid-instock-tabie @view="funn.view" :aii="aii" :many="many" :kiii_option="kiii_option"/>
+        <!--
+        <div class="fx-c pt-x3 pb">
+            <btn-tab @click="funn.instock" :tit="'添加入貨信息'"/>
+        </div>
+        -->
+    </div>
 </template>
     
 <script lang="ts" setup>
+import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
+import { $pan } from '../../../plugin/mitt/index'
+
 import strapi from '../../../tool/app/strapi'
-import { insert_trs } from '../../../tool/hook/credit'
+import { future, insert_trs } from '../../../tool/hook/credit'
 import { trs_instock } from '../_com/product_trs'
 
 const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE, kiii_option?: boolean }>()
@@ -18,10 +28,10 @@ const many = computed(() => {
 })
 nextTick(() => insert_trs(prp.aii, trs_instock))
 
-/*
-// import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
-
 const funn = {
+    instock: () => future(() => {
+
+    }),
     view: (v: ONE) => future(() => {
         let res: MANY = v.restock_distribute; res = res ? res : [ ]
         res.map((e: ONE) => {
@@ -33,5 +43,4 @@ const funn = {
         $pan(112)
     })
 }
-*/
 </script>

@@ -11,8 +11,11 @@
             <div class="py-row"></div>
 
             <div class="py-x2 fx-c">
+                <!--
                 <o-save-back-btns-group v-if="need_refund" class="w-50 w-618-p" :tit_back="'退款 / 退貨'" @back="funn.refund()"/>
                 <o-btn-save class="w-32 w-382-p" v-else :tit="'印列訂單'"/>
+                -->
+                <btn-tab v-if="need_refund" :tit="'退款 / 退貨'" class="w-32 w-382-p" @click="funn.refund()"/>
             </div>
         </pan-inner>
     </Pan>

@@ -22,16 +22,20 @@
     
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
-const pks: strings = [ 'office_address' ]
 // const me = reactive({ districts: <AREAS>[] })
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
+/*
+const pks: strings = [ 'office_address' ]
 watch(() => prp.aii.sign, () => {
-    pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
-    prp.aii.can = true
+    let res: boolean = true; prp.aii.can = false
+    pks.map((k: string) => {
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; }
+    }); prp.aii.can = res
 })
+*/
 
 // watch(() => prp.form.region, (n: string) => jude_err(errs, 'region', n, prp.aii))
 // watch(() => prp.form.district, (n: string) => jude_err(errs, 'district', n, prp.aii))

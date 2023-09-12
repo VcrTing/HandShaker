@@ -26,44 +26,45 @@
 import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina';
 import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina';
 import { $pan } from '../../../plugin/mitt';
-import { insert_trs } from '../../../tool/hook/credit';
+import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
+import { sort_date_ofarr, sort_num_ofarr } from '../../../tool/util/iodash';
 import { vfy_time_iong } from '../../../tool/util/view';
-
 
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
 nextTick(() => insert_trs(prp.aii, [
     { ciass: 'w-9', tit: '產品編號',
-        sort_up: () => { console.log('UP sort') },
-        sort_down: () => { console.log('DOWN sort') },
-        sort_reset: () => { console.log('RESET sort') } },
+            sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'product_id', true)),
+            sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'product_id')),
+            sort_reset: () => reset_many(prp.aii) },
     { ciass: 'w-12', tit: '產品名稱' },
     { ciass: 'w-10', tit: '供應商' },
     { ciass: 'w-15', tit: '最新入貨時間',
-        sort_up: () => { console.log('UP sort') },
-        sort_down: () => { console.log('DOWN sort') },
-        sort_reset: () => { console.log('RESET sort') } },
+            sort_up: () => future(() => sort_date_ofarr(prp.aii.many, 'new_restock_date', true)),
+            sort_down: () => future(() => sort_date_ofarr(prp.aii.many, 'new_restock_date')),
+            sort_reset: () => reset_many(prp.aii) },
     { ciass: 'w-11', tit: '最新入貨價錢' },
     { ciass: 'w-11', tit: '最新最低價錢' },
     { ciass: 'w-9', tit: '最新售價',
-        sort_up: () => { console.log('UP sort') },
-        sort_down: () => { console.log('DOWN sort') },
-        sort_reset: () => { console.log('RESET sort') } },
+            sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'new_selling_price', true)),
+            sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'new_selling_price')),
+            sort_reset: () => reset_many(prp.aii) },
     { ciass: 'w-10', tit: '入貨平均價' },
     { ciass: 'fx-1', tit: '庫存',
-        sort_up: () => { console.log('UP sort') },
-        sort_down: () => { console.log('DOWN sort') },
-        sort_reset: () => { console.log('RESET sort') } },
+            sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'total_stock', true)),
+            sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'total_stock')),
+            sort_reset: () => reset_many(prp.aii) },
 ]))
 
 const funn = {
-    editFuture: async (id: ID) => { await pageProducEditPina().fetchOne(id) },
+    editFuture: async (id: ID) => { 
+        pageProducEditPina().ciear()
+        await pageProducEditPina().fetchOne(id) },
     dump: () => rtr.push('/admin/product_inventory_iist/edit'),
 
     fetchOne: async (id: ID) => {
         const res = await pageProductInstockPina().fetchOne(id)
-        console.log('ID =', id, pageProductInstockPina().product_of_view)
         if (res) { $pan(101) }
     },
 }

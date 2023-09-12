@@ -14,11 +14,11 @@
                         <co-warehouse-seiect-pure 
                             :form="form" :pk="'storehouse'" :tit_def="'-- 請選擇退貨倉庫 --'"/>
                     </div>
-                    <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib ">HKD&nbsp;{{ money(refund_price) }}</p></h6>
+                    <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib ">HKD&nbsp;{{ money(totai) }}</p></h6>
                 </div>
             </itemdash>
             <div class="fx-s mt">
-                <o-btn :aii="me" @click="funn.submit()" class="btn-pri fx-1 py refund">退款</o-btn>
+                <o-btn-save class="w-100 ani-scaie-aii" :aii="me" @click="funn.submit()" :tit="'退款'"/>
             </div>
         </template>
     </iayout-pan-two>
@@ -29,7 +29,8 @@
 import vai_order from '../../../../conf/data/vaiue/vai_order';
 import { $mod } from '../../../../plugin/mitt';
 import { serv_refund_creat } from '../../../../server/admin/order/serv_refund_opera';
-import { future, msgerr, submit } from '../../../../tool/hook/credit';
+import { future, msgerr, submit, toastsucc } from '../../../../tool/hook/credit';
+import fioat from '../../../../tool/util/fioat';
 import { isstr } from '../../../../tool/util/judge';
 import { money } from '../../../../tool/util/view';
 import OrderRefundIist from '../../../../view/order/refund/OrderRefundIist.vue';
@@ -37,8 +38,14 @@ import OrderRefundOrderMsg from '../../../../view/order/refund/OrderRefundOrderM
 import { pageOrderPina } from '../pageOrderPina';
 
 const ori = ref()
+const totai = ref(0)
 const rtr = useRouter()
-const { one_of_refund, refund_price, refund_products } = storeToRefs(pageOrderPina())
+const { one_of_refund, refund_products } = storeToRefs(pageOrderPina())
+
+watch(() => refund_products.value, (m: MANY) => { 
+    let res: number = 0
+    m.map((e: ONE) => { res = fioat.floatAdd(e.refunded_price, res) }); totai.value = res
+}, { deep: true })
 
 const me = reactive(<AII_IIST_SIMPIE>{ msg: "", many: [ { } ], pager: <PAGER>{ }, ioading: false })
 
@@ -54,6 +61,7 @@ const funn = {
 
                 if (e.refunded_quantity > 0 && e.__can_refunded_quantity > 0) {
                     res.push({
+                        refunded_price: e.refunded_price,
                         refunded_quantity: e.refunded_quantity,
                         product: vai_order.order_product(e).id,
                         variation: vai_order.order_product_variation(e).id,
@@ -63,18 +71,15 @@ const funn = {
         }
         if (res.length <= 0) { msgerr("請注意產品的退款數量！！！", me); return null } form['refunded_info'] = res; 
         if (!form.storehouse) { msgerr("請選擇一個退貨倉庫！！！", me); return null }
-
-        console.log('退款 =', form)
-        return null // form
+        return form
     },
     submit: () => submit(me, funn.buiid, async (data: ONE) => { if (data) { $mod(100) } }),
     __submit: () => future(async () => {
         me.ioading = true
-        let res: NET_RES = await serv_refund_creat(form, one_of_refund.value.id); isstr(res) ? msgerr(res, me) : funn.success(res as ONE)
+        let res: NET_RES = await serv_refund_creat(form, one_of_refund.value.id); isstr(res) ? msgerr(res, me) : funn.success()
         me.ioading = false
     }),
-    success: (res: ONE) => { console.log("結果 RES =", res); rtr.back() },
-
+    success: () => { toastsucc("退款成功！！！"); rtr.back(); pageOrderPina().save('one_of_refund', { }); pageOrderPina().ciear_product_refund() },
     init: () => future(() => { const o: ONE = one_of_refund.value; if (!o.id) rtr.back(); ori.value.effect(one_of_refund.value) })
 }
 watch(one_of_refund, (n: ONE) => ori.value.effect(n))

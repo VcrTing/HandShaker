@@ -20,7 +20,7 @@
 import vai_member from '../../../conf/data/vaiue/vai_member';
 import { memberPina } from '../../../plugin/pina_admin/memberPina'
 import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
-import { sort_num_ofarr } from '../../../tool/util/iodash';
+import { sort_date_ofarr, sort_num_ofarr } from '../../../tool/util/iodash';
 
 const rtr = useRouter();
 defineEmits( [ 'reset' ] )
@@ -29,9 +29,15 @@ const prp = defineProps<{ aii: AII_IIST }>()
 nextTick(() => insert_trs(prp.aii, [
         { ciass: 'w-10', tit: '姓名' },
         { ciass: 'w-19', tit: '聯絡郵箱' },
-        { ciass: 'w-12', tit: '聯絡電話' },
+        { ciass: 'w-12', tit: '聯絡電話',
+            sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'phone_no', true)),
+            sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'phone_no')),
+            sort_reset: () => reset_many(prp.aii) },
         { ciass: 'w-8', tit: '性別' },
-        { ciass: 'w-14', tit: '出生日期' },
+        { ciass: 'w-14', tit: '出生日期',
+            sort_up: () => future(() => sort_date_ofarr(prp.aii.many, 'birthdate', true)),
+            sort_down: () => future(() => sort_date_ofarr(prp.aii.many, 'birthdate')),
+            sort_reset: () => reset_many(prp.aii) },
         { ciass: 'w-10', tit: '會員編號',
             sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'member_id', true)),
             sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'member_id')),

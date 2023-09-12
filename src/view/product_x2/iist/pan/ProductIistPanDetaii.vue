@@ -14,6 +14,9 @@
             <co-pid-warehouse-tabie :one_of_edit="product_of_view" :aii="pad_warehouse" class="pb"
                 @transtock="funn.transtock" :kiii_option="true"
             />
+
+            <!-- 壞貨紀錄 -->
+            <co-pid-bad-tabie :one_of_edit="product_of_view" class="pb-x3"/>
         </pan-inner>
     </Pan>
 </template>

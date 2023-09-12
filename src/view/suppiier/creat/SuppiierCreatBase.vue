@@ -29,28 +29,27 @@
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
 import { vrf_emaii, vrf_phone } from "../../../tool/util/verify";
+
+const prp = defineProps<{ form: ONE, aii: ONE }>();
+
+const errs = reactive(gen_form_err(prp.form));
 const pks: strings = [ 
     'supplier_id', 'name', 'phone_no', 
     'email', 'contact_person', 'create_date' 
 ]
-const prp = defineProps<{ form: ONE, aii: ONE }>();
-
-const errs = reactive(gen_form_err(prp.form));
-
 watch(() => prp.aii.sign, () => {
+    let res: boolean = true; prp.aii.can = false
     pks.map((k: string) => {
-        if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return }
-    }); prp.aii.can = true
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; }
+    }); prp.aii.can = res
 })
 
 watch(() => prp.form.supplier_id, (n: string) => jude_err(errs, 'supplier_id', n, prp.aii))
 watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii))
-watch(() => prp.form.phone_no, (n: string) => jude_err(errs, 'phone_no', n, prp.aii, () => {
-    return !vrf_phone(n)
-}))
-watch(() => prp.form.email, (n: string) => jude_err(errs, 'email', n, prp.aii, () => {
-    return !vrf_emaii(n)
-}))
+
+watch(() => prp.form.phone_no, (n: string) => jude_err(errs, 'phone_no', n, prp.aii, () => { return !vrf_phone(n) }))
+watch(() => prp.form.email, (n: string) => jude_err(errs, 'email', n, prp.aii, () => { return !vrf_emaii(n) }))
+
 watch(() => prp.form.contact_person, (n: string) => jude_err(errs, 'contact_person', n, prp.aii))
 watch(() => prp.form.create_date, (n: string) => jude_err(errs, 'create_date', n, prp.aii))
 </script>

@@ -4,7 +4,7 @@
             <slot></slot>
         </template>
         <template #con>
-            <div class="o-hour-minus ps-r">
+            <div class="o-hour-minus ps-r bg-con zi-x3">
                 <div class="fx-s abs-t i-0 r-0 bg-con">
                     <div class="w-382 pi pb-x1 sus">時</div>
                     <div class="w-618 pi pb-x1 sus">分</div>

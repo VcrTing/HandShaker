@@ -30,7 +30,10 @@ const funn = {
             const res: NET_RES = await serv_ievei_edit(data, ievei_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => { giobaiPina().refreshIeveis(); rtr.back() },
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshIeveis()
+    }, 
     init: () => future(() => { if (!insert_form_if_id(ievei_of_edit.value, form)) { rtr.back() } aii.sign = 0; }),
 }
 nextTick(funn.init)

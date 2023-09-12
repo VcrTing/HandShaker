@@ -14,6 +14,7 @@ import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue';
 import { msgerr, submit, trims } from '../../../tool/hook/credit';
 import { serv_user_creat } from '../../../server/admin/user/serv_user_opera';
 import { isstr } from '../../../tool/util/judge';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ name: '', email: '', phone_no: '', storehouse: '', password: '', isAdmin: true })
@@ -25,7 +26,10 @@ const funn = {
         async (data: ONE) => { const res: NET_RES = await serv_user_creat(data); 
             isstr(res) ? msgerr(res, aii) : funn.success()
     }), 
-    success: () => rtr.back(),
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshUsers()
+    }, 
 }
 </script>
 

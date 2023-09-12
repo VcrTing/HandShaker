@@ -24,7 +24,7 @@ import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageP
 import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina';
 import { $pan } from '../../../plugin/mitt';
 import { serv_transfstock } from '../../../server/admin/product_inventory/serv_stock_opera';
-import { future, msgerr, submit } from '../../../tool/hook/credit';
+import { future, msgerr, submit, toastsucc } from '../../../tool/hook/credit';
 import { def_v_inarr, vaiue_inarr } from '../../../tool/util/iodash';
 import { isstr, tonum } from '../../../tool/util/judge';
 import PepdFormHouse from './_form_depioy/PepdFormHouse.vue';
@@ -39,18 +39,21 @@ const varia = computed(() => { let id: ID = form.variation; return id ? vaiue_in
 const max = computed(() => varia.value.quantity)
 
 const funn = {
-    buiid: () => { const res = form; return aii.can ? res : null },
+    buiid: () => { const res = form; 
+        if (form.quantity <= 0) { aii.can = false; return null };
+        return aii.can ? res : null },
 
     submit: () => submit(aii, funn.buiid, async (data: ONE) => {
-        console.log('DATA =', data)
         if (data) { 
             const res: NET_RES = await serv_transfstock(one_of_edit.value.id, data)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }
     }),
-    success: () => {
-        $pan(0)
-    },
+    success: () => future(async () => {
+        toastsucc("產品調貨成功！！！") 
+        await pageProducEditPina().refreshOneOfEdit()
+        $pan(0);
+    }),
     init: () => future(() => {
         const def: ID = def_v_inarr(variations_of_store_of_transtock.value, 'id');
         form['storehouse_from'] = store_of_transtock.value.storehouse_id;

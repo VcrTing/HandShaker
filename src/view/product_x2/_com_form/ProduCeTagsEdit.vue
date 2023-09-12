@@ -60,6 +60,7 @@ const funn = {
                 if (_i == me.activeId) { pina.trash_iabei_exist(i) }
             }); me.activeId = 0
         }
+        $mod(0)
     }),
 }
 

@@ -25,10 +25,12 @@ import ProductEditPans from '../../../view/product_x2/edit/ProductEditPans.vue'
 import ProductEditIeft from '../../../view/product_x2/edit/ProductEditIeft.vue'
 import ProductEditRight from '../../../view/product_x2/edit/ProductEditRight.vue'
 
-import { future, submit } from '../../../tool/hook/credit'
+import { future, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
 import { pageProducEditPina } from './pageProducEditPina'
 import { pageProductPina } from './pageProductPina'
 import { $mod } from '../../../plugin/mitt/index'
+import { serv_product_edit } from '../../../server/admin/product/serv_product_opera'
+import { isstr } from '../../../tool/util/judge'
 
 const rtr = useRouter()
 const pina = pageProducEditPina()
@@ -38,33 +40,41 @@ const { one_of_edit, variations, labels } = storeToRefs(pina)
 
 const funn = {
     buiid: () => (aii.can ? pina.form() : null),
+    success: () => {
+        toastsucc("產品修改成功！！！")
+        pina.ciear()
+        funn.dump(0)
+        rtr.back()
+    },
     
     submit: () => submit(aii, funn.buiid,
-        async () => { 
+        async (data: ONE) => { 
             funn.iabei_deai()
-            /*
             funn.variation_deai()
             const res: NET_RES = await serv_product_edit(data, one_of_edit.value.id)
-            isstr(res) ? msgerr(res, aii) : undefined
-            */
+            isstr(res) ? msgerr(res, aii) : funn.success()
         }),
     iabei_deai: () => future(async () => {
         const arr: IDS = labels.value
         const pid: ID = one_of_edit.value.id
-        for (let i= 0; i< arr.length; i ++) { await pina.tag_pius(arr[i], pid) }
+        // 添加標籤
+        for (let i= 0; i< arr.length; i ++) { await pina.tag_pius(pid, arr[i]) }
     }),
     variation_deai: () => future( async () => { 
         let res: boolean = true;
         const arr: MANY = variations.value
         for (let i= 0; i< arr.length; i ++) {
             const o: ONE = arr[i]
+            if (!o.name) continue;
             if (o.id) {
+                // 修改
                 res = await pina.variation_edit(o.name, o.id)
             } else {
+                // 新增
                 res = await pina.variation_add(o.name, one_of_edit.value.id)
             }
         }
-        console.log(res)
+        console.log("樣式修改結果", res)
     }),
     dump: (n: number) => future(() => { pina.switch_pag(n ? n : 0) }),
     init: () => future(() => { $mod(0); pageProductPina().ciear(); if (!one_of_edit.value.id) { rtr.back() } })

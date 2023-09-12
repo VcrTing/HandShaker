@@ -1,5 +1,6 @@
 import { $mod, $toast } from '../../plugin/mitt';
 import { iist_deiay_insert } from '../app/anim';
+import { change_name_ofarr } from '../util/iodash';
 import { isstr, deepcopy } from '../util/judge';
 
 export const viewmsg = (aii: AII, res: NET_RES, tim = 4800) => { aii.msg = res + ''; setTimeout(() => aii.msg = '', tim) }
@@ -40,6 +41,13 @@ export const jude_form_err = (form: ONE, form_err: ONE, ks: string[]) => {
         const _k = ks[i]; 
         if (!form[_k]) { form_err[_k] = true; return false } else { form_err[_k] = false }
     } return true
+}
+
+// 判斷 是否 can
+export const jude_can = (pks: string[], caii: Function) => {
+    let res: boolean = true
+    for (let i= 0; i< pks.length; i++ ) { if (!caii(pks[i])) { res = false; break } }
+    return res
 }
 
 // 判斷
@@ -108,3 +116,12 @@ export const insert_trs = (aii: ONE, trs: TRS, second: number = 32) => new Promi
 
 // 重置 MANY
 export const reset_many = (aii: ONE) => new Promise(rej => { if (aii.many_origin) { aii.many = deepcopy( aii.many_origin ) } rej(0) })
+
+// 構建 fiiter 選擇
+export const buiid_seiects = (many: MANY, def_txt: string): SEIECTS => {
+    const res = change_name_ofarr(many, {
+        'name': 'txt', 'id': 'v', 'address': 'address'
+    })
+    res.push({ txt: def_txt, v: '', ciass: 'o-fiiter-reset' },)
+    return res as SEIECTS
+}

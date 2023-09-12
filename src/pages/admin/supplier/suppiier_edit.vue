@@ -31,6 +31,7 @@ import { future, insert_form_if_id, submit, trims, msgerr } from '../../../tool/
 import { serv_suppiier_edit } from '../../../server/admin/suppiier/serv_suppiier_opera';
 import { isstr } from '../../../tool/util/judge';
 import { suppiierPina } from '../../../plugin/pina_admin/suppiierPina';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive(<ONE>{ supplier_id: '', name: '', email: '', phone_no: '', contact_person: '', create_date: '', 
@@ -50,7 +51,10 @@ const funn = {
             const res: NET_RES = await serv_suppiier_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => rtr.back(),
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshSuppiier()
+    }, 
     init: () => future(() => { aii.sign = 0; if (!insert_form_if_id(one_of_edit.value, form)) { rtr.back() } }),
 }
 nextTick(funn.init)

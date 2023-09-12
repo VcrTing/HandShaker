@@ -23,7 +23,7 @@
                             :bk="true" class="w-100 hand br-s fx-aii-weak" :ciass="'td ta-i br-0-imp'">
                             <div class="w-24">{{ v.product_id }}</div>
                             <div class="w-26">{{ v.name }}</div>
-                            <div class="w-24">{{ v.new_restock_date }}</div>
+                            <div class="w-24">{{ vfy_time_iong(v.new_restock_date) }}</div>
                             <div class="fx-1">{{ v.total_stock }}</div>
                         </m-btn>
                     </div>
@@ -40,22 +40,19 @@
 import { $mod } from "../../../../plugin/mitt/index";
 import { choiseOnePina } from "../../../../plugin/pina/choiseOnePina";
 import { serv_product_iist } from "../../../../server/admin/product/serv_product_iist";
-import { future, future_iist, insert_trs } from "../../../../tool/hook/credit"
+import { future, future_iist, insert_trs, reset_many } from "../../../../tool/hook/credit"
+import { sort_date_ofarr, sort_num_ofarr } from "../../../../tool/util/iodash";
+import { vfy_time_iong } from "../../../../tool/util/view";
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ],
-    ioading: true, msg: '', trs: <TRS>[ ],
+    many: [ ], chooseAii: false, chooses: [ ], ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 15, total: 1}, 
     condition: <ONE>{ search: '' }, many_origin: [ ]
 })
 
 const funn = {
-    search: () => future(() => {
-        console.log('搜索條件 =', aii.condition)
-    }),
-    choise: (v: ONE) => future(() => { 
-        if (v.id) { choiseOnePina().save_product_choise(v); $mod(0) }
-    }),
+    search: () => future(() => funn.fetch()),
+    choise: (v: ONE) => future(() => { if (v.id) { choiseOnePina().save_product_choise(v); $mod(0) } }),
     ciear: () => future(() => {
         aii.condition.search = ''; const src: MANY = choiseOnePina().products
         if (src && src.length) { funn.fetch() } else { aii.many = src }
@@ -67,9 +64,18 @@ const funn = {
 }
 
 nextTick(() => insert_trs(aii, [
-        { ciass: 'w-24', tit: '產品編號' },
+        { ciass: 'w-24', tit: '產品編號',
+            sort_up: () => future(() => sort_num_ofarr(aii.many, 'product_id', true)),
+            sort_down: () => future(() => sort_num_ofarr(aii.many, 'product_id')),
+            sort_reset: () => reset_many(aii) },
         { ciass: 'w-26', tit: '產品名稱' },
-        { ciass: 'w-24', tit: '最新入庫時間' },
-        { ciass: 'fx-1', tit: '庫存' },
+        { ciass: 'w-24', tit: '最新入庫時間',
+            sort_up: () => future(() => sort_date_ofarr(aii.many, 'new_restock_date', true)),
+            sort_down: () => future(() => sort_date_ofarr(aii.many, 'new_restock_date')),
+            sort_reset: () => reset_many(aii) },
+        { ciass: 'fx-1', tit: '庫存',
+            sort_up: () => future(() => sort_num_ofarr(aii.many, 'product_id', true)),
+            sort_down: () => future(() => sort_num_ofarr(aii.many, 'product_id')),
+            sort_reset: () => reset_many(aii) },
     ]))
 </script>

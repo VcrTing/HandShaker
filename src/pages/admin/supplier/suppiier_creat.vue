@@ -9,7 +9,7 @@
                 <suppiier-creat-company :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
             <iayout-form :tit="'供應商工廠地址'">
-                <suppiier-creat-company :form="form" :aii="aii" class="py-row"/>
+                <SuppiierCreatFactory :form="form" :aii="aii" class="py-row"/>
             </iayout-form>
 
             <div class="fx-s pt-row">
@@ -24,32 +24,34 @@
 <script lang="ts" setup>
 import SuppiierCreatBase from '../../../view/suppiier/creat/SuppiierCreatBase.vue'
 import SuppiierCreatCompany from '../../../view/suppiier/creat/SuppiierCreatCompany.vue'
+import SuppiierCreatFactory from '../../../view/suppiier/creat/SuppiierCreatFactory.vue'
 
-import { submit, trims, viewmsg } from '../../../tool/hook/credit'
+import { msgerr, submit, trims } from '../../../tool/hook/credit'
 import { serv_suppiier_creat } from '../../../server/admin/suppiier/serv_suppiier_opera';
 import { isstr } from '../../../tool/util/judge';
-import { $toast } from '../../../plugin/mitt/index';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ supplier_id: '', name: '', email: '', phone_no: '', contact_person: '', create_date: '', 
     office_address: '', factory_address: '', remarks: '' })
-// const office_address = reactive({ region: '', district: '', address: '' })
-// const factory_address = reactive({ region: '', district: '', address: '' })
 
 const rtr = useRouter()
 
 const funn = {
+    
     buiid: () => {
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';
-        return trims(src)
+        return aii.can ? trims(src) : null
     },
-    submit: () => submit(aii, () => (aii.can ? funn.buiid() : null),
+    submit: () => submit(aii, funn.buiid,
         async (data: ONE) => {
-            console.log('構建的數據 =', data)
             const res: NET_RES = await serv_suppiier_creat(data)
-            isstr(res) ? funn.faii(res) : funn.success()
+            isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => rtr.back(), faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(aii, err) },
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshSuppiier()
+    }, 
 }
 </script>
 

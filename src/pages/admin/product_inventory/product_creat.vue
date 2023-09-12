@@ -18,7 +18,6 @@ import { pageProductPina } from './pageProductPina'
 import { serv_product_creat } from '../../../server/admin/product/serv_product_opera'
 import { future, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge'
-import { pageProducEditPina } from './pageProducEditPina'
 
 const rtr = useRouter()
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0, search: '', })
@@ -39,8 +38,7 @@ const funn = {
         const id: ID = product.id
         if (id) {
 
-            toastsucc('產品添加成功，稍等跳轉至產品編輯頁面.....');
-
+            toastsucc('產品添加成功，稍等跳轉至產品列表頁面.....');
             const ien: number = variations.value.length
             if (ien > 0) {
                 for (let i= 0; i< ien; i ++) {
@@ -48,9 +46,8 @@ const funn = {
                     await pina.variation_add( o.name, id )
                 }
             }
-            await pageProducEditPina().fetchOne(id)
-            pageProducEditPina().repiaceForm( pageProductPina().form() );
-            rtr.push('/admin/product_inventory_iist/edit');
+
+            rtr.push('/admin/product_inventory_iist');
         }
     }),
 }

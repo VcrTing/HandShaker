@@ -2,7 +2,7 @@
     <section>
         <h3 class="py-x3 mb">添加入貨信息(僅加貨)</h3>
         <produ-inv-in-stock-inner :aii="aii" ref="inner" @submit="funn.submit">
-            <o-save-back-btns-group :ciass="'w-100'" :tit_save="'儲存'" @back="funn.back()" @save="funn.submit()"/>
+            <o-save-back-btns-group :aii="aii" :ciass="'w-100'" :tit_save="'儲存'" @back="funn.back()" @save="funn.submit()"/>
         </produ-inv-in-stock-inner>
     </section>
 </template>
@@ -24,13 +24,18 @@ const funn = {
         console.log('BASE =', data)
         if (data) {
             const res: NET_RES = await serv_instock_creat(data)
-            if (isstr(res)) {
-                msgerr(res, aii)
-            } else {
-                funn.back()
-                toastsucc("產品入貨成功！！！")
-            }
+            isstr(res) ? msgerr(res, aii) : funn.success()
         }
+    }),
+    success: () => future(async () => {
+
+        toastsucc("產品入貨成功！！！");
+
+        console.log("刷新 產品")
+
+        await pageProducEditPina().refreshOneOfEdit()
+        
+        funn.back()
     }),
     back: () => future(() => { pag.value = 0 }),
     init: () => future(() => { if (!one_of_edit.value.id) pag.value = 0; })

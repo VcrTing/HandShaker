@@ -4,11 +4,11 @@
             <piis-base :form="form" :aii="aii"/>
         </iayout-form>
 
-        <iayout-form :tit="'價錢'" class="pb-x3 op-0" :class="{ 'ani-page': sii.ani >= 1 }">
+        <iayout-form :tit="'價錢'" class="pt pb-x3 op-0" :class="{ 'ani-page': sii.ani >= 1 }">
             <piis-price :form="form_price" :aii="aii"/>
         </iayout-form>
         
-        <iayout-form :tit="'樣式及庫存分配數量'" class="pt pb-x3 op-0" :class="{ 'ani-page': sii.ani >= 2 }">
+        <iayout-form :tit="'樣式及庫存分配數量'" class="pt-x2 pb-x3 op-0" :class="{ 'ani-page': sii.ani >= 2 }">
             <piis-styie-inventory-tabie :aii="sii"/>
         </iayout-form>
 
@@ -32,7 +32,7 @@ import PiisStyieInventoryTabie from './inventory/PiisStyieInventoryTabie.vue';
 
 const prp = defineProps<{ aii: ONE }>()
 
-const form = reactive({ restock_date: '', hour: 0, minus: 0, quantity: '', supplier: '' })
+const form = reactive({ restock_date: '', hour: 0, minus: 0, supplier: '' })
 const form_price = reactive({ restock_price: '', lowest_price: '', selling_price: '' })
 
 const sii = reactive({ msg: '', many: <MANY>[ ], trashIdx: 0, pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ], ani: 0 })

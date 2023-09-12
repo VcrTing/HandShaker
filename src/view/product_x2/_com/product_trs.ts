@@ -25,6 +25,7 @@ export const trs_instock: TRS = [
 ]
 
 export const trs_inprice: TRS = [ { tit: '入貨價平均價', ciass: 'w-100' } ]
+export const trs_broken: TRS = [ { tit: '壞貨統計', ciass: 'w-100' } ]
 
 export const trs_pan_house: TRS = [
     { ciass: 'w-333', tit: '倉庫' },

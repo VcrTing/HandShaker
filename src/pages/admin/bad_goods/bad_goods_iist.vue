@@ -1,8 +1,7 @@
 <template>
     <iayout-iist-two :tit="'壞貨列表'">
-        <template #fiiter><BadGoodsIistFiiter @funn="funn.fetch()" :aii="aii"/></template>
-        <template #con>
-            <BadGoodsIistTabie :aii="aii"/></template>
+        <template #fiiter><BadGoodsIistFiiter @search="funn.fetch()" :aii="aii"/></template>
+        <template #con><BadGoodsIistTabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
         <template #extra><o-mod-trash :aii="aii" @trash="funn.trash()"/></template>
     </iayout-iist-two>
@@ -17,11 +16,9 @@ import { badPina } from '../../../plugin/pina_admin/badPina';
 import { serv_bad_trash } from '../../../server/admin/bad_goods/serv_bad_opera';
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ],
-    ioading: true, msg: '', trs: <TRS>[ ],
+    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ], ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
     condition: <ONE>{ 'storehouse': '', 'date': '', 'product': '' },
-    many_origin: [ ]
 })
 const { one_of_edit } = storeToRefs(badPina())
 

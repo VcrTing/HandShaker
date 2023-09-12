@@ -26,7 +26,7 @@
             </div>
             <div class="fx-1 fx-s">
                 <o-inpu-td class="fx-1">
-                    <input v-model="v.quantity" placeholder="請輸入"/>
+                    <input type="number" v-model="v.quantity" placeholder="請輸入"/>
                 </o-inpu-td>
                 <div class="pi fx-r">
                     <o-tabie-opera class="pr" :tit="'儲存'" @click="v.edit = false"/>

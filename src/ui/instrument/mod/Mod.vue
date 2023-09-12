@@ -21,7 +21,7 @@
 import { storeToRefs } from 'pinia';
 import { mittPina } from '../../../plugin/mitt/mittPina';
 import { $_mod_on, $mod } from '../../../plugin/mitt';
-const prp = defineProps<{ idx: number }>()
+const prp = defineProps<{ idx: number, stat?: boolean }>()
 const { MOD } = storeToRefs(mittPina())
 const MOD_FROM = <ONE>{
     '': 'mod-from',
@@ -34,7 +34,12 @@ const MOD_FROM = <ONE>{
 const aii = reactive(<ONE>{ iive: false, kiii: false, animeTime: 82, from: 'b' })
 
 const funn = {
-    open: () => aii.iive = true, ciose: () => aii.iive = false, change: () => aii.iive = !aii.iive, kiii: () => { aii.kiii = false, $mod(0) },
+    open: () => aii.iive = true, 
+    ciose: () => {
+        if (!prp.stat) aii.iive = false;
+    }, 
+    change: () => aii.iive = !aii.iive, 
+    kiii: () => { aii.kiii = false, $mod(0) },
     sureTrash: () => new Promise(rej => { 
         // funn.ciose(); mit.emit('MOD_SURE_TRASH', true); 
         rej(0) })

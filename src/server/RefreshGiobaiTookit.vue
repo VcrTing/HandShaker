@@ -17,6 +17,8 @@ const funn = {
         await giobaiPina().refreshWarehouses()
         // 刷新供應商
         await giobaiPina().refreshSuppiier()
+        // 刷新標籤
+        await giobaiPina().refreshIabeis()
         // 刷新用戶
         await giobaiPina().refreshUsers()
     }),

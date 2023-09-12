@@ -27,7 +27,10 @@ const funn = {
             const res: NET_RES = await serv_ievei_creat(data)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
-    success: () => { giobaiPina().refreshIeveis(); rtr.back() },
+    success: async () => {
+        rtr.back();
+        await giobaiPina().refreshIeveis()
+    }, 
 }
 </script>
 
