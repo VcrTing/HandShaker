@@ -12,15 +12,5 @@ const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
-/*
-const pks: strings = [ 'factory_address' ]
-watch(() => prp.aii.sign, () => {
-    let res: boolean = true; prp.aii.can = false
-    pks.map((k: string) => {
-        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; }
-    }); prp.aii.can = res
-})
-*/
-
 watch(() => prp.form.factory_address, (n: string) => jude_err(errs, 'factory_address', n, prp.aii))
 </script>

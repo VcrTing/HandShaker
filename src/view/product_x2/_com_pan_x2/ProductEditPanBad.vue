@@ -36,7 +36,6 @@ const funn = {
         if (data) {
             let res: NET_RES = await serv_bad_creat(data)
             isstr(res) ? msgerr(res, aii) : funn.success()
-            // console.log('提交數據 =', data)
         }
     }),
     success: () => future(() => {

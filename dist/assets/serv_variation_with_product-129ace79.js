@@ -1,0 +1,1 @@
+import{n as r}from"./conn-68fac85c.js";import{a as o,s as t}from"./net-tooi-4fdf0d83.js";import{E as i}from"./errors_user-be6d0865.js";const n="variations",c=async(a,s)=>o(i,async()=>t(await r.pos(n,{name:a,product:s}))),m=async(a,s)=>o(i,async()=>t(await r.put(n,{name:a},s+"")));export{m as a,c as s};

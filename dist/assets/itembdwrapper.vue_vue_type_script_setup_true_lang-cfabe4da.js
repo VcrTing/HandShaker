@@ -1,0 +1,1 @@
+import{d as r,o as t,e as o,r as s}from"./index-ec051b79.js";const a={class:"itembdwrapper bd br py"},c=r({__name:"itembdwrapper",setup(n){return(e,p)=>(t(),o("div",a,[s(e.$slots,"default")]))}});export{c as _};
