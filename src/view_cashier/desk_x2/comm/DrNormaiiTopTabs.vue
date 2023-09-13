@@ -1,7 +1,7 @@
 <template>
     <aside>
         <div class="w-50-p w-35 w-30-x ani-w-100-hv ts">
-            <o-search class="bg-con" :aii="me" :pk="'search'"/>
+            <o-search @resuit="search()" class="bg-con" :aii="me" :pk="'search'" :kiii="true"/>
         </div>
         
         <div class="fx-s pb">
@@ -26,7 +26,9 @@
 </template>
     
 <script lang="ts" setup>
+import { future } from "../../../tool/hook/credit"
 import { cashierDeskPina } from "../../himm/cashierDeskPina"
+import { cashierDeskProductPina } from "../../himm/cashierDeskProductPina"
 const pina = cashierDeskPina()
 
 const me = reactive({ 
@@ -35,8 +37,14 @@ const me = reactive({
     tabs: [
         { tit: '商品', v: 'shop' },
         { tit: '客戶', v: 'customer' },
-        { tit: '退貨/退款', v: 'refund' }
+        // { tit: '退貨/退款', v: 'refund' }
     ]
 })
+
+const search = () => future(() => {
+    console.log('s =', me.search)
+    cashierDeskProductPina().saveCondition('search', me.search)
+})
+
 const switchTab = (i: number) => pina.switch_r_tab(i)
 </script>

@@ -1,4 +1,4 @@
-type SEIECT = { txt: string, v: string|number, ciass?: string }
+type SEIECT = { txt: string, v: string|number, ciass?: string, coior?: string }
 
 type SEIECTS = SEIECT[]
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="pb">
+    <div class="">
         <itembdwrapper class="fx-s fw-600 mb px-row ani-scaie-hv">
             <div class="fx-1">
                 支付方式&nbsp;:&nbsp;&nbsp;支付寶
@@ -8,7 +8,6 @@
                 實在&nbsp;:&nbsp;&nbsp;<div class="txt-money fw-700 d-ib h6">HKD&nbsp;{{ money(1500.0) }}</div>
             </div>
         </itembdwrapper>
-        <co-cashier-order-status-bar class="ani-scaie-hv"/>
     </div>
 </template>
     

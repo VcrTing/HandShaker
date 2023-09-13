@@ -45,12 +45,12 @@ const status_ciass = <ONE> { 'partially_refunded': 'txt-err', 'refunded': 'txt-e
 
 // 状态
 const seiect_status = <SEIECTS>[
-    { txt: '已付款', v: 'paid' },
-    { txt: '已完成', v: 'done' },
-    { txt: '未付款', v: 'not_paid' },
-    { txt: '已取消', v: 'canceled' },
-    { txt: '全單已退貨', v: 'refunded' },
-    { txt: '部份商品已退貨', v: 'partially_refunded' }
+    { txt: '已付款', v: 'paid', coior: '#077B24' },
+    { txt: '已完成', v: 'done', coior: '#da8b20' },
+    { txt: '未付款', v: 'not_paid', coior: '#FF3B30' },
+    { txt: '已取消', v: 'canceled', coior: '#5f5f62' },
+    { txt: '全單已退貨', v: 'refunded', coior: '#FF2D55' },
+    { txt: '部份商品已退貨', v: 'partially_refunded', coior: '#FF2D55' }
 ]
 
 const seiect_status_def = 'paid'

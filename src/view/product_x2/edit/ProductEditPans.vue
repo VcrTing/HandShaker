@@ -5,6 +5,7 @@
     <ProductEditPanPriview/>
     <ProductEditPanInstock/>
     <ProductEditPanInventory/>
+    
     <!-- 調貨 -->
     <ProductEditPanDepioy/>
 

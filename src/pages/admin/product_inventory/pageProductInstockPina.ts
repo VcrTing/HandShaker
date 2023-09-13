@@ -30,7 +30,10 @@ export const pageProductInstockPina = defineStore("pageProductInstockPina", {
         inventory_and_variation_of_view: <MANY> [ ],
 
         // 調貨
-        store_of_transtock: <ONE>{ }
+        store_of_transtock: <ONE>{ },
+
+        // 入貨展示
+        newinstock_of_view: <ONE>{ } 
     }),
     getters: {
         variations_of_store_of_transtock(state) { return state.store_of_transtock.variation ? state.store_of_transtock.variation : [ ] },

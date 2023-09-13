@@ -6,7 +6,8 @@ export const cashierOrderPina = defineStore("cashierOrderPina", {
             ioading: false
         },
         one_of_view: <ONE>{ },
-        one_of_refund: <ONE>{ }
+        one_of_refund: <ONE>{ },
+        one_of_printed: <ONE>{ }
     }),
     actions: {
         save(k: string, v = <ONE>{ }) { (this as ONE)[ k ] = v },
@@ -17,5 +18,9 @@ export const cashierOrderPina = defineStore("cashierOrderPina", {
             const src: ONE = state.one_of_view
             return src.name ? true : false
         }
+    },
+    persist: {
+        storage: sessionStorage, 
+        paths: [ 'one_of_printed' ]
     }
 })

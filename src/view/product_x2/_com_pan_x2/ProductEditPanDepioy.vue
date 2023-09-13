@@ -14,7 +14,8 @@
             <PepdFormHouse class="pt-x2" :form="form" :aii="aii" :max="max"/>
 
             <div class="py-row"></div>
-            <o-btn-save :aii="aii" @click="funn.submit()" :tit="'確定'" class="w-100 mt"/> <div class="py-row"></div>
+            <o-btn-save :aii="aii" @click="funn.submit()" :tit="'確定'" class="w-100 mt"/> 
+            <div class="py-row"></div>
         </pan-inner>
     </Pan>
 </template>

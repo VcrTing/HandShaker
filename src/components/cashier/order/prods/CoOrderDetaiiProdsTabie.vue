@@ -5,9 +5,9 @@
             <div class="w-16">{{ vai_order.order_product_variation(v).name }}</div>
             <div class="w-11">{{ v.selling_price }}</div>
             <div class="w-10">{{ v.quantity }}</div>
-            <div class="w-13">{{ money(v.total_price) }}</div>
-            <div class="w-14">{{ v.refunded_quantity }}</div>
-            <div class="fx-1">{{ v.discount_deduction }}</div>
+            <div class="w-15">{{ money(v.total_price) }}</div>
+            <div class="w-15">{{ v.refunded_quantity }}</div>
+            <div class="fx-1">-&nbsp;{{ v.discount_deduction }}</div>
         </div>
     </iayout-tabie>
 </template>
@@ -27,9 +27,9 @@ const funn = {
             { ciass: 'w-16', tit: '樣式' },
             { ciass: 'w-11', tit: '單價' },
             { ciass: 'w-10', tit: '數量' },
-            { ciass: 'w-13', tit: '統計金額' },
-            { ciass: 'w-14', tit: '已退貨數目' },
-            { ciass: 'fx-1', tit: '優惠已扣除價格' },
+            { ciass: 'w-15', tit: '統計金額' },
+            { ciass: 'w-15', tit: '已退貨數目' },
+            { ciass: 'fx-1', tit: '附加' },
         ])
     })
 }

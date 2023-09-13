@@ -28,5 +28,9 @@ export const ENDPOINT = <ONE> {
     'instock': 'restocks', // 入貨
     'transfstock': 'products_storehouse_transfer', // 調貨
     'refund': 'order_refund', // 退款
-    'profit': 'order_profit_list' // 統計毛利率
+    'profit': 'order_profit_list', // 統計毛利率
+
+    // 
+    'cashier_products': 'cashier_products',
+    'cashier_orders': 'cashier_orders'
 }

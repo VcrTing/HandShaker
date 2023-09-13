@@ -1,6 +1,6 @@
 <template>
     <select v-model="form[pk]">
-        <option :value="0">
+        <option value="">
             {{ tit_def ? tit_def : "-- 請選 --" }}
         </option>
         <option

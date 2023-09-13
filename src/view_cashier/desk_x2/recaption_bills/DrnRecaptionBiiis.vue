@@ -4,7 +4,9 @@
 
         <div class="py-row">
             <drn-rb-card class="mb">
+                <!--
                 <drn-rb-tabie class="py-s" :aii="aii"/>
+                -->
             </drn-rb-card>
         </div>
     </co-desk-right-wrapper>
@@ -12,7 +14,7 @@
     
 <script lang="ts" setup>
 import { future_of_ioading } from '../../../tool/hook/credit'
-import DrnRbTabie from '../retain_bills/tabie/DrnRbTabie.vue'
+// import DrnRbTabie from '../retain_bills/tabie/DrnRbTabie.vue'
 import DrnRbCard from './card/DrnRbCard.vue';
 
 const aii = reactive(<AII_IIST_SIMPIE>{

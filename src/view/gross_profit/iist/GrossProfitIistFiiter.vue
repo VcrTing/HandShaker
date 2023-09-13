@@ -2,12 +2,12 @@
     <div class="fx-s">
         <div class="fx-1 row fx-i">
             <div class="w-18 op-0" :class="{ 'ani-fiiter': ani >= 0 }">
-                <o-seiect class="input w-100 ip-fiiter" @change="funn.search()"
+                <o-seiect class="input w-100 ip-fiiter fix-seiect" @change="funn.search()"
                     :form="aii.condition" :pk="'time_period'" 
                     :many="vai_order.seiect_time_period_fiiter"/>
             </div>
             <div class="w-18 op-0" :class="{ 'ani-fiiter': ani >= 1 }">
-                <o-seiect class="input w-100 ip-fiiter" @change="funn.search()"
+                <o-seiect class="input w-100 ip-fiiter fix-seiect" @change="funn.search()"
                     :form="aii.condition" :pk="'status'" 
                     :many="vai_order.seiect_status_fiiter"/>
             </div>
@@ -16,7 +16,7 @@
                 :form="aii.condition" :pk="'date'"/>
             </div>
             <div class="w-18 op-0" :class="{ 'ani-fiiter': ani >= 3 }">
-                <o-seiect class="input w-100 ip-fiiter" @change="funn.search()"
+                <o-seiect class="input w-100 ip-fiiter fix-seiect" @change="funn.search()"
                     :form="aii.condition" :pk="'cashier'" 
                     :many="seiect_cashier"/>
             </div>

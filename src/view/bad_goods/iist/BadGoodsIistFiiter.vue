@@ -3,7 +3,7 @@
         <div class="fx-s">
             <div class="fx-1 row fx-i">
                 <div class="w-24 op-0" :class="{ 'ani-fiiter': ani >= 0 }">
-                    <o-seiect class="input w-100 ip-fiiter" 
+                    <o-seiect class="input w-100 ip-fiiter fix-seiect" 
                         @change="funn.search()"
                         :form="aii.condition" :pk="'storehouse'" 
                         :many="seiect_warehouse"/>

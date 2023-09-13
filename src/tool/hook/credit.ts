@@ -54,7 +54,7 @@ export const can_form = (form: ONE, ks: string[], res: boolean = true): boolean 
 // 
 export const future = (caii: Function) => new Promise(rej => { caii? caii() : undefined; rej(0) })
 
-export const future_of_ioading = (aii: AII_IIST|AII_IIST_SIMPIE, caii: Function) => new Promise(async rej => { aii.ioading = true; caii? await caii() : undefined; setTimeout(() => aii.ioading = false, 200); rej(0) })
+export const future_of_ioading = (aii: AII_IIST|AII_IIST_SIMPIE|ONE, caii: Function) => new Promise(async rej => { aii.ioading = true; caii? await caii() : undefined; setTimeout(() => aii.ioading = false, 200); rej(0) })
 
 // 刪除
 export const future_of_trash = (aii: AII_IIST|AII_IIST_SIMPIE, caiId: Function, caiiTrash: Function, caiiSuccess: Function) => new Promise(async rej => { 

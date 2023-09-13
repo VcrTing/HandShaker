@@ -1,0 +1,1 @@
+import{d as a,o,c as r,a as i,r as n,m as s}from"./index-196d4fb0.js";const c=a({__name:"OInpuTd",props:{iive:{type:Boolean},tit:{},err:{type:Boolean},ciass:{}},setup(t){return(e,p)=>(o(),r("div",{class:s(["o-input input o-input-td",{"o-input-iive":e.iive,"input-err":e.err}])},[i("div",{class:s(["fx-1",e.ciass])},[n(e.$slots,"default")],2)],2))}});export{c as _};

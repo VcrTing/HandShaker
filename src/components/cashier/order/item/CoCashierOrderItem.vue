@@ -4,15 +4,15 @@
             <itembdwrapper>
                     <aside class="ih-tit-son">
                         <div class="fx-s">
-                            <p class="fw-700">訂單編號&nbsp;:&nbsp;&nbsp;{{ v.number }}</p>
+                            <p class="fw-700">訂單編號&nbsp;:&nbsp;&nbsp;{{ v.order_id }}</p>
                             <p class="">
                                 <span>已完成</span>
                             </p>
                         </div>
                         <div class="fx-s">
-                            <p class="c-6c6c6c">時間&nbsp;:&nbsp;&nbsp;{{ v.date }}</p>
+                            <p class="c-6c6c6c">時間&nbsp;:&nbsp;&nbsp;{{ vfy_time_iong(v.order_date) }}</p>
                             <p class="fw-700">
-                                HKD&nbsp;{{ v.price }}
+                                HKD&nbsp;{{ money(v.total_price) }}
                             </p>
                         </div>
                     </aside>
@@ -22,6 +22,8 @@
 </template>
     
 <script lang="ts" setup>
+import { money, vfy_time_iong } from "../../../../tool/util/view"
+
 // import { reactive } from 'vue'
 defineProps<{ v: ONE, iive?: boolean }>()
 </script>

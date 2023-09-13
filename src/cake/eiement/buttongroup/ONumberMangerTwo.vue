@@ -6,7 +6,7 @@
             </m-btn>
         </div>
         <h4 class="px ta-c py-x1 ani-scaie-hv">
-            {{ form[pk] }}
+            {{ form[pk] ? form[pk] : 0 }}
         </h4>
         <div class="fx-c">
             <m-btn class="onmt-btn br ani-scaie-hv" @click="funn.min()" :ciass="'fx-c'">

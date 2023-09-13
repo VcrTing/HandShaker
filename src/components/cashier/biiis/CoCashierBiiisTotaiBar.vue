@@ -3,9 +3,9 @@
         <div class="fx-s">
             <div class="fx-1">
                 <h3 class="fw-700">
-                    <span>共3件&nbsp;</span>
+                    <span>共{{ num }}件&nbsp;</span>
                     <span class="txt-money">
-                        HKD&nbsp;1190.0
+                        HKD&nbsp;{{ totai }}
                     </span>
                 </h3>
             </div>
@@ -19,5 +19,10 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ tit_save?: string }>()
+defineProps<{ 
+    tit_save?: string,
+    num?: number,
+    totai?: number,
+
+}>()
 </script>

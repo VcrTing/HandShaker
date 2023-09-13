@@ -13,5 +13,5 @@
 </template>
     
 <script lang="ts" setup>
-
+defineProps<{ order: ONE }>()
 </script>

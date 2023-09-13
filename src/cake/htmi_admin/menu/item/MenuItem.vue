@@ -7,7 +7,7 @@
             </div>
             <div class="menu-item-txt">
                 <div class="fx-i">
-                    <button>
+                    <button class="hand">
                         {{ v.tit }}
                     </button>
                 </div>

@@ -14,7 +14,7 @@ import { DocumentArrowDownIcon } from '@heroicons/vue/24/outline';
 
 const funn = {
     printed: () => {
-
+        console.log('打印訂單')
     }
 }
 </script>

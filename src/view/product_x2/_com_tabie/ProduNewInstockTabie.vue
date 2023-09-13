@@ -11,9 +11,7 @@
             <div class="fx-1 fx-s">
                 <div>{{ one_of_edit.total_broken_products }}</div>
                 <div v-if="!kiii_option" class="pi-s fx-1 fx-wp fx-r">
-                    <o-open-pan class="pi-s" :idx="111">
-                        <o-tabie-opera :tit="'入貨詳情'"/>
-                    </o-open-pan>
+                    <o-tabie-opera @click="funn.view()" :tit="'入貨詳情'"/>
                 </div>
                 <span v-else></span>
             </div>
@@ -22,11 +20,25 @@
 </template>
     
 <script lang="ts" setup>
-import { insert_trs } from '../../../tool/hook/credit'
+import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
+import { $pan } from '../../../plugin/mitt';
+import { future, insert_trs } from '../../../tool/hook/credit'
+import { tonum } from '../../../tool/util/judge';
 import { vfy_time_iong } from '../../../tool/util/view'
 import { trs_instock_new } from '../_com/product_trs'
 
 const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE, kiii_option?: boolean }>()
 
 nextTick(() => insert_trs(prp.aii, trs_instock_new))
+
+const funn = {
+    view: () => future(() => {
+        const src: MANY = prp.one_of_edit.restocks ? prp.one_of_edit.restocks : [ ]
+        const res: MANY = src.sort((n: ONE, o: ONE) => (tonum(n.id) - tonum(o.id)))
+        if (res.length > 0) {
+            pageProductInstockPina().save('newinstock_of_view', res[ res.length - 1 ])
+            $pan(111)
+        }
+    })
+}
 </script>

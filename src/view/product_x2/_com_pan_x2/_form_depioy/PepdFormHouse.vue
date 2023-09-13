@@ -1,7 +1,7 @@
 <template>
     <div class="o-form">
         <div class="o-form-pan">
-            <h5>調貨樣式</h5>
+            <h5>樣式</h5>
             <o-input :tit="'樣式'" :err="errs.variation"> 
                 <select v-model="form.variation">
                     <option v-for="(v, i) in product_variations" :key="i" :value="v.id">{{ v.name }}</option>
@@ -9,7 +9,7 @@
             </o-input>
         </div>
         <div class="o-form-pan">
-            <h5>調貨倉庫</h5>
+            <h5>入貨倉庫</h5>
             <o-input :tit="'入貨倉庫'" :err="errs.storehouse_to"> 
                 <co-warehouse-seiect 
                     :except="form['storehouse_from']"
@@ -19,7 +19,7 @@
 
         <div class="o-form-pan">
             <h5>調貨數量</h5>
-            <p class="pb">最大调货数:&nbsp;{{ max }}</p>
+            <p class="pb-x2">最大調貨數:&nbsp;&nbsp;{{ max }}</p>
             <o-number-manger :form="form" :pk="'quantity'" :err="errs.quantity" :max="max"/>
         </div>
     </div>

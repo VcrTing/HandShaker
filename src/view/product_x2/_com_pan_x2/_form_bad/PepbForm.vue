@@ -1,5 +1,6 @@
 <template>
-    <div class="py-x2 ">
+    <div class="pb-x2">
+        <div class="py b">壞貨數量</div>
         <o-number-manger :form="form" :pk="'quantity'" :err="errs.quantity"/>
     </div>
     <div class="o-form">
