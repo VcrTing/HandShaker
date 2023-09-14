@@ -1,6 +1,6 @@
 <template>
     <aside>
-        <div class="w-50-p w-35 w-30-x ani-w-100-hv ts">
+        <div class="w-50-p w-35 w-30-x ts">
             <o-search @resuit="search()" class="bg-con" :aii="me" :pk="'search'" :kiii="true"/>
         </div>
         

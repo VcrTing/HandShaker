@@ -59,6 +59,8 @@ const seiect_status_fiiter = <SEIECTS> [
     { txt: '訂單狀態', v: '', ciass: 'o-fiiter-reset' },
 ]
 
+const status_checkout_def = 'paid'
+
 // 用戶
 /*
 const seiect_member = <SEIECTS>giobaiPina().seiect_cashier
@@ -110,6 +112,8 @@ export default {
     seiect_status,
     seiect_status_def,
     seiect_status_fiiter,
+    
+    status_checkout_def,
 
     seiect_time_period,
     seiect_time_period_def,

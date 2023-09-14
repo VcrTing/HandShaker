@@ -11,7 +11,7 @@
                     <drn-rb-tabie :many="carts" class="py-s"/>
                 </div>
                 <co-cashier-biiis-totai-bar
-                    :num="num" :totai="totai"
+                    :many="carts"
                 />
             </itembdwrapper>
         </div>
@@ -23,10 +23,15 @@
 import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina'
 import DrnRbTabie from './tabie/DrnRbTabie.vue'
 
-const { carts } = storeToRefs(cashierDeskCartPina())
-
-const num = computed(() => { let res: number = 0; carts.value.map((e: ONE) => { res += e.quatity; }); return res })
+const pina = cashierDeskCartPina()
+const { carts } = storeToRefs(pina)
+/*
+const num = computed(() => { 
+    let res: number = 0; carts.value.map((e: ONE) => { res += e.quatity; }); return res 
+})
 const totai = computed(() => {
+    pina.comput_carts_totai()
     return 0
 })
+*/
 </script>

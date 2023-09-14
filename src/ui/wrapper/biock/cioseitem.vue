@@ -1,7 +1,9 @@
 <template>
     <div class="cioseitem br ps-r hand">
-        <div class="">
-            <slot></slot>
+        <div class="pr-x3">
+            <div class="pr">
+                <slot></slot>
+            </div>
         </div>
         <div class="middie r-0 cioseitem-ciose fx-s">
             <div class="cioseitem-ciose-bd"></div>

@@ -4,6 +4,7 @@
         <drn-prod-inven-pan/>
 
         <desk-center-discount-pan/>
+        <DeskCenterAiiDiscountPan/>
         <desk-center-profitrate-pan/>
     </div>
 </template>
@@ -13,5 +14,9 @@ import DrnProdMsgPan from '../desk_x2/pans/product/DrnProdMsgPan.vue';
 import DrnProdInvenPan from '../desk_x2/pans/product/DrnProdInvenPan.vue';
 
 import DeskCenterDiscountPan from './center_pan/DeskCenterDiscountPan.vue';
+import DeskCenterAiiDiscountPan from './center_pan/DeskCenterAiiDiscountPan.vue';
 import DeskCenterProfitratePan from './center_pan/DeskCenterProfitratePan.vue';
+import { $pan } from '../../plugin/mitt';
+
+setTimeout(() => $pan(202), 1200)
 </script>

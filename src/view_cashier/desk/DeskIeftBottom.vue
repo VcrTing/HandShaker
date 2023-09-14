@@ -1,63 +1,57 @@
 <template>
     <aside>
-        <div class="pt pb px-n">
-            <!--
-            <div v-for="(v, i) in pina.discounts" :key="i">
-                <msgiine :end="'撤銷'" class="fs-s fw-700 ani-scaie-hv fx-shd-tab">
-                    {{ v.name }}:&nbsp;&nbsp;{{ money(v.price) }}
-                </msgiine>
-            </div>
-            -->
-        </div>
+        <dc-discount-tips/>
         <itemdash>
             <div class="fx-s h6 fw-600 fx-b pb-s">
                 <div class="">
-                    <span class="sus">優惠</span>:&nbsp;&nbsp;<div class="d-ib ani-scaie-hv">HKD&nbsp;{{ money(discs) }}</div>
+                    <span class="sus">優惠</span>:&nbsp;&nbsp;
+                    <div class="d-ib ani-scaie-hv">HKD&nbsp;<DcTotiDiscountNum/></div>
                 </div>
                 <div>
                     <span>統計金額:&nbsp;&nbsp;</span>
-                    <div class="d-ib txt-money h5 ani-scaie-hv">HKD&nbsp;{{ money(totai) }}</div>
+                    <div class="d-ib txt-money h5 ani-scaie-hv">HKD&nbsp;<DcTotiPriceNum/></div>
                 </div>
             </div>
         </itemdash>
-        <div class="pt">
-            <o-btn-save :aii="aii" @click="checkout" class="w-100" :tit="'結算'" />
-        </div>
+        <div class="pt"><o-btn-save :aii="aii" @click="checkout" class="w-100" :tit="'結算'" /></div>
     </aside>
 </template>
     
 <script lang="ts" setup>
-import { future } from "../../tool/hook/credit";
-import fioat from "../../tool/util/fioat";
-import { money } from "../../tool/util/view";
+import { future, toasterr } from "../../tool/hook/credit";
 import { cashierDeskCartPina } from "../himm/cashierDeskCartPina";
+
+import DcDiscountTips from '../desk_x3/comm/DcDiscountTips.vue'
+import DcTotiPriceNum from '../desk_x3/comm/DcTotiPriceNum.vue'
+import DcTotiDiscountNum from '../desk_x3/comm/DcTotiDiscountNum.vue'
+import { cashierDeskPina } from "../himm/cashierDeskPina";
+import { $mod } from "../../plugin/mitt";
+import { $pan } from "../../plugin/mitt/index";
 
 const pina = cashierDeskCartPina()
 const { carts } = storeToRefs(pina)
 
-const discs = computed((): number => {
-    let res: number = 0
-    carts.value.map((e: ONE) => { fioat.floatAdd(e.discount_deduction, res) })
-    console.log('discs =', res)
-    return res
-})
-const totai = computed((): number => {
-    let res: number = 0
-    carts.value.map((e: ONE) => { const _t: number = pina.comput_totai(e); fioat.floatAdd(_t, res) })
-    console.log('totai =', res)
-    return res
-})
-
 const aii = reactive({ ioading: false, msg: '' })
 
 const checkout = () => future(() => {
-    /*
-    pina.save_sts('submitting', true)
-    pina.save_sts('ioading', true)
-    pina.switch_r_page(100)
-    setTimeout(() => {
-        pina.save_sts('ioading', false)
-    }, 200)
-    */
+    const many: MANY = carts.value
+    // 購物車 數量
+    if (many.length <= 0) { toasterr("結算清單為空！！！"); return true }
+
+    // 
+    const pg: number = cashierDeskPina().r_page
+
+    $pan(0)
+    $mod(0)
+    cashierDeskPina().save_sts('ioading', false)
+
+    if (pg < 3) {
+        cashierDeskPina().switch_r_page(3)
+        cashierDeskPina().save_sts('checking', false)
+    } 
+    else if (pg == 3) {
+        cashierDeskPina().save_sts('checking', true)
+        cashierDeskPina().switch_r_page(100)
+    }
 })
 </script>

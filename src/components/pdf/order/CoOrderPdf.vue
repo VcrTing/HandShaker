@@ -4,14 +4,14 @@
             <h2>銷售數據SALE RECEIPT</h2>
             <h2>LOGO</h2>
         </div>
-        <co-op-msg class="pt-pdf-x2"/>
-        <co-op-prods class="pt-pdf-x2"/>
-        <co-op-remark class="pt-pdf-x2"/>
-        <co-op-price class="pt-pdf-x2"/>
-        <co-op-totai class="pt-1em"/>
+        <co-op-msg :one="one" class="pt-pdf-x2"/>
+        <co-op-prods :one="one" class="pt-pdf-x2"/>
+        <co-op-remark :one="one" class="pt-pdf-x2"/>
+        <co-op-price :one="one" class="pt-pdf-x2"/>
+        <co-op-totai :one="one" class="pt-1em"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-defineProps<{ order: ONE }>()
+defineProps<{ one: ONE }>()
 </script>

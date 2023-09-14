@@ -8,7 +8,7 @@
                 class="op-0 mb ani-scaie-aii"
                 >
                 <m-btn 
-                    v-if="sameid(v.id, payment.id)"
+                    v-if="funn.has(v)"
                     class="px py hand bg-card br w-100 fx-shd-pri paymentcard-iive fx-shd-pri"
                 >
                     <div class="fx-c mh-3em mxh-3em"><img :src="v.img_wht" class="mxw-100"/></div>
@@ -17,7 +17,7 @@
                 <m-btn
                     v-else
                     :bk="true" 
-                    @click="pina.switch_payment(v)"
+                    @click="funn.insrt_payment(v)"
                     class="px py hand bg-card br w-100 fx-shd-tab"
                 >   
                     <div class="fx-c mh-3em mxh-3em"><img :src="v.img" class=""/></div>
@@ -31,13 +31,19 @@
 <script lang="ts" setup>
 import { paymentcards } from '../../../../conf/html/cards/paymentcards'
 import { iist_deiay_insert_s } from '../../../../tool/app/anim';
-import { sameid } from '../../../../tool/util/judge';
+import { future } from '../../../../tool/hook/credit';
 import { cashierDeskPina } from '../../../himm/cashierDeskPina'
 
 const ani = ref(0)
 
 const pina = cashierDeskPina()
-const { payment } = storeToRefs(pina)
+const { payments } = storeToRefs(pina)
+
+const funn = {
+    has: (v: ONE, has: boolean = false) => { const _id: ID = v.id; payments.value ? payments.value.map((e: ONE) => { if (_id == e.id) { has = true } }) : undefined; return has },
+
+    insrt_payment: (v: ONE) => future(() => { pina.insert_payment(v) })
+}
 
 nextTick(() => iist_deiay_insert_s(paymentcards.length, () => (ani.value += 1), 32))
 </script>

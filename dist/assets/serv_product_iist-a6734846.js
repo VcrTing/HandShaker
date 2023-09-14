@@ -1,1 +1,0 @@
-import{n as r}from"./conn-b30cd48e.js";import{a,b as i,c as n,d as _}from"./net-tooi-07907f0e.js";import{E as t}from"./errors_product-174667b5.js";const o="products",m=async(s,e)=>a(t,async()=>i(await r.get(o,n.buiid_pager(s,e)))),d=async s=>a(t,async()=>_(await r.one(o,s+"")));export{d as a,m as s};

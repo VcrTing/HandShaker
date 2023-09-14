@@ -1,7 +1,7 @@
 <template>
     <iayout-desk :compact="true" :mitting="checking" :ioading="ioading">
         <template #ieft>
-            <co-desk-ieft-wrapper :tit="'結帳清單 (' + orders.length + ')'">
+            <co-desk-ieft-wrapper :tit="'結帳清單 (' + carts.length + ')'">
                 <DeskIeft/>
                 <div class="py-x3"><br/><br/><br/><br/></div>
             </co-desk-ieft-wrapper>
@@ -33,8 +33,10 @@ import DeskPans from '../../../view_cashier/desk/DeskPans.vue';
 import { $pan, $mod } from '../../../plugin/mitt';
 import { cashierDeskPina } from '../../../view_cashier/himm/cashierDeskPina';
 import { future } from '../../../tool/hook/credit';
+import { cashierDeskCartPina } from '../../../view_cashier/himm/cashierDeskCartPina';
 
-const { checking, ioading, orders } = storeToRefs(cashierDeskPina())
+const { checking, ioading } = storeToRefs(cashierDeskPina())
+const { carts } = storeToRefs(cashierDeskCartPina())
 
 nextTick(() => future(() => { $pan(0); $mod(0) }))
 </script>

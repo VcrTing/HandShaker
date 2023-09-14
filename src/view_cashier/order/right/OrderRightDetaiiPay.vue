@@ -5,15 +5,17 @@
                 支付方式&nbsp;:&nbsp;&nbsp;支付寶
             </div>
             <div class="">
-                實在&nbsp;:&nbsp;&nbsp;<div class="txt-money fw-700 d-ib h6">HKD&nbsp;{{ money(1500.0) }}</div>
+                實付&nbsp;:&nbsp;&nbsp;
+                <div class="txt-money fw-700 d-ib h6">HKD&nbsp;
+                    <dc-toti-price-num/>    
+                </div>
             </div>
         </itembdwrapper>
     </div>
 </template>
     
 <script lang="ts" setup>
-import { money } from '../../../tool/util/view';
-
+import DcTotiPriceNum from '../../desk_x3/comm/DcTotiPriceNum.vue';
 // import { reactive } from 'vue'
 // defineProps<{ }>()
 </script>

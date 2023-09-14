@@ -3,10 +3,15 @@
         <o-number-manger-two class="ani-item" :form="choiseOne" :pk="'quantity'"/>
         <div class="py"></div>
 
-        <div class="o-form pt-row" v-if="view_opt">
-            <div class="w-100">
+        <div class="o-form pt-row" v-if="has_item">
+            <div class="w-100 ani-softer" v-if="has_one">
                 <m-btn @click="funn.opt(1)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    優惠及折扣
+                    單品優惠
+                </m-btn>
+            </div>
+            <div class="w-100">
+                <m-btn @click="funn.opt(2)" :bk="true" class="btn-tab sub w-100 py px-t br">
+                    全單優惠
                 </m-btn>
             </div>
             <div class="w-100">
@@ -14,10 +19,15 @@
                     保留單據
                 </m-btn>
             </div>
+            <div class="w-100">
+                <m-btn @click="funn.opt(10)" :bk="true" class="btn-tab sub w-100 py px-t br">
+                    統計毛利率
+                </m-btn>
+            </div>
             <div>
                 <itemdash/>
             </div>
-            <div class="w-100">
+            <div class="w-100 ani-softer" v-if="has_one">
                 <m-btn @click="funn.opt(110)" :bk="true" class="btn-tab sub w-100 py px-t br">
                     單件取消
                 </m-btn>
@@ -41,8 +51,9 @@ import { cashierDeskPina } from '../himm/cashierDeskPina'
 
 const { has_choise, carts, choiseOne } = storeToRefs(cashierDeskCartPina())
 
-const view_opt = computed(() => { return has_choise && carts.value.length > 0 })
+const has_one = computed(() => { return has_choise && carts.value.length > 0 && choiseOne.value.product })
 
+const has_item = computed(() => (carts.value.length > 0))
 // const choiseOne = computed(() => { let res: ONE = { }; carts.value.map((e: ONE) => { if (e.__choise) { res = e } }); return res })
 
 const me = reactive({ now: 0, num: 0, ani: 0, ioading: false, msg: '' })
@@ -52,8 +63,12 @@ const funn = {
         switch(i) {
             case 1:
                 $pan(201); break
+            case 2:
+                $pan(202); break
             case 5:
                 cashierDeskPina().switch_r_page( 3 ); break
+            case 10:
+                $pan(207); break
             case 110:
                 cashierDeskCartPina().remove_cart(); break
             case 111:

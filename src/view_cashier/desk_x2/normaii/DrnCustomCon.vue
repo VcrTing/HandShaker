@@ -27,23 +27,19 @@
                 </div>
             </div>
         </div>
-        <div v-if="member.id" class="abs-b zi-x3 w-100 fx-c py bg-con">
-            <btn-tab class="w-382 w-50-p" @click="funn.reset()" :tit="'重選客戶'"/>
+        <div v-if="member.id" class="abs-b zi-x3 w-100 py bg-con">
+            <div class="fx-c pb-x2"><btn-pri class="w-382 w-50-p" @click="funn.view()" :tit="'查看全單折扣'"/></div>
+            <div class="fx-c"><btn-tab class="w-382 w-50-p" @click="funn.reset()" :tit="'重選客戶'"/></div>
         </div>
-        <!--
-        <div v-else class="abs-b zi-x3">
-            <o-save-back-btns-group ciass=" pb px-row ani-bar-bottom"
-                :tit_save="'確認'"
-            />
-        </div>
-        -->
     </div>
 </template>
     
 <script lang="ts" setup>
+import { $pan } from "../../../plugin/mitt";
 import { serv_member_iist } from "../../../server/admin/member/serv_member_iist"
 import { future, future_iist } from "../../../tool/hook/credit"
 import { cashierDeskCartPina } from "../../himm/cashierDeskCartPina";
+import { cashierDeskPina } from "../../himm/cashierDeskPina";
 
 const aii = reactive(<AII_IIST>{
     many: <MANY>[ ], chooseAii: false, chooses: [ ], many_origin: [ ],
@@ -58,10 +54,10 @@ const funn = {
     fetch: () => future_iist(aii, async () => serv_member_iist(aii.condition, aii.pager)),
     search: () => future(() => { aii.condition.search = (aii.condition.search + '').trim(); funn.fetch() }),
 
-    choise: (v: ONE) => future(() => { pina.save('member', v); aii.many.length = 0; aii.many.push({ }) }),
-    reset: () => future(() => {
-        pina.save('member', { }); aii.many.length = 0;
-    })
+    choise: (v: ONE) => future(() => { pina.save_member(v); aii.many.length = 0; aii.many.push({ }) }),
+    reset: () => future(() => { pina.save_member({ }); aii.many.length = 0 }),
+
+    view: () => future(() => { cashierDeskPina().switch_r_tab(1); $pan(202) }) 
 }
 
 </script>

@@ -13,5 +13,5 @@
     
 <script lang="ts" setup>
 // import { reactive } from 'vue'
-// defineProps<{ }>()
+defineProps<{ prod: ONE }>()
 </script>

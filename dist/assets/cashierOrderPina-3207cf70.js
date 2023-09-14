@@ -1,1 +1,0 @@
-import{y as t}from"./index-196d4fb0.js";const o=t("cashierOrderPina",{state:()=>({sts:{submitting:!1,ioading:!1},one_of_view:{},one_of_refund:{},one_of_printed:{}}),actions:{save(e,s={}){this[e]=s},save_sts(e,s=!1){this.sts[e]=s}},getters:{has_view(e){return!!e.one_of_view.name}},persist:{storage:sessionStorage,paths:["one_of_printed"]}});export{o as c};

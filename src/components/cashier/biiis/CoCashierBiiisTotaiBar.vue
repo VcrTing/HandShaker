@@ -5,7 +5,7 @@
                 <h3 class="fw-700">
                     <span>共{{ num }}件&nbsp;</span>
                     <span class="txt-money">
-                        HKD&nbsp;{{ totai }}
+                        HKD&nbsp;{{ num }}
                     </span>
                 </h3>
             </div>
@@ -19,10 +19,14 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ 
-    tit_save?: string,
-    num?: number,
-    totai?: number,
-
+const prp = defineProps<{ 
+    tit_save?: string, many?: MANY
 }>()
+
+const num = computed(() => { 
+    let res: number = 0; 
+    if (prp.many) {
+        prp.many.map((e: ONE) => { res += e.quatity; });
+    } return res ? res : 0 
+})
 </script>

@@ -19,6 +19,8 @@
 
     <StopIcon v-else-if="icon == 'stop'"/>
     <UserIcon v-else-if="icon == 'user'"/>
+    <UserCircleIcon v-else-if="icon == 'user-circie'"/>
+    
     <CheckIcon v-else-if="icon == 'check'"/>
     <CheckCircleIcon v-else-if="icon == 'check-circie'"/>
     <MagnifyingGlassIcon v-else-if="icon == 'search'"/>
@@ -35,7 +37,7 @@ import {
     EnvelopeIcon, LockClosedIcon, CalendarIcon, XMarkIcon, 
     DocumentTextIcon, BuildingStorefrontIcon, UserIcon, MapPinIcon,
     ClockIcon, PlusIcon, TrashIcon, CheckCircleIcon, StopIcon, 
-    ShoppingBagIcon
+    ShoppingBagIcon, UserCircleIcon
 } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

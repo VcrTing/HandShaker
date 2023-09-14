@@ -23,7 +23,7 @@ const me = reactive(<AII_IIST_SIMPIE>{
 defineProps<{ many: MANY }>()
 
 const funn = {
-    vai_totai: (v: ONE) => money( cashierDeskCartPina().comput_totai(v) ),
+    vai_totai: (v: ONE) => money( cashierDeskCartPina().comput_one_totai(v) ),
 }
 nextTick(() => insert_trs(me, [
     { ciass: 'w-26', tit: '商品名稱' },

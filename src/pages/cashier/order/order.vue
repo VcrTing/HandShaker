@@ -26,7 +26,7 @@
                     v-if="vai_order.need_refund(one_of_view)"
                     @back="funn.refund()" @save="funn.printed()" :tit_back="'退貨/退款'"/>
                 <div v-else class="fx-c">
-                    <btn-pri class="w-382 w-50-p" @click="funn.refund()" :tit="'印列訂單'"/>
+                    <btn-pri class="w-382 w-50-p" @click="funn.printed()" :tit="'印列訂單'"/>
                 </div>
             </aside>
         </template>
@@ -41,15 +41,16 @@ import { cashierOrderPina } from '../../../view_cashier/himm/cashierOrderPina';
 import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_order_iist_cashier } from '../../../server/cashier/order/serv_order_iist';
 import strapi from '../../../tool/app/strapi';
+import { pageOrderPina } from '../../admin/order/pageOrderPina';
 import vai_order from '../../../conf/data/vaiue/vai_order';
-
-const rtr = useRouter()
+// 
+const rtr = useRouter() 
 const { sts, one_of_view } = storeToRefs( cashierOrderPina() )
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
+    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 12, total: 1}, 
     condition: <ONE>{ time_period: '', date: '', status: '', search: '', member: '', order_id: '' },
 })
 
@@ -57,8 +58,7 @@ const funn = {
     fetch: () => future_iist(aii, async () => serv_order_iist_cashier(aii.condition, aii.pager), (res: ONE) => {
         res.data = res.data ? res.data.map((e: ONE) => {
             e.broken_products = strapi.iist(e.broken_products);
-            e.cashier = strapi.data(e.cashier); 
-            e.member = strapi.data(e.member); 
+            e.cashier = strapi.data(e.cashier); e.member = strapi.data(e.member); 
             return e 
         }) : [ ]; 
     }),
@@ -69,15 +69,11 @@ const funn = {
         cashierOrderPina().save('one_of_printed', one_of_view.value)
         rtr.push('/cashier/order_iist/pdf')
     }),
-    refund: () => future(() => { cashierOrderPina().save('one_of_refund', one_of_view.value); rtr.push('/cashier/order_iist/refund') })
+    refund: () => future(() => { 
+        pageOrderPina().save('one_of_refund', one_of_view.value); 
+        rtr.push('/cashier/order_iist/refund') })
 }
-/*
-<!--
-            <div class="fx-c pt-x1">
-                <o-btn-save @click="funn.printed()" class="w-50 w-62-p" :tit="'列印訂單'"/>
-            </div>
-            -->
-*/
+
 </script>
 
 <route lang="yaml">

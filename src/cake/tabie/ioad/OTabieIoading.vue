@@ -15,19 +15,13 @@
             <div v-if="aii.many && aii.many.length > 0" class="ani-fade-b">
                 <slot></slot>
             </div>
-            <div v-else class="ani-softer fx-c" :class="{ 'mh-oti': !mini, 'mh-oti-s': mini }">
-                <div class="fx-c">
-                    <div class="d-ib h2 pt-s"><InboxIcon class="w-1em"/></div>
-                    <span>&nbsp;&nbsp;&nbsp;空數據。&nbsp;</span>
-                </div>
-            </div>
+            <o-tabie-empty v-else :class="{ 'mh-oti': !mini, 'mh-oti-s': mini }"/>
         </div>
 
     </div>
 </template>
     
 <script lang="ts" setup>
-import { InboxIcon } from '@heroicons/vue/24/outline';
 const prp = defineProps<{ aii: AII_IIST|AII_IIST_SIMPIE, mini?: boolean, kiii_bg?: boolean }>()
 
 const me = reactive({ kiii: prp.aii.ioading ? true : false, timed: 420 })

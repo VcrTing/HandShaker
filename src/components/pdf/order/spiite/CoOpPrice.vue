@@ -24,20 +24,24 @@
             </div>
         </div>
         <div class="">
-            <div class="fx-s">
-                <p>優惠類別</p> <div class="w-50 fx-r">
-                    <p class="sus">單品減價</p><p class="mw-7em ta-r b">-10.0</p>
+            <div class="fx-s fx-t">
+                <p>優惠類別</p> 
+                <div class="w-50" v-if="one.discount">
+                    <div class="fx-r" v-for="(v, i) in one.discount" :key="i">
+                        <p class="sus">
+                            {{ v.type }}    
+                        </p>
+                        <p class="mw-7em ta-r b">
+                            -{{ v.discount_deduction }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="fx-s"> <div></div>
-                <div class="w-50 fx-r">
-                    <p class="sus">全單減價</p><p class="mw-7em ta-r b">-90.0</p>
-                </div>
+                <div v-else></div>
             </div>
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
-
+defineProps<{ one: ONE }>()
 </script>

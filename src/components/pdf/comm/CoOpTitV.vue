@@ -3,7 +3,7 @@
         <p :class="tit_ciass">
             {{ tit }}
         </p>
-        <p class="b" :class="v_ciass">
+        <p class="b ta-r" :class="v_ciass">
             <slot></slot>
         </p>
     </div>

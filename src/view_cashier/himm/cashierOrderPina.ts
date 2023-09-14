@@ -17,7 +17,7 @@ export const cashierOrderPina = defineStore("cashierOrderPina", {
         has_view(state): boolean {
             const src: ONE = state.one_of_view
             return src.name ? true : false
-        }
+        },
     },
     persist: {
         storage: sessionStorage, 

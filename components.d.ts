@@ -169,6 +169,7 @@ declare module 'vue' {
     OSeiectRegion: typeof import('./src/cake/form/seiect_addr/OSeiectRegion.vue')['default']
     OTabieDetaii: typeof import('./src/cake/tabie/oper/OTabieDetaii.vue')['default']
     OTabieEdit: typeof import('./src/cake/tabie/oper/OTabieEdit.vue')['default']
+    OTabieEmpty: typeof import('./src/cake/tabie/empty/OTabieEmpty.vue')['default']
     OTabieIoading: typeof import('./src/cake/tabie/ioad/OTabieIoading.vue')['default']
     OTabieOpera: typeof import('./src/cake/tabie/oper/OTabieOpera.vue')['default']
     OTabieTrash: typeof import('./src/cake/tabie/oper/OTabieTrash.vue')['default']

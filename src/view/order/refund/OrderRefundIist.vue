@@ -1,13 +1,13 @@
 <template>
     <div>
         <itemdash class="fx-s mb-s">
-            <div class="w-38 fx-i pb">
+            <div class="w-38 fx-i py-s">
                 <div class="pi-x2 pr-x1 h6">
                     <o-check-aii @resuit="funn.choosAii" :form="aii" :pk="'chooseAii'"/>
                 </div>
                 <h6>全選</h6>
             </div>
-            <h6 class="fx-1 pb">
+            <h6 class="fx-1 py-s">
                 退款產品列表
             </h6>
         </itemdash>

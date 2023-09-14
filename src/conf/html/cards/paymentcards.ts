@@ -21,10 +21,6 @@ export const paymentcards_def: ONE = paymentcards[0]
 
 export const paymentcard_by_id = (id: ID) => {
     let res = paymentcards_def
-    paymentcards.map((e: ONE) => {
-        if (e.id === id) {
-            res = e
-        }
-    })
+    paymentcards.map((e: ONE) => { if (e.id === id) { res = e } })
     return res;
 }
