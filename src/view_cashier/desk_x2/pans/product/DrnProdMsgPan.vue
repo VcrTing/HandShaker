@@ -1,9 +1,9 @@
 <template>
     <pan-continue :idx="501" :idx_end="0">
-        <pan-inner :tit="'產品'">
+        <pan-inner :tit="'加入購物清單'">
             <div class="py pi"><co-prod-msg-tiny :num="one_of_shop.product_id" :named="one_of_shop.name"/></div>
 
-            <h4 class="pt-x3 pb-x1">入單</h4>
+            <h4 class="pt-x3 pb-x1">選擇</h4>
             <div class="py">
                 <o-input :tit="'客人需要的樣式'" :err="errs.__variation">
                     <select v-model="one_of_shop.__variation">
@@ -28,11 +28,9 @@
                     </div>
                     <o-number-manger :err="errs.__quantity" :form="one_of_shop" :pk="'__quantity'"/>
                 </div>
-                <!--
-                <div class="txt-pri bb pt">
+                <div class="txt-pri bb pt pb">
                     <span @click="inventory()">庫存明細</span>
                 </div>
-                -->
             </div>
             <o-btn-save :aii="me" @click="submit()" class="w-100" :tit="'添加'"/>
         </pan-inner>
@@ -41,9 +39,7 @@
 
 <script lang="ts" setup>
 import { $pan } from "../../../../plugin/mitt";
-// import { serv_product_one } from "../../../../server/admin/product/serv_product_iist"
-import { future_of_ioading, gen_form_err } from "../../../../tool/hook/credit"
-// import { isstr } from "../../../../tool/util/judge"
+import { future, future_of_ioading, gen_form_err } from "../../../../tool/hook/credit"
 import { cashierDeskCartPina } from "../../../himm/cashierDeskCartPina"
 import { cashierDeskProductPina } from "../../../himm/cashierDeskProductPina"
 
@@ -52,17 +48,11 @@ const { one_of_shop } = storeToRefs(pina)
 
 const me = reactive({ ioading: false, msg: '' })
 
-// 502
-/*
 const inventory = () => future(async () => {
-    const res: NET_RES = await serv_product_one(one_of_shop.value.id)
-    if (isstr(res)) { } else {
-        pina.save('one_of_shop_by_net', res as ONE)
-        $pan(502)
-        console.log('one_of_shop_by_net =', res)
-    }
+    const num: ONE = one_of_shop.value as ONE;
+    console.log('ONE =', num);
+    (num.id) ? $pan(502) : undefined;
 })
-*/
 
 const errs = reactive(gen_form_err({ __variation: '', __quantity: '', __price: '' }))
 

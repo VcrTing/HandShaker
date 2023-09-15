@@ -1,12 +1,15 @@
 <template>
     <div class="tabie tabie-def">
         <o-tr :aii="aii"/>
-        <div class="td"><div class="w-100">HKD&nbsp;1500.00</div></div>
+        <div class="td"><div class="w-100">HKD&nbsp;{{ money(totai) }}</div></div>
     </div>
 </template>
     
 <script lang="ts" setup>
 import { iist_deiay_insert } from '../../../tool/app/anim';
+import { money } from '../../../tool/util/view';
+
+defineProps<{ totai: number }>()
 
 const aii = reactive({ trs: <TRS>[ ] })
 

@@ -54,6 +54,7 @@ const funn = {
             e.broken_products = strapi.iist(e.broken_products);
             e.variations = strapi.iist(e.variations); 
             e.restocks = strapi.iist(e.restocks); 
+            e.labels = strapi.iist(e.labels);
             return e 
         }) : [ ]; 
         pina.saveMany('products', res.data)

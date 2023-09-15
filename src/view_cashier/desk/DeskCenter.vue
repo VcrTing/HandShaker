@@ -68,7 +68,7 @@ const funn = {
             case 5:
                 cashierDeskPina().switch_r_page( 3 ); break
             case 10:
-                $pan(207); break
+                $pan(207); console.log(carts.value); break
             case 110:
                 cashierDeskCartPina().remove_cart(); break
             case 111:
@@ -79,7 +79,7 @@ const funn = {
     }),
 
     canceiAii: () => future(() => {
-        cashierDeskCartPina().save('carts', [ ])
+        cashierDeskCartPina().ciear_carts(); $mod(0)
     }),
 
 }

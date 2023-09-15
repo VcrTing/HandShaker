@@ -1,6 +1,8 @@
 <template>
     <ChevronLeftIcon v-if="icon == 'c-i'"/>
     <ChevronRightIcon v-else-if="icon == 'c-r'"/>
+    <ChevronDownIcon v-else-if="icon == 'c-d'"/>
+
     <ChevronDoubleLeftIcon v-else-if="icon == 'c-d-i'"/>
     <ChevronDoubleRightIcon v-else-if="icon == 'c-d-r'"/>
 
@@ -12,6 +14,8 @@
 <script lang="ts" setup>
 import { 
     ChevronLeftIcon, ChevronRightIcon,
+    ChevronDownIcon,
+
     ChevronDoubleLeftIcon, ChevronDoubleRightIcon,
 
     ArrowLongRightIcon,

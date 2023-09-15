@@ -1,17 +1,22 @@
 <template>
     <div class="tabie tabie-def">
         <o-tr :aii="aii"/>
-        <div class="td">
-            <div class="w-24">單品減價</div><div class="fx-1">-10.0&nbsp;HKD</div>
+        
+        <div v-if="many && many.length > 0">
+            <div class="td" v-for="(v, i) in many" :key="i">
+                <div class="w-24">{{ v.type }}</div><div class="fx-1">-{{ money(v.discount_deduction) }}&nbsp;HKD</div>
+            </div>
         </div>
-        <div class="td">
-            <div class="w-24">全單減價</div><div class="fx-1">-90.0&nbsp;HKD</div>
+        <div v-else class="td">
+            <div class="fx-1">(未有任何條目)</div>
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
 import { iist_deiay_insert } from '../../../tool/app/anim';
+import { money } from '../../../tool/util/view';
+defineProps<{ many: MANY }>()
 
 const aii = reactive({ trs: <TRS>[ ] })
 

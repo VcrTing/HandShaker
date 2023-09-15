@@ -84,7 +84,7 @@ export default {
     status: (v: ONE = { }) => (status[ v.status ]),
     status_ciass: (v: ONE = { }) => (status_ciass[ v.status ]),
 
-    member: (v: ONE = { }) => { const m: ONE = v.member ? strapi.data(v.member) : { }; return m.name },
+    member: (v: ONE = { }, def: string = '') => { const m: ONE = v.member ? strapi.data(v.member) : { }; return m.name ? m.name : def },
     cashier: (v: ONE = { }) => { const m: ONE = v.cashier ? strapi.data(v.cashier) : { }; return m.name },
     // 
     payment: (v: ONE = { }) => { const p: string = v.payment_method ? payment[v.payment_method] : ''; return p ? p : v.payment_method },

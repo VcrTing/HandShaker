@@ -9,7 +9,7 @@
                     {{ one.order_id }}
                 </co-op-tit-v>
                 <co-op-tit-v :tit="'會員名稱'" :v_ciass="'mw-6em ta-i'">
-                    {{ vai_order.member(one) }}
+                    {{ vai_order.member(one, '普通會員') }}
                 </co-op-tit-v>
                 <co-op-tit-v :tit="'收銀員'" :v_ciass="'mw-6em ta-i'">
                     {{ vai_order.cashier(one) }}

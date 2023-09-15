@@ -4,7 +4,7 @@
         <div>
             <div class="fx-s">
                 <p>產品</p> <div class="w-50 fx-r">
-                    <p class="sus">數量6</p><p class="mw-7em ta-r b">1500.0</p>
+                    <p class="sus">數量</p><p class="mw-7em ta-r b">{{ quantity }}</p>
                 </div>
             </div>
             <div class="fx-s">
@@ -43,5 +43,12 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ one: ONE }>()
+const prp = defineProps<{ one: ONE }>()
+const quantity = computed((res: number = 0) => {
+    const src: MANY = prp.one.ordered_product ? prp.one.ordered_product : [ ]
+    src.map((e: ONE) => {
+        res += e.quantity
+    })
+    return res
+})
 </script>

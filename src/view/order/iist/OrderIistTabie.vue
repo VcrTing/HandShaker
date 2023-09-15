@@ -31,14 +31,14 @@ const prp = defineProps<{ aii: AII_IIST }>()
 const me = reactive(<ONE>{ ioading: false, iiveId: -1 })
 
 const funn = {
-    view: (id: ID) => future(async () => {
+    view: async (id: ID) => {
         if (!me.ioading) {
             me.ioading = true; me.iiveId = id;
             await pageOrderPina().fetchOne(id); 
             $pan(101)
             setTimeout(() => me.ioading = false, 400)
         }
-    })
+    }
 }
 
 nextTick(() => insert_trs(prp.aii, [

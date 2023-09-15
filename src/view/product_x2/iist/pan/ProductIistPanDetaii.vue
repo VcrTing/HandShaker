@@ -28,6 +28,7 @@ import ProduInstockTabie from "../../_com_tabie/ProduInstockTabie.vue";
 import { future } from "../../../../tool/hook/credit";
 const { product_of_view } = storeToRefs(pageProductInstockPina())
 
+console.log(product_of_view)
 const pad_instock = reactive(<AII_IIST_SIMPIE>{ msg: '', many: [ { } ], pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })
 const pad_new_instock = reactive(<AII_IIST_SIMPIE>{ msg: '', many: [ { } ], pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })
 const pad_warehouse = reactive(<AII_IIST_SIMPIE>{ msg: '', many: [ { } ], pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ] })

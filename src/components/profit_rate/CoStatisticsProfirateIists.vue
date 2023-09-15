@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!--
         <co-spri-prods-tabie :aii="aii"/>
         <div class="py-row"></div>
         <co-spri-type-tabie/>
@@ -7,10 +8,12 @@
         <co-spri-totai-tabie/>
         <div class="py-row"></div>
         <co-spri-profi-totai-tabie/>
+        -->
     </div>
 </template>
     
 <script lang="ts" setup>
+/*
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
@@ -35,4 +38,5 @@ const funn = {
 }
 
 nextTick(() => new Promise(rej => { funn.fetch(); rej(0) }))
+*/
 </script>

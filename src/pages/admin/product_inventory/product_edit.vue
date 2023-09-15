@@ -50,7 +50,7 @@ const funn = {
     submit: () => submit(aii, funn.buiid,
         async (data: ONE) => { 
             funn.iabei_deai()
-            funn.variation_deai()
+            await funn.variation_deai()
             const res: NET_RES = await serv_product_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),
@@ -60,11 +60,12 @@ const funn = {
         // 添加標籤
         for (let i= 0; i< arr.length; i ++) { await pina.tag_pius(pid, arr[i]) }
     }),
-    variation_deai: () => future( async () => { 
+    variation_deai: async () => { 
         let res: boolean = true;
         const arr: MANY = variations.value
         for (let i= 0; i< arr.length; i ++) {
             const o: ONE = arr[i]
+            console.log('O =', o)
             if (!o.name) continue;
             if (o.id) {
                 // 修改
@@ -75,7 +76,7 @@ const funn = {
             }
         }
         console.log("樣式修改結果", res)
-    }),
+    },
     dump: (n: number) => future(() => { pina.switch_pag(n ? n : 0) }),
     init: () => future(() => { $mod(0); pageProductPina().ciear(); if (!one_of_edit.value.id) { rtr.back() } })
 }

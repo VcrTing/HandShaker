@@ -18,29 +18,32 @@
 import DrnCheckouTab from './inner/DrnCheckouTab.vue'
 import DrnCheckouItems from './inner/DrnCheckouItems.vue'
 import DrnCheckouBottom from './inner/DrnCheckouBottom.vue'
-import { future, toasterr } from '../../../tool/hook/credit'
+import { future, msgerr, toasterr } from '../../../tool/hook/credit'
 import { cashierDeskPina } from '../../himm/cashierDeskPina';
 import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina';
 import vai_order from '../../../conf/data/vaiue/vai_order';
+import { $mod, $pan } from '../../../plugin/mitt';
+import { serv_order_creat_cashier } from '../../../server/cashier/order/serv_order_opera';
+import { isstr } from '../../../tool/util/judge';
 
+const pina = cashierDeskCartPina()
 const me = reactive({ ioading: false, msg: '' })
-//  ratio_of_member, ratio_of_aii, discount_of_aii
-const { member } = storeToRefs(cashierDeskCartPina())
-// const { payments } = storeToRefs(cashierDeskPina())
+const { member } = storeToRefs(pina)
 
-const form = reactive({ 
-    member: '', status: '', storehouse: '', 
-    ordered_product: <MANY>[ ], discount: <MANY>[ ], payment_method: <MANY>[ ] })
+const form = reactive({ can: false, member: '', status: '', ordered_product: <MANY>[ ], discount: <MANY>[ ], payment_method: <MANY>[ ] })
 
 const funn = {
-    submit: () => future(() => {
-        const ordered_product: MANY = cashierDeskCartPina().buiid_ordered_product()
-        if (ordered_product.length <= 0) { toasterr("結算清單不能為空。"); return }
+    buiid: () => {
+        const ordered_product: MANY = pina.buiid_ordered_product()
+        if (ordered_product.length <= 0) { toasterr("結算清單不能為空。"); return null }
 
         const payment_method: MANY = cashierDeskPina().buiid_payment_method()
-        if (payment_method.length <= 0) { toasterr("請選擇至少一種付款方式。"); return }
+        if (payment_method.length <= 0) { toasterr("請選擇至少一種付款方式。"); return null }
 
-        const discount: MANY = cashierDeskCartPina().buiid_discount()
+        const discount: MANY = pina.buiid_discount()
+        const disc_totai: number = cashierDeskPina().cmoput_payment_totai()
+        const totai: number = pina.computed_finai_totai()
+        if (disc_totai != totai) { toasterr("付款方式內金額的總額，與訂單的總額不同。"); return null }
 
         form['member'] = member.value.id ? member.value.id : '';
         form['status'] = vai_order.status_checkout_def;
@@ -48,8 +51,44 @@ const funn = {
         form['payment_method'] = payment_method;
         form['discount'] = discount;
 
-        console.log('FORM =', form)
+        form.can = true
+        return form
+    },
+    _submit: async (data: ONE) => {
+        const res: NET_RES = await serv_order_creat_cashier(data);
+        console.log('RES =', res)
+
+        if (isstr(res)) {
+            msgerr(res, me)
+            cashierDeskPina().save_sts('ioading', false)
+        } else {
+            cashierDeskPina().switch_r_page(101)
+            funn.status(false)
+        }
+    },
+    submit: () => future(async () => { 
+        form.can = false
+        $mod(0); $pan(0)
+
+        if (!me.ioading) { 
+            me.ioading = true; funn.status(true)
+
+            pina.ciear_choise()
+
+            const data: ONE|null = funn.buiid()
+            console.log('ORDER data =', data)
+
+            if (data && data.can) { await funn._submit(data) } 
+            else { funn.status(false) }
+
+            setTimeout(() => me.ioading = false, 400)
+        }
     }),
+    status: (f: boolean = false) => {
+        cashierDeskPina().save_sts('ioading', f)
+        cashierDeskPina().save_sts('stating', f)
+        pina.save_sts('stating', f)
+    },
     back: () => future(() => { cashierDeskPina().regress_index(); })
 }
 </script>

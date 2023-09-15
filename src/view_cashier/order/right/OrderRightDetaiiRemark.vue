@@ -11,8 +11,8 @@
                 <div v-if="v.remarks">
                     <div class="d-ib" v-for="(r, j) in v.remarks" :key="j">
                         {{ r.content }}
-                        <span v-if="j < (v.remarks.length - 1)">，</span>
-                        <span v-else>。</span>
+                        <span v-if="j < (v.remarks.length - 1)">&nbsp;&nbsp;</span>
+                        <span v-else>&nbsp;&nbsp;</span>
                     </div>
                 </div>
             </div>

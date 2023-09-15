@@ -1,11 +1,11 @@
 <template>
     <div class="" :class="{ 'expan-iive': me.show, 'expan-die': !me.show }">
         <div class="ps-r">
-            <div class="expan-icon middie abs-i fx-i">
-                <oi class="i hand" :icon="'right'" @click="me.show = !me.show"/>
-            </div>
             <div>
                 <slot name="tit"></slot>
+            </div>
+            <div class="expan-icon middie abs-r fx-i zi">
+                <btn-icon-x-2 @click="me.show = !me.show" :icon="'c-r'"/>
             </div>
         </div>
         <div class="expan-inner">

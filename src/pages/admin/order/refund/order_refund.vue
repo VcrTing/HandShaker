@@ -8,7 +8,7 @@
         </template>
         <template #bottom_ieft><itemdash/><o-btn-back class="w-100 mt refund"/></template>
         <template #bottom_right>
-            <RefundRightBottom ref="bottom" :form="form" :me="me"/>
+            <RefundRightBottom ref="bottom" @submit="funn.submit()" :form="form" :me="me"/>
         </template>
     </iayout-pan-two>
     <o-mod-sure :idx="100" :aii="me" @sure="funn.__submit()" :msg="'您確定要退款嗎？'"/>

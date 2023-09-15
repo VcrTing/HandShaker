@@ -12,6 +12,16 @@ const aii = reactive(<AII_IIST>{
 })
 
 const funn = {
+    effect: (restocks: MANY) => {
+        if (restocks.length > 0) {
+            /*
+            restocks.map((e: ONE) => {
+                
+            })
+            */
+        }
+    },
+    /*
     fetch: () => new Promise(rej => {
         aii.ioading = true
         aii.many.push({ 
@@ -28,10 +38,7 @@ const funn = {
         rej(0)
     }),
     pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
+    */
 }
-
-nextTick(() => new Promise(rej => {
-    funn.fetch()
-    rej(0)
-}))
+defineExpose(funn)
 </script>

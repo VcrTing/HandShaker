@@ -21,7 +21,7 @@
                         <div class="fw-600 ps-r zi-s">
                             <div class="middie i-0 d-ib h5">HKD</div>
                             <div class="pi-row">
-                                <input v-model="v.price" class="h5 pi-x3 w-100" placeholder="請輸入付款金額"/>
+                                <input type="number" v-model="v.price" class="h5 pi-x3 w-100 txt-money" placeholder="請輸入付款金額"/>
                             </div>
                         </div>
                     </div>

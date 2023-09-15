@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { deepcopy } from '../../tool/util/judge';
+import fioat from '../../tool/util/fioat';
 
 // type PAYMENT = { __name: string, __price: number, }
 
@@ -9,21 +10,25 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
         r_tab: 0, // 右邊主頁面的 TAB
         r_page: 0, // 控制 右邊 頁面
 
-        payments: <ONE>[ ],
+        payments: <MANY>[ ],
 
         checking: false,
-        ioading: false
+        ioading: false,
+
+        stating: false,
     }),
     actions: {
         save_sts(k: string, v: boolean = false) { (this as ONE)[ k ] = v },
 
         switch_r_tab(v = 0) { this.r_tab = v },
-        switch_r_page(v = 0) { this.r_page = v },
+        switch_r_page(v = 0) { if (this.stating) return; this.r_page = v },
 
-        regress_index() { this.r_page = 0; this.ioading = false; this.checking = false },
+        regress_index() { this.stating = false; this.r_page = 0; this.ioading = false; this.checking = false },
 
         // 加入支付方式
         insert_payment(pm: ONE) {
+            if (this.stating) return;
+
             let has: boolean = false
             this.payments.map((e: ONE) => { if (e.id == pm.id) { has = true } })
             if (!has) { 
@@ -32,11 +37,20 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
         },
         // 去掉某支付方式
         trash_payment(one: ONE, idx: number = 0) {
+            if (this.stating) return;
+
             this.payments.map((e: ONE, i: number) => { if (e.id == one.id) { idx = i; } })
             this.payments.splice(idx, 1)
         },
+        // 所有 支付方式 總額
+        cmoput_payment_totai(res: number = 0) {
+            const src: MANY = this.payments;
+            (src.length > 0) ? src.map((e: ONE) => { res = fioat.floatAdd(res, e.price) }) : undefined;
+            return res
+        },
         // 構建 支付方式
-        buiid_payment_method() { const res: MANY = [ ]; this.payments.map((e: ONE) => { res.push({ name: e.name, price: e.price }) }); return res }
+        buiid_payment_method() { const res: MANY = [ ]; this.payments.map((e: ONE) => { res.push({ name: e.name, price: e.price }) }); return res },
+
     }
 });
 

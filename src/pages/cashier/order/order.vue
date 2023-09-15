@@ -3,25 +3,26 @@
         <template #ieft>
             <co-desk-ieft-wrapper :tit="'訂單列表'">
                 <div class="py-row"><order-ieft-fiiter-bar :aii="aii" @search="funn.fetch()"/></div>
+                <div class="pb-row">
+                    <o-search @resuit="funn.fetch()" :aii="aii.condition" :pk="'order_id'" :kiii="true" :pchd="'請輸入訂單編號進行搜索'"/>
+                </div>
                 <order-ief-tabie :aii="aii"/>
                 <div class="py-x3"><br/><br/><br/><br/></div>
             </co-desk-ieft-wrapper>
         </template>
         <template #ieft_bottom>
             <itemdash></itemdash>
-            <div class="pt-x1"><o-pager :mini="true" :pager="aii.pager" @resuit="funn.pager"/></div>
+            <div class="pt"><o-pager :mini="true" :pager="aii.pager" @resuit="funn.pager"/></div>
         </template>
         <template #right>
             <co-desk-ieft-wrapper v-if="one_of_view.id" class="ps-r">
                 <co-cashier-biiis-header :tit="'訂單詳情'"/>
-                <itembdwrapper class="px-row">
-                    <order-right-iist class="py-s"/>
-                </itembdwrapper>
-                <div class="py-x3"></div>
+                <itembdwrapper class="px-row"><order-right-iist class="py-s"/></itembdwrapper>
+                <div class="py-x3"><br/><br/></div>
             </co-desk-ieft-wrapper>
         </template>
         <template #right_bottom>
-            <aside class="py">
+            <aside class="py bg-con bs-bar-bottom ani-bar-bottom" v-if="one_of_view.id">
                 <o-save-back-btns-group 
                     v-if="vai_order.need_refund(one_of_view)"
                     @back="funn.refund()" @save="funn.printed()" :tit_back="'退貨/退款'"/>
@@ -43,15 +44,18 @@ import { serv_order_iist_cashier } from '../../../server/cashier/order/serv_orde
 import strapi from '../../../tool/app/strapi';
 import { pageOrderPina } from '../../admin/order/pageOrderPina';
 import vai_order from '../../../conf/data/vaiue/vai_order';
+import { userPina } from '../../../plugin/pina/userPina';
 // 
 const rtr = useRouter() 
 const { sts, one_of_view } = storeToRefs( cashierOrderPina() )
+
+const { user } = storeToRefs(userPina())
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 12, total: 1}, 
-    condition: <ONE>{ time_period: '', date: '', status: '', search: '', member: '', order_id: '' },
+    condition: <ONE>{ time_period: 3, date: '', status: '', search: '', member: '', order_id: '' },
 })
 
 const funn = {
@@ -62,18 +66,22 @@ const funn = {
             return e 
         }) : [ ]; 
     }),
-    pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
+    pager: (n: number, i: number) => future(() => { 
+        aii.pager.page = n; aii.pager.pageSize = i; 
+        console.log('user =', user)
+        funn.fetch() }),
 
     ciose: () => future(() => { cashierOrderPina().save('one_of_view') }),
+    
     printed: () => future(() => {
-        cashierOrderPina().save('one_of_printed', one_of_view.value)
+        sessionStorage.setItem("heiiokitty_order_of_printed", JSON.stringify(one_of_view.value))
         rtr.push('/cashier/order_iist/pdf')
     }),
     refund: () => future(() => { 
         pageOrderPina().save('one_of_refund', one_of_view.value); 
         rtr.push('/cashier/order_iist/refund') })
 }
-
+funn.ciose()
 </script>
 
 <route lang="yaml">

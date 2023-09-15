@@ -2,7 +2,7 @@
     <iayout-tabie :aii="aii" :pure="true">
         <div v-if="carts && carts.length > 0" class="ani-fade-b">
             <div class="py-s br ani-scaie-aii" v-for="(v, i) in carts" :key="i">
-                <m-btn :bk="true" class="w-100 ta-i br fx-aii-tab" @click="funn.chiose(v)">
+                <m-btn :bk="true" class="w-100 ta-i br fx-aii-tab" @click="funn.chiose(i)">
                     <itembdwrapper :class="{ 'bg-con-x2': v.__choise }">
                         <div class="td tit-son">
                             <div class="fx-1 px fx-i">
@@ -39,15 +39,12 @@ import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina'
 
 const prp = defineProps<{ aii: AII_IIST }>()
 
-const { carts } = storeToRefs(cashierDeskCartPina())
+const pina = cashierDeskCartPina()
+const { carts } = storeToRefs(pina)
 
 const funn = {
-    vai_totai: (v: ONE) => money( cashierDeskCartPina().comput_one_totai(v) ),
-    chiose: (v: ONE) => future(() => {
-        prp.aii.many.map((e: ONE) => { e.__choise = false })
-        v.__choise = true
-        console.log('選擇的變動 =', prp.aii.many)
-    })
+    vai_totai: (v: ONE) => money( pina.comput_one_totai(v) ),
+    chiose: (i: number) => future(() => { pina.switch_cart_choise(i) })
 }
 
 // 數據
