@@ -21,5 +21,8 @@
 </template>
     
 <script lang="ts" setup>
+import { cashierDeskProductPina } from "../../view_cashier/himm/cashierDeskProductPina";
 
+const { refresh } = storeToRefs(cashierDeskProductPina())
+watch(refresh, () => { console.log('刷新 產品') })
 </script>

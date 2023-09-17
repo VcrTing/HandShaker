@@ -38,6 +38,9 @@ $tabie-min-h: 43px
 
 $tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
 
+.tr-bg
+    background: $tabie-tr-bg !important
+
 .tabie-def
     tr, .tr, td, .td
         @extend .px
@@ -46,7 +49,7 @@ $tabie-td-bd: rgba(0, 0, 0, 0.06) // #f6f6f6
         border-bottom: 1px solid transparent
     tr, .tr
         z-index: 49
-        background: $tabie-tr-bg
+        @extend .tr-bg
         border-color: $tabie-tr-bd
         button, p
             min-height: $tabie-min-h
@@ -79,3 +82,7 @@ $tabie-tr-trang-bg: rgba(0, 0, 0, 0.25)
 .tabie
     .trangie
         // background: $tabie-tr-trang-bg
+
+////I
+.mh-20em
+    min-height: 20em

@@ -3,40 +3,36 @@
         <o-number-manger-two class="ani-item" :form="choiseOne" :pk="'quantity'"/>
         <div class="py"></div>
 
-        <div class="o-form pt-row" v-if="has_item">
-            <div class="w-100 ani-softer" v-if="has_one">
-                <m-btn @click="funn.opt(1)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    單品優惠
-                </m-btn>
-            </div>
-            <div class="w-100">
-                <m-btn @click="funn.opt(2)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    全單優惠
-                </m-btn>
-            </div>
-            <div class="w-100">
-                <m-btn @click="funn.opt(5)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    保留單據
-                </m-btn>
-            </div>
-            <div class="w-100">
-                <m-btn @click="funn.opt(10)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    統計毛利率
-                </m-btn>
-            </div>
-            <div>
-                <itemdash/>
-            </div>
-            <div class="w-100 ani-softer" v-if="has_one">
-                <m-btn @click="funn.opt(110)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    單件取消
-                </m-btn>
-            </div>
-            <div class="w-100">
-                <m-btn @click="funn.opt(111)" :bk="true" class="btn-tab sub w-100 py px-t br">
-                    整單取消
-                </m-btn>
-            </div>
+        <div class="o-form pt-row ani-fade-b" v-if="has_item">
+
+            <DcDoCenterBtn @tap="funn.opt(1)" v-if="has_one">
+                單品優惠
+            </DcDoCenterBtn>
+
+            <div v-if="has_one" class="bd-0 bd-b bd-c-x2 bd-s-d ani-softer"></div>
+
+            <DcDoCenterBtn @tap="funn.opt(2)">
+                全單優惠
+            </DcDoCenterBtn>
+
+            <DcDoCenterBtn @tap="funn.opt(5)">
+                保留單據
+            </DcDoCenterBtn>
+            
+            <DcDoCenterBtn @tap="funn.opt(10)">
+                統計毛利率
+            </DcDoCenterBtn>
+
+            <div class="bd-0 bd-b bd-c-x2 bd-s-d"></div>
+
+            <DcDoCenterBtn @tap="funn.opt(110)" v-if="has_one">
+                單件取消
+            </DcDoCenterBtn>
+
+            <DcDoCenterBtn @tap="funn.opt(111)">
+                整單取消
+            </DcDoCenterBtn>
+
         </div>
         <o-mod-trash :aii="me" :idx="-201" @trash="funn.canceiAii()" :msg="'你確定要取消整個訂單嗎？'"/>
     </div>
@@ -48,6 +44,7 @@ import { future } from '../../tool/hook/credit'
 import { $mod } from '../../plugin/mitt'
 import { $pan } from '../../plugin/mitt/index'
 import { cashierDeskPina } from '../himm/cashierDeskPina'
+import DcDoCenterBtn from '../desk_x3/do/DcDoCenterBtn.vue'
 
 const { has_choise, carts, choiseOne } = storeToRefs(cashierDeskCartPina())
 
@@ -69,6 +66,7 @@ const funn = {
                 cashierDeskPina().switch_r_page( 3 ); break
             case 10:
                 $pan(207); console.log(carts.value); break
+            // 單件取消
             case 110:
                 cashierDeskCartPina().remove_cart(); break
             case 111:
@@ -79,53 +77,12 @@ const funn = {
     }),
 
     canceiAii: () => future(() => {
-        cashierDeskCartPina().ciear_carts(); $mod(0)
+        $mod(0)
+        cashierDeskCartPina().ciear_carts(); 
+        cashierDeskCartPina().ciear_discount();
+        cashierDeskPina().switch_r_tab(0)
+        cashierDeskPina().switch_r_page(0)
     }),
-
 }
 
-/*
-nextTick(funn.init)
-
-    init: () => future(() => {
-        iist_deiay_insert_s(BTNS.length, () => (me.ani += 1), 32)
-    }),
-const BTNS: MANY = [
-    { tit: '優惠及折扣', page: 0 },
-    { tit: '單件取消',  },
-    { tit: '整單取消', },
-    { tit: '保留單據', page: 3 },
-    { tit: '取回單據', page: 4 },
-    { tit: '壞貨', },
-    { tit: '統計毛利率', pan: 207 },
-]
-    change: (v: ONE) => future(() => {
-        if (v.pan != null) { $pan(v.pan) } 
-        if (v.page != null) { cashierDeskPina().switch_r_page( v.page ) }
-    })
-<!--
-            <div v-for="(v, i) in me.btns" :key="i">
-                
-                <div
-                    @click="funn.change(v)"
-                    class="w-100 op-0"
-                    :class="{ 'ani-item': me.ani >= i }"
-                    >
-
-                    <m-btn :bk="true"
-                        class="btn-tab sub w-100 py px-t br"
-                        v-if="!(r_page == i)"
-                        >
-                        {{ v.tit }}
-                    </m-btn>
-                    <m-btn
-                        class="bg-pri pri-wht fx-bg-pri-aii w-100 py px-t br"
-                        v-else
-                    >
-                        {{ v.tit }}
-                    </m-btn>
-                </div>
-            </div>
-            -->
-*/
 </script>

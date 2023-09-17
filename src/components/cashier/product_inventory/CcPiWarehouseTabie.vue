@@ -10,11 +10,11 @@
                     </div>
                 </template>
                 <template #con>
-                    <div class="fx-i">
-                        <div class="w-20"></div>
+                    <div class="fx-i ani-fade-b">
+                        <div class="w-19"></div>
                         <div class="fx-1">
-                            <div v-for="(m, j) in funn.buiid_variation(v)" :key="j" class="">
-                                <div class="td">
+                            <div class="ani-fade-b" v-for="(m, j) in funn.buiid_variation(v)" :key="j">
+                                <div class="td tr-bg">
                                     <div class="w-36">樣式:&nbsp;&nbsp;{{ m.name }}</div>
                                     <div class="fx-1">庫存:&nbsp;&nbsp;{{ m.quantity }}</div>
                                 </div>

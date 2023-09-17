@@ -9,6 +9,9 @@
     <ArrowUpIcon v-else-if="icon == 'a-t'"/>
     <ArrowLongRightIcon v-else-if="icon == 'a-i-r'"/>
     <CalendarIcon v-else-if="icon == 'caiendar' || icon == 'date'"/>
+
+    <ArrowPathIcon v-else-if="icon == 'refresh'"/>
+    <DocumentArrowDownIcon v-else-if="icon == 'doc'"/>
 </template>
     
 <script lang="ts" setup>
@@ -21,7 +24,10 @@ import {
     ArrowLongRightIcon,
 
     ArrowUpIcon, 
-    CalendarIcon
+    CalendarIcon,
+
+    ArrowPathIcon,
+    DocumentArrowDownIcon
 } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

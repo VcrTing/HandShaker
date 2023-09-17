@@ -1,43 +1,39 @@
 <template>
     <div>
-        <o-tabie-ioading :aii="aii" :kiii_bg="true">
-            <div class="desk-right-cards row row-x2-w pb">
-                <div 
-                    class="w-333-p w-25 w-20-x ani-softer" 
-                    v-for="(v, i) in aii.many" 
-                    :key="i">
-                    <!--
-                    <o-open-pan :idx="501" class="w-100">
-                    </o-open-pan>
-                    -->
-                    <co-desk-prod-card class="w-100 mb-x1" 
-                        @click="funn.shop(v)"
-                        :name="v.name" :number="v.product_id" :price="money(v.new_selling_price)"/>
+        <o-tabie-ioading-two :aii="me">
+            <div v-if="products.length > 0">
+                <div class="desk-right-cards row row-x2-w pb">
+                    <div 
+                        class="w-333-p w-25 w-20-x ani-softer" 
+                        v-for="(v, i) in products" 
+                        :key="i">
+
+                        <co-desk-prod-card class="w-100 mb-x1" 
+                            @click="funn.shop(v)"
+                            :name="v.name" :number="v.product_id" :price="money(v.new_selling_price)"/>
+                    </div>
                 </div>
+                <div class="py-row"></div>
             </div>
-            <div class="py-row"></div>
-        </o-tabie-ioading>
+            <div v-else class="mh-oti fx-c">
+                <o-tabie-empty-two :tit="'無商品數據'">
+                    <btn-icon-x2 class="mt" :icon="'refresh'" :ciass_i="'h3'" @click="funn.fetch()"/>
+                </o-tabie-empty-two>
+            </div>
+        </o-tabie-ioading-two>
     </div>
 </template>
     
 <script lang="ts" setup>
-
 import { $pan } from "../../../plugin/mitt";
-import { serv_product_iist_cashier } from "../../../server/cashier/product/serv_product_iist"
-import strapi from "../../../tool/app/strapi";
-import { future, future_iist } from "../../../tool/hook/credit"
+import { future, future_of_ioading } from "../../../tool/hook/credit"
 import { money } from "../../../tool/util/view"
 import { cashierDeskProductPina } from "../../himm/cashierDeskProductPina"
 
 const pina = cashierDeskProductPina()
-const { pager, condition } = storeToRefs(pina)
+const { pager, condition, products } = storeToRefs(pina)
 
-const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
-    ioading: true, msg: '', trs: <TRS>[ ],
-    pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1},
-    condition: <ONE>{ 'label': '', 'supplier': '', 'new_restock_date': '', 'search': '' },
-})
+const me = reactive(<ONE>{ ioading: true, msg: '', many: [ { } ] })
 
 watch(pager.value, () => funn.fetch())
 watch(condition.value, () => funn.fetch())
@@ -49,16 +45,7 @@ const funn = {
         v.__variation = 0
         pina.save('one_of_shop', v); $pan(501)
     }),
-    fetch: () => future_iist(aii, async () => serv_product_iist_cashier(condition.value, pager.value), (res: ONE) => {
-        res.data = res.data ? res.data.map((e: ONE) => {
-            e.broken_products = strapi.iist(e.broken_products);
-            e.variations = strapi.iist(e.variations); 
-            e.restocks = strapi.iist(e.restocks); 
-            e.labels = strapi.iist(e.labels);
-            return e 
-        }) : [ ]; 
-        pina.saveMany('products', res.data)
-    }),
+    fetch: () => future_of_ioading(me, async () => await pina.refreshProducts()),
 }
 
 nextTick(funn.fetch)
@@ -91,4 +78,5 @@ const funn = {
     })
 }
 */
+
 </script>

@@ -1,20 +1,26 @@
 <template>
-    <iayout-pdf>
-        <div class="fx-c" v-for="(v, i) in me.many" :key="i">
-            <co-order-pdf :one="v"/>
-        </div>
+    <iayout-pdf :ink="me.ink" @printed="funn.printed()">
+        <div class="pt-s"></div>
+        <CoOrderPdfParcei class="co-order-pdf-parcei" :kiii_printed="true"/>
         <div class="py-x3"><br/><br/><br/></div>
     </iayout-pdf>
 </template>
     
 <script lang="ts" setup>
-import CoOrderPdf from "../../../components/pdf/order/CoOrderPdf.vue";
 import { future } from "../../../tool/hook/credit";
-
+const rtr = useRouter()
 const order = ref(<ONE>{ })
-const me = reactive({ many: <MANY>[ ] })
+const me = reactive({ ink: '', many: <MANY>[ ] })
 
 const funn = {
+    printed: () => {
+        me.ink = ''
+        setTimeout(() => {
+            const rts = rtr.resolve({ path: `/widget/pdf/cashier` })
+            // window.open(rts.href, '_blank')
+            me.ink = rts.href
+        }, 800)
+    },
     spiite_order: () => {
 
     },
@@ -49,5 +55,5 @@ watchEffect(funn.effect)
 <route lang="yaml">
 path: /cashier/order_iist/pdf
 meta:
-    layout: LayoutWidget
+    layout: LayoutPrinted
 </route>

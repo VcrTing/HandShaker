@@ -5,7 +5,8 @@ type MENU = {
     code: string,
     iink: string,
     svg: string,
-    svg_iive: string
+    svg_iive: string,
+    is_admin?: boolean,
 }
 
 type MENUS = MENU[ ]

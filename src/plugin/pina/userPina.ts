@@ -40,7 +40,10 @@ export const userPina = defineStore("userPina", {
         is_admin(): boolean { return (this.user.roie == ADMIN_SUBJECT); },
 
         name(): string { const src: ONE = this.user; return src.username ? src.username : src.name;  },
-        subject(): SUBJECT { return this.user.roie ? this.user.roie : DEF_SUBJECT }
+        subject(): SUBJECT { return this.user.roie ? this.user.roie : DEF_SUBJECT },
+        subject_txt(): string {
+            if (this.user.roie) return '收銀員'; return this.user.roie ? this.user.roie : DEF_SUBJECT 
+        }
     },
     
     persist

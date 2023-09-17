@@ -25,6 +25,7 @@
                     </itembdwrapper>
                 </m-btn>
             </div>
+            <dc-cart-item-spacer/>
         </div>
         <div v-else>
             <o-tabie-empty class="mh-oti"/>
@@ -36,6 +37,7 @@
 import { money } from '../../../tool/util/view'
 import { future, insert_trs } from '../../../tool/hook/credit'
 import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina'
+import DcCartItemSpacer from '../../desk_x3/spacer/DcCartItemSpacer.vue'
 
 const prp = defineProps<{ aii: AII_IIST }>()
 

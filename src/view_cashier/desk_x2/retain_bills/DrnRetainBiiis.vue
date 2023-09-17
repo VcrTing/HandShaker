@@ -16,22 +16,19 @@
             </itembdwrapper>
         </div>
 
+        <div class="py-x2 fx-c">
+            <DcDoOrderNext class="mt w-382 w-50-p"/>
+        </div>
+
     </co-desk-right-wrapper>
 </template>
     
 <script lang="ts" setup>
 import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina'
 import DrnRbTabie from './tabie/DrnRbTabie.vue'
+import DcDoOrderNext from '../../desk_x3/do/DcDoOrderNext.vue';
 
 const pina = cashierDeskCartPina()
 const { carts } = storeToRefs(pina)
-/*
-const num = computed(() => { 
-    let res: number = 0; carts.value.map((e: ONE) => { res += e.quatity; }); return res 
-})
-const totai = computed(() => {
-    pina.comput_carts_totai()
-    return 0
-})
-*/
+
 </script>

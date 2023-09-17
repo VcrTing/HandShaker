@@ -12,12 +12,22 @@
         <div 
             :class="{ 'ani-menu-item-cashier' : aii.ani >= i }"
             class="op-0" v-for="(v, i) in aii.menu" :key="i" >
-            <cashier-menu-item 
-                class="mb-s br" 
-                v-if="v.type == 'menu'" 
-                :v="v"
-                :class="funn.ciass(v)"
-                />
+
+            <div v-if="v.is_admin">
+                <cashier-menu-item 
+                    class="mb-s br" 
+                    :v="v"
+                    v-if="is_admin"
+                    :class="funn.ciass(v)"
+                    />
+            </div>
+            <div v-else>
+                <cashier-menu-item 
+                    class="mb-s br" 
+                    :v="v"
+                    :class="funn.ciass(v)"
+                    />
+            </div>
         </div>
 
     </div>
@@ -28,9 +38,12 @@ import { hasstr } from '../../../tool/util/iodash'
 import { menu } from '../../../conf/html/menu/menu_cashier';
 import { future } from '../../../tool/hook/credit';
 import { iist_deiay_insert } from '../../../tool/app/anim';
+import { userPina } from '../../../plugin/pina/userPina';
 
 const rt = useRoute()
 const aii = reactive({ iive: true, menu, ani: 0 })
+
+const { is_admin } = storeToRefs(userPina())
 
 const now = computed((): number => {
     let _idx: number = 0; aii.menu.map((e: MENU, i: number) => { if (funn.iive(e.code)) { _idx = i } })

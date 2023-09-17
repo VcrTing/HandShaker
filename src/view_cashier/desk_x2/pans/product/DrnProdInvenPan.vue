@@ -15,7 +15,7 @@
             <co-pid-totai-tabie :one_of_edit="one_of_shop" class="pb"/>
             <co-pid-warehouse-tabie :one_of_edit="one_of_shop" :aii="pad_warehouse" class="pb" :kiii_option="true"/>
             -->
-            <cc-pi-warehouse-tabie :one_of_edit="one_of_shop" :aii="pad_warehouse"/>
+            <cc-pi-warehouse-tabie class="mh-20em" :one_of_edit="one_of_shop" :aii="pad_warehouse"/>
 
             <div class="py-x3 mt fx-c">
                 <o-btn-save class="w-382 w-50-p" :tit="'關閉'" @click="$pan(501)"/>

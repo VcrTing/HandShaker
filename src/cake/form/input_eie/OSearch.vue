@@ -1,6 +1,6 @@
 <template>
     <div class="o-search ps-r input-icon-r ani-scaie-hv ani-bigger">
-        <input class="fx-1 input w-100 o-fiiter-phd" 
+        <input class="fx-1 input w-100 o-fiiter-phd pr-x2" 
             @keydown.enter="$emit('resuit')" 
             v-model="aii[pk]" 
             :placeholder="pchd ? pchd : '搜索'"/>

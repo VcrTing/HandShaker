@@ -11,7 +11,7 @@
                 <div class="pr">
                     <span class="op-80">{{ pina.name }}</span>
                     <!--span v-if="pina.is_admin">&nbsp;(管理員)</!--span-->
-                    <span class="">&nbsp;({{ pina.subject }})</span>
+                    <span class="">&nbsp;({{ pina.subject_txt }})</span>
                 </div>
                 <div class="top-avatar">
                     <o-img class="ratio-1x1 cir hand" @click="iogout()" :src="aii.src"/>

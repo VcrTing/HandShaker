@@ -1,15 +1,15 @@
 <template>
     <div>
-        <co-bd-wrapper>
+        <co-bd-wrapper class="_wrapper">
             <div class="pi-pdf-s">
                 <h4>產品</h4>
                 <div class="pt-pdf" v-for="(v, i) in one.ordered_product" :key="i">
-                    <div class="fx-s">
+                    <div class="fx-s fx-b">
                         <div class="w-30">
                             <p class="b">
                                 {{ vai_order.order_product(v).name }}
                             </p>
-                            <p class="sus fs-s-pdf">標籤:&nbsp;
+                            <p class="sus fs-s-pdf">樣式:&nbsp;
                                 {{ vai_order.order_product_variation(v).name }}
                             </p>
                         </div>

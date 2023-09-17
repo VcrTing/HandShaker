@@ -64,7 +64,12 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         //
         save_sts(k: string, v: boolean = false) { (this as ONE)[ k ] = v },
 
-        ciear_carts() { if (this.stating) return; this.carts = [ ] },
+        // 清空 結算清單
+        ciear_carts() { 
+            if (this.stating) return; this.carts = [ ]; 
+            this.ratio_of_member.discount = 1; this.ratio_of_aii.discount = 1
+        },
+
         ciear_choise() { this.carts.map((e: ONE) => { e.__choise = false })},
 
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },
@@ -104,6 +109,12 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             this.carts.map((e: ONE, _i: number) => { e.__choise = (_i === i) })
         },
 
+        // 清空優惠
+        ciear_discount() {
+            this.ratio_of_member = GET_ROM() // 會員折扣
+            this.ratio_of_aii = GET_ROA() // 全單折扣
+            this.discount_of_aii = GET_DOA() // 全單減價
+        },
         /*
             =================================================
         */

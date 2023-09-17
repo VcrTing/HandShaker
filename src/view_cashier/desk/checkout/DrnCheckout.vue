@@ -25,6 +25,7 @@ import vai_order from '../../../conf/data/vaiue/vai_order';
 import { $mod, $pan } from '../../../plugin/mitt';
 import { serv_order_creat_cashier } from '../../../server/cashier/order/serv_order_opera';
 import { isstr } from '../../../tool/util/judge';
+import { cashierDeskProductPina } from '../../himm/cashierDeskProductPina';
 
 const pina = cashierDeskCartPina()
 const me = reactive({ ioading: false, msg: '' })
@@ -65,6 +66,8 @@ const funn = {
             cashierDeskPina().switch_r_page(101)
             funn.status(false)
         }
+
+        cashierDeskProductPina().dorefresh()
     },
     submit: () => future(async () => { 
         form.can = false

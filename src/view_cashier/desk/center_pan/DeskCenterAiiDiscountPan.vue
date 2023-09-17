@@ -42,13 +42,17 @@
             </div>
 
             <div class="py-x3 h6 fw-600">
-                <div class="d-ib sus">優惠金額</div>:&nbsp;&nbsp;HKD&nbsp;
-                <dc-toti-discount-num/>
+                <div>
+                    <div class="d-ib sus">優惠金額</div>:&nbsp;&nbsp;HKD&nbsp;
+                    <DcTotiDiscountNum/>
+                </div>
+                <div class="pt-row">
+                    <div class="d-ib">統計金額</div>:
+                    <div class="d-ib txt-money">&nbsp;&nbsp;HKD&nbsp;<DcTotiPriceNum/></div>
+                </div>
             </div>
-            <div class="py-x2"></div>
-            <div>
 
-            </div>
+            <div class="py-x2"></div>
             <o-btn-save :aii="me" @click="funn.submit" class="w-100" :tit="'確定'"/>
         </pan-inner>
     </Pan>
@@ -61,6 +65,7 @@ import { future, future_of_ioading, gen_form_err } from "../../../tool/hook/cred
 import { cashierDeskCartPina } from "../../himm/cashierDeskCartPina";
 import DcTotiDiscountNum from "../../desk_x3/comm/DcTotiDiscountNum.vue";
 import DcMemberDiscount from '../../desk_x3/comm_x2/DcMemberDiscount.vue';
+import DcTotiPriceNum from "../../desk_x3/comm/DcTotiPriceNum.vue";
 
 const pina = cashierDeskCartPina()
 const { choiseOne, ratio_of_aii, discount_of_aii } = storeToRefs(pina)

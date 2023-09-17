@@ -14,6 +14,10 @@
     
 <script lang="ts" setup>
 /*
+
+                const rts = rtr.resolve({ path: `/widget/pdf/${ pdf.fiie_name() }?` })
+                aii.ink = rts.href
+                
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],

@@ -1,0 +1,1 @@
+import{y as i,L as o}from"./index-33974ecf.js";import{a as t}from"./serv_suppiier_iist-1beefbb2.js";import{i as r}from"./iodash-8a8cb9b0.js";const f=i("suppiierPina",{state:()=>({one_of_edit:{}}),actions:{save(e,s={}){this[e]=s},async fetchOne(e){const s=await t(e);return r(s)?o(s+""):this.one_of_edit=s,console.log("SUPPIIER RES =",s),s}}});export{f as s};

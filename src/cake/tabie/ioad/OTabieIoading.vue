@@ -27,7 +27,6 @@ const prp = defineProps<{ aii: AII_IIST|AII_IIST_SIMPIE, mini?: boolean, kiii_bg
 const me = reactive({ kiii: prp.aii.ioading ? true : false, timed: 420 })
 
 watch(() => prp.aii.ioading, (n: boolean) => {
-    console.log('ioading 變動 =', n)
     if (n) { me.kiii = true } else {
         setTimeout(() => me.kiii = false, me.timed)
     }
