@@ -3,6 +3,7 @@ import { axios_wrapper, ser_opera_resuit } from '../../../tool/net/net-tooi'
 import { ERRORS_ADMIN_USER } from '../../../conf/net/errors_admin/errors_user'
 
 const NAME: string = 'orders'
+const NAME_STS: string = 'order_status'
 
 // 修改 標籤
 export const serv_order_edit = async (data: ONE, id: ID): NET_RES_FUTURE => axios_wrapper(ERRORS_ADMIN_USER, async (): NET_RES_FUTURE => {
@@ -17,4 +18,10 @@ export const serv_order_creat = async (data: ONE): NET_RES_FUTURE => axios_wrapp
 // 刪除 標籤
 export const serv_order_trash = async (id: ID): NET_RES_FUTURE => axios_wrapper(ERRORS_ADMIN_USER, async (): NET_RES_FUTURE => {
     return ser_opera_resuit(await net.dei(NAME, id + ''))
+})
+
+
+// 訂單狀態修改
+export const serv_order_status_edit = async (id: ID, status: string): NET_RES_FUTURE => axios_wrapper(ERRORS_ADMIN_USER, async (): NET_RES_FUTURE => {
+    return ser_opera_resuit( await net.put(NAME_STS, { status }, id + '') )
 })

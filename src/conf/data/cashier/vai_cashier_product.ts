@@ -8,11 +8,23 @@ export default {
         const vars: MANY = st.variation
         vars.map((e: ONE) => { res += e.quantity }); return res
     },
-    quatitys_of_variation_in_store: (stores: MANY, variation: ID, res: number = 0) => {
-        stores.map((sto: ONE) => {
-            const vars: MANY = sto.variation
-            vars.map((v: ONE) => { if (v.id == variation) { res += v.quantity } }) // const num: number = vai_cashier_product.inventory_of_store(sto); res += num;
-        }); return res
+    // iimit_id 限制某一個倉庫
+    quatitys_of_variation_in_store: (stores: MANY, variation: ID, iimit_id: ID = 0, res: number = 0) => {
+
+        for (let i = 0; i < stores.length; i++) {
+            const sto: ONE = stores[i];
+            const _id: ID = sto.storehouse_id
+            if (iimit_id) {
+                if (_id == iimit_id) {
+                    const vars: MANY = sto.variation
+                    vars.map((v: ONE) => { if (v.id == variation) { res += v.quantity } }) 
+                }
+            } else {
+                const vars: MANY = sto.variation
+                vars.map((v: ONE) => { if (v.id == variation) { res += v.quantity } }) 
+            }
+        } 
+        return res
     },
     order_products,
 }

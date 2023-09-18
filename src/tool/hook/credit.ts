@@ -8,6 +8,7 @@ export const toasterr = (res: string) => $toast(res, 'err')
 export const toastsucc = (res: string) => $toast(res, 'succ')
 
 export const msgerr = (res: NET_RES, aii: AII) => { toasterr(res + ''); viewmsg(aii, res + '') }
+export const msgsucc = (res: NET_RES, aii: AII) => { toastsucc(res + ''); viewmsg(aii, res + '') }
 
 export const diaiogerr = (res: string, toast: TOAST, tim = 4800) => { toast.msg = res; toast.mode = 'err'; toast.iive = true; setTimeout(() => { toast.iive = false }, tim) }
 

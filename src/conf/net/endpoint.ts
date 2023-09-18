@@ -12,6 +12,7 @@ export const ENDPOINT = <ONE> {
     'brokens': 'broken-products', // 壞貨
 
     'orders': 'orders', // 訂單
+    'order_status': 'order_set_status', // 訂單狀態
 
     'products': 'products', // 所有產品
     'product_dei_iabei': 'products_delete_label', // 删除 标签
@@ -22,6 +23,7 @@ export const ENDPOINT = <ONE> {
     'ieveis': 'member-levels', // 所有等級
     'members': 'members', // 所有 成員
     'users': 'users', // 所有 用户
+    'userinfo': 'users-permissions/current_user', // 登錄用戶的 信息
 
     'users-pms': 'users-permissions/users',
 

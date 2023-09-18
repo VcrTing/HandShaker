@@ -25,7 +25,7 @@
             <div class="pb-x3 pt">
                 <div class="py-x3">
                     <div class="pb">購買數量</div>
-                    <o-number-manger :err="errs.__quantity" :form="one_of_shop" :pk="'__quantity'"/>
+                    <o-number-manger :err="errs.__quantity" :form="one_of_shop" :max="inventorys_of_variation" :pk="'__quantity'"/>
                 </div>
                 <div class="txt-pri bb pt-x2 pb"><span @click="went_inventory()">庫存明細</span></div>
             </div>
@@ -37,6 +37,7 @@
 <script lang="ts" setup>
 import vai_cashier_product from "../../../../conf/data/cashier/vai_cashier_product";
 import { $pan } from "../../../../plugin/mitt";
+import { userPina } from "../../../../plugin/pina/userPina";
 import { future, future_of_ioading, gen_form_err } from "../../../../tool/hook/credit"
 import { money } from "../../../../tool/util/view";
 import { cashierDeskCartPina } from "../../../himm/cashierDeskCartPina"
@@ -44,6 +45,7 @@ import { cashierDeskProductPina } from "../../../himm/cashierDeskProductPina"
 
 const pina = cashierDeskProductPina()
 const { one_of_shop } = storeToRefs(pina)
+const { mystore } = storeToRefs(userPina())
 
 const me = reactive({ ioading: false, msg: '' })
 
@@ -56,10 +58,13 @@ const went_inventory = () => future(async () => {
 const stores = computed((): MANY => vai_cashier_product.storehouses(one_of_shop.value))
 
 // 該樣式的庫存
-const inventorys_of_variation = computed(() => vai_cashier_product.quatitys_of_variation_in_store(stores.value, one_of_shop.value.__variation))
+const inventorys_of_variation = computed(() => {
+    const store_id_of_user: ID = mystore.value ? mystore.value : 0
+    return vai_cashier_product.quatitys_of_variation_in_store(stores.value, one_of_shop.value.__variation, store_id_of_user)
+})
+
 // 需不需要樣式標紅
 const need_err = computed(() => ( (one_of_shop.value.__variation || one_of_shop.value.__variation <= 0) && inventorys_of_variation.value <= 0))
-
 
 const errs = reactive(gen_form_err({ __variation: '', __quantity: '', __price: '' }))
 

@@ -1,0 +1,1 @@
+import{v as a,R as n,y as e,Q as _,E as i,as as o}from"./index-1c4854d6.js";const r="iabeis",p=async(s,t)=>a(i,async()=>n(await e.get(r,_.buiid_pager(s,t)))),u=async s=>a(i,async()=>o(await e.one(r,s+"")));export{u as a,p as s};

@@ -13,7 +13,7 @@
                 </div>
             </div>
         </itemdash>
-        <DcDoOrderNext class="mt"/>
+        <DcDoOrderNext class="mt w-100"/>
     </aside>
 </template>
     

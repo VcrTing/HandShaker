@@ -6,7 +6,7 @@
                     <co-warehouse-seiect-pure 
                         :form="form" :pk="'storehouse'" :tit_def="'-- 請選擇退貨倉庫 --'"/>
                 </div>
-                <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib ">HKD&nbsp;{{ money(totai) }}</p></h6>
+                <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib fw-900">HKD&nbsp;{{ money(totai) }}</p></h6>
             </div>
         </itemdash>
         <div class="fx-s mt">
@@ -21,6 +21,7 @@ import { pageOrderPina } from '../../../pages/admin/order/pageOrderPina';
 import { msgerr } from '../../../tool/hook/credit';
 import fioat from '../../../tool/util/fioat';
 import { money } from '../../../tool/util/view';
+
 defineEmits([ 'submit' ])
 const prp = defineProps<{ form: ONE, me: ONE }>()
 

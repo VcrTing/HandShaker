@@ -1,0 +1,1 @@
+import{v as r,Q as e,R as i,y as t,E as o}from"./index-1c4854d6.js";const _="warehouses",p=async(s,a)=>r(o,async()=>(console.log("頁面 =",e.buiid_pager(s,a)),i(await t.get(_,e.buiid_pager(s,a)))));export{p as s};

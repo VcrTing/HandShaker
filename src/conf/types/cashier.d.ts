@@ -5,6 +5,10 @@ type DISCOUNT = {
     discount: number, is_ratio: boolean, discount_deduction: number,
     iive: boolean
 }
-/*
-    { discount: 0, is_ratio: true, txt: "全單折扣", discount_deduction: 0, type: "全單折扣" }
-*/
+
+type RECEIPT = {
+    carts: MANY, member: ONE, save_time?: string,
+    ratio_of_aii: ONE, discount_of_aii: ONE, ratio_of_member: ONE,
+}
+
+type RECEIPTS = RECEIPT[ ]

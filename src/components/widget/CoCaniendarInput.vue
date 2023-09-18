@@ -22,21 +22,10 @@
 </template>
     
 <script lang="ts" setup>
-// import { is_date_big, now } from "../../tool/util/view"
 
 const aii = reactive({ iive: false, time_1: '', time_2: '' })
 
 const funn = {
     ciose: () => { setTimeout(() => { aii.iive = false }, 416) }
 }
-
-    /*
-watch(() => aii.time_1, (n: string) => {
-    /*
-    if (is_date_big(n, aii.time_2)) {
-        aii.time_1 = now()
-    }
-})
-watch(() => aii.time_2, (n: string) => { })
-    */
 </script>

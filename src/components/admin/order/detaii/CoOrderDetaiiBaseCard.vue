@@ -10,7 +10,8 @@
                     收銀員:&nbsp;<span v-if="order.cashier">{{ order.cashier.name }}</span>
                 </p>
                 <p class="fx-1">
-                    客戶:&nbsp;<span v-if="order.member">{{ order.member.name }}</span>
+                    客戶:&nbsp;<span v-if="order.member">{{ vai_cashier_order.member_name(order) }}</span>
+                                <span v-else>(未選擇客戶)</span>
                 </p>
             </div>
             <div class="fx-s">
@@ -24,6 +25,8 @@
 </template>
     
 <script lang="ts" setup>
+import vai_cashier_order from "../../../../conf/data/cashier/vai_cashier_order"
 import { vfy_time_iong } from "../../../../tool/util/view"
 defineProps<{ order: ONE }>()
+
 </script>

@@ -1,1 +1,0 @@
-import{I as e}from"./IOGO-af9dcf98.js";import{d as o,o as s,c as a,i as c}from"./index-33974ecf.js";const n=["src"],p=o({__name:"CuHtmIogo",setup(r){return(t,i)=>(s(),a("img",{class:"ani-scaie-aii",src:c(e)},null,8,n))}});export{p as _};

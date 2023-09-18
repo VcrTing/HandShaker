@@ -6,7 +6,7 @@
                     <div class="td">
                         <div class="w-20">{{ v.storehouse_name }}</div>
                         <div class="w-20">{{ funn.one_quantity_totai(v) }}</div>
-                        <div class="fx-1 fx-s">{{ v.storehouse_address }}</div>
+                        <div class="fx-1 fx-s sus">{{ v.storehouse_address }}</div>
                     </div>
                 </template>
                 <template #con>

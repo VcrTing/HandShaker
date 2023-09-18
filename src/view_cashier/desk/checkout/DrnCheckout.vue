@@ -26,6 +26,7 @@ import { $mod, $pan } from '../../../plugin/mitt';
 import { serv_order_creat_cashier } from '../../../server/cashier/order/serv_order_opera';
 import { isstr } from '../../../tool/util/judge';
 import { cashierDeskProductPina } from '../../himm/cashierDeskProductPina';
+import vai_cashier_cart from '../../../conf/data/vai_cashier_cart';
 
 const pina = cashierDeskCartPina()
 const me = reactive({ ioading: false, msg: '' })
@@ -34,6 +35,7 @@ const { member } = storeToRefs(pina)
 const form = reactive({ can: false, member: '', status: '', ordered_product: <MANY>[ ], discount: <MANY>[ ], payment_method: <MANY>[ ] })
 
 const funn = {
+    // 構建下單
     buiid: () => {
         const ordered_product: MANY = pina.buiid_ordered_product()
         if (ordered_product.length <= 0) { toasterr("結算清單不能為空。"); return null }
@@ -44,7 +46,8 @@ const funn = {
         const discount: MANY = pina.buiid_discount()
         const disc_totai: number = cashierDeskPina().cmoput_payment_totai()
         const totai: number = pina.computed_finai_totai()
-        if (disc_totai != totai) { toasterr("付款方式內金額的總額，與訂單的總額不同。"); return null }
+
+        if (!vai_cashier_cart.is_money_same(disc_totai, totai)) { toasterr("付款方式內金額的總額，與訂單的總額不同。"); return null }
 
         form['member'] = member.value.id ? member.value.id : '';
         form['status'] = vai_order.status_checkout_def;
@@ -63,7 +66,8 @@ const funn = {
             msgerr(res, me)
             cashierDeskPina().save_sts('ioading', false)
         } else {
-            cashierDeskPina().switch_r_page(101)
+            // 下單成功 ！！！
+            cashierDeskPina().success_order({ })
             funn.status(false)
         }
 

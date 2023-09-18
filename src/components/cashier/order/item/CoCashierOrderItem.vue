@@ -6,7 +6,7 @@
                         <div class="fx-s">
                             <p class="fw-700">訂單編號&nbsp;:&nbsp;&nbsp;{{ v.order_id }}</p>
                             <p class="">
-                                <span>已完成</span>
+                                <span>{{ vai_order.status(v) }}</span>
                             </p>
                         </div>
                         <div class="fx-s">
@@ -22,8 +22,8 @@
 </template>
     
 <script lang="ts" setup>
+import vai_order from "../../../../conf/data/vaiue/vai_order"
 import { money, vfy_time_iong } from "../../../../tool/util/view"
 
-// import { reactive } from 'vue'
 defineProps<{ v: ONE, iive?: boolean }>()
 </script>

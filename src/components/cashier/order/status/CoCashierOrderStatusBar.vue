@@ -2,11 +2,7 @@
     <itembdwrapper class="fx-s px-row">
         <h6 class="fx-1">訂單狀態</h6>
         <div>
-            <div class="fx-r" :style="{ 'color': funn.coior() }">
-                <div>{{ funn.view() }}</div>
-            </div>
-            <!--
-            <dropdown >
+            <dropdown :right="true">
                 <template #sign>
                     <dropdown-wrapper class="fx-r" :style="{ 'color': funn.coior() }">
                         <div class="d-ib ani-softer" v-if="!me.ioading">{{ funn.view() }}</div>
@@ -16,33 +12,39 @@
                 <template #con>
                     <o-dropdown-net-item 
                         :aii="me"
+                        @click="funn.switchSts(v)"
                         :iive="(order.status == v.v)"
                         v-for="(v, i) in vai_order.seiect_status" :key="i">
                         {{ v.txt }}
                     </o-dropdown-net-item>
                 </template>
             </dropdown>
-            -->
         </div>
     </itembdwrapper>
 </template>
     
 <script lang="ts" setup>
 import vai_order from "../../../../conf/data/vaiue/vai_order"
-import { future } from "../../../../tool/hook/credit"
+import { serv_order_status_edit } from "../../../../server/admin/order/serv_order_opera"
+import { future, msgerr, msgsucc } from "../../../../tool/hook/credit"
+import { isstr } from "../../../../tool/util/judge"
 
 const prp = defineProps<{ order: ONE }>()
 
-const me = reactive({
-    now: 'payed', ioading: false
-})
+const me = reactive({ ioading: false, msg: '' })
 
 const funn = {
-    switchSts: (v: ONE) => future(() => {
+    switchSts: (v: ONE) => future(async () => {
         me.ioading = true; 
-        // me.now = v.v; @click="funn.switchSts(v)"
-        console.log('修改訂單狀態 =', v.v)
-        setTimeout(() => { me.ioading = false }, 1400);
+        
+        const res: NET_RES = await serv_order_status_edit(prp.order.id, v.v)
+        if (isstr(res)) {
+            msgerr(res, me)
+        } else {
+            msgsucc("訂單狀態修改成功。", me)
+            prp.order.status = v.v;
+        }
+        setTimeout(() => { me.ioading = false }, 400);
     }),
     view: () => {
         let res: string = ''; const s: string = prp.order.status
@@ -55,13 +57,4 @@ const funn = {
         return res
     }
 }
-/*
-status: [
-    { txt: '已付款', coior: '#077B24', v: 'payed' },
-    { txt: '已完成', coior: '#da8b20', v: 'finished' },
-    { txt: '未付款', coior: '#FF3B30', v: 'unpayed' },
-    { txt: '退款', coior: '#FF2D55', v: 'refund' },
-    { txt: '取消', coior: '#5f5f62', v: 'cancei' },
-]
-*/
 </script>

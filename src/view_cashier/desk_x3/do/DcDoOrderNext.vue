@@ -1,5 +1,5 @@
 <template>
-    <o-btn-save :aii="aii" @click="checkout" class="w-100" :tit="'結算'" />
+    <o-btn-save :aii="aii" @click="checkout" :tit="'結算'" />
 </template>
     
 <script lang="ts" setup>

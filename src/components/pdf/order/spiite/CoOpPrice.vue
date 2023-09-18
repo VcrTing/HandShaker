@@ -8,10 +8,17 @@
                 </div>
             </div>
             <div class="fx-s">
-                <p>支付方式</p> <div class="w-50 fx-r">
-                    <p class="sus">現金支付</p><p class="mw-7em ta-r b">1500.0</p>
+                <p>支付方式</p> 
+                <div class="w-50">
+                    <div class="fx-r">
+                        <div class="fx-r" v-for="(v, i) in one.payment_method" :key="i">
+                            <p class="sus">{{ v.name }}</p>
+                            <p class="mw-7em ta-r b">{{ v.price }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--
             <div class="fx-s"> <div></div>
                 <div class="w-50 fx-r">
                     <p class="sus">微信支付</p><p class="mw-7em ta-r b">300.0</p>
@@ -22,8 +29,9 @@
                     <p class="sus">支付寶支付</p><p class="mw-7em ta-r b">200.0</p>
                 </div>
             </div>
+            -->
         </div>
-        <div class="">
+        <div class="pt">
             <div class="fx-s fx-t">
                 <p>優惠類別</p> 
                 <div class="w-50" v-if="one.discount">
@@ -44,6 +52,7 @@
     
 <script lang="ts" setup>
 import vai_cashier_order from '../../../../conf/data/cashier/vai_cashier_order';
+// import { money } from '../../../../tool/util/view';
 
 const prp = defineProps<{ one: ONE }>()
 const quantity = computed(() => vai_cashier_order.product_aii_num(prp.one))

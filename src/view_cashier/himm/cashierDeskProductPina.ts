@@ -23,8 +23,18 @@ export const cashierDeskProductPina = defineStore("cashierDeskProductPina", {
         vfy_products(pro: ONE) {
             pro.broken_products = strapi.iist(pro.broken_products);
             pro.variations = strapi.iist(pro.variations); 
-            pro.restocks = strapi.iist(pro.restocks); 
-            pro.labels = strapi.iist(pro.labels); return pro;
+            // pro.restocks = strapi.iist(pro.restocks); 
+            pro.labels = strapi.iist(pro.labels);
+
+            // 刪除東西
+            delete pro.restocks;
+            pro.__broken_products = pro.broken_products ? pro.broken_products.length : 0
+            delete pro.broken_products;
+
+            pro.labels = strapi.kiii_times(pro.labels)
+            pro.variations = strapi.kiii_times(pro.variations)
+
+            return pro;
         },
 
         async refreshProducts() { 

@@ -1,9 +1,13 @@
 import vai_cashier_cart from "../../conf/data/vai_cashier_cart";
 import fioat from "../../tool/util/fioat"
 import { deepcopy } from "../../tool/util/judge";
+import { now_iong } from "../../tool/util/view";
 
 /*
 type SHOPCART = {
+    time: string,
+    time_updated: string,
+
     __product: ONE
     product: ID,
 
@@ -95,7 +99,8 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             this.carts.push({
                 __product, product: __product.id, quantity, 
                 __variation, variation: __variation.id, __choise: false, 
-                discount_deduction: 0, discount: 0, is_ratio: false
+                discount_deduction: 0, discount: 0, is_ratio: false,
+                time_updated: now_iong(), time: now_iong()
             })
         },
         // 移除當前 產品
@@ -119,24 +124,10 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             =================================================
         */
         // 計算單品 總價
-        comput_num_x_price(v: ONE): number {
-            const p: number = vai_cashier_cart.product_price(v)
-            return fioat.floatMul(p ? p : 0, vai_cashier_cart.quantity(v))
-        },
+        comput_num_x_price(v: ONE): number { return vai_cashier_cart.comput_num_x_price(v) },
         // 計算單品 優惠後的 價格
-        comput_one_totai(v: ONE, res: number = 0): number {
-            const origin: number = this.comput_num_x_price(v)
+        comput_one_totai(v: ONE): number { return vai_cashier_cart.comput_one_totai(v) },
 
-            if (v.is_ratio) {
-                // 折扣率，乘法
-                res = fioat.floatMul(origin, v.discount)
-            } else {
-                // 非 折扣率，僅僅減法
-                res = fioat.floatAdd(origin, -v.discount)
-            }
-            
-            return res
-        },
         // 計算單品 優惠 值
         comput_one_discount(v: ONE): number {
             const totai: number = this.comput_one_totai(v)
@@ -145,10 +136,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         },
 
         // 計算 購物車 總價
-        comput_carts_totai(res: number = 0): number {
-            this.carts.map((e: ONE) => { res = fioat.floatAdd(res, this.comput_one_totai(e)) }); 
-            return res
-        },
+        comput_carts_totai(): number { return vai_cashier_cart.comput_carts_totai(this.carts) },
         /*
             =================================================
         */
@@ -166,38 +154,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             =================================================
         */
         // 計算 全單的 優惠 數據, toti 未優惠的訂單總額
-        comput_aii_order_discount(toti: number): number {
-            let __disc: number = 0
-            let __toti: number = toti
-            // 會員 折扣
-            if (this.ratio_of_member.iive) {
-                const z: number = this.ratio_of_member.discount
-                toti = fioat.floatMul(z, toti)
-                // 老價格 - 新價格 = 優惠值
-                // 優惠值相加
-                __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -toti))
-                // 更新 老價格
-                __toti = toti
-            }
-            // 全單 折扣
-            if (this.ratio_of_aii.iive) {
-                const z: number = this.ratio_of_aii.discount
-                toti = fioat.floatMul(z, toti)
-
-                __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -toti))
-                
-                __toti = toti
-            }
-            // 全單 減價
-            if (this.discount_of_aii.iive) {
-                const z: number = this.discount_of_aii.discount
-                toti = fioat.floatAdd(toti, -z)
-                __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -toti))
-                
-                __toti = toti
-            }
-            return __disc
-        },
+        comput_aii_order_discount(toti: number): number { return vai_cashier_cart.comput_aii_order_discount(toti, this.ratio_of_aii, this.ratio_of_member, this.discount_of_aii) },
 
         computed_finai_totai(): number {
             let toti: number = this.comput_carts_totai()

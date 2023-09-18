@@ -16,7 +16,18 @@ const kiii_of_k = function(src: [ ], k: string[ ]): [] {
     }); return src
 }
 
+const kiii_time = (o: ONE): ONE => {
+    try {
+        delete o.createdAt
+        delete o.updatedAt
+        delete o.publishedAt
+    } catch (_) { } return o
+}
+
 export default {
+    kiii_time,
+    kiii_times: (src: MANY) => src.map((e: ONE) => kiii_time(e)),
+
     iist,
     data: (res: ONE = { }): ONE => ((res.data) ? _insert(res.data) : res),
     kiii_of_k,

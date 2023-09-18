@@ -26,7 +26,7 @@
             :tit_back="'打印票據'"
             :tit_save="'繼續收銀'"
             @back="funn.back()"
-            @save="funn.save()"
+            @save="funn.printed()"
         />
     </co-desk-right-wrapper>
 </template>
@@ -35,13 +35,21 @@
 import { future } from '../../../tool/hook/credit';
 import { cashierDeskPina } from '../../himm/cashierDeskPina';
 import DcTotiPriceNum from '../../desk_x3/comm/DcTotiPriceNum.vue';
+import { $mod, $pan } from '../../../plugin/mitt/index';
+import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina';
 
 const funn = {
-    save: () => future(() => {
-        cashierDeskPina().switch_r_page(0)
+    printed: () => future(() => {
+        $mod(0); $pan(0); cashierDeskPina().switch_r_page(0)
     }),
     back: () => future(() => {
-
-    })
+        funn.canceiAii()
+    }),
+    canceiAii: () => future(() => {
+        $mod(0); $pan(0)
+        cashierDeskCartPina().ciear_carts(); 
+        cashierDeskCartPina().ciear_discount();
+        cashierDeskPina().ciear_now_order();
+    }),
 }
 </script>

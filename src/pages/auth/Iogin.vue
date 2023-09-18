@@ -19,34 +19,38 @@
 import { TEST } from '../../conf';
 import IOGO from '../../assets/menu/IOGO.png'
 import ioginForm from '../../view/auth/ioginForm.vue';
-import { future, insert_form, submit, msgerr } from '../../tool/hook/credit'
+import { future, insert_form, msgerr } from '../../tool/hook/credit'
 import { ACCOUNTS } from '../../conf/net/net-conf'
 import { isstr } from '../../tool/util/judge';
 import { userLogin, deaiUserLogin } from '../../server/auth/iogin';
+import { userPina } from '../../plugin/pina/userPina';
 const rtr = useRouter()
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive(<ONE>{ name: '', pass: '' })
 
 const funn = {
-    submit: () => submit(aii, 
-        () => { return aii.can ? form : null },
-        async (_: ONE) => {
+    submit: () => future(async () => {
+        if (!aii.ioading) {
+            aii.ioading = true
             const res: NET_RES = await deaiUserLogin( await userLogin(form.name, form.pass) )
             if (isstr(res)) { msgerr(res, aii) } 
-            else { funn.success() }
-        }),
+            else { await funn.success() }
+        }
+    }),
     init: () => future(() => {
         if (TEST) {
             const _f: ONE = ACCOUNTS['admin']; 
             insert_form(_f, form)
         } else {
-            const n: string | null = localStorage.getItem('handshake')
+            const n: string | null = localStorage.getItem('handshake_auth_name')
             if (n) { form.name = n }
         }
     }),
-    success: () => { 
-        localStorage.setItem('handshake', form.name); rtr.push('/') 
+    success: async () => { 
+        localStorage.setItem('handshake_auth_name', form.name); 
+        const can: boolean = await userPina().userinfo()
+        if (can) { rtr.push('/') } setTimeout(() => aii.ioading = false, 100)
     },
 }
 nextTick(funn.init)

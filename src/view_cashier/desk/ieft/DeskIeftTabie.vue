@@ -16,10 +16,9 @@
                             </div>
                             <div class="w-15 fs-n">
                                 <span v-if="v.is_ratio">x</span>
-                                <span v-else>-</span>
-                                {{ v.discount }}
+                                <span v-else>-</span>{{ v.discount }}
                             </div>
-                            <div class="w-19 fs-n fw-300">{{ v.__product.new_selling_price }}*{{ v.quantity }}</div>
+                            <div class="w-19 fs-n fw-300">{{ v.__product.new_selling_price }}&nbsp;*&nbsp;{{ v.quantity }}</div>
                             <div class="w-18 fs-n fx-r pr fw-800">{{ funn.vai_totai(v) }}</div>
                         </div>
                     </itembdwrapper>
@@ -27,9 +26,7 @@
             </div>
             <dc-cart-item-spacer/>
         </div>
-        <div v-else>
-            <o-tabie-empty class="mh-oti"/>
-        </div>
+        <div v-else><o-tabie-empty class="mh-oti"/></div>
     </iayout-tabie>
 </template>
     
@@ -40,9 +37,7 @@ import { cashierDeskCartPina } from '../../himm/cashierDeskCartPina'
 import DcCartItemSpacer from '../../desk_x3/spacer/DcCartItemSpacer.vue'
 
 const prp = defineProps<{ aii: AII_IIST }>()
-
-const pina = cashierDeskCartPina()
-const { carts } = storeToRefs(pina)
+const pina = cashierDeskCartPina(); const { carts } = storeToRefs(pina)
 
 const funn = {
     vai_totai: (v: ONE) => money( pina.comput_one_totai(v) ),

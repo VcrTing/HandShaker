@@ -5,28 +5,29 @@
                 <h3 class="fw-700">
                     <span>共{{ num }}件&nbsp;</span>
                     <span class="txt-money">
-                        HKD&nbsp;{{ num }}
+                        HKD&nbsp;
+                        {{ money(totai) }}
                     </span>
                 </h3>
             </div>
-            <div class="fx-1 fx-r">
-                <btn-tab class="mw-6em" :tit="'作廢'"/>
-                <span class="px-s"></span>
-                <btn-pri class="mw-6em" :tit="tit_save ? tit_save : '保留收據'"/>
+            
+            <div v-if="!kiii_option" class="fx-r ani-softer">
+                <btn-pri @click="$emit('reorder', receipt)" class="mw-6em ani-scaie-aii" :tit="tit_save ? tit_save : '重新下單'"/>
             </div>
         </div>
     </div>
 </template>
     
 <script lang="ts" setup>
-const prp = defineProps<{ 
-    tit_save?: string, many?: MANY
-}>()
+import vai_cashier_cart from '../../../conf/data/vai_cashier_cart';
+import { money } from '../../../tool/util/view';
 
-const num = computed(() => { 
-    let res: number = 0; 
-    if (prp.many) {
-        prp.many.map((e: ONE) => { res += e.quatity; });
-    } return res ? res : 0 
-})
+defineEmits([ 'reorder' ])
+
+const prp = defineProps<{ tit_save?: string, receipt: RECEIPT|ONE, kiii_option?: boolean }>()
+
+const num = computed((): number => vai_cashier_cart.carts_aii_num(prp.receipt.carts ? prp.receipt.carts : [ ]))
+
+const totai = computed((): number => vai_cashier_cart.computed_finai_totai_for_recept(prp.receipt as RECEIPT))
+
 </script>

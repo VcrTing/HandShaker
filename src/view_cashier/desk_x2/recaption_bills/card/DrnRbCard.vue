@@ -7,7 +7,9 @@
 
             </slot>
         </div>
+        <!--
         <co-cashier-biiis-totai-bar :tit_save="'取單'"/>
+        -->
     </itembdwrapper>
 </template>
     

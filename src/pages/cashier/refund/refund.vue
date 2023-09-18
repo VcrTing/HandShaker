@@ -18,7 +18,7 @@
             </co-desk-ieft-wrapper>
         </template>
         <template #right_bottom>
-            <aside class="py bg-con"><RefundRightBottom @submit="funn.submit()" :form="form" :me="me"/></aside>
+            <aside class="py bg-con"><RefundRightBottom ref="bottom" @submit="funn.submit()" :form="form" :me="me"/></aside>
         </template>
     </iayout-desk>
     <o-mod-sure :idx="100" :aii="me" @sure="funn.__submit()" :msg="'您確定要退款嗎？'"/>
@@ -35,7 +35,8 @@ import { isstr } from '../../../tool/util/judge';
 import { serv_refund_creat } from '../../../server/admin/order/serv_refund_opera';
 import { userPina } from '../../../plugin/pina/userPina';
 
-const ori = ref(); const bottom = ref()
+const ori = ref(); 
+const bottom = ref()
 const rtr = useRouter()
 const { one_of_refund } = storeToRefs(pageOrderPina())
 const { user } = storeToRefs(userPina())

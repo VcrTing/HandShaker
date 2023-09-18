@@ -9,12 +9,12 @@
 import RefundRightTop from "./comm/RefundRightTop.vue";
 import RefundRighTabie from "./right/RefundRighTabie.vue";
 
-import { future_of_ioading } from "../../tool/hook/credit";
-
 const aii = reactive(<AII_IIST>{ 
     chooseAii: false, chooses: [ ], many_origin: [ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
     choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
+/*
+// import { future_of_ioading } from "../../tool/hook/credit";
 
 const funn = {
     fetch: () => future_of_ioading(aii, async () => {
@@ -44,4 +44,5 @@ const funn = {
     init: () => funn.fetch()
 }
 nextTick(funn.init)
+*/
 </script>

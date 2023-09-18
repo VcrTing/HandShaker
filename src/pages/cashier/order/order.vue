@@ -55,7 +55,7 @@ const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 12, total: 1}, 
-    condition: <ONE>{ time_period: 3, date: '', status: '', search: '', member: '', order_id: '' },
+    condition: <ONE>{ time_period: 3, date: '', status: '', search: '', cashier: '', member: '', order_id: '' },
 })
 
 const funn = {
@@ -68,7 +68,7 @@ const funn = {
     }),
     pager: (n: number, i: number) => future(() => { 
         aii.pager.page = n; aii.pager.pageSize = i; 
-        console.log('user =', user)
+        aii.condition.cashier = user.value.id ? user.value.id : ''
         funn.fetch() }),
 
     ciose: () => future(() => { cashierOrderPina().save('one_of_view') }),

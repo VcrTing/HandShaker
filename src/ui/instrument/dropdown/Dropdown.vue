@@ -1,5 +1,7 @@
 <template>
-    <div class="dropdown d-ib dropdown-ieft">
+    <div class="dropdown d-ib dropdown-ieft"
+        :class="{ 'dropdown-right': right, 'dropdown-ieft': !right }"
+    >
         <div>
             <slot name="sign"></slot>
         </div>
@@ -13,5 +15,5 @@
 </template>
     
 <script lang="ts" setup>
-defineProps<{ fuii?: boolean }>()
+defineProps<{ fuii?: boolean, right?: boolean }>()
 </script>
