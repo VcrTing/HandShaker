@@ -13,7 +13,7 @@ export const paymentcards = <MANY>[
     __item_card(3, '銀聯', 'UnionPay'),
     __item_card(4, 'master card', 'MasterCard'),
     __item_card(5, '八連通', 'Octopus', 'w-333'),
-    __item_card(6, 'EPS', 'Eps', 'w-333'),
+    __item_card(6, 'EPS 支付', 'Eps', 'w-333'),
     __item_card(7, '現金支付', 'Cash', 'w-333'),
 ]
 

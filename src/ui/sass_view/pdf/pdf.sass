@@ -10,12 +10,21 @@ $pdf-bd: #e5e5ea
 .pr-pdf
     padding-right: 1em
 
+.pt-pdf-t
+    padding-top: 0.1em
+.pt-pdf-s
+    padding-top: 0.4em
 .pt-pdf
     padding-top: 0.8em
 .pt-pdf-x1
     padding-top: 1.2em
 .pt-pdf-x2
     padding-top: 1.6em
+
+.pb-pdf-t
+    padding-bottom: 0.1em
+.pb-pdf-s
+    padding-bottom: 0.4em
 .pb-pdf
     padding-bottom: 0.8em
 
@@ -26,6 +35,14 @@ $pdf-bd: #e5e5ea
 .py-pdf
     @extend .pt-pdf
     @extend .pb-pdf
+
+.py-pdf-s
+    @extend .pt-pdf-s
+    @extend .pb-pdf-s
+
+.py-pdf-t
+    @extend .pt-pdf-t
+    @extend .pb-pdf-t
 
 .fw-pdf-700
     font-weight: 700
@@ -43,11 +60,11 @@ $pdf-bd: #e5e5ea
         line-height: 1.24em
 
     h2
-        font-size: 1.8em
+        font-size: 1.84em
     h3
         font-size: 1.62em
     h4
-        font-size: 1.28em
+        font-size: 1.32em
     h5
         font-size: 1.16em
     
@@ -78,3 +95,14 @@ $pdf-bd: #e5e5ea
 
 .ti-pdf
     text-indent: 2em
+
+// 高度
+.ih-pdf-s, .ih-pdf-son-s, .ih-pdf-son-s *
+    line-height: 1.2em 
+
+.ih-pdf-x1, .ih-pdf-son-x1, .ih-pdf-son-x1 *
+    line-height: 1.6em 
+
+.ih-pdf-1, .ih-pdf-son-1, .ih-pdf-son-1 *
+    line-height: 1em 
+

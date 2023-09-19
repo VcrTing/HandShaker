@@ -33,10 +33,6 @@ const funn = {
     })
 }
 
-watch(() => aii.choosAii, (n: boolean) => {
-    console.log('N =', n)
-})
-
 nextTick(() => { aii.many.push({ id: 1, name: '張三', age: 12, }, { id: 2, name: '張三', age: 12, }) })
 </script>
 

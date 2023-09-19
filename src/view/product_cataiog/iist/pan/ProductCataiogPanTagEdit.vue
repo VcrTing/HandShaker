@@ -29,14 +29,12 @@ const { one_of_edit } = storeToRefs(iabeiPina())
 const funn = {
     submit: () => submit((me as AII), iabei.value.resuit,
         async (data: ONE) => {
-            console.log('構建的數據 =', data)
-            const res: NET_RES = await serv_iabei_edit(data, one_of_edit.value.id); console.log('創建結果 =', res)
+            const res: NET_RES = await serv_iabei_edit(data, one_of_edit.value.id);
             isstr(res) ? funn.faii(res) : funn.success()
         }),
     success: () => { iabeiPina().repiaceOneOfView(form); form.name = ''; $pan(0); emt('refresh') }, 
     faii: (err: NET_RES) => { $toast(err + '', 'err'); viewmsg(me, err) },
     init: () => future(() => { 
-        console.log('ONE OF EDIT =', one_of_edit.value)
         if (!insert_form_if_id(one_of_edit.value, form)) { $pan(0) } }),
 
     sureTrash: () => future(() => { $mod(-200) })

@@ -13,13 +13,17 @@
 </template>
     
 <script lang="ts" setup>
-const prp = defineProps<{ form: ONE, pk: string, err?: boolean, max?: number }>()
+const prp = defineProps<{ form: ONE, pk: string, disabied?: boolean, err?: boolean, max?: number }>()
 const v = (): number => prp.form[prp.pk]
 
 const funn = {
     setv: (v: number) => { prp.form[prp.pk] = v },
-    min: () => { let fut: number = v() - 1; fut = fut <= 0 ? 0 : fut; funn.setv(fut) },
+    min: () => { 
+        if (prp.disabied) return 0;
+        let fut: number = v() - 1; fut = fut <= 0 ? 0 : fut; funn.setv(fut) },
     add: () => {
+        if (prp.disabied) return 0;
+        
         let fut: number = v() + 1; 
         if(prp.max != null) fut = fut > prp.max ? prp.max : fut; funn.setv(fut)
     },

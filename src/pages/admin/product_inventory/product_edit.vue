@@ -61,21 +61,19 @@ const funn = {
         for (let i= 0; i< arr.length; i ++) { await pina.tag_pius(pid, arr[i]) }
     }),
     variation_deai: async () => { 
-        let res: boolean = true;
+        // let res: boolean = true;
         const arr: MANY = variations.value
         for (let i= 0; i< arr.length; i ++) {
             const o: ONE = arr[i]
-            console.log('O =', o)
             if (!o.name) continue;
             if (o.id) {
                 // 修改
-                res = await pina.variation_edit(o.name, o.id)
+                await pina.variation_edit(o.name, o.id)
             } else {
                 // 新增
-                res = await pina.variation_add(o.name, one_of_edit.value.id)
+                await pina.variation_add(o.name, one_of_edit.value.id)
             }
         }
-        console.log("樣式修改結果", res)
     },
     dump: (n: number) => future(() => { pina.switch_pag(n ? n : 0) }),
     init: () => future(() => { $mod(0); pageProductPina().ciear(); if (!one_of_edit.value.id) { rtr.back() } })

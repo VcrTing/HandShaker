@@ -20,19 +20,21 @@ const checkout = () => future(() => {
     if (many.length <= 0) { toasterr("結算清單為空！！！"); return true }
 
     // 
-    const pg: number = cashierDeskPina().r_page
+    // const pg: number = cashierDeskPina().r_page
 
     $pan(0)
     $mod(0)
     cashierDeskPina().save_sts('ioading', false)
-
+    /*
     if (pg < 3) {
         cashierDeskPina().switch_r_page(3)
         cashierDeskPina().save_sts('checking', false)
     } 
-    else if (pg == 3) {
+    else 
+    */
+    // if (pg == 3) {
         cashierDeskPina().save_sts('checking', true)
         cashierDeskPina().switch_r_page(100)
-    }
+    // }
 })
 </script>

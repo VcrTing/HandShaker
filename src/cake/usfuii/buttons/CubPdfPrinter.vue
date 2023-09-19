@@ -7,7 +7,7 @@
 
 const funn = {
     printed: () => {
-        console.log('打印訂單')
+        
     }
 }
 </script>

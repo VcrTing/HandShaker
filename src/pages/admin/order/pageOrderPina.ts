@@ -41,11 +41,10 @@ export const pageOrderPina = defineStore("pageOrderPina", {
         },
         // 雪梨惡化 網絡 訂單
         _vai_order(v: ONE) { 
+            v.order_shop = v.order_shop ? strapi.data(v.order_shop) : { }
             v.member = v.member ? strapi.data(v.member) : { }
             v.cashier = v.cashier ? strapi.data(v.cashier) : { }
             v.member_level = v.member_level ? strapi.data(v.member_level) : { }
-
-            console.log('ORDER OF VIEW =', v)
             return v; }
     }
 })

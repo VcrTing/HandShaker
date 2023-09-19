@@ -27,28 +27,63 @@ export const giobaiPina = defineStore("giobaiPina", {
 
         // 等級
         async refreshIeveis() {
-            let res: NET_RES = await serv_ievei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
-            if (!isstr(res)) { res = (res as ONE); this.ieveis = res.data; console.log('全局 IEVEI RES =', this.ieveis) }
+            try {
+                let res: NET_RES = ''
+                try {
+                    res = await serv_ievei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                } catch (_) {
+                    res = await serv_ievei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                }
+                if (!isstr(res)) { res = (res as ONE); this.ieveis = res.data; }
+            } catch(_) { }
         },
         // 倉庫
         async refreshWarehouses() {
-            let res: NET_RES = await serv_warehouse_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
-            if (!isstr(res)) { res = (res as ONE); this.warehouses = res.data; console.log('全局 WARE HOUSE RES =', this.warehouses) }
+            try {
+                let res: NET_RES = ''
+                try {
+                    res = await serv_warehouse_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                } catch (_) {
+                    res = await serv_warehouse_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                }
+                if (!isstr(res)) { res = (res as ONE); this.warehouses = res.data; }
+            } catch(_) { }
         },
         // 供應商
         async refreshSuppiier() {
-            let res: NET_RES = await serv_suppiier_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
-            if (!isstr(res)) { res = (res as ONE); this.suppiiers = res.data; console.log('全局 SUPPIIER RES =', this.suppiiers) }
+            try {
+                let res: NET_RES = ''
+                try {
+                    res = await serv_suppiier_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                } catch (_) {
+                    res = await serv_suppiier_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                }
+                if (!isstr(res)) { res = (res as ONE); this.suppiiers = res.data; }
+            } catch(_) { }
         },
         // 收銀員
         async refreshUsers() {
-            let res: NET_RES = await serv_user_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
-            if (!isstr(res)) { res = (res as ONE); this.users = res.data; console.log('全局 USER RES =', this.users) }
+            try { 
+                let res: NET_RES = ''
+                try {
+                    res = await serv_user_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                } catch (_) {
+                    res = await serv_user_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                }
+                if (!isstr(res)) { res = (res as ONE); this.users = res.data; }
+            } catch(_) { }
         },
         // 標籤
         async refreshIabeis() {
-            let res: NET_RES = await serv_iabei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
-            if (!isstr(res)) { res = (res as ONE); this.iabeis = res.data; console.log('全局 IABEIS RES =', this.iabeis) }
+            try {
+                let res: NET_RES = ''
+                try {
+                    res = await serv_iabei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                } catch (_) {
+                    res = await serv_iabei_iist({ }, <PAGER>{ page: 1, pageSize: 100 })
+                }
+                if (!isstr(res)) { res = (res as ONE); this.iabeis = res.data; }
+            } catch(_) { }
         },
 
     },

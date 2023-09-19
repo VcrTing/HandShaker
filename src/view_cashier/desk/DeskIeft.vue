@@ -13,14 +13,4 @@ const aii = reactive(<AII_IIST>{
     condition: <ONE>{}, ioading: false, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
 })
-/*
-// cashierDeskCartPina().ciear()
-watch(carts.value, (cs: MANY) => {
-    aii.many.length = 0
-    cs.map((e: ONE) => { aii.many.push(e) })
-    console.log('CS =', aii.many)
-})
-*/
-
-
 </script>

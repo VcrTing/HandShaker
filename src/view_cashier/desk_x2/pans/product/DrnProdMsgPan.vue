@@ -51,7 +51,6 @@ const me = reactive({ ioading: false, msg: '' })
 
 const went_inventory = () => future(async () => {
     const num: ONE = one_of_shop.value as ONE; 
-    console.log('ONE =', num);
     (num.id) ? $pan(502) : undefined;
 })
 

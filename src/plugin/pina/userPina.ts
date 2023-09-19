@@ -15,7 +15,7 @@ const DEF_USER = <ONE>{
 
 export const persist =  {
     storage: sessionStorage, 
-    paths: [ 'user', 'jwt', 'one_of_edit' ]
+    paths: [ 'user', 'jwt', 'roie' ]
 }
 
 export const userPina = defineStore("userPina", {
@@ -43,7 +43,7 @@ export const userPina = defineStore("userPina", {
         async _userinfo() {
             let res: NET_RES = await auth_user_info();
             if (!isstr(res)) {
-                res = res as ONE; res.isAdmin = false
+                res = res as ONE; // res.isAdmin = false
                 this.user.isAdmin = res.isAdmin
                 this.user.storehouse = res.storehouse
                 this.user.roie = res.isAdmin ? ADMIN_SUBJECT : CASHIER_SUBJECT

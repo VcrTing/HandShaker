@@ -35,7 +35,6 @@ const { broken_of_view } = storeToRefs(pageProductInstockPina())
 const me = reactive({ ioading: false, msg: '', trashing: false })
 
 const funn = {
-    init: () => future(() => { console.log(one_of_edit.value) }),
     sureTrash: () => future(() => {
         me.trashing = true
     }),
@@ -55,5 +54,4 @@ const funn = {
         } else { $pan(0) }
     })
 }
-nextTick(funn.init)
 </script>

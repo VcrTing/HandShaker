@@ -24,8 +24,6 @@ export const sort_num_ofarr = (src: MANY, sort_k: string, reverse: boolean = fal
     tonum(n[sort_k]) - tonum(o[sort_k]))
 
 export const sort_date_ofarr = (src: MANY, sort_k: string, reverse: boolean = false) => {
-    // const a = dayjs('2023-07-07') - dayjs('2023-07-09')
-    // console.log('排序 =', a)
     return src.sort((n: ONE, o: ONE) => {
         if (n[ sort_k ] && o[ sort_k ]) {
             const res = reverse ? 

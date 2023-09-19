@@ -31,7 +31,7 @@ const funn = {
         return (aii.can ? trims(src) : null)
     },
     submit: () => submit(aii, funn.buiid,
-        async (data: ONE) => { // console.log('構建的數據 =', data)
+        async (data: ONE) => {
             const res: NET_RES = await serv_user_edit(data, one_of_edit.value.id)
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),

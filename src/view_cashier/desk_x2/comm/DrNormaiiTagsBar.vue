@@ -42,7 +42,7 @@ const pina = cashierDeskProductPina()
 const { iabeis } = storeToRefs(cashierDeskProductPina())
 
 watch(() => me.tag, (n: ID) => {
-    pina.saveCondition('label', n ? (n + '') : ''); // console.log('N 變動 =', n)
+    pina.saveCondition('label', n ? (n + '') : '');
 })
 
 const funn = {

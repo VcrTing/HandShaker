@@ -19,7 +19,6 @@ const funn = {
     }),
     transtock: (v: ONE) => future(() => {
         pageProductInstockPina().save('store_of_transtock', v)
-        console.log('V =', v)
         $pan(125)
     })
 }

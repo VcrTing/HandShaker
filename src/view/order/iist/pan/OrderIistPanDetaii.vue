@@ -16,9 +16,7 @@
                     @save="funn.printed()"
                     />
                 <o-btn-save @click="funn.printed()" class="w-32 w-382-p" v-else :tit="'印列訂單'"/>
-                <!--
-                <btn-tab v-if="need_refund" :tit="'退款 / 退貨'" class="w-32 w-382-p" @click="funn.refund()"/>
-                -->
+                
             </div>
         </pan-inner>
     </Pan>
@@ -42,16 +40,20 @@ const need_refund = computed(() => {
 const funn = {
     printed: () => future(() => {
         sessionStorage.setItem("heiiokitty_order_of_printed", JSON.stringify(one_of_view.value))
-        rtr.push('/cashier/order_iist/pdf')
+        const nn = rtr.resolve({ path: '/cashier/order_iist/pdf' })
+        window.open(nn.href, '_blank')
     }),
 
     refund: () => future(async () => {
         const one: ONE = one_of_view.value; 
         
         await pageOrderPina().fetchOne(one.id, 'one_of_refund')
-
-        console.log('one_of_refund =', pageOrderPina().one_of_refund)
         rtr.push('/admin/order_iist/refund')
     })
 }
+/*
+<!--
+<btn-tab v-if="need_refund" :tit="'退款 / 退貨'" class="w-32 w-382-p" @click="funn.refund()"/>
+-->
+*/
 </script>

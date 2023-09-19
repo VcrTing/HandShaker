@@ -43,9 +43,5 @@ const funn = {
         $pan(0)
         setTimeout(() => insert_form({ quantity: 0 }, form), 400)
     }),
-    init: () => future(() => {
-        console.log(one_of_edit.value)
-    })
 }
-nextTick(funn.init)
 </script>

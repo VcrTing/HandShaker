@@ -2,17 +2,17 @@
     <div>
         <div class="fx-s">
             <div class="fx-1">
-                <h3 class="fw-700">
+                <h3 class="fw-700 ani-softer">
                     <span>共{{ num }}件&nbsp;</span>
-                    <span class="txt-money">
-                        HKD&nbsp;
-                        {{ money(totai) }}
-                    </span>
+                    <div class="txt-money d-ib">
+                        &nbsp;HKD&nbsp;
+                        <div class="d-ib ani-scaie-aii">{{ money(totai) }}</div>
+                    </div>
                 </h3>
             </div>
             
             <div v-if="!kiii_option" class="fx-r ani-softer">
-                <btn-pri @click="$emit('reorder', receipt)" class="mw-6em ani-scaie-aii" :tit="tit_save ? tit_save : '重新下單'"/>
+                <btn-pri @click="$emit('reorder', receipt)" class="mw-6em ani-scaie-aii" :tit="tit_save ? tit_save : '取回單據'"/>
             </div>
         </div>
     </div>

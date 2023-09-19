@@ -19,13 +19,13 @@ import { warehousePina } from '../../../plugin/pina_admin/warehousePina';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive(<ONE>{ name: '', contact_person: '', phone_no: '', address: '' })
+const form = reactive(<ONE>{ name: '', contact_person: '', phone_no: '', facebook: '', address: '' })
 
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(warehousePina())
 const funn = {
     buiid: () => {
-        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'address' ], form)) return null;
+        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'facebook', 'address' ], form)) return null;
         
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
             return aii.can ? trims(src) : null

@@ -13,7 +13,6 @@
 const rtr = useRouter()
 const funn = {
     back: () => {
-        console.log('返回')
         rtr.back()
     }
 }

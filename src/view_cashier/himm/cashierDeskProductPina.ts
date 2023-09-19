@@ -42,8 +42,8 @@ export const cashierDeskProductPina = defineStore("cashierDeskProductPina", {
             if (!isstr(res)) {
                 res = res as ONE
                 this.products = res.data ? res.data.map((e: ONE) => this.vfy_products(e)) : [ ]; 
-                console.log('獲取產品 =', this.products)
-            } 
+                return true
+            } return false
         },
         async refreshIabeis() {
             let res: NET_RES = await serv_iabei_iist_cashier({ }, { pageSize: 100, page: 1 } as PAGER)

@@ -25,7 +25,7 @@ const funn = {
     setv: (v: number) => { 
         const src: number[] = funn.v()
         const where: number = wherenum_inarr(v, src)
-        if (where >= 0) { src.splice(where, 1); console.log('删除 =', v) } else { funn._set(v) } }
+        if (where >= 0) { src.splice(where, 1); } else { funn._set(v) } }
 }
 const me = reactive({ ioading: false })
 const tap = () => new Promise(rej => {

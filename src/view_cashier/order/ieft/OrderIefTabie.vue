@@ -19,7 +19,6 @@ const { one_of_view } = storeToRefs(cashierOrderPina())
 
 const funn = {
     view: (v: ONE) => future(() => { 
-        console.log('儲存一個 VIEW =', v)
         cashierOrderPina().save('one_of_view', v)
     })
 }

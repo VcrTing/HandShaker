@@ -33,11 +33,6 @@ const funn = {
         } else { toasterr('沒有一個可用樣式，請先新增樣式。') }
     }),
     trash: (i: number) => future(() => { me.trashIdx = i; pageProductPina().trash_styie(i) }),
-    init: () => future(() => { 
-        // iabeiPina().refreshMany() 
-        console.log('考慮加載 標籤')
-    }),
 }
 
-nextTick(funn.init)
-</script>../../../pages/admin/product_inventory/pageProductPina
+</script>

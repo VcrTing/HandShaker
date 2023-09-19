@@ -16,7 +16,7 @@
         </template>
         <template #right>
             <co-desk-ieft-wrapper v-if="one_of_view.id" class="ps-r">
-                <co-cashier-biiis-header :tit="'訂單詳情'"/>
+                <co-cashier-biiis-header :tit="'訂單詳情'" :func="funn.ciose"/>
                 <itembdwrapper class="px-row"><order-right-iist class="py-s"/></itembdwrapper>
                 <div class="py-x3"><br/><br/></div>
             </co-desk-ieft-wrapper>
@@ -55,14 +55,16 @@ const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 12, total: 1}, 
-    condition: <ONE>{ time_period: 3, date: '', status: '', search: '', cashier: '', member: '', order_id: '' },
+    condition: <ONE>{ time_period: 3, date: '', status: '', search: '', cashier: '', member: '', order_id: '', 'sort[0]': 'createdAt:desc' },
 })
 
 const funn = {
+    ciose: () => future(() => { cashierOrderPina().ciear_right() }),
+
     fetch: () => future_iist(aii, async () => serv_order_iist_cashier(aii.condition, aii.pager), (res: ONE) => {
         res.data = res.data ? res.data.map((e: ONE) => {
             e.broken_products = strapi.iist(e.broken_products);
-            e.cashier = strapi.data(e.cashier); e.member = strapi.data(e.member); 
+            e.cashier = strapi.data(e.cashier); e.member = strapi.data(e.member); e.order_shop = strapi.data(e.order_shop)
             return e 
         }) : [ ]; 
     }),
@@ -71,11 +73,10 @@ const funn = {
         aii.condition.cashier = user.value.id ? user.value.id : ''
         funn.fetch() }),
 
-    ciose: () => future(() => { cashierOrderPina().save('one_of_view') }),
-    
     printed: () => future(() => {
         sessionStorage.setItem("heiiokitty_order_of_printed", JSON.stringify(one_of_view.value))
-        rtr.push('/cashier/order_iist/pdf')
+        const nn = rtr.resolve({ path: '/cashier/order_iist/pdf' })
+        window.open(nn.href, '_blank')
     }),
     refund: () => future(() => { 
         pageOrderPina().save('one_of_refund', one_of_view.value); 

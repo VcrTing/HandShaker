@@ -21,7 +21,6 @@ const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 
 const funn = {
     submit: () => submit(aii, inner.value.buiid, async (data: ONE) => {
-        console.log('BASE =', data)
         if (data) {
             const res: NET_RES = await serv_instock_creat(data)
             isstr(res) ? msgerr(res, aii) : funn.success()
@@ -30,8 +29,6 @@ const funn = {
     success: () => future(async () => {
 
         toastsucc("產品入貨成功！！！");
-
-        console.log("刷新 產品")
 
         await pageProducEditPina().refreshOneOfEdit()
         

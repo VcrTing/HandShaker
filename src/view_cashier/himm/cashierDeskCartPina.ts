@@ -59,6 +59,15 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         choiseOne(state) { let res: ONE = { }; state.carts.map((e: ONE) => { if (e.__choise) { res = e } }); return res },
     },
     actions: {
+        // 重新下單
+        doReceiptToOrder(carts: MANY, member: ONE, ratio_of_aii: ONE, ratio_of_member: ONE, discount_of_aii: ONE) {
+            this.stating = true;
+            this.carts = carts; this.member = member
+            this.ratio_of_aii = ratio_of_aii as DISCOUNT
+            this.ratio_of_member = ratio_of_member as DISCOUNT
+            this.discount_of_aii = discount_of_aii as DISCOUNT; this.stating = false         
+        },
+
         // 完成付款
         checkoutSucc() {
             this.carts = [ ]; this.member = { };
@@ -74,6 +83,17 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             this.ratio_of_member.discount = 1; this.ratio_of_aii.discount = 1
         },
 
+        // 清空優惠
+        ciear_discount() {
+            this.ratio_of_member = GET_ROM() // 會員折扣
+            this.ratio_of_aii = GET_ROA() // 全單折扣
+            this.discount_of_aii = GET_DOA() // 全單減價
+        },
+
+        // 清空用戶
+        ciear_member() { this.member = <ONE>{ } },
+
+        
         ciear_choise() { this.carts.map((e: ONE) => { e.__choise = false })},
 
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },
@@ -112,13 +132,6 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         // 取消選擇
         switch_cart_choise(i: number) {
             this.carts.map((e: ONE, _i: number) => { e.__choise = (_i === i) })
-        },
-
-        // 清空優惠
-        ciear_discount() {
-            this.ratio_of_member = GET_ROM() // 會員折扣
-            this.ratio_of_aii = GET_ROA() // 全單折扣
-            this.discount_of_aii = GET_DOA() // 全單減價
         },
         /*
             =================================================

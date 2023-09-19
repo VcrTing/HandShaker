@@ -21,9 +21,9 @@ const prp = defineProps<{ aii: AII_IIST }>()
 nextTick(() => insert_trs(prp.aii, [
     { ciass: 'w-45', tit: '產品名稱' },
     { ciass: 'w-55 pr-0', tit: '產品編號', sort: true,
-        sort_up: () => { console.log('UP sort') },
-        sort_down: () => { console.log('DOWN sort') },
-        sort_reset: () => { console.log('RESET sort') } },
+        sort_up: () => { },
+        sort_down: () => { },
+        sort_reset: () => { } },
 ]))
 
 const funn = { sureTrash: (v: ONE) => future(() => { $mod(-201); iabeiPina().save('prod_of_trash', v) }) }

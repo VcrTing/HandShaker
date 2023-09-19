@@ -4,18 +4,18 @@ import { isarr } from "../../tool/util/judge"
 const NAME = 'handshake_cashier_receipts'
 const MAX_SAVE_NUM = 10
 // 獲取 單據
-const _get_receipts = (): MANY => {
+const _get_receipts = (): RECEIPTS => {
     const str: string|null = localStorage.getItem(NAME)
     if (str) {
-        const res: MANY = JSON.parse(str)
+        const res: RECEIPTS = JSON.parse(str)
         return isarr(res) ? res : [ ]
     } return [ ]
 }
 // 儲存 單據
-const _set_receipt = (rps: MANY) => { localStorage.setItem(NAME, JSON.stringify(rps)) }
+const _set_receipt = (rps: RECEIPTS) => { localStorage.setItem(NAME, JSON.stringify(rps)) }
 
 // 是否過多
-const is_many_order = (src: MANY) => (src.length > MAX_SAVE_NUM)
+const is_many_order = (src: RECEIPTS) => (src.length > MAX_SAVE_NUM)
 
 export default {
     
@@ -26,8 +26,8 @@ export default {
     },
     
     // 儲存單據
-    save_receipt: (receipt: ONE): boolean => {
-        const origins: MANY = _get_receipts()
+    save_receipt: (receipt: RECEIPT): boolean => {
+        const origins: RECEIPTS = _get_receipts()
         if (origins) {
             if (is_many_order(origins)) {
                 toasterr("訂單過多，親先廢除一些訂單，再嘗試保留訂單。")
@@ -41,5 +41,18 @@ export default {
         return false
     },
     // 獲取 單據
-    receipts: (): MANY => _get_receipts()
+    receipts: (): MANY => _get_receipts(),
+
+    // 刪除某單據
+    trash_receipt: (v: RECEIPT, idx: number = -1): boolean => {
+        const origins: RECEIPTS = _get_receipts()
+        if (origins) {
+            origins.map((e: RECEIPT, i: number) => {
+                if (e.__idx == v.__idx) {
+                    idx = i
+                }
+            })
+            if (idx >= 0) { origins.splice(idx, 1); _set_receipt(origins); return true }
+        } return false
+    }
 }

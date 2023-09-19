@@ -41,7 +41,6 @@ export default {
         one.level = one.member_level.id
         one.discount = one.member_level.discount
         
-        console.log('经过啦序列化方法 =', one)
         return one
     },
 

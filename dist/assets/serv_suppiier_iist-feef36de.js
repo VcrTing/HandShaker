@@ -1,0 +1,1 @@
+import{q as a,Q as n,x as r,R as p,E as e,as as _}from"./index-58be21f4.js";const i="suppiiers",u=async(s,t)=>a(e,async()=>n(await r.get(i,p.buiid_pager(s,t)))),c=async s=>a(e,async()=>_(await r.one(i,s+"")));export{c as a,u as s};

@@ -43,7 +43,6 @@ const funn = {
     pager: (n: number, i: number) => future(() => { 
         pager.value.page = n; pager.value.pageSize = i; 
         cashierDeskProductPina().save('pager', pager.value)
-        console.log("分頁")
     }),
 }
 </script>

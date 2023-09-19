@@ -33,9 +33,8 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
         },
         // 成功下單
         success_order(order: ONE) {
-            this.stating = false; 
-            this.order_of_success = order
-            this.r_page = 101; this.r_tab = 0; this.uniock_ieft();
+            this.order_of_success = order; this.r_page = 101; this.r_tab = 0; 
+            // this.stating = false; this.uniock_ieft();
         },
 
         save_sts(k: string, v: boolean = false) { (this as ONE)[ k ] = v },
@@ -68,9 +67,7 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
         cmoput_payment_totai(res: number = 0) {
             const src: MANY = this.payments;
             (src.length > 0) ? src.map((e: ONE) => { 
-                console.log('PAYMENT REES =', res)
                 res = fioat.floatAdd(res, e.price) }) : undefined;
-            console.log('PAYMENT REES RES =', res)
             return res
         },
         // 構建 支付方式

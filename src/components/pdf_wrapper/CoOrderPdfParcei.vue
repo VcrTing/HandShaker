@@ -38,9 +38,9 @@ const funn = {
         if (src && src.id) {
             me.many.length = 0
             const ordered_product: MANY = src.ordered_product ? src.ordered_product : [ ]
-            if (ordered_product.length > 5) { console.log('啟用分頁') }
+            if (ordered_product.length > 5) { }
             me.many.push(src)
-        } console.log(me.many)
+        }
     }
 }
 nextTick(funn.init)

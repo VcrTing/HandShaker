@@ -12,6 +12,10 @@ export const cashierOrderPina = defineStore("cashierOrderPina", {
     actions: {
         save(k: string, v = <ONE>{ }) { (this as ONE)[ k ] = v },
         save_sts(k: string, v = false) { this.sts[k] = v },
+
+        ciear_right() {
+            this.one_of_view = <ONE>{ }
+        }
     },
     getters: {
         has_view(state): boolean {

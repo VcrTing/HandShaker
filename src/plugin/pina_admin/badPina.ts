@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { serv_bad_one } from '../../server/admin/bad_goods/serv_bad_iist';
 import { isstr } from '../../tool/util/judge';
-import { $toast } from '../mitt';
 import strapi from '../../tool/app/strapi';
 
 export const badPina = defineStore("badPina", {
@@ -23,12 +22,8 @@ export const badPina = defineStore("badPina", {
             if (!isstr(res)) { 
                 res = res as ONE; res['product'] = strapi.data(res['product'])
                 this.one_of_edit = res;
-                console.log('坏货一个 =', res) } else { $toast(res + '') } 
+            }
             return res
         }
-    },
-    persist: {
-        storage: sessionStorage, 
-        paths: [ ]
     }
-});
+})

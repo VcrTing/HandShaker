@@ -7,7 +7,7 @@ type DISCOUNT = {
 }
 
 type RECEIPT = {
-    carts: MANY, member: ONE, save_time?: string,
+    carts: MANY, member: ONE, save_time?: string, __idx: number,
     ratio_of_aii: ONE, discount_of_aii: ONE, ratio_of_member: ONE,
 }
 

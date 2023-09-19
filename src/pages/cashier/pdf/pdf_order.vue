@@ -41,11 +41,9 @@ const funn = {
             const ordered_product: MANY = src.ordered_product ? src.ordered_product : [ ]
 
             if (ordered_product.length > 5) {
-                console.log('啟用分頁')
             }
             me.many.push(src)
         }
-        console.log(me.many)
     }
 }
 nextTick(funn.init)

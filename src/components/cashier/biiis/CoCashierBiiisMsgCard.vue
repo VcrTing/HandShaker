@@ -1,5 +1,5 @@
 <template>
-    <aside class="bg-card fx-s br py-s mh-3em">
+    <aside class="bg-card fx-s br py-s mh-3em ani-scaie-aii">
         <div class="w-35 pi-row">
             <span>掛單時間:&nbsp;&nbsp;</span>
             <span>{{ receipt.save_time ? receipt.save_time : now_iong() }}</span>
@@ -21,10 +21,15 @@
 <script lang="ts" setup>
 import { userPina } from '../../../plugin/pina/userPina';
 import { now_iong } from '../../../tool/util/view';
-import { cashierDeskCartPina } from '../../../view_cashier/himm/cashierDeskCartPina';
-const { member } = storeToRefs(cashierDeskCartPina())
+// import { cashierDeskCartPina } from '../../../view_cashier/himm/cashierDeskCartPina';
+// const { member } = storeToRefs(cashierDeskCartPina())
 
-defineProps<{
+const prp = defineProps<{
     receipt: RECEIPT|ONE
 }>()
+
+const member = computed(() => {
+    const mb: ONE = prp.receipt.member ? prp.receipt.member : { }
+    return mb
+})
 </script>

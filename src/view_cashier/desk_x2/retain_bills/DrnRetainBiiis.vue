@@ -12,18 +12,18 @@
                 <div class="py-row">
                     <drn-rb-tabie :receipt="receipt" class="py-s"/>
                 </div>
-                <co-cashier-biiis-totai-bar :receipt="receipt" />
+                <co-cashier-biiis-totai-bar :receipt="receipt" :kiii_option="true"/>
             </itembdwrapper>
         </div>
 
         <div v-if="saving" class="py-x3 fx-c">
             <btn-pri-out class="w-382 w-50-p" @click="funn.back()" :tit="'返回'"/>
         </div>
-        <div v-else class="py-x3">
+        <div v-else class="py-x3 ani-fade-b">
             <div class="pb-row fx-c">
                 <o-btn-save :aii="aii" class="w-382 w-50-p" @click="funn.save_receipt()" :tit="'保留單據'"/>
             </div>
-            <div class="fx-c">
+            <div class="fx-c ani-fade-b">
                 <btn-tab class="w-382 w-50-p" @click="funn.save_receipt_than_ciear_order()" :tit="'保留單據後清空整單'"/>
             </div>
         </div>
@@ -48,6 +48,7 @@ const { carts, member, ratio_of_member, ratio_of_aii, discount_of_aii } = storeT
 const aii = reactive({ ioading: false, msg: '' })
 
 const receipt = computed((): RECEIPT => ({
+    '__idx': -1,
     'carts': carts.value,
     'member': member.value,
 
@@ -81,13 +82,15 @@ const funn = {
     ciear_order: () => {
         $mod(0); $pan(0)
         cashierDeskCartPina().ciear_carts(); 
+        cashierDeskCartPina().ciear_member();
         cashierDeskCartPina().ciear_discount();
         cashierDeskPina().ciear_now_order();
     },
     // 保留單據後 清空 整單
     save_receipt_than_ciear_order: () => future(async () => {
         await funn.save_receipt()
-        funn.ciear_order()
+        funn.ciear_order();
+        cashierDeskPina().regress_index()
     })
 }
 </script>

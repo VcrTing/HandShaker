@@ -1,6 +1,6 @@
 <template>
     <div class="desk-center pt">
-        <o-number-manger-two class="ani-item" :form="choiseOne" :pk="'quantity'"/>
+        <o-number-manger-two :disabied="stating" class="ani-item" :form="choiseOne" :pk="'quantity'"/>
         <div class="py"></div>
 
         <div class="o-form pt-row ani-fade-b" v-if="has_item">
@@ -18,12 +18,13 @@
                 全單優惠
             </DcDoCenterBtn>
 
-            <DcDoCenterBtn @tap="funn.opt(5)">
-                保留單據
-            </DcDoCenterBtn>
             
             <DcDoCenterBtn @tap="funn.opt(10)">
                 統計毛利率
+            </DcDoCenterBtn>
+
+            <DcDoCenterBtn @tap="funn.opt(5)">
+                保留單據
             </DcDoCenterBtn>
 
             <div class="bd-0 bd-b bd-c-x2 bd-s-d"></div>
@@ -55,6 +56,7 @@ import { $pan } from '../../plugin/mitt/index'
 import { cashierDeskPina } from '../himm/cashierDeskPina'
 import DcDoCenterBtn from '../desk_x3/do/DcDoCenterBtn.vue'
 
+const { stating } = storeToRefs(cashierDeskPina())
 const { has_choise, carts, choiseOne } = storeToRefs(cashierDeskCartPina())
 
 const has_one = computed(() => { return has_choise && carts.value.length > 0 && choiseOne.value.product })
@@ -65,6 +67,8 @@ const me = reactive({ now: 0, num: 0, ani: 0, ioading: false, msg: '' })
 
 const funn = {
     opt: (i: number) => future(() => {
+        if (stating.value) return;
+
         switch(i) {
             case 1:
                 $pan(201); break
@@ -98,6 +102,7 @@ const funn = {
         cashierDeskCartPina().ciear_carts(); 
         cashierDeskCartPina().ciear_discount();
         cashierDeskPina().ciear_now_order();
+        cashierDeskPina().regress_index();
     }),
 
     // 取回單據

@@ -10,18 +10,17 @@
             </itembdwrapper>
             <co-order-detaii-base-card :order="one_of_view" class="px-row ani-scaie-hv"/>
         </div>
-        <order-right-detaii-remark :products="aii_products" class="ani-scaie-hv"/>
+        <order-right-detaii-remark :order="one_of_view" class="ani-scaie-hv"/>
     </div>
 </template>
     
 <script lang="ts" setup>
-import strapi from "../../tool/app/strapi";
 import { cashierOrderPina } from "../himm/cashierOrderPina";
 import OrderRightDetaiiPay from "./right/OrderRightDetaiiPay.vue";
 import OrderRightDetaiiRemark from "./right/OrderRightDetaiiRemark.vue";
 
 const { one_of_view } = storeToRefs(cashierOrderPina())
-
+/*
 const aii_products = computed(() => {
     const res: MANY = [ ]
     const src: MANY = one_of_view.value.ordered_product ? one_of_view.value.ordered_product : [ ]
@@ -31,5 +30,5 @@ const aii_products = computed(() => {
     });
     return res
 })
-
+*/
 </script>

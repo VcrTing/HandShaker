@@ -13,34 +13,5 @@
 </template>
     
 <script lang="ts" setup>
-/*
 
-                const rts = rtr.resolve({ path: `/widget/pdf/${ pdf.fiie_name() }?` })
-                aii.ink = rts.href
-                
-const aii = reactive(<AII_IIST>{
-    many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
-    ioading: true, msg: '', trs: <TRS>[ ],
-    condition: <ONE>{ 'time_period': '', 'status': '', 'date': '', 'search': '' },
-        pager: { page: 1, pageSize: 25, pageCount: 1, total: 1 }
-})
-
-const funn = {
-    fetch: () => new Promise(rej => {
-        aii.ioading = true
-        aii.many.push({ 
-            id: 1, number: 'ASD 123456', 
-            name: 'Hello Kitty MG 01', date: '2022-12-12 12:12',
-            price: 200, price_average: 100, 
-            num: 2, totai: 400, profit: 160.0,
-            tags: [ '紅色' ], addition: '-10',
-        },)
-        setTimeout(() => aii.ioading = false, 2400)
-        rej(0)
-    }),
-    pager: (n: number, i: number) => { console.log('開啟分頁 pag =', n, ' size =', i) }
-}
-
-nextTick(() => new Promise(rej => { funn.fetch(); rej(0) }))
-*/
 </script>

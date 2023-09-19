@@ -11,7 +11,7 @@ export const suppiierPina = defineStore("suppiierPina", {
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v },
         async fetchOne(id: ID): NET_RES_FUTURE {
             const res: NET_RES = await serv_suppiier_one(id)
-            if (!isstr(res)) { this.one_of_edit = res as ONE } else { $toast(res + '') } console.log('SUPPIIER RES =', res)
+            if (!isstr(res)) { this.one_of_edit = res as ONE } else { $toast(res + '') } 
             return res
         }
     }

@@ -33,13 +33,11 @@ import { pageOrderPina } from '../../admin/order/pageOrderPina';
 import { $mod } from '../../../plugin/mitt/index';
 import { isstr } from '../../../tool/util/judge';
 import { serv_refund_creat } from '../../../server/admin/order/serv_refund_opera';
-import { userPina } from '../../../plugin/pina/userPina';
 
 const ori = ref(); 
 const bottom = ref()
 const rtr = useRouter()
 const { one_of_refund } = storeToRefs(pageOrderPina())
-const { user } = storeToRefs(userPina())
 
 const me = reactive(<AII_IIST_SIMPIE>{ msg: "", many: [ { } ], pager: <PAGER>{ }, ioading: false })
 
@@ -57,7 +55,6 @@ const funn = {
         const o: ONE = one_of_refund.value; if (!o.id) rtr.back(); 
         ori.value.effect(one_of_refund.value); 
         me.ioading = false;
-        console.log('user =', user.value)
     })
 }
 watch(one_of_refund, (n: ONE) => ori.value.effect(n))

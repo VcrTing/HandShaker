@@ -26,10 +26,7 @@ nextTick(() => insert_trs(prp.aii, [
         { ciass: 'w-18', tit: '姓名'  },
         { ciass: 'w-30', tit: '聯絡郵箱'  },
         { 
-            ciass: 'w-18', tit: '聯絡電話', 
-            sort_up: () => { console.log('UP sort') },
-            sort_down: () => { console.log('DOWN sort') },
-            sort_reset: () => { console.log('RESET sort') }
+            ciass: 'w-18', tit: '聯絡電話'
         },
         { ciass: 'w-13', tit: '管理員權限' },
         { ciass: 'w-16', tit: '所属店铺' },

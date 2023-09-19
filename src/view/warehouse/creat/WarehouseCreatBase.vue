@@ -6,8 +6,11 @@
         <o-input :tit="'倉庫聯絡人'" :err="errs.contact_person">
             <input v-model="form.contact_person" placeholder="請輸入"/>
         </o-input>
-        <o-input :tit="'倉庫聯絡人電話'" :err="errs.phone_no">
+        <o-input :tit="'聯絡人電話'" :err="errs.phone_no">
             <input v-model="form.phone_no" placeholder="請輸入"/>
+        </o-input>
+        <o-input :tit="'Facebook 帳號'" :err="errs.facebook">
+            <input v-model="form.facebook" placeholder="請輸入"/>
         </o-input>
         
         <o-input :tit="'倉庫地址'" :err="errs.address">
@@ -19,7 +22,8 @@
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
 import { vrf_phone } from "../../../tool/util/verify";
-const pks = [ 'name', 'contact_person', 'phone_no', 'address' ]
+// facebook
+const pks = [ 'name', 'contact_person', 'phone_no', 'facebook', 'address' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
@@ -34,5 +38,6 @@ watch(() => prp.form.contact_person, (n: string) => jude_err(errs, 'contact_pers
 watch(() => prp.form.phone_no, (n: string) => jude_err(errs, 'phone_no', n, prp.aii, () => {
     return !vrf_phone(n)
 }))
+watch(() => prp.form.facebook, (n: string) => jude_err(errs, 'facebook', n, prp.aii))
 watch(() => prp.form.address, (n: string) => jude_err(errs, 'address', n, prp.aii))
 </script>

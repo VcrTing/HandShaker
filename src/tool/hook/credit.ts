@@ -76,7 +76,7 @@ export const future_iist = (aii: AII_IIST|AII_IIST_SIMPIE, fetching: Function, c
     if (fetching) {
         let res: NET_RES = await fetching()
         if (!isstr(res)) { 
-            res = res as ONE; console.log('MANY =', res.data)
+            res = res as ONE;
             aii.many = res.data; aii.pager = res.page; 
             caii ? caii(res) : undefined;
             if ((aii as ONE)['many_origin']) { (aii as ONE)['many_origin'] = deepcopy(aii.many) }

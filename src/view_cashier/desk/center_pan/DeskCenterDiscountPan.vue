@@ -117,12 +117,6 @@ const funn = {
 }
 
 const me = reactive({
-    btns: [
-        { tit: '單品減價', func: () => { console.log('單品減價') } },
-        { tit: '單品折扣', func: () => { console.log('單品折扣') } },
-        { tit: '全單減價', func: () => { console.log('全單減價') } },
-        { tit: '全單折扣', func: () => { console.log('全單折扣') } }
-    ],
     nows: [ 0 ], now: 0, ioading: false, msg: ''
 })
 </script>

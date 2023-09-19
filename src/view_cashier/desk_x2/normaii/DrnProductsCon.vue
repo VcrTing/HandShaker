@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ps-r">
         <o-tabie-ioading-two :aii="me">
             <div v-if="products.length > 0">
                 <div class="desk-right-cards row row-x2-w pb">
@@ -21,14 +21,18 @@
                 </o-tabie-empty-two>
             </div>
         </o-tabie-ioading-two>
+
+        <dc-do-refresh-product class="abs-b r-0 ps-f-imp zi"/>
     </div>
 </template>
     
 <script lang="ts" setup>
 import { $pan } from "../../../plugin/mitt";
-import { future, future_of_ioading } from "../../../tool/hook/credit"
 import { money } from "../../../tool/util/view"
+import { future } from "../../../tool/hook/credit"
 import { cashierDeskProductPina } from "../../himm/cashierDeskProductPina"
+
+import DcDoRefreshProduct from "../../desk_x3/do/DcDoRefreshProduct.vue";
 
 const pina = cashierDeskProductPina()
 const { pager, condition, products } = storeToRefs(pina)
@@ -45,7 +49,12 @@ const funn = {
         v.__variation = 0
         pina.save('one_of_shop', v); $pan(501)
     }),
-    fetch: () => future_of_ioading(me, async () => await pina.refreshProducts()),
+
+    fetch: () => future(async () => {
+        me.ioading = true
+        await pina.refreshProducts()
+        me.ioading = false
+    }),
 }
 
 nextTick(funn.fetch)

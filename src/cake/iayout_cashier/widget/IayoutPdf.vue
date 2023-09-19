@@ -1,7 +1,7 @@
 <template>
     <div class="iayout-pdf ps-r">
         <section class="abs-t i-0 py">
-            <cub-go-back class="ttd h5"/>
+            <btn-icon-x-2 @click="funn.back()" :icon="'i-i'"/>
         </section>
 
         <div class="pt">
@@ -23,22 +23,26 @@
 </template>
     
 <script lang="ts" setup>
+import { future } from "../../../tool/hook/credit"
+
 defineProps<{
     submitting?: boolean,
-    ioading?: boolean,
-    ink?: string
+    ioading?: boolean, ink?: string
 }>()
-
+const rtr = useRouter()
 const emt = defineEmits([ 'printed' ])
 const me = reactive({ ioading: false, msg: '' })
 
 const funn = {
-    printed: () => {
+    printed: () => future(() => {
         if (!me.ioading) {
             me.ioading = true; emt('printed')
             setTimeout(() => me.ioading = false, 400)
         }
-    }
+    }),
+    back: () => future(() => {
+        rtr.push('/cashier/order_iist')
+    })
 }
 </script>
 

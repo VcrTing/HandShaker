@@ -161,16 +161,16 @@ const aii = reactive({
 })
 
 const funn = {
-    mod: (n: number) => { $mod(n); console.log('打開 MOD =', n) },
-    pan: (n: number) => { $pan(n); console.log('打開 PAN =', n) },
+    mod: (n: number) => { $mod(n);
+},
+    pan: (n: number) => { $pan(n);
+},
     toast: () => { 
-        console.log('彈出消息 =', aii.msg); 
         mittPina().toast(aii.msg); 
         aii.msg = ''; 
     }
 }
 
-watch(() => aii.search, (n) => { console.log('搜索 =', n) })
 </script>
 
 <route lang="yaml">

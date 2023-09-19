@@ -2,7 +2,6 @@ import axios from 'axios'
 
 import { ENDPOINT } from '../../conf/net/endpoint';
 import { API } from '../../conf/net/net-conf';
-import { NET_TEST } from '../../conf/net/net-conf';
 import { userPina } from '../../plugin/pina/userPina';
 
 interface _Net {
@@ -31,25 +30,25 @@ class NeTooi {
 class Net extends NeTooi implements _Net {
     async one(endpoint: string, suffix: string, params?: ONE): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix) + super.params(params)
-        NET_TEST ? console.log('ONE URI =', uri) : undefined;
+        // NET_TEST ? console.log('ONE URI =', uri) : undefined;
         return await axios.get(uri,  super.defops())
     }
     async get(endpoint: string, params: ONE, suffix?: string): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix) + super.params(params)
-        NET_TEST ? console.log('GET URI =', uri) : undefined;
+        //  NET_TEST ? console.log('GET URI =', uri) : undefined;
         return await axios.get(uri,  super.defops())
     }
     // 
     async pos(endpoint: string, data: ONE): Promise<ONE> {
         const uri = super.uri(API, endpoint, '')
-        NET_TEST ? console.log('POST uri =', uri) : undefined;
-        NET_TEST ? console.log('POST DATA =', data) : undefined;
+        // NET_TEST ? console.log('POST uri =', uri) : undefined;
+        // NET_TEST ? console.log('POST DATA =', data) : undefined;
         return await axios.post(uri, data,  super.defops())
     }
     async put(endpoint: string, data: ONE, suffix: string): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix)
-        NET_TEST ? console.log('PATCH uri =', uri) : undefined;
-        NET_TEST ? console.log('PATCH DATA =', data) : undefined;
+        // NET_TEST ? console.log('PATCH uri =', uri) : undefined;
+        // NET_TEST ? console.log('PATCH DATA =', data) : undefined;
         return await axios.patch(uri, data, super.defops())
     }
     //
@@ -61,7 +60,7 @@ class Net extends NeTooi implements _Net {
     }
     // 
     async dei(endpoint: string, suffix: string): Promise<ONE> {
-        NET_TEST ? console.log('DEIETE uri =', super.uri(API, endpoint, suffix)) : undefined;
+        // NET_TEST ? console.log('DEIETE uri =', super.uri(API, endpoint, suffix)) : undefined;
         return await axios.delete(super.uri(API, endpoint, suffix), super.defops());
     }
 }

@@ -6,7 +6,6 @@ import { ERRORS_ADMIN_USER } from '../../../conf/net/errors_admin/errors_user'
 const NAME: string = 'users'
 
 export const serv_user_iist = async (condition: ONE, pager: PAGER): NET_RES_FUTURE => axios_wrapper(ERRORS_ADMIN_USER, async (): NET_RES_FUTURE => {
-    // console.log('頁面條件 =', condition, strapi.buiid_pager(condition, pager))
     return ser_mui_resuit(
         await net.get(NAME, strapi.buiid_pager(condition, pager)))
 })

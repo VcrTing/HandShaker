@@ -19,7 +19,6 @@ const form = reactive({ name: '', email: '', phoneNo: '', pass: '', is_admin: tr
 const funn = {
     submit: () => submit(aii, 
         () => {
-            console.log('恁否通過 =', aii.can)
             return aii.can ? form : null
         },
         async (data: ONE) => {

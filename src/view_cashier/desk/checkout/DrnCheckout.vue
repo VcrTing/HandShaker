@@ -60,17 +60,14 @@ const funn = {
     },
     _submit: async (data: ONE) => {
         const res: NET_RES = await serv_order_creat_cashier(data);
-        console.log('RES =', res)
-
         if (isstr(res)) {
             msgerr(res, me)
             cashierDeskPina().save_sts('ioading', false)
         } else {
             // 下單成功 ！！！
-            cashierDeskPina().success_order({ })
+            cashierDeskPina().success_order(res as ONE)
             funn.status(false)
         }
-
         cashierDeskProductPina().dorefresh()
     },
     submit: () => future(async () => { 
@@ -83,7 +80,6 @@ const funn = {
             pina.ciear_choise()
 
             const data: ONE|null = funn.buiid()
-            console.log('ORDER data =', data)
 
             if (data && data.can) { await funn._submit(data) } 
             else { funn.status(false) }

@@ -22,8 +22,7 @@ const me = reactive({ can: false, ioading: false, msg: '' })
 const funn = {
     submit: () => submit((me as AII), iabei.value.resuit,
         async (data: ONE) => {
-            console.log('構建的數據 =', data)
-            const res: NET_RES = await serv_iabei_creat(data); console.log('創建結果 =', res)
+            const res: NET_RES = await serv_iabei_creat(data); 
             isstr(res) ? funn.faii(res) : funn.success()
         }),
     success: () => { form.name = ''; $pan(0); emt('refresh') }, 

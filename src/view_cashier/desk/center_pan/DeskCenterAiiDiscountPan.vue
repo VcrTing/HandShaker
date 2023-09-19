@@ -43,12 +43,11 @@
 
             <div class="py-x3 h6 fw-600">
                 <div>
-                    <div class="d-ib sus">優惠金額</div>:&nbsp;&nbsp;HKD&nbsp;
-                    <DcTotiDiscountNum/>
+                    <div class="d-ib sus">優惠金額</div>:&nbsp;&nbsp;HKD&nbsp;<DcTotiDiscountNum/>
                 </div>
                 <div class="pt-row">
-                    <div class="d-ib">統計金額</div>:
-                    <div class="d-ib txt-money">&nbsp;&nbsp;HKD&nbsp;<DcTotiPriceNum/></div>
+                    <div class="d-ib">統計金額</div>
+                    <div class="d-ib txt-money">:&nbsp;&nbsp;HKD&nbsp;<DcTotiPriceNum/></div>
                 </div>
             </div>
 

@@ -16,6 +16,8 @@ const group_remark_of_product = (prod: ONE, res: string = ''): string => {
 }
 
 export default {
+    // 产品
+    order_products,
     // 拼接 備註
     group_remark_of_product,
 
@@ -41,8 +43,15 @@ export default {
         }); return res
     },
     // 產品列表的備註
-    group_remarks_of_products: () => {
-        
+    array_remarks_for_order: (odr: ONE) => {
+        const res: string[] = [ ]
+        const ops: MANY = order_products(odr)
+        ops.map((e: ONE) => {
+            const pd: ONE = get_product_in_order_products(e)
+            const rmks: MANY = pd.remarks ? pd.remarks : [ ]
+            rmks.map((r: ONE) => { res.push(r.content) })
+        })
+        return Array.from(new Set(res))
     },
     // 客戶名稱
     member_name: (odr: ONE) => {

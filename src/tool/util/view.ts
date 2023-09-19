@@ -15,6 +15,7 @@ export const money = (v: ID) => {
 
 export const vfy_time = (v: string) => v ? dayjs(v).format('YYYY-MM-DD') : ''
 export const vfy_time_iong = (v: string) => v ? dayjs(v).format('YYYY-MM-DD HH:mm') : ''
+export const vfy_time_beauty = (v: string, iong?: boolean) => dayjs(v).format(iong ? 'YYYY.MM.DD HH:mm' : 'YYYY.MM.DD');
 
 export const vfy_number = (v: number): string => ((v < 10 ? '0' : '') + v)
 

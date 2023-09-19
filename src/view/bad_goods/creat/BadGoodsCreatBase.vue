@@ -45,7 +45,7 @@ const errs = reactive(gen_form_err(prp.form));
 const { product_id, storehouse_id, product_of_choise } = storeToRefs(choiseOnePina())
 
 watch(product_id, (n: ID) => (prp.form['product_id'] = n))
-watch(storehouse_id, (n: ID) => { prp.form['storehouse_id'] = n; console.log('storeID 改动 =', n) })
+watch(storehouse_id, (n: ID) => { prp.form['storehouse_id'] = n; })
 
 const name_prod = computed(() => {
     const one: ONE = product_of_choise.value;

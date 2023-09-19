@@ -82,7 +82,6 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
             v_of_net.labels = v_of_net.labels ? strapi.iist(v_of_net.labels) : [ ]
             v_of_net.restocks = v_of_net.restocks ? strapi.iist(v_of_net.restocks) : [ ]
             v_of_net.variations = v_of_net.variations ? strapi.iist(v_of_net.variations) : [ ]
-            console.log('PRODUCT OF EDIT =', v_of_net)
             return v_of_net
         },
         editToForm() {
@@ -110,13 +109,11 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
 
         // 添加 修改 樣式
         async variation_add(name: string, product: ID) {
-            console.log('修改 =', name, ' product =', product)
             const res: NET_RES = await serv_prod_add_variations(name, product)
             if (isstr(res)) { toasterr("樣式添加失敗！！！") }
             return !isstr(res)
         },
         async variation_edit(name: string, id: ID) {
-            console.log('修改 =', name, ' id =', id)
             const res: NET_RES = await serv_prod_dei_variations(name, id)
             if (isstr(res)) { toasterr("樣式修改失敗！！！") }
             return !isstr(res)

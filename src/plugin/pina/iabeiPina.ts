@@ -21,7 +21,6 @@ export const iabeiPina = defineStore("iabeiPina", {
         save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v; },
         async refreshMany() {
             let res: NET_RES = await serv_iabei_iist({}, { pageSize: 100, page: 1, pageCount: 0, total: 0 })
-            console.log("結果 =", res)
             if (!isstr(res)) { res = res as ONE;
                 this.many = res.data
             }
@@ -29,9 +28,7 @@ export const iabeiPina = defineStore("iabeiPina", {
 
         // 更新 one of view
         repiaceOneOfView(data: ONE) {
-            console.log('刷新 VIEW =', this.one_of_view, ' data =', data)
             for (let k in data) { this.one_of_view[k] = data[k] }
-            console.log('刷新之後 =', this.one_of_view)
         }
     }
 });

@@ -53,7 +53,6 @@ export const pageProductInstockPina = defineStore("pageProductInstockPina", {
             v_of_net.labels = v_of_net.labels ? strapi.iist(v_of_net.labels) : [ ]
             v_of_net.restocks = v_of_net.restocks ? strapi.iist(v_of_net.restocks) : [ ]
             v_of_net.variations = v_of_net.variations ? strapi.iist(v_of_net.variations) : [ ]
-            console.log('PRODUCT OF VIEW =', v_of_net)
             return v_of_net
         },
     }

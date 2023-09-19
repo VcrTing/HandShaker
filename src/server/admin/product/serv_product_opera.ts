@@ -16,7 +16,6 @@ export const serv_product_creat = async (data: ONE): NET_RES_FUTURE => axios_wra
 
 // 刪除 標籤
 export const serv_product_trash = async (id: ID): NET_RES_FUTURE => axios_wrapper(ERRORS_ADMIN_PRODUCT, async (): NET_RES_FUTURE => {
-    const res: NET_RES = await net.dei(NAME, id + '')
-    console.log('刪除 RES =', res)
+    await net.dei(NAME, id + '')
     return ''
 })

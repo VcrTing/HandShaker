@@ -28,8 +28,8 @@
             </div>
         </div>
         <div v-if="member.id" class="abs-b zi-x3 w-100 py bg-con">
-            <div class="fx-c pb-x2"><btn-pri class="w-382 w-50-p" @click="funn.view()" :tit="'查看全單折扣'"/></div>
-            <div class="fx-c"><btn-tab class="w-382 w-50-p" @click="funn.reset()" :tit="'重選客戶'"/></div>
+            <div class="fx-c pb-x2"><btn-pri class="w-382 w-50-p" @click="funn.view()" :tit="'查看全單優惠'"/></div>
+            <div class="fx-c"><btn-trash class="w-382 w-50-p" @click="funn.reset()" :tit="'重選客戶'"/></div>
         </div>
     </div>
 </template>
