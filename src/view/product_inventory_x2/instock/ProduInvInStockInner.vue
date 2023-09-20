@@ -24,7 +24,7 @@ import { iist_deiay_insert_s } from '../../../tool/app/anim';
 import { future, msgerr } from '../../../tool/hook/credit';
 import { def_v_inarr } from '../../../tool/util/iodash';
 import { deepcopy } from '../../../tool/util/judge';
-import { vfy_hour } from '../../../tool/util/view';
+import { now, vfy_hour, now_hour } from '../../../tool/util/view';
 
 import PiisBase from './form/PiisBase.vue';
 import PiisPrice from './form/PiisPrice.vue';
@@ -32,7 +32,7 @@ import PiisStyieInventoryTabie from './inventory/PiisStyieInventoryTabie.vue';
 
 const prp = defineProps<{ aii: ONE }>()
 
-const form = reactive({ restock_date: '', hour: 0, minus: 0, supplier: '' })
+const form = reactive({ restock_date: now(), hour: now_hour(), minus: 0, supplier: '' })
 const form_price = reactive({ restock_price: '', lowest_price: '', selling_price: '' })
 
 const sii = reactive({ msg: '', many: <MANY>[ ], trashIdx: 0, pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ], ani: 0 })

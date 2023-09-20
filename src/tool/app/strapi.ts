@@ -41,7 +41,10 @@ export default {
     },
 
     buiid_pager: (condition: ONE, pager: PAGER) => {
-        const res: ONE = { ...condition , 'pagination[page]': pager.page, 'pagination[pageSize]': pager.pageSize }
+        const res: ONE = { ...condition }
+        if (pager.page) { 
+            res['pagination[page]'] = pager.page, 
+            res['pagination[pageSize]'] = pager.pageSize }
         if (!res['sort[0]']) res['sort[0]'] = 'createdAt:desc';
         return res
     }

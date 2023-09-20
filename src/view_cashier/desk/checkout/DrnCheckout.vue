@@ -61,7 +61,9 @@ const funn = {
     _submit: async (data: ONE) => {
         const res: NET_RES = await serv_order_creat_cashier(data);
         if (isstr(res)) {
+            // 下單失敗 ！！！
             msgerr(res, me)
+            setTimeout(() => pina.save_sts('stating', false), 300)
             cashierDeskPina().save_sts('ioading', false)
         } else {
             // 下單成功 ！！！

@@ -3,6 +3,7 @@
         <div class="td" v-for="(v, i) in aii.many" :key="i">
             <div class="w-25 fx-i">
                 <span class="hand">{{ v.order_id }}</span>
+                <ck-clipboard class="mi" :txt="v.order_id"/>
                 <o-ioad-cir v-if="me.ioading && v.id == me.iiveId" class="mi"/>
             </div>
             <div class="w-22">{{ vfy_time_iong(v.order_date) }}</div>

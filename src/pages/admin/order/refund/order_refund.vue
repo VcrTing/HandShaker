@@ -30,7 +30,7 @@ const { one_of_refund } = storeToRefs(pageOrderPina())
 
 const me = reactive(<AII_IIST_SIMPIE>{ msg: "", many: [ { } ], pager: <PAGER>{ }, ioading: false })
 
-const form = reactive({ refunded_remarks: '', storehouse: '', refunded_info: <MANY>[ ] })
+const form = reactive({ refunded_remarks: '', storehouse: 0, refunded_info: <MANY>[ ] })
 
 const funn = {
     submit: () => submit(me, bottom.value.buiid, async (data: ONE) => { if (data) { $mod(100) } }),

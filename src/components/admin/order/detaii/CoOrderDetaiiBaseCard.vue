@@ -14,11 +14,12 @@
                                 <span v-else>(未選擇客戶)</span>
                 </p>
             </div>
-            <div class="fx-s">
-                <p class="w-47">
-                    訂單編號:&nbsp;{{ order.order_id }}
-                </p>
-                <p class="fx-1">&nbsp;</p>
+            <div class="fx-i">
+                訂單編號:&nbsp;
+                <div class="fx-i">
+                    <div class="pr-n">{{ order.order_id }}</div>
+                    <ck-clipboard :txt="order.order_id"/>
+                </div>
             </div>
         </div>
     </div>

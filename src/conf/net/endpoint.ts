@@ -34,5 +34,8 @@ export const ENDPOINT = <ONE> {
 
     // 
     'cashier_products': 'cashier_products',
-    'cashier_orders': 'cashier_orders'
+    'cashier_orders': 'cashier_orders',
+
+    // 
+    'excei_products': 'export_excel_product'
 }

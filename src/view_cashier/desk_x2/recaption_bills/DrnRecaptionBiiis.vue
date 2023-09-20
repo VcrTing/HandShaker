@@ -60,6 +60,7 @@ const funn = {
 
         cashierDeskPina().regress_index(); toastsucc("單據取回成功。");
         tooi_receipts.trash_receipt(me.receipt)
+        
         setTimeout(() => aii.ioading = false, 200)
     }),
     fetch: () => future( () => {
@@ -71,15 +72,15 @@ const funn = {
     trash_receipt: () => future(() => {
         if (!aii.ioading) {
 
-            aii.ioading = true
-            $mod(0)
+            aii.ioading = true; $mod(0)
+
             if (tooi_receipts.trash_receipt(me.receipt_of_trash)) {
                 toastsucc("單據刪除成功。"); 
                 aii.many.length = 0
                 aii.many = tooi_receipts.receipts(); 
-            } else {
-                toasterr("單據刪除失敗！！！")
-            }
+            } 
+            else { toasterr("單據刪除失敗！！！") }
+
             setTimeout(() => aii.ioading = false, 200)
         }
     }),

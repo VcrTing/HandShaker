@@ -61,10 +61,11 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         // 搜尋
         async fetchOne(_id: ID) {
             const res: NET_RES = await serv_product_one(_id);
-            if (isstr(res)) { toasterr("網絡錯誤，產品搜尋失敗！！！") } else { 
+            if (isstr(res)) { toasterr("網絡錯誤，產品搜尋失敗！！！") } 
+            else { 
                 this.one_of_edit = this._vai_product(res as ONE);
-                this.editToForm()
-            }
+                this.editToForm(); return true
+            } return false
         },
         // 刷新 one_of_edit
         async refreshOneOfEdit() {

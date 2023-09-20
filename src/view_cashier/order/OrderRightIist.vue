@@ -20,15 +20,4 @@ import OrderRightDetaiiPay from "./right/OrderRightDetaiiPay.vue";
 import OrderRightDetaiiRemark from "./right/OrderRightDetaiiRemark.vue";
 
 const { one_of_view } = storeToRefs(cashierOrderPina())
-/*
-const aii_products = computed(() => {
-    const res: MANY = [ ]
-    const src: MANY = one_of_view.value.ordered_product ? one_of_view.value.ordered_product : [ ]
-    src.map((e: ONE) => {
-        const pd: ONE = e.product ? strapi.data(e.product) : { }
-        if (pd.id) { res.push(pd) }
-    });
-    return res
-})
-*/
 </script>

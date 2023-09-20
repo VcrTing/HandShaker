@@ -25,5 +25,9 @@ export const has_hour = (hour: number) => (hour != 0)
 
 export const is_date_big = (time_1: string, time_2: string) => dayjs(time_1).isAfter( dayjs(time_2) )
 
+export const now_hour = () => {
+    const dt = new Date(); return dt.getHours()
+}
+
 export const now = (v: string = '') => v ? vfy_time(v) : dayjs().format('YYYY-MM-DD')
 export const now_iong = (v: string = ''): string => v ? vfy_time(v) : dayjs().format('YYYY-MM-DD HH:mm')

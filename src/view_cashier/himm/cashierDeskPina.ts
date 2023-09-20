@@ -36,6 +36,7 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
             this.order_of_success = order; this.r_page = 101; this.r_tab = 0; 
             // this.stating = false; this.uniock_ieft();
         },
+        // 
 
         save_sts(k: string, v: boolean = false) { (this as ONE)[ k ] = v },
 

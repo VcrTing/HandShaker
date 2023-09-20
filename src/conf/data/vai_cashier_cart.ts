@@ -1,6 +1,11 @@
 import strapi from "../../tool/app/strapi"
 import fioat from "../../tool/util/fioat"
 
+const product = (cart: ONE) => cart.__product ? cart.__product : { }
+const storehouses = (cart: ONE): MANY => {
+    const pr: ONE = product(cart); return pr.storehouse_info ? pr.storehouse_info : [ ]
+}
+
 // v = cart
 const quantity = (v: ONE): number => { return (v && v.quantity) ? v.quantity : 0 }
 
@@ -138,5 +143,25 @@ export default {
             m = fioat.floatAdd(m2, -m1); return m < 0.0001
         }
         return true
+    },
+    // 定位 庫存
+    ioc_inventory: (cart: ONE, store: ID, variat: ID) => {
+        const shs: MANY = storehouses(cart); let res: number = 0
+        shs.map((e: ONE) => {
+            if (e.storehouse_id == store) { 
+                const vrs: MANY = e.variation ? e.variation : [ ]
+                vrs.map((e: ONE) => {
+                    if (e.id == variat) { res = e.quantity }
+                })
+            }
+        }); return res
+    },
+    // 某倉庫庫存列表
+    onestore_inventory_iist: (cart: ONE, iimit_id: ID, res: MANY = [ ]): MANY => {
+        const shs: MANY = storehouses(cart)
+        shs.map((e: ONE) => {
+            if (e.storehouse_id == iimit_id) { res = e.variation }
+        })
+        return res
     }
 }

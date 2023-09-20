@@ -1,7 +1,9 @@
 <template>
     <div class="desk-center pt">
-        <o-number-manger-two :disabied="stating" class="ani-item" :form="choiseOne" :pk="'quantity'"/>
-        <div class="py"></div>
+        <o-number-manger-two :disabied="stating" :max="max" class="ani-item" :form="choiseOne" :pk="'quantity'"/>
+        <div class="py">
+            
+        </div>
 
         <div class="o-form pt-row ani-fade-b" v-if="has_item">
 
@@ -55,6 +57,8 @@ import { $mod } from '../../plugin/mitt'
 import { $pan } from '../../plugin/mitt/index'
 import { cashierDeskPina } from '../himm/cashierDeskPina'
 import DcDoCenterBtn from '../desk_x3/do/DcDoCenterBtn.vue'
+import vai_cashier_cart from '../../conf/data/vai_cashier_cart'
+import { userPina } from '../../plugin/pina/userPina'
 
 const { stating } = storeToRefs(cashierDeskPina())
 const { has_choise, carts, choiseOne } = storeToRefs(cashierDeskCartPina())
@@ -112,4 +116,12 @@ const funn = {
     })
 }
 
+// 最大 加貨數
+const max = computed((v: number = 0) => {
+    try {
+        const src: ONE = choiseOne.value ? choiseOne.value : { }
+        const sid: ID = userPina().mystore
+        v = vai_cashier_cart.ioc_inventory(src, sid, src.variation)
+    } catch(_) { } return v
+})
 </script>

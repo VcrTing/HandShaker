@@ -3,10 +3,10 @@
         <div class="pi-x2">
             <p class="b pb-n">訂單詳情</p>
             <div class="fx-s pb-n">
-                <p class="w-39">
-                    訂單編號:&nbsp;{{ order.order_id }}
+                <p class="w-40">
+                    訂單編號:&nbsp;{{ order.order_id }}&nbsp;&nbsp;<ck-clipboard :txt="order.order_id"/>
                 </p>
-                <p class="w-38">
+                <p class="w-37">
                     收銀員:&nbsp;{{ vai_order.cashier(order) }}
                 </p>
                 <p class="fx-1">
@@ -16,10 +16,10 @@
                 </p>
             </div>
             <div class="fx-s">
-                <p class="w-39">
+                <p class="w-40">
                     會員等級:&nbsp;{{ order.member_level.name }}
                 </p>
-                <p class="w-38">
+                <p class="w-37">
                     <span>狀態:&nbsp;</span>
                     
                     <div class="d-ib">

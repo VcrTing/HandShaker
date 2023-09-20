@@ -12,6 +12,10 @@
 
     <ArrowPathIcon v-else-if="icon == 'refresh'"/>
     <DocumentArrowDownIcon v-else-if="icon == 'doc'"/>
+
+    <DocumentTextIcon v-else-if="icon == 'excei'"/>
+
+    <ClipboardDocumentListIcon v-else-if="icon == 'copy'"/>
 </template>
     
 <script lang="ts" setup>
@@ -27,7 +31,11 @@ import {
     CalendarIcon,
 
     ArrowPathIcon,
-    DocumentArrowDownIcon,
+    DocumentArrowDownIcon, 
+
+    ClipboardDocumentListIcon,
+
+    DocumentTextIcon
 } from '@heroicons/vue/24/outline'; 
 defineProps<{ icon?: string }>()
 </script>

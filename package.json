@@ -14,6 +14,7 @@
     "@floating-ui/dom": "^1.5.1",
     "@heroicons/vue": "^2.0.18",
     "axios": "^1.4.0",
+    "clipboard": "^2.0.11",
     "countup.js": "^2.7.0",
     "dayjs": "^1.11.9",
     "echarts": "^5.4.3",

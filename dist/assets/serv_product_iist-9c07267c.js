@@ -1,1 +1,0 @@
-import{q as r,O as i,x as a,P as n,ar as _}from"./index-5586e4a0.js";import{E as t}from"./errors_product-174667b5.js";const e="products",u=async(s,o)=>r(t,async()=>i(await a.get(e,n.buiid_pager(s,o)))),m=async s=>r(t,async()=>_(await a.one(e,s+"")));export{m as a,u as s};
