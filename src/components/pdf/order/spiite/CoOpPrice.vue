@@ -4,16 +4,16 @@
         <div class="ih-pdf-son-s">
             <div class="fx-s">
                 <p>產品</p> <div class="w-50 fx-r">
-                    <p class="sus">數量{{ quantity }}</p><p class="mw-7em ta-r b">{{ aii_price }}</p>
+                    <p class="sus">數量{{ quantity }}</p><p class="mw-7em ta-r b">{{ money(aii_price) }}</p>
                 </div>
             </div>
-            <div class="fx-s">
+            <div class="fx-s fx-t">
                 <p>支付方式</p> 
                 <div class="w-50">
-                    <div class="fx-r">
+                    <div class="">
                         <div class="fx-r" v-for="(v, i) in one.payment_method" :key="i">
                             <p class="sus">{{ v.name }}</p>
-                            <p class="mw-7em ta-r b">{{ v.price }}</p>
+                            <p class="mw-7em ta-r b">{{ money(v.price) }}</p>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             {{ v.type }}    
                         </p>
                         <p class="mw-7em ta-r b">
-                            -{{ v.discount_deduction }}
+                            -{{ money(v.discount_deduction) }}
                         </p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
     
 <script lang="ts" setup>
 import vai_cashier_order from '../../../../conf/data/cashier/vai_cashier_order';
-// import { money } from '../../../../tool/util/view';
+import { money } from '../../../../tool/util/view';
 
 const prp = defineProps<{ one: ONE }>()
 const quantity = computed(() => vai_cashier_order.product_aii_num(prp.one))

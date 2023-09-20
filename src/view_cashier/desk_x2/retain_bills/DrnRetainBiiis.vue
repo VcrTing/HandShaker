@@ -61,23 +61,16 @@ const funn = {
     // 返回
     back: () => future(() => { cashierDeskPina().regress_index() }),
 
-    // 保留單據
-    save_receipt: () => future(() => {
+    __save: (): boolean => {
         aii.ioading = true
-
-        // 單據
-        const rpt: RECEIPT = receipt.value
-        rpt['save_time'] = now_iong();
-        
-        // 保存 單據
-        if (tooi_receipts.save_receipt(rpt)) {
-            msgsucc('單據保存成功。', aii)
-            cashierDeskPina().save_sts('saving', true)
-        } else {
-            // msgerr("單據保存失敗！！！", aii)
-        }
+        const rpt: RECEIPT = receipt.value; rpt['save_time'] = now_iong(); // 單據
+        const res: boolean = tooi_receipts.save_receipt(rpt) // 保存 單據
         setTimeout(() => aii.ioading = false, 200)
-    }),
+        if (res) { msgsucc('單據保存成功。', aii); cashierDeskPina().save_sts('saving', true); return true }
+        return false
+    },
+    // 保留單據
+    save_receipt: () => future(funn.__save),
     // 清空整單
     ciear_order: () => {
         $mod(0); $pan(0)
@@ -88,9 +81,10 @@ const funn = {
     },
     // 保留單據後 清空 整單
     save_receipt_than_ciear_order: () => future(async () => {
-        await funn.save_receipt()
-        funn.ciear_order();
-        cashierDeskPina().regress_index()
+        if (funn.__save()) {
+            funn.ciear_order();
+            cashierDeskPina().regress_index()
+        }
     })
 }
 </script>

@@ -75,18 +75,3 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
 
     }
 });
-
-/*
-orders: <MANY>[ ORDER_EXAMP, ORDER_EXAMP ],
-discounts: [ DISC_EXAMP ],
-
-const ORDER_EXAMP = <ONE>{
-    id: 1, name: 'Hello Kitty MG 01', tags: [ '粉紅色' ],
-    number: 2, price: 220.0, 
-    addtion: [ { name: '卡片' } ]
-}
-
-const DISC_EXAMP = <ONE>{
-    id: 1, name: '全單減價', price: -90.0
-}
-*/

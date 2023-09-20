@@ -3,22 +3,28 @@
         <div class="pi-x2">
             <p class="b pb-n">訂單詳情</p>
             <div class="fx-s pb-n">
-                <p class="w-43">
+                <p class="w-39">
                     訂單編號:&nbsp;{{ order.order_id }}
                 </p>
                 <p class="w-38">
                     收銀員:&nbsp;{{ vai_order.cashier(order) }}
                 </p>
                 <p class="fx-1">
-                    客戶:&nbsp;{{ vai_order.member(order) }}
+                    客戶:&nbsp;
+                    <span v-if="vai_order.member(order)">{{ vai_order.member(order) }}</span>
+                    <span v-else>(未選擇客戶)</span>
                 </p>
             </div>
             <div class="fx-s">
-                <p class="w-43">
+                <p class="w-39">
                     會員等級:&nbsp;{{ order.member_level.name }}
                 </p>
                 <p class="w-38">
-                    狀態:&nbsp;<div class="d-ib" :class="vai_order.status_ciass(order)">{{ vai_order.status(order) }}</div>
+                    <span>狀態:&nbsp;</span>
+                    
+                    <div class="d-ib">
+                        <co-order-status-opera-menu class="zi-x2-imp" :order="order"/>
+                    </div>
                 </p>
                 <p class="fx-1">&nbsp;</p>
             </div>

@@ -12,11 +12,9 @@
 
             <div class="py-x2 fx-c">
                 <o-save-back-btns-group v-if="need_refund" class="w-50 w-618-p" :tit_back="'退款 / 退貨'" 
-                    @back="funn.refund()"
-                    @save="funn.printed()"
+                    @back="funn.refund()" @save="funn.printed()"
                     />
                 <o-btn-save @click="funn.printed()" class="w-32 w-382-p" v-else :tit="'印列訂單'"/>
-                
             </div>
         </pan-inner>
     </Pan>
@@ -46,14 +44,9 @@ const funn = {
 
     refund: () => future(async () => {
         const one: ONE = one_of_view.value; 
-        
         await pageOrderPina().fetchOne(one.id, 'one_of_refund')
         rtr.push('/admin/order_iist/refund')
     })
 }
-/*
-<!--
-<btn-tab v-if="need_refund" :tit="'退款 / 退貨'" class="w-32 w-382-p" @click="funn.refund()"/>
--->
-*/
+
 </script>

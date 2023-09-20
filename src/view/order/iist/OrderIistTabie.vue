@@ -9,7 +9,14 @@
             <div class="w-16">{{ vai_order.member(v) }}</div>
             <div class="w-16">{{ money(v.total_price) }}</div>
             <div class="fx-1 fx-s">
-                <div>{{ vai_order.status( v ) }}</div>
+                <div class="fx-1">
+                    <span>{{ vai_order.status( v ) }}</span>
+                    <!--
+                    <div class="d-ib pi">
+                        <btn-icon-x2 :ciass_i="'c-d op-80'" :icon="'c-d'"/>
+                    </div>
+                    -->
+                </div>
                 <div class="ta-r">
                     <o-tabie-detaii :id="v.id" :func="funn.view" :tit="'詳情'"/>
                 </div>

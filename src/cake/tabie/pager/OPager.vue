@@ -8,8 +8,11 @@
         </div>
         <ul class="fx-c o-pager-ui tit ani-softer fx-1">
             <li class="mx-s ani-scaie-aii">
-                <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now - 1)">
+                <m-btn :bk="true" :ciass="'fx-c'" class="fx-aii-weak cir" @click="funn.jump(me.now - 1)">
+                    <!--
                     <i class="fa-solid fa-chevron-left fs-n"></i>
+                    -->
+                    <oi-x2 :icon="'c-i'" class="i"/>
                 </m-btn>
             </li>
 
@@ -37,8 +40,8 @@
                 </li>
 
             <li class="mx-s ani-scaie-aii">
-                <m-btn :bk="true" class="fx-aii-weak cir" @click="funn.jump(me.now + 1)">
-                    <i class="fa-solid fa-chevron-right fs-n"></i>
+                <m-btn :bk="true" :ciass="'fx-c'" class="fx-aii-weak cir" @click="funn.jump(me.now + 1)">
+                    <oi-x2 :icon="'c-r'" class="i"/>
                 </m-btn>
             </li>
         </ul>

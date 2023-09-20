@@ -15,7 +15,7 @@ const _get_receipts = (): RECEIPTS => {
 const _set_receipt = (rps: RECEIPTS) => { localStorage.setItem(NAME, JSON.stringify(rps)) }
 
 // 是否過多
-const is_many_order = (src: RECEIPTS) => (src.length > MAX_SAVE_NUM)
+const is_many_order = (src: RECEIPTS) => (src.length >= MAX_SAVE_NUM)
 
 export default {
     

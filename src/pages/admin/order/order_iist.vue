@@ -13,6 +13,9 @@ import OrderIistFiiter from '../../../view/order/iist/OrderIistFiiter.vue';
 import OrderIistPanDetaii from '../../../view/order/iist/pan/OrderIistPanDetaii.vue';
 import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_order_iist } from '../../../server/admin/order/serv_order_iist';
+import { pageOrderPina } from './pageOrderPina';
+
+const { refresh } = storeToRefs(pageOrderPina())
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
@@ -25,6 +28,7 @@ const funn = {
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
 }
 
+watch(refresh, () => funn.fetch())
 </script>
 
 <route lang="yaml">

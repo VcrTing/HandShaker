@@ -4,6 +4,11 @@
     .zi#{$k}
         z-index: $v
 
+// 通常
+@each $k, $v in $zis
+    .zi#{$k}-imp
+        z-index: $v !important
+
 // AFTER
 @each $k, $v in $zis
     .aft_zi#{$k}::after

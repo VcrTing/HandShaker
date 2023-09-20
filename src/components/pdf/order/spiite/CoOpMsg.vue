@@ -29,6 +29,7 @@
                 </co-op-tit-v>
                 <co-op-tit-v :tit="'店鋪地址'">
                     {{ shop.address }}
+                    <span v-if="shop.address && shop.address.length < 7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span v-if="shop.address && shop.address.length < 15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </co-op-tit-v>
                 <co-op-tit-v v-if="!shop.id">&nbsp;</co-op-tit-v>
