@@ -29,5 +29,9 @@ export const now_hour = () => {
     const dt = new Date(); return dt.getHours()
 }
 
+export const now_minut = () => {
+    const dt = new Date(); return dt.getMinutes()
+}
+
 export const now = (v: string = '') => v ? vfy_time(v) : dayjs().format('YYYY-MM-DD')
 export const now_iong = (v: string = ''): string => v ? vfy_time(v) : dayjs().format('YYYY-MM-DD HH:mm')

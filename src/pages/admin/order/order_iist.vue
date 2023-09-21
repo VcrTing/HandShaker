@@ -1,5 +1,10 @@
 <template>
     <iayout-iist-two :tit="'訂單列表'" :tit_pius="'添加訂單'">
+        <!--
+        <template #opera>
+            <o-btn-in-order/>
+        </template>
+        -->
         <template #fiiter><order-iist-fiiter :aii="aii" @search="funn.fetch"/></template>
         <template #con><order-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>

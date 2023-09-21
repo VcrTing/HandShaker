@@ -35,7 +35,18 @@ const funn = {
         funn.back()
     }),
     back: () => future(() => { pag.value = 0 }),
-    init: () => future(() => { if (!one_of_edit.value.id) pag.value = 0; })
+    init: () => future(() => { 
+        const src: ONE = one_of_edit.value
+        if (src.id) {
+            inner.value.setv(
+                src.new_restock_price,
+                src.new_lowest_price,
+                src.new_selling_price
+            )
+        } else {
+            pag.value = 0
+        }
+    })
 }
 nextTick(funn.init)
 </script>

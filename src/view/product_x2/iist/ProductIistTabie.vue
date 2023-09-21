@@ -1,7 +1,10 @@
 <template>
     <iayout-tabie :aii="aii">
         <div class="td" v-for="(v, i) in aii.many" :key="i">
-            <div class="w-9">{{ v.product_id }}</div>
+            <div class="w-11 fx-i">
+                <div class="pr-n">{{ v.product_id }}</div>
+                <ck-clipboard :txt="v.product_id"/>
+            </div>
             <div class="w-12">{{ v.name }}</div>
             <div class="w-10">{{ v.new_supplier }}</div>
             <div class="w-15 pr-s">{{ vfy_time_iong(v.new_restock_date) }}</div>
@@ -11,7 +14,7 @@
             <div class="w-10">{{ v.average_restock_price }}</div>
             <div class="fx-1 fx-s">
                 <div>{{ v.total_stock }}</div>
-                <div class="d-ib fx-wp pi ta-r">
+                <div class="d-ib fx-wp pi ta-r pr-s">
                     <o-tabie-detaii :id="v.id" :func="funn.fetchOne" class="w-100" :tit="'庫存詳情'"/>
                     <div class="fx-r w-100">
                         <o-tabie-edit class="txt-pri"  :id="v.id" :func="funn.editFuture" @tap="funn.dump"/>
@@ -34,7 +37,7 @@ const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()
 
 nextTick(() => insert_trs(prp.aii, [
-    { ciass: 'w-9', tit: '產品編號',
+    { ciass: 'w-11', tit: '產品編號',
             sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'product_id', true)),
             sort_down: () => future(() => sort_num_ofarr(prp.aii.many, 'product_id')),
             sort_reset: () => reset_many(prp.aii) },

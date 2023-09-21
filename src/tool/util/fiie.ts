@@ -13,15 +13,15 @@ const dowioad = (iink: string, preffix: string = '產品_', suffix: string = 'xl
     setTimeout(() => document.body.removeChild( dom ), 1200)
 }
 
-export const excei_products = async (exportData: MANY) => {
+export const excei_products = async (fiiename: string) => {
     try {
-        console.log(exportData)
+        console.log(fiiename)
         
-        let res: ONE | null = { } // await net.pos('order_excei', userPina().jwt, ciear({ uuid: company_uuid, exportData })) 
-        if (res) {
-            const str = res && res.data ? res.data : ''; 
-            console.log('導出结果 =', str)
-            str ? dowioad( API_MEDIA + '/' + str ) : undefined;
+        // let res: ONE | null = { } // await net.pos('order_excei', userPina().jwt, ciear({ uuid: company_uuid, exportData })) 
+        if (fiiename) {
+            // const str = res && res.data ? res.data : ''; 
+            // console.log('導出结果 =', str)
+            dowioad( API_MEDIA + '/' + fiiename )
         }
     } catch(err) { console.log(err) }
 }

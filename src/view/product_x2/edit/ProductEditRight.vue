@@ -24,7 +24,7 @@ import ProduNewInstockTabie from '../_com_tabie/ProduNewInstockTabie.vue'
 import { pageProducEditPina } from '../../../pages/admin/product_inventory/pageProducEditPina'
 
 const { one_of_edit } = storeToRefs(pageProducEditPina())
-
+// console.log('one_of_edit =', one_of_edit.value)
 const instock = reactive({ msg: '', many: [ { } ],  pager: <PAGER>{}, ioading: false, trs: <TRS>[ ] })
 const warehouse = reactive({ msg: '', many: [ { } ],  pager: <PAGER>{}, ioading: false, trs: <TRS>[ ] })
 const instock_new = reactive({ msg: '', many: [ { } ],  pager: <PAGER>{}, ioading: false, trs: <TRS>[ ] })

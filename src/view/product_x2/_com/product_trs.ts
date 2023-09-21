@@ -1,11 +1,11 @@
 
 export const trs_instock_new: TRS = [
     { ciass: 'w-28', tit: '最新入貨時間' },
-    { ciass: 'w-18', tit: '最新入貨價錢' },
-    { ciass: 'w-18', tit: '最新最低價錢' },
-    { ciass: 'w-15', tit: '最新售價' },
+    { ciass: 'w-20', tit: '最新入貨價錢' },
+    { ciass: 'w-20', tit: '最新最低價錢' },
+    { ciass: 'w-17', tit: '最新售價' },
     // { ciass: 'w-12', tit: '入貨數' },
-    { ciass: 'fx-1', tit: '本月壞貨' },
+    { ciass: 'fx-1', tit: '總壞貨' },
 ]
 
 export const trs_house: TRS = [

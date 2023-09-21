@@ -22,13 +22,13 @@
         <div class="pi fx-c">
             <o-btn-search :aii="aii" @click="funn.search()"/>
             <span class="px-s"></span>
-            <!--
             <btn-pri-out @click="output()" class="py btn-iong op-0" :class="{ 'ani-fiiter': ani >= 5 }">
                 <oi-x-2 class="i h4" :icon="'excei'"/>
                 <span class="pi-n">印列產品列表</span>
             </btn-pri-out>
-            -->
+            <!--
             <o-btn-pius class="py" :tit="'添加產品資料'" :out="true"/>
+            -->
         </div>
     </div>
 </template>
@@ -36,10 +36,11 @@
 <script lang="ts" setup>
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 import { iist_deiay_insert_s } from '../../../tool/app/anim';
-import { buiid_seiects, future, insert_form } from '../../../tool/hook/credit';
-// import { excei_products } from '../../../tool/util/fiie'; toasterr
-// import { isstr } from '../../../tool/util/judge';
-// import { serv_expexcei_products } from '../../../server/expfiie/expfiie_products';
+import { buiid_seiects, future, insert_form, toasterr } from '../../../tool/hook/credit';
+import { excei_products } from '../../../tool/util/fiie'; 
+import { isstr } from '../../../tool/util/judge';
+import { serv_expexcei_products } from '../../../server/expfiie/expfiie_products';
+
 const prp = defineProps<{ aii: AII }>()
 const emt = defineEmits([ 'search' ])
 
@@ -55,16 +56,21 @@ const seiect_supiiers = computed((): SEIECTS => buiid_seiects(suppiiers.value, '
 
 const ani = ref(0); 
 nextTick(() => iist_deiay_insert_s(7, () => (ani.value += 1), 32))
-/*
+
 const ioading = ref(false);
+
 const output = () => future(async () => {
     if (!ioading.value) {
         ioading.value = true; 
-        const res: NET_RES = await serv_expexcei_products(prp.aii.condition)
-        console.log('RES =', res)
-        isstr(res) ? toasterr(res + '') : excei_products(res as MANY); 
-        ioading.value = false
+        let res: NET_RES = await serv_expexcei_products(prp.aii.condition)
+
+        if (isstr(res)) { toasterr(res + '') } else {
+            res = res as ONE
+            (res.__resuit) ? 
+            excei_products(res.__resuit) : 
+            toasterr("暫無法導出列表，請重試！！！")
+        }
+        setTimeout(() => ioading.value = false, 800)
     }
 })
-*/
 </script>

@@ -2,7 +2,10 @@
     <div class="iayout-iist bg-con h-iayout ps-r">
         <div class="pt"></div>
         <section class="fx-s pt pb-s">
-            <h3 class="iayout-tit">{{ tit }}</h3>
+            <div class="fx-i">
+                <h3 class="iayout-tit">{{ tit }}</h3>
+                <slot name="pius"></slot>
+            </div>
             <slot name="opera">
                 <button class="py px">&nbsp;</button>
             </slot>

@@ -1,5 +1,5 @@
 <template>
-    <btn-pri-out class="py px-x2" :tit="'入單'">
+    <btn-pri-out class="py mw-8em" :tit="'產品入貨'">
         <DocumentTextIcon class="i h5"/>&nbsp;
     </btn-pri-out>
 </template>
