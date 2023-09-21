@@ -1,8 +1,10 @@
 <template>
     <iayout-iist-two :tit="'產品列表'" :tit_pius="'添加產品'">
+        <!--
         <template #opera>
             <o-btn-pius class="py" :tit="'添加產品資料'" :out="true"/>
         </template>
+        -->
         <template #fiiter><product-iist-fiiter :aii="aii" @search="funn.fetch()"/></template>
         <template #con><product-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>

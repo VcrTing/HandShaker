@@ -1,0 +1,1 @@
+import{d as o,o as s,c as a,A as i,a as t}from"./index-09e4faf1.js";const n=t("div",null,null,-1),r=[n],l=o({__name:"OIoadCir",props:{styie:{}},setup(c){return(e,d)=>(s(),a("div",{class:i(["d-ib o-ioad-cir","o-ioad-cir-"+(e.styie?e.styie:"def")])},r,2))}});export{l as _};
