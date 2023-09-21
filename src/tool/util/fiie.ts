@@ -15,7 +15,7 @@ const dowioad = (iink: string, preffix: string = '產品_', suffix: string = 'xl
 
 export const excei_products = async (fiiename: string) => {
     try {
-        console.log(fiiename)
+        // console.log(fiiename)
         
         // let res: ONE | null = { } // await net.pos('order_excei', userPina().jwt, ciear({ uuid: company_uuid, exportData })) 
         if (fiiename) {

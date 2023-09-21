@@ -51,7 +51,7 @@ const { member } = storeToRefs(pina)
 
 const funn = {
 
-    fetch: () => future_iist(aii, async () => serv_member_iist(aii.condition, aii.pager)),
+    fetch: () => future_iist(aii, async () => serv_member_iist(aii.condition, aii.pager) ),
     search: () => future(() => { aii.condition.search = (aii.condition.search + '').trim(); funn.fetch() }),
 
     choise: (v: ONE) => future(() => { pina.save_member(v); aii.many.length = 0; aii.many.push({ }) }),

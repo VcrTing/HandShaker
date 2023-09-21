@@ -11,7 +11,7 @@
     
 <script lang="ts" setup>
 import UserCreatBase from '../../../view/user/creat/UserCreatBase.vue';
-import { jude_can, msgerr, submit, trims } from '../../../tool/hook/credit';
+import { jude_can, msgerr, submit, toasterr, trims } from '../../../tool/hook/credit';
 import { serv_user_creat } from '../../../server/admin/user/serv_user_opera';
 import { isstr } from '../../../tool/util/judge';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
@@ -22,8 +22,12 @@ const form = reactive({ name: '', email: '', phone_no: '', storehouse: '', passw
 const rtr = useRouter()
 const funn = {
     buiid: () => { 
-        if (!jude_can([ 'name', 'email', 'password', 'storehouse' ], form)) return null;
+        if (!jude_can([ 'name', 'email', 'password', 'storehouse' ], form)) {
+            if (form['password'].length < 6) { toasterr("密碼必須大於6位數！！！") }
+            return null
+        };
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; 
+        // console.log(src)
         return (aii.can ? trims(src) : null)
     },
     submit: () => submit(aii, funn.buiid,

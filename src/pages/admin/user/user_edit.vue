@@ -26,7 +26,10 @@ const form = reactive(<ONE>{ name: '', email: '', phone_no: '', storehouse: '', 
 
 const funn = {
     buiid: () => { 
-        if (!jude_can([ 'name', 'email', 'password', 'storehouse' ], form)) return null;
+        if (!jude_can([ 'name', 'email', 'storehouse' ], form)) {
+            // if (form['password'].length < 6) { toasterr("密碼必須大於6位數！！！") }
+            return null
+        };
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; 
         return (aii.can ? trims(src) : null)
     },

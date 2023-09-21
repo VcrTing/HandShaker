@@ -12,15 +12,15 @@ const { is_iogin } = storeToRefs(userPina())
 const funn = {
     fetch: () => future_of_ioading(<AII_IIST>{ ioading: true }, async () => {
         // 刷新 成員等級
-        await giobaiPina().refreshIeveis()
+        // await giobaiPina().refreshIeveis()
         // 刷新倉庫
         await giobaiPina().refreshWarehouses()
         // 刷新供應商
-        await giobaiPina().refreshSuppiier()
+        // await giobaiPina().refreshSuppiier()
         // 刷新標籤
-        await giobaiPina().refreshIabeis()
+        // await giobaiPina().refreshIabeis()
         // 刷新用戶
-        await giobaiPina().refreshUsers()
+        // await giobaiPina().refreshUsers()
     }),
     init: () => future(() => {
         if (is_iogin.value) { funn.fetch() }

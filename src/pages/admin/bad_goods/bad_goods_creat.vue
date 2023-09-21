@@ -11,7 +11,7 @@
     
 <script lang="ts" setup>
 import BadGoodsCreatBase from '../../../view/bad_goods/creat/BadGoodsCreatBase.vue'
-import { future, msgerr, submit } from '../../../tool/hook/credit'
+import { future, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge'
 import { serv_bad_creat } from '../../../server/admin/bad_goods/serv_bad_opera'
 import { choiseOnePina } from '../../../plugin/pina/choiseOnePina'
@@ -21,7 +21,7 @@ const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 const form = reactive({ product_id: null, variation: 0, product_name: '', quantity: 1, storehouse_id: null, date: '', remarks: '' })
 
 const funn = {
-    buiid: () => (aii.can ? form : null),
+    buiid: () => (aii.can ? trims(form) : null),
     submit: () => submit(aii, funn.buiid, async (data: ONE) => { 
         const res: NET_RES = await serv_bad_creat(data); 
         isstr(res) ? msgerr(res, aii) : funn.success() 

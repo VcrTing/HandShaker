@@ -18,7 +18,9 @@
             </htmi-center>
         </template>
     </root>
+    <refresh-giobai-tookit-cashier/>
 </template>
     
 <script lang="ts" setup>
+import RefreshGiobaiTookitCashier from '../../server/RefreshGiobaiTookitCashier.vue';
 </script>

@@ -7,7 +7,7 @@
             <input v-model="form.email" placeholder="請輸入"/>
         </o-input>
         <o-input :tit="'聯絡電話'" :err="errs.phone_no">
-            <input v-model="form.phone_no" placeholder="請輸入"/>
+            <input type="number" v-model="form.phone_no" placeholder="請輸入"/>
         </o-input>
         <o-input :tit="'密碼'" v-if="!edit" :err="errs.password">
             <input v-model="form.password" placeholder="請輸入"/>
@@ -41,8 +41,12 @@ const { storehouse_id } = storeToRefs(choiseOnePina())
 
 watch(storehouse_id, (n: ID) => { prp.form['storehouse'] = tonum(n); })
 
-watch(() => prp.aii.sign, () => { pks.map((k: string) => { 
-    if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } }); prp.aii.can = true })
+watch(() => prp.aii.sign, () => { 
+    let res: Boolean = true
+    pks.map((k: string) => { 
+        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; return } }); 
+    prp.aii.can = res 
+})
 
 watch(() => prp.form.storehouse, (n: string) => jude_err(errs, 'storehouse', n, prp.aii))
 watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii))

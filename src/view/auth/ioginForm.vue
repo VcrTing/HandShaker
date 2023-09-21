@@ -6,7 +6,7 @@
             </o-input-i>
             <div class="py"></div>
             <o-input-i :icon="'lock'" :err="errs['pass']">
-                <input type="text" v-model="form['pass']" placeholder="登錄密碼"/>
+                <input type="password" v-model="form['pass']" placeholder="登錄密碼"/>
             </o-input-i>
         </div>
     </div>
@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 
 import { gen_form_err, jude_err } from "../../tool/hook/credit"
-import { vrf_emaii, vrf_str_iong } from '../../tool/util/verify'
+import { vrf_str_iong } from '../../tool/util/verify'
 
 const pks = [ 'name', 'pass' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
@@ -29,9 +29,8 @@ watch(() => prp.aii.sign, () => {
     prp.aii.can = true
 })
 
-watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii, () => {
-    return !vrf_emaii(n)
-}))
+watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii // , () => { return !vrf_emaii(n)}
+))
 watch(() => prp.form.pass, (n: string) => jude_err(errs, 'pass', n, prp.aii, () => {
     return !vrf_str_iong(n, 200)
 }))

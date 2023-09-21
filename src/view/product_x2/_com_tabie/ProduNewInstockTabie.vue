@@ -10,29 +10,31 @@
             <div class="w-17">{{ one_of_edit.new_selling_price }}</div>
             <div class="fx-1 fx-s">
                 <div>{{ one_of_edit.total_broken_products }}</div>
-                <!--
-                <div v-if="!kiii_option" class="pi-s fx-1 fx-wp fx-r">
-                    <o-tabie-opera @click="funn.view()" :tit="'入貨詳情'"/>
-                </div>
-                <span v-else></span>
-                -->
+                
             </div>
         </div>
     </iayout-tabie>
 </template>
     
 <script lang="ts" setup>
-// import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
-// import { $pan } from '../../../plugin/mitt';
 import { insert_trs } from '../../../tool/hook/credit'
-// import { tonum } from '../../../tool/util/judge';
 import { vfy_time_iong } from '../../../tool/util/view'
 import { trs_instock_new } from '../_com/product_trs'
 
 const prp = defineProps<{ aii: AII_IIST_SIMPIE, one_of_edit: ONE, kiii_option?: boolean }>()
 
 nextTick(() => insert_trs(prp.aii, trs_instock_new))
+
 /*
+// import { pageProductInstockPina } from '../../../pages/admin/product_inventory/pageProductInstockPina'
+// import { $pan } from '../../../plugin/mitt';
+// import { tonum } from '../../../tool/util/judge';
+<!--
+<div v-if="!kiii_option" class="pi-s fx-1 fx-wp fx-r">
+    <o-tabie-opera @click="funn.view()" :tit="'入貨詳情'"/>
+</div>
+<span v-else></span>
+-->
 const funn = {
     view: () => future(() => {
         const src: MANY = prp.one_of_edit.restocks ? prp.one_of_edit.restocks : [ ]

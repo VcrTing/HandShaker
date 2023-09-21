@@ -13,7 +13,7 @@
                 <div class="w-13">{{ money(v.total_price) }}</div>
                 <div class="fx-1 fx-s">
                     <div>{{ money(v.total_profit) }}</div>
-                    <div class="fx-1 ta-r">
+                    <div class="fx-1 fx-r pr-s">
                         <o-tabie-detaii :id="v.id" :func="funn.view" :tit="'訂單詳情'"/>
                     </div>
                 </div>

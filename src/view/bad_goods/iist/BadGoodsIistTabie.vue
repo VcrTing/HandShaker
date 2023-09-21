@@ -9,7 +9,9 @@
                 <div class="w-9">{{ v.quantity }}</div>
                 <div class="w-12">{{ v.storehouse_name }}</div>
                 <div class="w-16">{{ v.date }}</div>
-                <div class="w-20">{{ v.remarks }}</div>
+                <div class="w-20">
+                    <p class="fix-rmks">{{ v.remarks }}</p>
+                </div>
                 <div class="fx-1 fx-r">
                     <o-tabie-trash @click="funn.trash(v)"/>
                 </div>

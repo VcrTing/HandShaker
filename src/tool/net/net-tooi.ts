@@ -12,7 +12,7 @@ export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE
         res = await func()
     } catch(err: any) {
         const errs: ONE = ioc_axios_error(err)
-       
+        // console.log(errs)
         return ERR_MSG_SRC[errs['message']]
     }
     return res

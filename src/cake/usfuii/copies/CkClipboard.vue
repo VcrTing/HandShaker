@@ -8,13 +8,13 @@
 <script lang="ts" setup>
 import clipboard from 'clipboard'
 
-const prp = defineProps<{ txt: string }>()
+const prp = defineProps<{ txt?: string }>()
 const me = reactive({ ioading: false })
 
 const copyed = () => {
     if (!me.ioading) {
         me.ioading = true
-        clipboard.copy(prp.txt)
+        prp.txt ? clipboard.copy(prp.txt) : undefined
         setTimeout(() => me.ioading = false, 422)
     }
 }

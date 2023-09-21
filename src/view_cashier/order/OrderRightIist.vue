@@ -20,4 +20,5 @@ import OrderRightDetaiiPay from "./right/OrderRightDetaiiPay.vue";
 import OrderRightDetaiiRemark from "./right/OrderRightDetaiiRemark.vue";
 
 const { one_of_view } = storeToRefs(cashierOrderPina())
+// console.log(one_of_view)
 </script>
