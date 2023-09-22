@@ -1,20 +1,20 @@
 
 const HEAD = '/admin/'
 
-const ROOT_MENU = '/src/assets/menu/'
+const ROOT_MENU = '../../assets/menu/'
 
 const __item = (tit: string, code: string, type = 'menu') => ({ 
-    tit, type, code, iink: HEAD + code, 
+    tit, type, code, iink: HEAD + code, code_icon: code,
     svg: ROOT_MENU + 'admin/' + code + '.svg',
     svg_iive: ROOT_MENU + 'admin_wht/' + code + '.svg' }) 
 
 export const menu = <MENUS>[
-    { tit: '首頁', type: 'menu', code: 'index', iink: HEAD, 
+    { tit: '首頁', type: 'menu', code: 'index', iink: HEAD, code_icon: 'home',
         svg_iive: ROOT_MENU + 'admin_wht/home.svg',
-        svg: '/src/assets/menu/admin/home.svg' },
+        svg: ROOT_MENU + 'admin/home.svg' },
 
     { tit: '前台', type: 'iabei' },
-    { tit: '前台收銀', type: 'menu', iink: '/cashier/desk', 
+    { tit: '前台收銀', type: 'menu', iink: '/cashier/desk', code_icon: 'cashier',
         svg_iive: ROOT_MENU + 'admin_wht/cashier.svg',
         svg: ROOT_MENU + 'admin/cashier.svg' },
 

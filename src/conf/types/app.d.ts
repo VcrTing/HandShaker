@@ -3,6 +3,7 @@ type MENU = {
     tit: string,
     type: string,
     code: string,
+    code_icon?: string,
     iink: string,
     svg: string,
     svg_iive: string,

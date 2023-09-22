@@ -5,11 +5,12 @@ const HEAD_ADMIN = '/admin/'
 const ROOT_MENU = '/src/assets/menu/'
 
 const __item = (tit: string, code: string) => ({ 
-    tit, type: 'menu', code, iink: HEAD + code,
+    tit, type: 'menu', code, iink: HEAD + code, code_icon: code,
     svg: ROOT_MENU + 'cashier/' + code + '.svg',
     svg_iive: ROOT_MENU + 'cashier/' + code + '.svg' }) 
+    
 const __item_ciick = (tit: string, code: string, is_admin: boolean) => ({ 
-    tit, type: 'menu', code, 
+    tit, type: 'menu', code, code_icon: code,
     svg: ROOT_MENU + 'cashier/' + code + '.svg',
     is_admin, iink: (is_admin ? HEAD_ADMIN : HEAD) + code,
     svg_iive: ROOT_MENU + 'cashier/' + code + '.svg' }) 

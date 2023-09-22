@@ -11,7 +11,10 @@
                     :style="{ 'background': v.coior }">
                     <m-btn :bk="true" class="px py mh-8em br">
                         <div class="fx-c py">
+                            <!--
                             <img class="w-41 ani-scaie-aii-x2" :src="v.img"/>
+                            -->
+                            <cu-index-icon class="w-41 ani-scaie-aii-x2" :code="v.code_icon"/>
                         </div>
                         <h4 class="ta-c pb-x2">{{ v.tit }}</h4>
                     </m-btn>
