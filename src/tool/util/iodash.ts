@@ -37,7 +37,7 @@ export const sort_date_ofarr = (src: MANY, sort_k: string, reverse: boolean = fa
 
 // 切換
 // names = { 'name_1': 'name_2 }
-export const change_name_ofarr = (src: MANY, names: ONE) => {
+export const change_name_ofarr = (src: MANY = [], names: ONE = { }) => {
     const res: MANY = [ ]
     src.map((e: ONE) => {
         const __e: ONE = { }
@@ -49,10 +49,10 @@ export const change_name_ofarr = (src: MANY, names: ONE) => {
 }
 
 // 默認值
-export const def_v_inarr = (src: MANY, name: string = 'v') => (src.length > 0) ? src[ 0 ][ name ] : null
+export const def_v_inarr = (src: MANY = [], name: string = 'v') => (src.length > 0) ? src[ 0 ][ name ] : null
 
 // 複製值
-export const copy_v_newarr = (src: MANY, res: MANY|IDS = [ ], name: string = 'id') => {
+export const copy_v_newarr = (src: MANY = [], res: MANY|IDS = [ ], name: string = 'id') => {
     if (src.length > 0) {
         res.length = 0; src.map((e: ONE) => { 
             (e[name]) ? res.push(e[name]) : undefined; })

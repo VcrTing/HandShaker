@@ -1,6 +1,6 @@
 <template>
     <div class="o-form">
-        <o-input :tit="'姓名'" :err="errs.name">
+        <o-input :tit="'等級名稱'" :err="errs.name">
             <input v-model="form.name" placeholder="請輸入"/>
         </o-input>
         <o-input :tit="'購買折扣'" :err="errs.discount">

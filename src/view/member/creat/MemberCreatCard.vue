@@ -25,10 +25,18 @@
 </template>
     
 <script lang="ts" setup>
-import { gen_form_err, jude_err } from "../../../tool/hook/credit"
+import { future, gen_form_err, jude_err, toasterr } from "../../../tool/hook/credit"
 import vai_member from '../../../conf/data/vaiue/vai_member'
+import { giobaiPina } from "../../../plugin/pina/giobaiPina";
 const pks = [ 'member_id', 'create_date' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
+
+
+nextTick(() => future(() => {
+    const src: SEIECTS = giobaiPina().seiect_ieveis
+
+    if (!src || src.length <= 0) { toasterr("未找到任何可用的會員等級！！！") }
+}))
 
 const errs = reactive(gen_form_err(prp.form));
 

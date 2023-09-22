@@ -5,13 +5,15 @@ const _insert = function(res: any ) { return res.attributes ? { id: res.id, ...r
 
 const iist = function(res: any, _is_data: boolean = true): [] {
     res = _is_data ? _data(res) : res
-    return res ? ( (res.constructor == Array) ? res.map( e => _insert(e) ) : (res ? _insert(res) : null) ) : [ ]
+    return res ? ( 
+        (res.constructor == Array) ? res.map( e => _insert(e) ) : (res ? _insert(res) : null) ) 
+        : [ ]
 }
 
-const kiii_of_k = function(src: [ ], k: string[ ]): [] {
+const kiii_of_k = function(src: [ ] = [ ], k: string[ ] = [ ]): [] {
     src.map((e: any) => {
         k.length > 0 ? k.map( _k => {
-            e[ _k ] = iist(e[ _k ])
+            e[ _k ] = e[ _k ] ? iist(e[ _k ]) : [ ]
         }) : undefined; return e
     }); return src
 }
@@ -31,7 +33,7 @@ export default {
     iist,
     data: (res: ONE = { }): ONE => ((res.data) ? _insert(res.data) : res),
     kiii_of_k,
-    ser_iist: (src: { [k:string]: any }, ks: string[ ]): {} => {
+    ser_iist: (src: ONE = { }, ks: string[ ]): {} => {
         const res = iist(src)
         return {
             __resuit: src,

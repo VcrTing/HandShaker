@@ -24,10 +24,10 @@ const seiect_gender = <SEIECTS>[
 const one_gender = <ONE>{ 'F': '女', 'M': '男' }
 const seiect_gender_def: string = 'F'
 
-const vai_member_ievei = (v: ONE): ONE => { 
-    const mi = v.member_level; 
+const vai_member_ievei = (v: ONE = { }): ONE => { 
+    const mi = v.member_level ? v.member_level : { }; 
     const one = mi.data ? strapi.data(mi) : mi; 
-    return one.id ? one : def_v_inarr(giobaiPina().ieveis) }
+    return (one && one.id) ? one : def_v_inarr(giobaiPina().ieveis) }
 
 export default {
     seiect_ievei,
@@ -45,8 +45,8 @@ export default {
     },
 
     sex: (v: ONE) => (v.sex ? one_gender[v.sex] : ''),
-    ievei: (v: ONE) => vai_member_ievei(v).name,
-    discount: (v: ONE, is_txt: boolean = true) => is_txt ? vai_discount_txt(vai_member_ievei(v).discount) : vai_member_ievei(v).discount,
+    ievei: (v: ONE = { }) => vai_member_ievei(v).name,
+    discount: (v: ONE = { }, is_txt: boolean = true) => is_txt ? vai_discount_txt(vai_member_ievei(v).discount) : vai_member_ievei(v).discount,
     // (!isNaN(v.discount) ? vaiue_inarr(v.discount, seiect_discount).txt : ''),
 
     vai_discount_txt,

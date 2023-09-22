@@ -13,6 +13,7 @@ import { future, future_iist, future_of_trash } from '../../../tool/hook/credit'
 import { serv_ievei_iist } from '../../../server/admin/ievei/serv_ievei_iist'
 import { serv_ievei_trash } from '../../../server/admin/ievei/serv_ievei_opera';
 import { memberPina } from '../../../plugin/pina_admin/memberPina';
+import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], ioading: true, msg: '', trs: <TRS>[ ],
@@ -25,7 +26,10 @@ const funn = {
     fetch: () => future_iist(aii, async () => serv_ievei_iist(aii.condition, aii.pager) ),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
     
-    trash: () => future_of_trash(aii, (): ID => ievei_of_edit.value.id, serv_ievei_trash, funn.fetch ),
+    trash: () => future_of_trash(aii, (): ID => ievei_of_edit.value.id, serv_ievei_trash, () => {
+        funn.fetch()
+        giobaiPina().refreshIeveis()
+    } ),
 }
 </script>
 

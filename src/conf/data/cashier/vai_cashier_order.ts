@@ -5,7 +5,7 @@ const order_products = (odr: ONE): MANY => { return odr.ordered_product ? odr.or
 
 const get_product_in_order_products = (op: ONE): ONE => {
     const src: ONE = op.product ? op.product : { }
-    return src.data ? strapi.data(src) : src
+    return src ? strapi.data(src) : src
 }
 
 // 拼接 備註

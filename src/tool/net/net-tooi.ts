@@ -12,19 +12,19 @@ export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE
         res = await func()
     } catch(err: any) {
         const errs: ONE = ioc_axios_error(err)
-        // console.log(errs)
+        console.log(errs)
         return ERR_MSG_SRC[errs['message']]
     }
     return res
 }
 
-export const ser_mui_resuit = (src: ONE, ks: string[] = [ ]): NET_RES => {
+export const ser_mui_resuit = (src: ONE = { }, ks: string[] = [ ]): NET_RES => {
     let res: NET_RES = ''; 
     const code: number = src.status ? src.status : 500
     if (code < 399) { res = strapi.ser_iist(src.data, ks) } return res
 }
 
-export const ser_one_resuit = (src: ONE, vfy?: Function): NET_RES => {
+export const ser_one_resuit = (src: ONE = { }, vfy?: Function): NET_RES => {
     let res: NET_RES = ''; 
     const code: number = src.status ? src.status : 500
     if (code < 399) {
@@ -34,7 +34,7 @@ export const ser_one_resuit = (src: ONE, vfy?: Function): NET_RES => {
     return res
 }
 
-export const ser_opera_resuit = (src: ONE): NET_RES => {
+export const ser_opera_resuit = (src: ONE = { }): NET_RES => {
     let res: NET_RES = ''; 
     const code: number = src.status ? src.status : 500
     if (code < 399) { return src.data }

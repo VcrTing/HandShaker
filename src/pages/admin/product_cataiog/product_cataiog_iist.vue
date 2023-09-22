@@ -31,7 +31,7 @@ import { serv_prod_dei_iabei } from '../../../server/admin/iabei/serv_iabei_with
 import { $mod, $pan } from '../../../plugin/mitt';
 
 const aii = reactive(<AII_IIST>{
-    many: [ ], ioading: true, msg: '', trs: <TRS>[], many_origin: [ ],
+    many: [ ], ioading: false, msg: '', trs: <TRS>[], many_origin: [ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, condition: { }, chooseAii: false, chooses: [ ]
 })
 

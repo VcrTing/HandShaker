@@ -35,8 +35,8 @@ const funn = {
     view: (v: ONE) => future(() => {
         let res: MANY = v.restock_distribute; res = res ? res : [ ]
         res.map((e: ONE) => {
-            if (e.variation.data) { e.variation = strapi.data(e.variation).id }
-            if (e.storehouse.data) { e.storehouse = strapi.data(e.storehouse).id; }
+            if (e.variation && e.variation.data) { e.variation = strapi.data(e.variation).id }
+            if (e.storehouse && e.storehouse.data) { e.storehouse = strapi.data(e.storehouse).id; }
             return e
         })
         pageProductInstockPina().save('inventory_and_variation_of_view', res)
