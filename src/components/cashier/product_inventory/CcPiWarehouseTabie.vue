@@ -36,26 +36,12 @@ defineEmits([ 'view', 'transtock' ])
 const prp = defineProps<{ aii: AII_IIST | AII_IIST_SIMPIE, one_of_edit: ONE }>()
 
 nextTick(() => insert_trs(prp.aii, trs_house))
-/*
-const me = reactive({
-    trs: <TRS>[
-        { tit: '樣式', ciass: 'w-20' },
-        { tit: '庫存數量', ciass: 'fx-1' }
-    ]
-})
-*/
+
 const funn = {
-    buiid_variation: (v: ONE): MANY => {
-        const res: MANY = (v.variation) ? v.variation : [ ]
-        return res
-    },
+    buiid_variation: (v: ONE): MANY => { const res: MANY = (v.variation) ? v.variation : [ ]; return res },
     one_quantity_totai: (v: ONE, res: number = 0) => {
         const vs: MANY = funn.buiid_variation(v)
-        vs.map((e: ONE) => {
-            res += (e.quantity ? e.quantity : 0)
-        })
-        return res
+        vs.map((e: ONE) => { res += (e.quantity ? e.quantity : 0) }); return res
     }
 }
-
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="product-pag-wrapper-two">
-        <div v-show="pag > 0" class="div-instock-con bg-con ani-softer pb">
+        <div v-if="pag > 0" class="div-instock-con bg-con ani-softer pb">
             <product-inv-in-stock-anywhere/>
         </div>
         <div v-show="pag == 0" class="div ani-softer">

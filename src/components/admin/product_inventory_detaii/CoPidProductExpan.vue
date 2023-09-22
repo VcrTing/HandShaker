@@ -5,7 +5,7 @@
                 <div>產品:&nbsp;&nbsp;{{ product.product_id }}</div>
                 <div class="fw-300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ product.name }}</div>
             </div>
-            <div class="w-50">
+            <div class="w-50 ani-softer" v-if="userPina().is_admin">
                 <div v-if="ioading" class="fx-r py-n">
                     <o-ioad-cir/>
                 </div>
@@ -17,6 +17,7 @@
     
 <script lang="ts" setup>
 import { pageProducEditPina } from "../../../pages/admin/product_inventory/pageProducEditPina"
+import { userPina } from "../../../plugin/pina/userPina"
 const prp = defineProps<{ product: ONE }>()
 const rtr = useRouter()
 

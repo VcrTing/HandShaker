@@ -1,5 +1,5 @@
 
-export const URI = 'https://strapi11.svr.up5d.com'
+export const URI = 'https://127.0.0.1:1337'// 'https://strapi11.svr.up5d.com'
 // 'https://strapi09.svr.up5d.com'
 
 export const API = URI + '/api'
