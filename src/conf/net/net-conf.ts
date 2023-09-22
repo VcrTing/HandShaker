@@ -1,7 +1,7 @@
 
-// export const URI = 'http://127.0.0.1:1337' // 
+export const URI = 'http://127.0.0.1:1337' // 
 
-export const URI = 'https://strapi11.svr.up5d.com'
+// export const URI = 'https://strapi11.svr.up5d.com'
 
 // 'https://strapi09.svr.up5d.com'
 
