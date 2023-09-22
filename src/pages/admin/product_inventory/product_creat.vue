@@ -38,7 +38,7 @@ const funn = {
         const id: ID = product.id
         if (id) {
 
-            toastsucc('產品添加成功，稍等跳轉至產品列表頁面.....');
+            toastsucc('產品添加成功。');
             const ien: number = variations.value.length
             if (ien > 0) {
                 for (let i= 0; i< ien; i ++) {

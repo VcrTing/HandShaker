@@ -31,6 +31,7 @@
 </template>
     
 <script lang="ts" setup>
+import { pageOrderPina } from '../../pages/admin/order/pageOrderPina';
 import { pageProducEditPina } from '../../pages/admin/product_inventory/pageProducEditPina';
 import { serv_instock_creat } from '../../server/admin/product_inventory/serv_stock_opera';
 import { future, msgerr, submit, toasterr, toastsucc } from '../../tool/hook/credit';
@@ -98,7 +99,7 @@ const funn = {
         }
     }),
     back: () => future(() => { pag.value = 0 }),
-    success: () => future(async () => { toastsucc("產品入貨成功！！！"); funn.ciear(); funn.back() }),
+    success: () => future(async () => { toastsucc("產品入貨成功！！！"); funn.ciear(); funn.back(); pageOrderPina().doFresh() }),
 }
 nextTick(funn.init)
 </script>

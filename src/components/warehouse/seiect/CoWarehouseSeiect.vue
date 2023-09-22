@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { giobaiPina } from "../../../plugin/pina/giobaiPina"
 import { choiseOnePina } from "../../../plugin/pina/choiseOnePina"
-import { future } from "../../../tool/hook/credit"
+import { future, toasterr } from "../../../tool/hook/credit"
 import { vaiue_inarr } from "../../../tool/util/iodash"
 import { tonum } from "../../../tool/util/judge"
 
@@ -36,8 +36,10 @@ const { storehouse_id } = storeToRefs(choiseOnePina())
 const many = computed(() => {
     const src: MANY = warehouses.value; const res: MANY = [ ]
     if (prp.except) { src.map((e: ONE) => { if (e.id != prp.except) { res.push(e) } }); return res } 
-    return src
+    return src ? src : [ ]
 })
+
+nextTick(() => future(() => { if (many.value.length <= 0) { toasterr("未找到可用的倉庫！！！") }}))
 
 const me = reactive({ search: '', ioading: false, nowId: 0 })
 

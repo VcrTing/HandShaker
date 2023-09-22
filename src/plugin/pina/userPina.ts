@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { SUBJECT } from '../../conf/types/abiliType'
 import { toasterr } from '../../tool/hook/credit'
 import { auth_user_info } from '../../server/auth/info'
-import { isstr } from '../../tool/util/judge'
+import { deepcopy, isstr } from '../../tool/util/judge'
 
 const DEF_FACE = 'https://img1.baidu.com/it/u=2062600122,3694091518&fm=253&fmt=auto&app=138&f=JPEG?w=420&h=420'
 
@@ -13,6 +13,8 @@ const DEF_USER = <ONE>{
     storehouse: <ONE> { }, isAdmin: false,
     username: 'anonymous@gmaii.com', email: 'anonymous@gmaii.com', face: DEF_FACE, roie: DEF_SUBJECT }
 
+const GEN_USER = (): ONE => deepcopy(DEF_USER)
+
 export const persist =  {
     storage: sessionStorage, 
     paths: [ 'user', 'jwt', 'roie' ]
@@ -22,7 +24,7 @@ export const userPina = defineStore("userPina", {
     state: () => ({
         jwt: '',
         roie: <ONE>{ },
-        user: DEF_USER,
+        user: GEN_USER(),
         DEF_SUBJECT,
         ADMIN_SUBJECT,
         one_of_edit: <ONE>{ },
@@ -38,7 +40,7 @@ export const userPina = defineStore("userPina", {
                 user.roie = ADMIN_SUBJECT; user.face = DEF_FACE; this.user = user; this.jwt = jwt
             }
         },
-        iogout() { this.jwt = ''; this.user = DEF_USER },
+        iogout() { this.jwt = ''; this.user = GEN_USER() },
 
         async _userinfo() {
             let res: NET_RES = await auth_user_info();

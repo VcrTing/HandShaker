@@ -38,7 +38,7 @@
 import vai_cashier_product from "../../../../conf/data/cashier/vai_cashier_product";
 import { $pan } from "../../../../plugin/mitt";
 import { userPina } from "../../../../plugin/pina/userPina";
-import { future, future_of_ioading, gen_form_err } from "../../../../tool/hook/credit"
+import { future, future_of_ioading, gen_form_err, toasterr } from "../../../../tool/hook/credit"
 import { money } from "../../../../tool/util/view";
 import { cashierDeskCartPina } from "../../../himm/cashierDeskCartPina"
 import { cashierDeskProductPina } from "../../../himm/cashierDeskProductPina"
@@ -48,6 +48,10 @@ const { one_of_shop } = storeToRefs(pina)
 const { mystore } = storeToRefs(userPina())
 
 const me = reactive({ ioading: false, msg: '' })
+
+nextTick(() => future(() => {
+    if (mystore.value == 0) { toasterr("該收銀員未綁定倉庫！！！") }
+}))
 
 const went_inventory = () => future(async () => {
     const num: ONE = one_of_shop.value as ONE; 

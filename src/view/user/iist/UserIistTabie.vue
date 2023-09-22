@@ -36,10 +36,10 @@ nextTick(() => insert_trs(prp.aii, [
 const funn = {
     edit: (v: ONE) => future(() => {
         const one: ONE = deepcopy(v);
-        const sto: ONE = one.storehouse;
-        if (sto && sto.id) { 
+        const sto: ONE = one.storehouse ? one.storehouse : { };
+        if (one && one.id) { 
             one.storehouse = sto.id 
-            userPina().save('one_of_edit', one); 
+            userPina().save('one_of_edit', one);
             rtr.push('/admin/user_iist/edit') 
         }
     }),

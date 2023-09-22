@@ -44,7 +44,7 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
         switch_r_page(v = 0) { if (this.stating) return; this.r_page = v },
 
         uniock_ieft() { this.ioading = false; this.checking = false },
-        regress_index() { this.stating = false; this.r_page = 0; this.uniock_ieft() },
+        regress_index() { this.stating = false; this.r_page = 0; this.r_tab = 0; this.uniock_ieft() },
 
         // 加入支付方式
         insert_payment(pm: ONE) {

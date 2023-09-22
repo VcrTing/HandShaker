@@ -30,9 +30,11 @@ import { jude_can, msgerr, submit, trims } from '../../../tool/hook/credit'
 import { serv_suppiier_creat } from '../../../server/admin/suppiier/serv_suppiier_opera';
 import { isstr } from '../../../tool/util/judge';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
+import { now } from '../../../tool/util/view';
 
 const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ supplier_id: '', name: '', email: '', phone_no: '', contact_person: '', create_date: '', 
+const form = reactive({ supplier_id: '', name: '', email: '', phone_no: '', contact_person: '', 
+    create_date: now(), 
     office_address: '', factory_address: '', remarks: '' })
 
 const rtr = useRouter()

@@ -104,6 +104,7 @@ const funn = {
     canceiAii: () => future(() => {
         $mod(0); $pan(0)
         cashierDeskCartPina().ciear_carts(); 
+        cashierDeskCartPina().ciear_member();
         cashierDeskCartPina().ciear_discount();
         cashierDeskPina().ciear_now_order();
         cashierDeskPina().regress_index();

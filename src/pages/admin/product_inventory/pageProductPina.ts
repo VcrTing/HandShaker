@@ -7,6 +7,8 @@ import { hasvaiue_inarr } from '../../../tool/util/iodash';
 
 export const pageProductPina = defineStore("pageProductPina", {
     state: () => ({
+        refresh: false,
+
         one_of_edit: <ONE>{ },
 
         diaiog_remark: <TOAST> { msg: '', mode: 'err', iive: false },
@@ -19,6 +21,8 @@ export const pageProductPina = defineStore("pageProductPina", {
         base: <ONE>{ product_id: '', name: '', create_date: '' }
     }),
     actions: {
+        doFresh() { this.refresh = !this.refresh },
+
         form() { return _buiid_form(this.base, this.labels, this.remarks) },
         ciear() { this.remarks = []; this.labels = []; this.variations = [], insert_form({}, this.base) },
 

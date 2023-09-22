@@ -28,6 +28,7 @@ import { serv_product_iist } from '../../../server/admin/product/serv_product_ii
 import ProductPagWrapperTwo from '../../../view/product_inventory/ProductPagWrapperTwo.vue';
 
 import { pageProducEditPina } from './pageProducEditPina';
+import { pageOrderPina } from '../order/pageOrderPina';
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
@@ -39,10 +40,11 @@ const aii = reactive(<AII_IIST>{
 const funn = {
     fetch: () => future_iist(aii, async () => serv_product_iist(aii.condition, aii.pager)),
     pager: (n: number, i: number) => future(() => { aii.pager.page = n; aii.pager.pageSize = i; funn.fetch() }),
-    instock: () => future(() => {
-        pageProducEditPina().switch_pag(1)
-    })
+    instock: () => future(() => { pageProducEditPina().switch_pag(1) })
 }
+
+const { refresh } = storeToRefs(pageOrderPina())
+watch(refresh, () => funn.fetch())
 </script>
 
 <route lang="yaml">
