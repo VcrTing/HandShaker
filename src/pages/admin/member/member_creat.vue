@@ -50,7 +50,7 @@ const funn = {
     },
     submit: () => submit(aii, funn.buiid,
         async (data: ONE) => { 
-            console.log('構建數據 =', data)
+            // console.log('構建數據 =', data)
             const res: NET_RES = await serv_member_creat(data);
             isstr(res) ? msgerr(res, aii) : funn.success()
         }),

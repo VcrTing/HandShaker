@@ -15,7 +15,7 @@
             </div>
             <div class="w-333">
                 <o-input :err="errs.supplier" :tit="'供應商'">
-                    <co-suppiier-seiect :form="form" :pk="'supplier'"/>
+                    <co-suppiier-seiect :pchd="'可以不選擇'" :form="form" :pk="'supplier'"/>
                 </o-input>
                 <!--
                 <o-input :err="errs.quantity" :tit="'入貨數量'">
@@ -43,7 +43,7 @@
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../../tool/hook/credit"
 import { vfy_hour } from "../../../../tool/util/view";
-const pks = [ 'restock_date', 'hour', 'supplier' ]
+const pks = [ 'restock_date', 'hour' ]
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
@@ -55,6 +55,6 @@ watch(() => prp.aii.sign, () => {
 
 watch(() => prp.form.restock_date, (n: string) => jude_err(errs, 'restock_date', n, prp.aii))
 watch(() => prp.form.hour, (n: string) => jude_err(errs, 'hour', n, prp.aii))
-watch(() => prp.form.supplier, (n: string) => jude_err(errs, 'supplier', n, prp.aii))
+// watch(() => prp.form.supplier, (n: string) => jude_err(errs, 'supplier', n, prp.aii))
 
 </script>

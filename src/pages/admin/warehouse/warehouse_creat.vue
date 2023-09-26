@@ -24,7 +24,7 @@ const form = reactive({ name: '', contact_person: '', phone_no: '', facebook: ''
 const rtr = useRouter()
 const funn = {
     buiid: () => {
-        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'facebook', 'address' ], form)) return null;
+        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'address' ], form)) return null;
         
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
             return aii.can ? trims(src) : null

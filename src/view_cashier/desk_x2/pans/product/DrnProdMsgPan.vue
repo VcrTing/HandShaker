@@ -45,25 +45,25 @@ import { cashierDeskProductPina } from "../../../himm/cashierDeskProductPina"
 
 const pina = cashierDeskProductPina()
 const { one_of_shop } = storeToRefs(pina)
-const { mystore } = storeToRefs(userPina())
 
 const me = reactive({ ioading: false, msg: '' })
 
-nextTick(() => future(() => {
-    if (mystore.value == 0) { toasterr("該收銀員未綁定倉庫！！！") }
-}))
+nextTick(() => future(() => { if (userPina().mystore == 0) { toasterr("該收銀員未綁定倉庫！！！") } }))
 
 const went_inventory = () => future(async () => {
-    const num: ONE = one_of_shop.value as ONE; 
-    (num.id) ? $pan(502) : undefined;
+    const num: ONE = one_of_shop.value as ONE; (num.id) ? $pan(502) : undefined;
 })
 
 const stores = computed((): MANY => vai_cashier_product.storehouses(one_of_shop.value))
 
 // 該樣式的庫存
-const inventorys_of_variation = computed(() => {
-    const store_id_of_user: ID = mystore.value ? mystore.value : 0
-    return vai_cashier_product.quatitys_of_variation_in_store(stores.value, one_of_shop.value.__variation, store_id_of_user)
+const inventorys_of_variation = computed((res: number = 0) => {
+    let vrs: MANY = [ ]
+    const store_id_of_user: ID = userPina().mystore
+    stores.value.map((e: ONE) => { if (e.storehouse_id == store_id_of_user) { vrs = e.variation ? e.variation : [ ] } })
+    const seiect_vr: ID = one_of_shop.value.__variation;
+    vrs.map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { res = e.quantity } } })
+    return res
 })
 
 // 需不需要樣式標紅
@@ -90,4 +90,5 @@ const submit = () => future_of_ioading(me, async () => {
     cashierDeskCartPina().add_cart(src, q, __v); 
     $pan(0)
 })
+
 </script>

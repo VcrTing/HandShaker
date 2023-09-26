@@ -5,7 +5,6 @@
 </template>
     
 <script lang="ts" setup>
-// import { cashierDeskCartPina } from '../himm/cashierDeskCartPina';
 import DeskIeftTabie from './ieft/DeskIeftTabie.vue';
 
 const aii = reactive(<AII_IIST>{

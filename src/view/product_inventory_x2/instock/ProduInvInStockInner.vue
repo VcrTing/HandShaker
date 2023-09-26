@@ -33,7 +33,7 @@ import PiisStyieInventoryTabie from './inventory/PiisStyieInventoryTabie.vue';
 
 const prp = defineProps<{ aii: ONE, kiii_vars?: boolean }>()
 
-const form = reactive({ restock_date: now(), hour: now_hour(), minus: now_minut(), supplier: '' })
+const form = reactive({ restock_date: now(), hour: now_hour(), minus: now_minut(), supplier: null })
 const form_price = reactive({ restock_price: '', lowest_price: '', selling_price: '' })
 
 const sii = reactive({ msg: '', many: <MANY>[ ], trashIdx: 0, pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ], ani: 0 })

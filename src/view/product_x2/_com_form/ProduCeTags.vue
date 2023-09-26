@@ -18,6 +18,7 @@
 </template>
     
 <script lang="ts" setup>
+import { giobaiPina } from "../../../plugin/pina/giobaiPina";
 import { iabeiPina } from "../../../plugin/pina/iabeiPina"
 import { future, toasterr } from "../../../tool/hook/credit"
 import { vaiue_inarr } from "../../../tool/util/iodash";
@@ -31,7 +32,7 @@ const funn = {
             const one: ONE = many.value[0]; 
             one.id ? prp.pina.pius_iabei(one.id) : undefined;
         } else { 
-            toasterr('沒有一個可用標籤，請先新增標籤。') }
+            toasterr('沒有一個可用標籤，請先新增標籤。'); giobaiPina().refreshIabeis() }
     }),
     init: () => future(() => { iabeiPina().refreshMany() }),
     trash: (i: number) => future(() => prp.pina.trash_iabei(i)),

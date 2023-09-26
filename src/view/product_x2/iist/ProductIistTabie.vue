@@ -7,7 +7,9 @@
             </div>
             <div class="w-13">{{ v.name }}</div>
             <div class="w-11">{{ v.new_supplier }}</div>
-            <div class="w-15 pr-s">{{ vfy_time_beauty(v.new_restock_date, true) }}</div>
+            <div class="w-15 pr-s">
+                <span v-if="v.new_restock_date">{{ vfy_time_beauty(v.new_restock_date, true) }}</span>
+            </div>
             <div class="w-10">{{ v.new_restock_price }}</div>
             <div class="w-10">{{ v.new_lowest_price }}</div>
             <div class="w-9">{{ v.new_selling_price }}</div>

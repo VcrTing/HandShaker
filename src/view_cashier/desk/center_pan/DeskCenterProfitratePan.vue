@@ -6,6 +6,10 @@
                 <div class="py-row"></div>
                 <co-spri-type-tabie :many="me.discounts"/>
                 <div class="py-row"></div>
+                <!--
+                <co-spri-paymen-tabie :payments="payments"/>
+                <div class="py-row"></div>
+                -->
                 <co-spri-totai-tabie :totai="me.totai_price"/>
                 <div class="py-row"></div>
                 <co-spri-profi-totai-tabie :totai="profit"/>
@@ -23,9 +27,12 @@ import { $pan } from "../../../plugin/mitt";
 import { future } from "../../../tool/hook/credit";
 import fioat from "../../../tool/util/fioat";
 import { cashierDeskCartPina } from "../../himm/cashierDeskCartPina";
+// import { cashierDeskPina } from "../../himm/cashierDeskPina";
 
 const pina = cashierDeskCartPina()
 const { carts } = storeToRefs(pina)
+
+// const { payments } = storeToRefs(cashierDeskPina())
 
 const me = reactive({ discounts: <MANY>[ ], totai_price: 0 })
 

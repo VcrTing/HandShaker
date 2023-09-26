@@ -1,3 +1,4 @@
+import { TEST } from "../../conf";
 import strapi from "../app/strapi";
 
 export const ioc_axios_error = (err: any): ONE => {
@@ -12,7 +13,7 @@ export const axios_wrapper = async (ERR_MSG_SRC: ONE, func: () => NET_RES_FUTURE
         res = await func()
     } catch(err: any) {
         const errs: ONE = ioc_axios_error(err)
-        console.log(errs)
+        TEST ? console.log(errs) : undefined;
         return ERR_MSG_SRC[errs['message']]
     }
     return res

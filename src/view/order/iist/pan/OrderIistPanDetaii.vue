@@ -7,6 +7,10 @@
 
             <co-order-detaii-prods-tabie :order="one_of_view"/>
             <div class="py-row"></div>
+
+            <co-spri-paymen-tabie v-if="one_of_view.payment_method" :payments="one_of_view.payment_method"/>
+            <div class="py-row" v-if="one_of_view.payment_method"></div>
+
             <co-order-detaii-price-totai-tabie :order="one_of_view"/>
             <div class="py-row"></div>
 

@@ -54,7 +54,7 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
             this.payments.map((e: ONE) => { if (e.id == pm.id) { has = true } })
             
             if (!has) { 
-                pm.price = 0; pm.name = pm.tit
+                pm.name = pm.tit
                 this.payments.push(deepcopy(pm)) }
         },
         // 去掉某支付方式

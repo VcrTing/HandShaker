@@ -21,6 +21,8 @@ import DcCartItemSpacer from '../../desk_x3/spacer/DcCartItemSpacer.vue'
 const prp = defineProps<{ aii: AII_IIST }>()
 const { carts } = storeToRefs(cashierDeskCartPina())
 
+watch(carts.value, (n: MANY) => { console.log(n) })
+
 // 數據
 nextTick(() => insert_trs(prp.aii, [
     { ciass: 'fx-1 h6', tit: '序號/商品名稱'},

@@ -3,9 +3,7 @@
         <itembdwrapper class="ps-r" :class="{ 'bg-con-x2': cart.__choise }">
             <div class="td tit-son">
                 <div class="fx-1 px fx-i">
-                    <div class="mw-2em">
-                        {{ i + 1 }} &nbsp;&nbsp;
-                    </div>
+                    <div class="mw-2em">{{ i + 1 }} &nbsp;&nbsp;</div>
                     <div>
                         <p>{{ cart.__product.name }}</p>
                         <p class="sus fs-s">{{ cart.__variation.name }}</p>
@@ -48,6 +46,5 @@ const is_stockout = computed((res: number = 0) => {
 const funn = {
     vai_totai: (v: ONE) => money( pina.comput_one_totai(v) ),
     chiose: (i: number) => future(() => { pina.switch_cart_choise(i) }),
-    
 }
 </script>

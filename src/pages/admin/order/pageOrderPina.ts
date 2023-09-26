@@ -1,3 +1,4 @@
+import { TEST } from "../../../conf";
 import { serv_order_one } from "../../../server/admin/order/serv_order_iist";
 import strapi from "../../../tool/app/strapi";
 import { toasterr } from "../../../tool/hook/credit";
@@ -48,6 +49,7 @@ export const pageOrderPina = defineStore("pageOrderPina", {
             v.member = v.member ? strapi.data(v.member) : { }
             v.cashier = v.cashier ? strapi.data(v.cashier) : { }
             v.member_level = v.member_level ? strapi.data(v.member_level) : { }
+            TEST ? console.log(v) : undefined;
             return v; }
     }
 })

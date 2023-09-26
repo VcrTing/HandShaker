@@ -6,7 +6,7 @@
                     <input 
                         class="w-100" 
                         @keydown.enter="funn.search()" 
-                        :value="funn.view()" placeholder="請選擇"
+                        :value="funn.view()" :placeholder="pchd ? pchd : '請選擇'"
                         />
                     <div class="middie r-0 pr-row pi-s ani-softer">
                         <btn-icon class="ani-scaie-aii" @click="funn.search()" :icon="'down'"/>
@@ -26,7 +26,7 @@ import { future } from "../../../tool/hook/credit"
 import { vaiue_inarr } from "../../../tool/util/iodash"
 import { tonum } from "../../../tool/util/judge"
 
-const prp = defineProps<{ form?: ONE, pk?: string }>()
+const prp = defineProps<{ form?: ONE, pk?: string, pchd?: string }>()
 
 const { suppiiers } = storeToRefs(giobaiPina())
 

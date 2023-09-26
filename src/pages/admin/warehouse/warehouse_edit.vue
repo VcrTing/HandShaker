@@ -25,7 +25,7 @@ const rtr = useRouter()
 const { one_of_edit } = storeToRefs(warehousePina())
 const funn = {
     buiid: () => {
-        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'facebook', 'address' ], form)) return null;
+        if (!jude_can([ 'name', 'contact_person', 'phone_no', 'address' ], form)) return null;
         
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + '';
             return aii.can ? trims(src) : null

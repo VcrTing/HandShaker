@@ -16,11 +16,11 @@
 </template>
     
 <script lang="ts" setup>
+import { ACCOUNTS } from '../../conf/net/net-conf';
 import { TEST } from '../../conf';
 import IOGO from '../../assets/menu/IOGO.png'
 import ioginForm from '../../view/auth/ioginForm.vue';
-import { future, msgerr, trims } from '../../tool/hook/credit'
-// import { ACCOUNTS } from '../../conf/net/net-conf'
+import { future, insert_form, msgerr, trims } from '../../tool/hook/credit'
 import { isstr } from '../../tool/util/judge';
 import { userLogin, deaiUserLogin } from '../../server/auth/iogin';
 import { userPina } from '../../plugin/pina/userPina';
@@ -42,8 +42,7 @@ const funn = {
     }),
     init: () => future(() => {
         if (TEST) {
-            // const _f: ONE = ACCOUNTS['admin']; 
-            // insert_form(_f, form)
+            insert_form(ACCOUNTS, form)
         } else {
             const n: string | null = localStorage.getItem('handshake_auth_name')
             if (n) { form.name = n }
