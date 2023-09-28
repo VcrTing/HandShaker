@@ -17,7 +17,8 @@
             </div>
             <div class="fx-s">
                 <p class="w-40">
-                    會員等級:&nbsp;{{ order.member_level.name }}
+                    會員等級:&nbsp;<span v-if="order.member_level.name">{{ order.member_level.name }}</span>
+                    <span v-else>(無)</span>
                 </p>
                 <p class="w-37">
                     <span>狀態:&nbsp;</span>

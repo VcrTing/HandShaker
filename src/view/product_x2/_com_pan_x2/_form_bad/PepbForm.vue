@@ -29,7 +29,8 @@ const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 
-watch(() => prp.aii.sign, (res: boolean = true) => {
+watch(() => prp.aii.sign, () => {
+    let res: boolean = true; prp.aii.can = false
     pks.map((k: string) => { 
         if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; res = false; } })
     prp.aii.can = res

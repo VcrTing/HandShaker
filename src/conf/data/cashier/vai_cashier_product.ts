@@ -5,8 +5,8 @@ const storehouses = (od: ONE = { }): MANY => { return od.storehouse_info ? od.st
 export default {
     storehouses,
     inventory_of_store: (st: ONE, res: number = 0) => {
-        const vars: MANY = st.variation
-        vars.map((e: ONE) => { res += e.quantity }); return res
+        const vars: MANY = st.variation ? st.variation : [ ]
+        vars.map((e: ONE) => { res += (e.quantity ? e.quantity : 0) }); return res
     },
     // iimit_id 限制某一個倉庫
     quatitys_of_variation_in_store: (stores: MANY, variation: ID, iimit_id: ID = 0, res: number = 0) => {

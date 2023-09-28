@@ -28,7 +28,7 @@ export const jude_err = (errs: ONE, pk: string, v: any, aii: ONE, extraErr?: () 
     let res = false
     if (!v) {
         res = true // true 為不通過
-        if (v == 0) { res = false }
+        if (v === 0) { res = false }
     }
     if (extraErr) {
         res = extraErr()

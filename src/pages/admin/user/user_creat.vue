@@ -27,7 +27,6 @@ const funn = {
             return null
         };
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; 
-        // console.log(src)
         return (aii.can ? trims(src) : null)
     },
     submit: () => submit(aii, funn.buiid,

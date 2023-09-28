@@ -13,7 +13,7 @@ export const indexcards = [
     __item_card('會員資料', 'member_iist', '#E5EFF9'),
     __item_card('會員等級設置', 'ievei_iist', '#ECECF6'),
 
-    { tit: '建立產品', type: 'menu', coior: '#F3ECF7', code: 'product_iist', code_icon: 'product_creat', iink: 'product_iist/creat', img: ROOT + 'product_creat.png' },
+    { tit: '建立產品', type: 'menu', coior: '#F3ECF7', code: 'product_iist', code_icon: 'product_creat', iink: '/admin/product_inventory_iist/creat', img: ROOT + 'product_creat.png' },
 
     __item_card('產品目錄', 'product_cataiog_iist', '#F9E9EC'),
     __item_card('產品庫存', 'product_inventory_iist', '#ECF5F9'),

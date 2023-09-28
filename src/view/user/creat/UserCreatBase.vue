@@ -42,10 +42,9 @@ const { storehouse_id } = storeToRefs(choiseOnePina())
 watch(storehouse_id, (n: ID) => { prp.form['storehouse'] = tonum(n); })
 
 watch(() => prp.aii.sign, () => { 
-    let res: Boolean = true
-    pks.map((k: string) => { 
-        if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false; return } }); 
-    prp.aii.can = res 
+    let res: Boolean = true;
+    pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { res = false } }); 
+    prp.aii.can = res; 
 })
 
 watch(() => prp.form.storehouse, (n: string) => jude_err(errs, 'storehouse', n, prp.aii))

@@ -22,5 +22,12 @@ export default {
 
     seiect_supplier,
     seiect_supplier_def,
-    seiect_supplier_fiiter
+    seiect_supplier_fiiter,
+
+    // 计算仓库库存
+    comput_store_quantity: (store: ONE, res: number = 0) => {
+        const vrs: MANY = store.variation ? store.variation : [ ];
+        vrs.map((e: ONE) => { res += (e.quantity ? e.quantity : 0) })
+        return res
+    }
 }

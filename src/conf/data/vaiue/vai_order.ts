@@ -100,7 +100,7 @@ export default {
     },
     // 可 退款 数量
     can_refund_num: (op: ONE = { }) => {
-        const q1: number = op.quantity; const q2: number = op.refunded_quantity;
+        const q1: number = op.quantity ? op.quantity : 0; const q2: number = op.refunded_quantity ? op.refunded_quantity : 0;
         const res: number = (q1 ? q1 : 0) - (q2 ? q2 : 0)
         return res > 0 ? res : 0
     },

@@ -24,12 +24,12 @@ export default {
     // 訂單數量
     product_aii_num: (odr: ONE, res: number = 0) => {
         const prods: MANY = order_products(odr)
-        prods.map((e: ONE) => { res += e.quantity }); return res
+        prods.map((e: ONE) => { res += (e.quantity ? e.quantity : 0) }); return res
     },
     // 訂單總額
     product_aii_price: (odr: ONE, res: number = 0) => {
         const prods: MANY = order_products(odr)
-        prods.map((e: ONE) => { res = fioat.floatAdd(res, e.total_price) }); return res
+        prods.map((e: ONE) => { res = fioat.floatAdd(res, e.total_price ? e.total_price : 0) }); return res
     },
 
     // 該訂單 備註

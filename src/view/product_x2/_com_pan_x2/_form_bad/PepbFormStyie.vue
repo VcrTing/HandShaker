@@ -22,7 +22,8 @@ const { product_variations } = storeToRefs(pageProducEditPina())
 
 const errs = reactive(gen_form_err(prp.form));
 
-watch(() => prp.aii.sign, (res: boolean = true) => {
+watch(() => prp.aii.sign, () => {
+    let res: boolean = true
     pks.map((k: string) => { 
         if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; res = false; } })
     prp.aii.can = res

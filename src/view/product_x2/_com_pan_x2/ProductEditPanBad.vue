@@ -25,7 +25,7 @@ import PepbFormStyie from './_form_bad/PepbFormStyie.vue'
 const { one_of_edit } = storeToRefs(pageProducEditPina())
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0  })
-const form = reactive({ quantity: 0, storehouse_id: null, date: '', remarks: '', variation: '', product_id: '' })
+const form = reactive({ quantity: 0, storehouse_id: 0, date: '', remarks: '', variation: '', product_id: '' })
 
 const funn = {
     buiid: () => {

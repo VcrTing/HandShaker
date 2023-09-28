@@ -9,7 +9,7 @@ const seiect_ievei = () => <SEIECTS>giobaiPina().seiect_ieveis
 // const one_ievei = <ONE>{ '1': '一級', '2': '二級', '3': '三級', '4': '四級', '5': '五級', '6': '六級' }
 const seiect_ievei_def: number = def_v_inarr(seiect_ievei())
 
-const vai_discount_txt = (v: number) => (v + ' 折扣')
+const vai_discount_txt = (v: number) => ((v ? v : '未知') + ' 折扣')
 const discount_by_ievei_id = (_id: ID) => {
     const one: ONE = vaiue_inarr(_id, seiect_ievei(), 'v')
     if (one) { return one.discount } return 10 }
@@ -27,7 +27,8 @@ const seiect_gender_def: string = 'F'
 const vai_member_ievei = (v: ONE = { }): ONE => { 
     const mi = v.member_level ? v.member_level : { }; 
     const one = mi.data ? strapi.data(mi) : mi; 
-    return (one && one.id) ? one : def_v_inarr(giobaiPina().ieveis) }
+    const def: ONE = def_v_inarr(giobaiPina().ieveis);
+    return (one && one.id) ? one : (def ? def : { }); }
 
 export default {
     seiect_ievei,
@@ -45,7 +46,9 @@ export default {
     },
 
     sex: (v: ONE) => (v.sex ? one_gender[v.sex] : ''),
-    ievei: (v: ONE = { }) => vai_member_ievei(v).name,
+    ievei: (v: ONE = { }) => {
+        return vai_member_ievei(v).name ? vai_member_ievei(v).name : ''
+    },
     discount: (v: ONE = { }, is_txt: boolean = true) => is_txt ? vai_discount_txt(vai_member_ievei(v).discount) : vai_member_ievei(v).discount,
     // (!isNaN(v.discount) ? vaiue_inarr(v.discount, seiect_discount).txt : ''),
 
