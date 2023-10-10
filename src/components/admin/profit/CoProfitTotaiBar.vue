@@ -31,27 +31,44 @@ const prp = defineProps<{ totai: number, condition: ONE }>()
 
 const star_y = computed(() => {
     if (funn.is_empty()) return '(全部年份)';
-    return dayjs( funn.is_period() ? funn.period_to_time() : __date() ).format('YYYY')
+    return dayjs( funn.is_period() ? funn.period_to_time() : __star() ).format('YYYY')
 })
-const end_y = computed(() => dayjs().format('YYYY') )
-
 const star_day = computed(() => {
     if (funn.is_empty()) return '*';
-    return dayjs( funn.is_period() ? funn.period_to_time() : __date() ).format('MM-DD')
+    return dayjs( funn.is_period() ? funn.period_to_time() : __star() ).format('MM-DD')
 })
-const end_day = computed(() => dayjs().format('MM-DD'))
 
-const __date = () => prp.condition.date
+const end_y = computed(() => {
+    return dayjs( funn.is_period() ? (new Date()) : __end() ).format('YYYY')
+})
+const end_day = computed(() => {
+    return dayjs( funn.is_period() ? (new Date()) : __end() ).format('MM-DD')
+})
+
+// const __date = () => prp.condition.date
+const __star = () => prp.condition.startDate
+const __end = () => prp.condition.endDate
 const __period = () => prp.condition.time_period
 
 const funn = {
-    is_date: () => (__date()) ? true : false,
-    is_period: () => (__date()) ? false : true,
+    is_date: () => {
+        if (__period()) return false;
+        return (__star() && __end()) ? true : false
+    },
+    is_period: () => {
+        if (__period()) return true;
+        return (__star() && __end()) ? false : true
+    },
     period_to_time: (): string => {
         const tp: ID = __period(); const nn: number = tp ? tonum(tp) : 0
         return  vfy_time( nn > 0 ? dayjs().subtract(nn, 'day') : dayjs() )
     },
-    is_empty: (res: boolean = true) => { if (__date()) res = false; if (__period()) res = false; return res; },
+    is_empty: (res: boolean = true) => { 
+        // if (__date()) res = false; 
+        if (__star()) res = false;
+        if (__period()) res = false; 
+        return res; 
+    },
 }
 </script>
 

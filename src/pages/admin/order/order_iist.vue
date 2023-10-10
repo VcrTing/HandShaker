@@ -26,7 +26,9 @@ const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],
     ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
-    condition: <ONE>{ time_period: '', date: '', status: '', search: '', member: '', order_id: '' },
+    condition: <ONE>{ time_period: '', status: '', search: '', member: '', order_id: '',
+        'startDate': '', 'endDate': ''  , 'date': ''
+    },
 })
 const funn = {
     fetch: () => future_iist(aii, async () => serv_order_iist(aii.condition, aii.pager)),

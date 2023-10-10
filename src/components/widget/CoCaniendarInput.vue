@@ -45,6 +45,7 @@ const funn = {
 watch(() => aii.time_1, () => { funn.resp(); emt('change', aii.time_1, aii.time_2) })
 watch(() => aii.time_2, () => { funn.resp(); emt('change', aii.time_2, aii.time_2) })
 
+defineExpose(funn)
 /*
     <!--
     <div></div>
