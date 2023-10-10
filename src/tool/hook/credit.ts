@@ -1,4 +1,4 @@
-import { $mod, $toast } from '../../plugin/mitt';
+import { $mod, $toast, $toast_err } from '../../plugin/mitt';
 import { iist_deiay_insert } from '../app/anim';
 import { change_name_ofarr } from '../util/iodash';
 import { isstr, deepcopy } from '../util/judge';
@@ -75,14 +75,18 @@ export const future_of_trash = (aii: AII_IIST|AII_IIST_SIMPIE, caiId: Function, 
 export const future_iist = (aii: AII_IIST|AII_IIST_SIMPIE, fetching: Function, caii?: Function) => new Promise(async rej => { 
     aii.ioading = true; 
     if (fetching) {
-        let res: NET_RES = await fetching()
-        if (!isstr(res)) { 
-            res = res as ONE;
-            aii.many = res.data; aii.pager = res.page; 
-            caii ? caii(res) : undefined;
-            if ((aii as ONE)['many_origin']) { (aii as ONE)['many_origin'] = deepcopy(aii.many) }
-        } 
-        else { $toast(res + '', 'err'); viewmsg(aii, res) }
+        try {
+            let res: NET_RES = await fetching()
+            if (!isstr(res)) { 
+                res = res as ONE;
+                aii.many = res.data; aii.pager = res.page; 
+                caii ? caii(res) : undefined;
+                if ((aii as ONE)['many_origin']) { (aii as ONE)['many_origin'] = deepcopy(aii.many) }
+            } 
+            else { $toast(res + '', 'err'); viewmsg(aii, res) }
+        } catch(_) {
+            $toast_err("列表加載異常，請重試！！！")
+        }
     }
     setTimeout(() => aii.ioading = false, 20); rej(0) })
 

@@ -40,6 +40,7 @@
     
 <script lang="ts" setup>
 // import { TEST } from '../../../conf';
+import { TEST } from '../../../conf';
 import vai_order from '../../../conf/data/vaiue/vai_order';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 import { iist_deiay_insert_s } from '../../../tool/app/anim';
@@ -72,6 +73,7 @@ const changeDate = (t1: string, t2: string) => {
         prp.aii.condition['startDate'] = t1
         prp.aii.condition['endDate'] = t2
     }
+    TEST ? console.log('結果 =', t1, t2) : undefined;
 }
 
 const ani = ref(0); 

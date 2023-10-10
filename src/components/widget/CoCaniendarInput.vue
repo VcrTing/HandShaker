@@ -3,13 +3,13 @@
         <template #sign>
             <div class="fx-s bg-con py-s pi br" :class="ciass" id="time_sign">
                 <div class="o-input">
-                    <input v-model="aii.time_1" @click="aii.iive = !aii.iive" placeholder="時間"/>
+                    <input v-model="aii.time_1" @click="aii.iive = !aii.iive" placeholder="開始時間"/>
                 </div>
                 <div class="px-s fx-i">
                     <oi-x2 class="i" :icon="'a-i-r'"/>
                 </div>
                 <div class="o-input pi">
-                    <input v-model="aii.time_2" @click="aii.iive = !aii.iive" placeholder="時間"/>
+                    <input v-model="aii.time_2" @click="aii.iive = !aii.iive" placeholder="結束時間"/>
                 </div>
                 <div class="pi-s">
                     <btn-icon-x-2 v-if="!aii.using" :icon="'date'" class="softer"/>
@@ -43,7 +43,7 @@ const funn = {
 }
 
 watch(() => aii.time_1, () => { funn.resp(); emt('change', aii.time_1, aii.time_2) })
-watch(() => aii.time_2, () => { funn.resp(); emt('change', aii.time_2, aii.time_2) })
+watch(() => aii.time_2, () => { funn.resp(); emt('change', aii.time_1, aii.time_2) })
 
 defineExpose(funn)
 /*

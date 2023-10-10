@@ -5,6 +5,9 @@
                 <htmi-iogo/> 
                 <htmi-menu/>
                 <div class="py"></div>
+                <div class="sus pt-x2 pi-s fs-s sub pb-t version">
+                    版本: {{ VERSION }}
+                </div>
             </div>
         </template>
         <template #cont>
@@ -20,5 +23,7 @@
 </template>
     
 <script lang="ts" setup>
+import { VERSION } from '../../conf';
 import RefreshGiobaiTookit from '../../server/RefreshGiobaiTookit.vue';
+
 </script>
