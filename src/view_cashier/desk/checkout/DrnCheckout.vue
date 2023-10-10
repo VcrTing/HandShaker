@@ -69,6 +69,8 @@ const funn = {
             // 下單成功 ！！！
             cashierDeskPina().success_order(res as ONE)
             funn.status(false)
+            // 刷新產品。
+            cashierDeskProductPina().refreshProducts()
         }
         cashierDeskProductPina().dorefresh()
     },

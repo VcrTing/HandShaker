@@ -21,7 +21,12 @@
                     :bk="true" 
                     class="px py hand bg-card br w-100 fx-shd-pri paymentcard-iive fx-shd-pri"
                 >   
-                    <div class="fx-c mh-3em mxh-3em"><img :src="v.img" class=""/></div>
+                    <div class="fx-c mh-3em mxh-3em">
+                        <!--
+                        <img :src="v.img" class=""/>
+                        -->
+                        <cu-payment-img :code="v.code_icon"/>
+                    </div>
                     <p class="ta-c pt fs-s">{{ v.tit }}</p>
                 </m-btn>
                 <m-btn
@@ -30,7 +35,12 @@
                     @click="funn.insrt_payment(v)"
                     class="px py hand bg-card br w-100 fx-shd-tab"
                 >   
-                    <div class="fx-c mh-3em mxh-3em"><img :src="v.img" class=""/></div>
+                    <div class="fx-c mh-3em mxh-3em">
+                        <!--
+                        <img :src="v.img" class=""/>
+                        -->
+                        <cu-payment-img :code="v.code_icon"/>
+                    </div>
                     <p class="ta-c pt fs-s">{{ v.tit }}</p>
                 </m-btn>
             </div>

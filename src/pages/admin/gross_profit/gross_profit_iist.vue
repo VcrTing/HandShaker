@@ -27,14 +27,18 @@ const me = reactive({ showbar: true, total_profit: 0 })
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ], ioading: true, msg: '', trs: <TRS>[ ],
     pager: <PAGER>{ page: 1, pageCount: 1, pageSize: 25, total: 1}, 
-    condition: <ONE>{ 'time_period': '', 'status': '', 'cashier': '', 'date': '', 'order_id': '' },
+    condition: <ONE>{ 
+        'time_period': '', 'status': '', 'cashier': '', 'order_id': '',
+        'startDate': '', 'endDate': ''  , 'date': ''
+    },
 })
 
 const funn = {
     fetch: () => future_iist(aii, async () => serv_profit_iist(aii.condition, aii.pager), (res: ONE) => {
         res.data = res.data ? res.data.map((e: ONE) => {
             e.member = strapi.data(e.member)
-            e.cashier = strapi.data(e.cashier); return e 
+            e.cashier = strapi.data(e.cashier); 
+            return e 
         }) : [ ]; 
         me.total_profit = res.__resuit.total_profit
     }),

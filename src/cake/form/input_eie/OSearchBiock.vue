@@ -17,7 +17,6 @@
 </template>
     
 <script lang="ts" setup>
-// import { reactive } from 'vue'
 defineProps<{ form: ONE, pk: string, tit?: string }>()
 defineEmits([ 'resuit' ])
 </script>

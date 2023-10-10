@@ -26,9 +26,11 @@ const emt = defineEmits([ 'resuit' ])
 const prp = defineProps<{ form: ONE, pk: string, pchd?: string }>()
 
 const funn = {
+    ciear: () => (me.t = ''),
+
     v: () => prp.form[prp.pk],
     vai: (n: any) => mom(n).format('YYYY-MM-DD'),
-    setv: (n: string) => { if (prp.form) { prp.form[prp.pk] = n } }
+    setv: (n: string) => { if (prp.form) { prp.form[prp.pk] = n } },
 }
 
 watch(() => me.t, (n: string) => {
@@ -44,4 +46,6 @@ watch(funn.v, (n: string) => {
         if (res != me.t) { me.t = res }
     }
 })
+
+defineExpose(funn)
 </script>

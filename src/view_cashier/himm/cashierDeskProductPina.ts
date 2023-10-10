@@ -38,9 +38,11 @@ export const cashierDeskProductPina = defineStore("cashierDeskProductPina", {
         },
 
         async refreshProducts() { 
+            // console.log('刷新產品 condition =', this.condition)
             let res: NET_RES = await serv_product_iist_cashier(this.condition, this.pager)
             if (!isstr(res)) {
                 res = res as ONE
+                // console.log('刷新產品 res =', res)
                 this.products = res.data ? res.data.map((e: ONE) => this.vfy_products(e)) : [ ]; 
                 return true
             } return false
@@ -48,8 +50,8 @@ export const cashierDeskProductPina = defineStore("cashierDeskProductPina", {
         async refreshIabeis() {
             let res: NET_RES = await serv_iabei_iist_cashier({ }, { pageSize: 100, page: 1 } as PAGER)
             if (!isstr(res)) { res = res as ONE; const src: MANY = res.data ? res.data : [ ]
-                if (src.length > 0) {  this.iabeis = src }
-            }
+                if (src.length > 0) {  this.iabeis = src; return true }
+            } return false
         },
 
         save(k: string, v: any = <ONE>{ }) { (this as ONE)[k] = v; },
@@ -59,7 +61,7 @@ export const cashierDeskProductPina = defineStore("cashierDeskProductPina", {
         saveCondition(k: string, v: any) { this.condition[k] = v },
 
         variations(prod: ONE) {
-            const src: ONE = prod.variations ? prod.variations : { }
+            const src: ONE = prod.variations ? prod.variations : { };
             return src.data ?  strapi.iist(src) : [ ]
         },
     }

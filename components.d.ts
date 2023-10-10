@@ -94,6 +94,7 @@ declare module 'vue' {
     CuMenuAdmin: typeof import('./src/cake/usfuii/icons/CuMenuAdmin.vue')['default']
     CuMenuAdminWht: typeof import('./src/cake/usfuii/icons/CuMenuAdminWht.vue')['default']
     CuMenuCashier: typeof import('./src/cake/usfuii/icons/CuMenuCashier.vue')['default']
+    CuPaymentImg: typeof import('./src/cake/usfuii/icons/CuPaymentImg.vue')['default']
     Diaiog: typeof import('./src/ui/instrument/diog/diaiog.vue')['default']
     Dropdown: typeof import('./src/ui/instrument/dropdown/Dropdown.vue')['default']
     DropdownWrapper: typeof import('./src/ui/instrument/dropdown/DropdownWrapper.vue')['default']

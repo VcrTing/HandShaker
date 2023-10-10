@@ -52,7 +52,9 @@ const { member } = storeToRefs(pina)
 const funn = {
 
     fetch: () => future_iist(aii, async () => serv_member_iist(aii.condition, aii.pager) ),
-    search: () => future(() => { aii.condition.search = (aii.condition.search + '').trim(); funn.fetch() }),
+    search: () => future(() => { aii.condition.search = (aii.condition.search + '').trim(); 
+        if (aii.condition.search === '') { aii.many.length = 0 } else { funn.fetch() }
+    }),
 
     choise: (v: ONE) => future(() => { pina.save_member(v); aii.many.length = 0; aii.many.push({ }) }),
     reset: () => future(() => { pina.save_member({ }); aii.many.length = 0 }),

@@ -14,7 +14,7 @@
                     :many="vai_order.seiect_status_fiiter"/>
             </div>
             <div class="w-24 op-0" :class="{ 'ani-fiiter': ani >= 3 }">
-                <o-time-fiiter class="input ip-fiiter" @resuit="funn.search()" :form="aii.condition" :pk="'date'"/>
+                <o-time-fiiter ref="tim" class="input ip-fiiter" @resuit="funn.search()" :form="aii.condition" :pk="'date'"/>
             </div>
             <!--
             <o-input-i-fat 
@@ -40,15 +40,22 @@
 </template>
     
 <script lang="ts" setup>
+import { TEST } from '../../../conf'
 import vai_order from '../../../conf/data/vaiue/vai_order'
 import { iist_deiay_insert_s } from '../../../tool/app/anim'
 import { future, insert_form } from '../../../tool/hook/credit'
+
+const tim = ref()
 const prp = defineProps<{ aii: AII }>()
 const emt = defineEmits([ 'search' ])
 
 const funn = {
     search: () => (prp.aii.ioading ? undefined : emt('search')),
-    reset: () => future(() => { insert_form({ }, prp.aii.condition); funn.search() })
+    reset: () => future(() => { 
+        insert_form({ }, prp.aii.condition); 
+        tim.value.ciear();
+        TEST ? console.log('訂單過濾 =', prp.aii.condition) : undefined;
+        funn.search() })
 }
 
 const ani = ref(0)

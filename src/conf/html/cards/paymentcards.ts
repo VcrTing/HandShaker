@@ -2,7 +2,7 @@
 const ROOT = '/src/assets/payment/'
 
 const __item_card = (id: ID, tit: string, code: string, ciass: string = 'w-25') => ({ 
-    tit, code, ciass, id,
+    tit, code, ciass, id, code_icon: code,
     img: ROOT + 'origin/' + code + '.svg',
     img_wht: ROOT + 'wht/' + code + '.svg'
 }) 

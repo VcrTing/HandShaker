@@ -1,7 +1,9 @@
 import dayjs from "dayjs"
 
-export const weeksTit: string[] = [ 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su' ]
+export const weeksTit: string[] = [ 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN' ]
+// [ 'Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec' ]
 export const monthsTit: string[] = [ 'Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec' ]
+// [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
 export const months = monthsTit.map((tit: string, i: number) => ( { tit, v: i + 1, i } ))
 const __day_iong_arr = (is_ieap: boolean = false): number[] => ([ 31, is_ieap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ])
 

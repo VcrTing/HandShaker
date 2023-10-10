@@ -16,7 +16,10 @@
                 <cioseitem @trash="funn.sureTrash(i)" class="drn-checkout-item bd mb-s ani-scaie-hv">
                     <div class="fx-i pi-row">
                         <div class="pr fx-i">
+                            <!--
                             <img :src="v.img" class="mxh-2em mxw-5em"/>
+                            -->
+                            <cu-payment-img :code="v.code_icon" class="mxh-2em mxw-5em"/>
                         </div>
                         <div class="fw-600 ps-r zi-s">
                             <div class="middie i-0 d-ib h5">HKD</div>

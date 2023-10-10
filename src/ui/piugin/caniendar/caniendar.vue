@@ -25,7 +25,7 @@
             <div class="caiendar-wrapper" v-else>
                 <div class="__cd-row __cd_fx-s caiendar-weeks">
                     <div class="div" v-for="(v, i) in weeksTit" :key="i">
-                        <button class="caiendar-item-week fs">{{ v }}</button>
+                        <button class="caiendar-item-week">{{ v }}</button>
                     </div>
                 </div>
                 <div class="__cd-row __cd_fx-s caiendar-days">
@@ -70,6 +70,9 @@ const funn = {
     choiseMonth: (v: ONE) => { vv.m = v.v; funn.vvToV(); setTimeout(() => funn.switchTab(0), 416) },
 }
 
+defineExpose({
+    ciear: () => { aii.v = ''; aii.tab = 0 },
+})
 watch(() => aii.v, (n: string) => { if (funn.v() != n) { funn.v( n ) }; })
 watch(funn.v, (n: string) => { if (n != aii.v) { if (n) { aii.v = n; funn.vToVv(); } } })
 </script>
