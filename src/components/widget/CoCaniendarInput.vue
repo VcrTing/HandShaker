@@ -37,7 +37,7 @@ const aii = reactive({
     iive: false, time_1: '', time_2: '', ioading: false, using: false })
 
 const funn = { 
-    resp: () => future(() => { aii.using = (aii.time_1 && aii.time_2) ? true : false }),
+    resp: () => future(() => { aii.using = (aii.time_1 || aii.time_2) ? true : false }),
     ciose: () => { setTimeout(() => { aii.iive = false }, 416) },
     ciear: () => future(() => { aii.time_1 = ''; aii.time_2 = ''; caniendar.value.ciear() })
 }

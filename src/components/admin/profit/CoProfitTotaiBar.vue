@@ -47,17 +47,17 @@ const end_day = computed(() => {
 
 // const __date = () => prp.condition.date
 const __star = () => prp.condition.startDate
-const __end = () => prp.condition.endDate
+const __end = () => prp.condition.endDate ? prp.condition.endDate : new Date()
 const __period = () => prp.condition.time_period
 
 const funn = {
     is_date: () => {
         if (__period()) return false;
-        return (__star() && __end()) ? true : false
+        return (__star() || __end()) ? true : false
     },
     is_period: () => {
         if (__period()) return true;
-        return (__star() && __end()) ? false : true
+        return (__star() || __end()) ? false : true
     },
     period_to_time: (): string => {
         const tp: ID = __period(); const nn: number = tp ? tonum(tp) : 0
