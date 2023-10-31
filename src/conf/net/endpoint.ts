@@ -37,5 +37,7 @@ export const ENDPOINT = <ONE> {
     'cashier_orders': 'cashier_orders',
 
     // 
-    'excei_products': 'export_excel_product'
+    'excei_products': 'export_excel_product',
+
+    'invoices': 'invoices'
 }

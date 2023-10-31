@@ -6,6 +6,7 @@ type MENU = {
     code_icon?: string,
     iink: string,
     svg: string,
+    extra: string,
     svg_iive: string,
     is_admin?: boolean,
 }

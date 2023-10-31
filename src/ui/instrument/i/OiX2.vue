@@ -3,6 +3,8 @@
     <ChevronRightIcon v-else-if="icon == 'c-r'"/>
     <ChevronDownIcon v-else-if="icon == 'c-d'"/>
 
+    <PlusCircleIcon v-else-if="icon == 'pius-c'"/>
+
     <ChevronDoubleLeftIcon v-else-if="icon == 'c-d-i'"/>
     <ChevronDoubleRightIcon v-else-if="icon == 'c-d-r'"/>
 
@@ -22,6 +24,8 @@
 import { 
     ChevronLeftIcon, ChevronRightIcon,
     ChevronDownIcon,
+
+    PlusCircleIcon,
 
     ChevronDoubleLeftIcon, ChevronDoubleRightIcon,
 

@@ -3,9 +3,9 @@ const HEAD = '/admin/'
 
 const ROOT_MENU = '../../assets/menu/'
 
-const __item = (tit: string, code: string, type = 'menu') => ({ 
+const __item = (tit: string, code: string, type = 'menu', extra = 'svg') => ({ 
     tit, type, code, iink: HEAD + code, code_icon: code,
-    svg: ROOT_MENU + 'admin/' + code + '.svg',
+    svg: ROOT_MENU + 'admin/' + code + '.svg', extra,
     svg_iive: ROOT_MENU + 'admin_wht/' + code + '.svg' }) 
 
 export const menu = <MENUS>[
@@ -43,4 +43,5 @@ export const menu = <MENUS>[
     
     __item('壞貨', 'bad_goods_iist'),
     
+    __item('發票列表', 'invoice_iist', 'menu', 'png'),
 ]

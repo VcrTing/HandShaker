@@ -27,6 +27,19 @@ $err-iht: #fef5f4
     @extend .fx-hv-err
     @extend .fx-fcs-err
 
+$warning: rgb(255, 44, 85)
+$warning-hv: rgb(248, 37, 79)
+$warning-fcs: rgb(243, 34, 76)
+.btn-warning
+    @extend .br-s
+    color: $pri-wht
+    background: $warning !important
+    &:hover
+        background: $warning-hv !important
+    &:focus, &:active, &:focus-visible
+        background: $warning-fcs !important
+
+
 // 金錢
 $money: #FF2D55
 $money-hv: #f6234a

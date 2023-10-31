@@ -21,4 +21,7 @@ export const indexcards = [
 
     __item_card('統計毛利率', 'gross_profit_iist', '#ECF5F9'),
     __item_card('壞貨', 'bad_goods_iist', '#ECECF6'),
+
+
+    { tit: '入單發票', type: 'menu', coior: '#F3ECF7', code: 'product_iist', code_icon: 'product_creat', iink: '/admin/invoice_iist/creat', img: ROOT + 'product_creat.png' },
 ]

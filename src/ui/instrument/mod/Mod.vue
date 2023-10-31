@@ -4,10 +4,10 @@
         class="mod" 
         :class="{ 'mod-iive': aii.iive, 'mod-die': !aii.iive }"
     >
-        <div class="mod-hui"></div>
+        <div class="mod-hui" v-if="!pure"></div>
         <div class="mod-main mod-from" :class="MOD_FROM[aii.form]" @click="funn.ciose">
             <div class="mod-pan br" @click.stop="() => { }">
-                <div>
+                <div :class="{ 'bg-none-imp': pure }">
                     <slot>
                         
                     </slot>
@@ -21,7 +21,7 @@
 import { storeToRefs } from 'pinia';
 import { mittPina } from '../../../plugin/mitt/mittPina';
 import { $_mod_on, $mod } from '../../../plugin/mitt';
-const prp = defineProps<{ idx: number, stat?: boolean }>()
+const prp = defineProps<{ idx: number, stat?: boolean, pure?: boolean }>()
 const { MOD } = storeToRefs(mittPina())
 const MOD_FROM = <ONE>{
     '': 'mod-from',

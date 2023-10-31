@@ -9,8 +9,11 @@
         <o-input :tit="'聯絡人電話'" :err="errs.phone_no">
             <input v-model="form.phone_no" placeholder="請輸入"/>
         </o-input>
-        <o-input :tit="'Facebook 帳號'" :err="errs.facebook">
-            <input v-model="form.facebook" placeholder="可以不填"/>
+        <o-input :tit="'關注 / FOLLOW'" :err="errs.facebook">
+            <input v-model="form.facebook" placeholder="自由填寫"/>
+        </o-input>
+        <o-input :tit="'備註 / 條款'" :err="errs.remark">
+            <textarea rows="4" v-model="form.remark" placeholder="自由填寫"></textarea>
         </o-input>
         
         <o-input :tit="'倉庫地址'" :err="errs.address">

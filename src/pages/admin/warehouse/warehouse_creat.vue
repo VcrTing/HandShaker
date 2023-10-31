@@ -19,7 +19,7 @@ import { $toast } from '../../../plugin/mitt/index';
 import { giobaiPina } from '../../../plugin/pina/giobaiPina';
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
-const form = reactive({ name: '', contact_person: '', phone_no: '', facebook: '', address: '' })
+const form = reactive({ name: '', contact_person: '', phone_no: '', facebook: '', remark: '', address: '' })
 
 const rtr = useRouter()
 const funn = {

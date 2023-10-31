@@ -43,7 +43,7 @@ const funn = {
     
     buiid: () => {
         if (!jude_can([ 
-            'supplier_id', 'name', 'phone_no', 'email', 'contact_person', 'create_date'
+            'supplier_id', 'name', 'phone_no', 'contact_person', 'create_date'
         ], form)) return null;
         
         const src: ONE = { ...form }; src['phone_no'] = src['phone_no'] + ''; src['level'] = src['level'] + '';

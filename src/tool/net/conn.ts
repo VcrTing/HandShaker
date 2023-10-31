@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ENDPOINT } from '../../conf/net/endpoint';
 import { API } from '../../conf/net/net-conf';
 import { userPina } from '../../plugin/pina/userPina';
+import { TEST } from '../../conf';
 
 interface _Net {
     get( endpoint: string, params: ONE, suffix?: string ): Promise<ONE>;
@@ -30,12 +31,12 @@ class NeTooi {
 class Net extends NeTooi implements _Net {
     async one(endpoint: string, suffix: string, params?: ONE): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix) + super.params(params)
-        // NET_TEST ? console.log('ONE URI =', uri) : undefined;
+        TEST ? console.log('ONE URI =', uri) : undefined;
         return await axios.get(uri,  super.defops())
     }
     async get(endpoint: string, params: ONE, suffix?: string): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix) + super.params(params)
-        //  NET_TEST ? console.log('GET URI =', uri) : undefined;
+        TEST ? console.log('GET URI =', uri) : undefined;
         // console.log('GET URI =', uri)
         return await axios.get(uri,  super.defops())
     }

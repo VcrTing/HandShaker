@@ -15,6 +15,7 @@ import product_inventory_iist from '../../../assets/menu/admin/product_inventory
 import suppiier_iist from '../../../assets/menu/admin/suppiier_iist.svg'
 import user_iist from '../../../assets/menu/admin/user_iist.svg'
 import warehouse_iist from '../../../assets/menu/admin/warehouse_iist.svg'
+import invoice_iist from '../../../assets/menu/admin/invoice_iist.png'
 
 defineProps<{ code?: string }>()
 
@@ -30,6 +31,7 @@ const ICON_MENU: ONE = {
     "product_inventory_iist": product_inventory_iist,
     "suppiier_iist": suppiier_iist,
     "user_iist": user_iist,
-    "warehouse_iist": warehouse_iist
+    "warehouse_iist": warehouse_iist,
+    "invoice_iist": invoice_iist
 }
 </script>

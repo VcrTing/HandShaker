@@ -11,6 +11,10 @@
         <div class="pi-s">(負責人:&nbsp;{{ v.contact_person }})</div>
 
     </o-dropdown-net-item>
+    
+    <div v-if="many.length <= 0" class="py-x3 ani-softer">
+        <o-tabie-empty-two/>
+    </div>
 </template>
     
 <script lang="ts" setup>

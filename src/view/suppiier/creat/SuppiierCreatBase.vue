@@ -13,8 +13,8 @@
         <o-input :tit="'聯絡電話*'" :err="errs.phone_no">
             <input v-model="form.phone_no" placeholder="請輸入"/>
         </o-input>
-        <o-input :tit="'登錄郵箱*'" :err="errs.email">
-            <input v-model="form.email" placeholder="請輸入"/>
+        <o-input :tit="'登錄郵箱'" :err="errs.email">
+            <input v-model="form.email" placeholder="自由填寫"/>
         </o-input>
         <o-input :tit="'聯繫人*'" :err="errs.contact_person">
             <input v-model="form.contact_person" placeholder="請輸入"/>
@@ -28,14 +28,14 @@
     
 <script lang="ts" setup>
 import { gen_form_err, jude_err } from "../../../tool/hook/credit"
-import { vrf_emaii, vrf_phone } from "../../../tool/util/verify";
+import { vrf_phone } from "../../../tool/util/verify";
 
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
 const pks: strings = [ 
     'supplier_id', 'name', 'phone_no', 
-    'email', 'contact_person', 'create_date' 
+    'contact_person', 'create_date' 
 ]
 watch(() => prp.aii.sign, () => {
     let res: boolean = true; prp.aii.can = false
@@ -48,7 +48,7 @@ watch(() => prp.form.supplier_id, (n: string) => jude_err(errs, 'supplier_id', n
 watch(() => prp.form.name, (n: string) => jude_err(errs, 'name', n, prp.aii))
 
 watch(() => prp.form.phone_no, (n: string) => jude_err(errs, 'phone_no', n, prp.aii, () => { return !vrf_phone(n) }))
-watch(() => prp.form.email, (n: string) => jude_err(errs, 'email', n, prp.aii, () => { return !vrf_emaii(n) }))
+// watch(() => prp.form.email, (n: string) => jude_err(errs, 'email', n, prp.aii, () => { return !vrf_emaii(n) }))
 
 watch(() => prp.form.contact_person, (n: string) => jude_err(errs, 'contact_person', n, prp.aii))
 watch(() => prp.form.create_date, (n: string) => jude_err(errs, 'create_date', n, prp.aii))
