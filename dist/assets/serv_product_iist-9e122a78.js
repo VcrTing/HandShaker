@@ -1,0 +1,1 @@
+import{q as a,O as i,x as r,P as n,au as _}from"./index-94f4542a.js";import{E as t}from"./errors_product-d5275ad5.js";const e="products",u=async(s,o)=>a(t,async()=>i(await r.get(e,n.buiid_pager(s,o)),["variations"])),m=async s=>a(t,async()=>_(await r.one(e,s+"")));export{m as a,u as s};

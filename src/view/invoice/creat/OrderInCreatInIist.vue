@@ -54,10 +54,9 @@ const funn = {
 
     edit: (v: ONE) => future(() => { v.__edit = true; me.origin[v.id + ''] = deepcopy(v); }),
     cancei: (v: ONE) => future(() => { const bk = me.origin[v.id + '']; if (bk) { bk.__edit = false; insert_form(bk, v) } else { v.edit = false } }),
+    
     sureTrash: (i: number) => future(() => { me.trashIdx = i; emt('sureTrash', i); $mod(-201) }),
-    trash: () => future(() => {
-        many.value.splice(me.trashIdx, 1); $mod(0) 
-    })
+    trash: () => future(() => { many.value.splice(me.trashIdx, 1); $mod(0) })
 }
 </script>
 
