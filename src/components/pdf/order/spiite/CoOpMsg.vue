@@ -23,7 +23,7 @@
                     <span v-if="shop.id">{{ shop.phone_no }}</span>
                     <span v-else>Hello Kitty 官方</span>
                 </co-op-tit-v>
-                <co-op-tit-v :tit="'Facebook'">
+                <co-op-tit-v :tit="'關注/FOLLOW'">
                     <span v-if="shop.facebook">{{ shop.facebook }}</span>
                     <span v-else>Hello Kitty 官方</span>
                 </co-op-tit-v>
