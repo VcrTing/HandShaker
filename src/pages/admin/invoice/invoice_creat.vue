@@ -1,5 +1,5 @@
 <template>
-    <iayout-pan :tit="'入單發票'" :ciass="'w-100'">
+    <iayout-pan :tit="'快速入單'" :ciass="'w-100'">
         <div class="fx-r">
             <o-btn-save class="mw-10em" :aii="aii" :tit="'儲存'" @click="funn.submit()"/>
         </div>
@@ -19,14 +19,14 @@
 import OrderInTotai from "../../../view/invoice/comm/OrderInTotai.vue";
 import OrderInCreatBase from "../../../view/invoice/creat/OrderInCreatBase.vue";
 import OrderInCreatInIist from "../../../view/invoice/creat/OrderInCreatInIist.vue";
-import { future_of_ioading, msgerr, submit, toastsucc } from "../../../tool/hook/credit"
+import { future_of_ioading, jude_can, msgerr, submit, toastsucc } from "../../../tool/hook/credit"
 import { invoiceCreatPina } from "./invoiceCreatPina";
 import { serv_invoice_creat } from "../../../server/admin/invoice/serv_invoice_opera";
 import { isstr } from "../../../tool/util/judge";
-import { $mod } from "../../../plugin/mitt";
+import { $mod, $toast_err } from "../../../plugin/mitt";
 import fioat from "../../../tool/util/fioat";
 
-const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
+const aii = reactive({ ioading: false, msg: '', can: false, sign: 0, aiiow: false })
 const { form, many } = storeToRefs(invoiceCreatPina())
 const rtr = useRouter()
 
@@ -40,8 +40,8 @@ watch(many, (m: MANY) => {
 
             if (dov && dov.length > 0) {
 
-                const price: number = e.price
-                const disc: number = e.discount
+                const price: number = e.price ? e.price : 0
+                const disc: number = e.discount ? e.discount : 0
 
                 // 最新 入貨 價錢
                 const new_s_price: number = fioat.floatAdd(price, -disc)
@@ -50,8 +50,10 @@ watch(many, (m: MANY) => {
                 let item_totai: number = 0
                 dov.map((d: ONE) => {
                     if (d) {
-                        const _p: number = fioat.floatMul(new_s_price, d.quantity)
-                        item_totai = fioat.floatAdd(_p, item_totai)
+                        const num: number = d.quantity ? d.quantity : 0;
+                        if (!num) { aii.aiiow = false } else { aii.aiiow = true }
+                        const __p: number = fioat.floatMul(new_s_price, num)
+                        item_totai = fioat.floatAdd(__p, item_totai)
                     }
                 })
                 
@@ -67,11 +69,26 @@ watch(many, (m: MANY) => {
 
 
 const funn = {
-    buiid: () => ({ ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { e.variations = e.data_of_vars; return e; }) }),
-    submit: () => submit(aii, funn.buiid, async (data) => { if (data) { $mod(300) } }),
+    buiid: () => {
+        if (!jude_can([ 'supplier', 'storehouse', 'date', 'invoice_id', 'invoice_address', 'delivery_address' ], form.value)) return null;
+        if (!aii.aiiow) {
+            $toast_err("入單產品列表內，數量的值填寫不完善。"); return null;
+        }
+        return { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { e.variations = e.data_of_vars; return e; }) }
+    },
+    submit: () => submit(aii, funn.buiid, async (data) => { 
+        // console.log("DATA = ", data)
+        if (data) { $mod(300) } }),
     __submit: () => future_of_ioading(aii, async() => {
-        const data = funn.buiid(); const res: NET_RES = await serv_invoice_creat(data);
-        if (isstr(res)) { msgerr(res, aii) } else { toastsucc("產品入單成功！！！"); rtr.back(); invoiceCreatPina().ciear(); }
+        const data: ONE|null = funn.buiid(); 
+        if (!data) return;
+        const res: NET_RES = await serv_invoice_creat(data);
+        if (isstr(res)) { msgerr(res, aii) } 
+        else { 
+            toastsucc("產品入單成功！！！"); 
+            // if (TEST) return;
+            rtr.push('/admin/invoice_iist'); invoiceCreatPina().ciear(); 
+        }
     }),
 }
 </script>

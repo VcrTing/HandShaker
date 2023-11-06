@@ -25,7 +25,7 @@ import ProductEditPans from '../../../view/product_x2/edit/ProductEditPans.vue'
 import ProductEditIeft from '../../../view/product_x2/edit/ProductEditIeft.vue'
 import ProductEditRight from '../../../view/product_x2/edit/ProductEditRight.vue'
 
-import { future, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
+import { future, jude_can, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
 import { pageProducEditPina } from './pageProducEditPina'
 import { pageProductPina } from './pageProductPina'
 import { $mod } from '../../../plugin/mitt/index'
@@ -39,12 +39,14 @@ const aii = reactive(<AII_CREAT>{ ioading: false, msg: '', can: false, sign: 0, 
 const { one_of_edit, variations, labels } = storeToRefs(pina)
 
 const funn = {
-    buiid: () => (aii.can ? pina.form() : null),
+    buiid: () => {
+        const res: ONE =  pageProducEditPina().form()
+        if (!jude_can([ 'name', 'create_date' ], res)) return null;
+        return (aii.can ? res : null);
+    },
     success: () => {
         toastsucc("產品修改成功！！！")
-        pina.ciear()
-        funn.dump(0)
-        rtr.back()
+        pina.ciear(); funn.dump(0); rtr.back()
     },
     
     submit: () => submit(aii, funn.buiid,

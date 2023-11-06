@@ -8,10 +8,15 @@
         <o-input :tit="'產品名稱'" :err="errs.name">
             <input v-model="form.name" placeholder="請輸入"/>
         </o-input>
-
+        <!--
         <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :class="{ 'ani-scaie-hv': edit }" :err="errs.create_date" :icon="'date'" :disabie="edit">
             <o-time v-if="!edit" :form="form" :pk="'create_date'"/>
             <p class="py-s" v-else>{{ form['create_date'] }}</p>
+        </o-input-i>
+        -->
+
+        <o-input-i class="input-timed-for-pan" :tit="'建立日期'" :err="errs.create_date" :icon="'date'">
+            <o-time :form="form" :pk="'create_date'"/>
         </o-input-i>
     </div>
 </template>

@@ -45,13 +45,13 @@ class Net extends NeTooi implements _Net {
         const uri = super.uri(API, endpoint, '')
         // NET_TEST ? console.log('POST uri =', uri) : undefined;
         // console.log('POST DATA =', data)
-        // NET_TEST ? console.log('POST DATA =', data) : undefined;
+        TEST ? console.log('POST DATA =', data) : undefined;
         return await axios.post(uri, data,  super.defops())
     }
     async put(endpoint: string, data: ONE, suffix: string): Promise<ONE> {
         const uri = super.uri(API, endpoint, suffix)
         // NET_TEST ? console.log('PATCH uri =', uri) : undefined;
-        // NET_TEST ? console.log('PATCH DATA =', data) : undefined;
+        TEST ? console.log('PATCH DATA =', data) : undefined;
         return await axios.patch(uri, data, super.defops())
     }
     //

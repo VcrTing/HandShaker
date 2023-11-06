@@ -1,7 +1,7 @@
 <template>
     <div class="o-form">
-        <o-input :tit="'會員編號*'" :err="errs.member_id">
-            <input v-model="form.member_id" placeholder="請輸入"/>
+        <o-input :tit="'會員編號'" :err="errs.member_id">
+            <input disabled :value="'(自動生成)'" placeholder=""/>
         </o-input>
 
         <o-input-i :tit="'加入日期*'" :err="errs.create_date" :icon="'date'">

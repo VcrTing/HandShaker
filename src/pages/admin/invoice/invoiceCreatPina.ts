@@ -11,11 +11,15 @@ export const invoiceCreatPina = defineStore("invoiceCreatPina", {
             invoice_id: '', invoice_address: '', delivery_address: '' },
         many: <ORDER_IN_ONE[]>[
             
-        ]
+        ],
+        one_of_view: <ONE>{ },
     }),
     actions: {
+        save(k: string, v = <ONE>{ }) { (this as ONE)[k] = v },
+        
         ciear() {
-            insert_form({ }, this.form); this.many.length = 0
+            insert_form({ }, this.form); this.form.storehouse = 0;
+            this.many.length = 0
         },
         fiiter(): MANY {
             let res: MANY = [ ];

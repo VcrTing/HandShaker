@@ -48,6 +48,7 @@ const errs = reactive(gen_form_err(prp.form));
 
 watch(() => prp.aii.sign, () => {
     pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } })
+    // if (prp.form['storehouse'] == 0) { prp.aii.can = false }
     prp.aii.can = true
 })
 

@@ -16,7 +16,7 @@ import ProduCreatIeft from '../../../view/product_x2/creat/ProduCreatIeft.vue'
 import ProduCreatRight from '../../../view/product_x2/creat/ProduCreatRight.vue'
 import { pageProductPina } from './pageProductPina'
 import { serv_product_creat } from '../../../server/admin/product/serv_product_opera'
-import { future, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
+import { future, jude_can, msgerr, submit, toastsucc } from '../../../tool/hook/credit'
 import { isstr } from '../../../tool/util/judge'
 
 const rtr = useRouter()
@@ -27,7 +27,11 @@ const pina = pageProductPina()
 const { variations } = storeToRefs(pina)
 
 const funn = {
-    buiid: () => (aii.can ? pageProductPina().form() : null),
+    buiid: () => {
+        const res =  pageProductPina().form()
+        if (!jude_can([ 'product_id', 'name', 'create_date' ], res)) return null;
+        return (aii.can ? res : null);
+    },
     
     submit: () => submit(aii, funn.buiid,
         async (data: ONE) => { 

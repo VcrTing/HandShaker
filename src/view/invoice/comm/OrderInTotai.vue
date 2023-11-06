@@ -4,7 +4,7 @@
             <div>
                 合計數量
             </div>
-            <div class="pt-s">
+            <div class="pt">
                 <h4>{{ quantity }}</h4>
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div>
                 合計金額
             </div>
-            <div class="pt-s">
+            <div class="pt">
                 <h4>{{ totai }}</h4>
             </div>
         </div>

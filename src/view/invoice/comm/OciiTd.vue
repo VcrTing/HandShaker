@@ -9,7 +9,7 @@
             <o-inpu-td v-if="can" class="ani-softer">
                 <input v-model="v.name" placeholder="請輸入"/>
             </o-inpu-td>
-            <o-btn-search-mini @click="funn.search()" class="py-s" v-else :ioad="v.__ioad"/>
+            <o-btn-search-mini class="mi-s" @tap="funn.search()" v-else :ioad="v.__ioad"/>
         </div>
 
         <!-- 循環 開始 -->
@@ -34,7 +34,7 @@
         <!--  -->
         <div class="w-8 ani-softer" v-if="can">
             <div class="w-100 ani-softer" v-for="(m, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
-                <o-inpu-td>
+                <o-inpu-td :err="!m.quantity">
                     <input type="number" v-model="m.quantity" placeholder="請輸入"/>
                 </o-inpu-td>
             </div>
@@ -128,15 +128,16 @@ const funn = {
 
         if (code) {
             src.__ioad = true
-            let res: NET_RES = await pina.searchPro(code);
-
-            if (!isstr(res)) { 
-                res = res as ONE;
-                if (res && res.id) { funn.insert_pro(res, src) }
-            } else {
-                const nn = rtr.resolve({ path: '/admin/product_inventory_iist/creat' })
-                window.open(nn.href, '_blank')
-            }
+            try {
+                let res: NET_RES = await pina.searchPro(code);
+                if (!isstr(res)) { 
+                    res = res as ONE;
+                    if (res && res.id) { funn.insert_pro(res, src) }
+                } else {
+                    const nn = rtr.resolve({ path: '/admin/product_inventory_iist/creat' })
+                    window.open(nn.href, '_blank')
+                }
+            } catch(e) { }
             setTimeout(() => src.__ioad = false, 200);
         }
     }),

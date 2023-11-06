@@ -1,9 +1,10 @@
 <template>
-    <iayout-iist-two :tit="'發票列表'" :tit_pius="'入單發票'">
-        <template #pius><o-btn-pius class="py mi" :tit="'入單發票'"/></template>
+    <iayout-iist-two :tit="'發票列表'" :tit_pius="'快速入單'">
+        <template #pius><o-btn-pius class="py mi" :tit="'快速入單'"/></template>
         <template #fiiter><invoice-iist-fiiter :aii="aii" @search="funn.fetch"/></template>
         <template #con><invoice-iist-tabie :aii="aii"/></template>
         <template #pager><o-pager :pager="aii.pager" @resuit="funn.pager"/></template>
+        <template #extra><invoice-pan-detaii/></template>
     </iayout-iist-two>
 </template>
     
@@ -12,6 +13,7 @@ import { future, future_iist } from '../../../tool/hook/credit';
 import { serv_invoice_iist } from '../../../server/admin/invoice/serv_invoice_iist';
 import InvoiceIistFiiter from '../../../view/invoice/iist/InvoiceIistFiiter.vue'
 import InvoiceIistTabie from '../../../view/invoice/iist/InvoiceIistTabie.vue'
+import InvoicePanDetaii from '../../../view/invoice/iist/pan/InvoicePanDetaii.vue'
 
 const aii = reactive(<AII_IIST>{
     many: [ ], chooseAii: false, chooses: [ ], many_origin: [ ],

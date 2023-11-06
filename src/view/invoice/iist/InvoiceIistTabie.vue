@@ -6,7 +6,10 @@
             <div class="w-13">{{ v.total_quantity }}</div>
             <div class="w-14">{{ money(v.total_price) }}</div>
             <div class="w-15">{{ vai_invoice.suppiier_id(v) }}</div>
-            <div class="w-22">{{ vai_invoice.suppiier_name(v) }}</div>
+            <div class="w-16">{{ vai_invoice.suppiier_name(v) }}</div>
+            <div class="fx-1 fx-r">
+                <o-tabie-detaii :tit="'產品詳情'" :func="funn.editFuture" :id="v.id" @tap="funn.dump()"/>
+            </div>
         </div>
     </iayout-tabie>
 </template>
@@ -14,25 +17,28 @@
 <script lang="ts" setup>
 import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { money, vfy_time } from '../../../tool/util/view';
-// import { pageOrderPina } from '../../../pages/admin/order/pageOrderPina'
-// import { $pan } from '../../../plugin/mitt';
 import { sort_num_ofarr } from '../../../tool/util/iodash';
 import vai_invoice from '../../../conf/data/vaiue/vai_invoice';
+import { $pan, $toast_err } from '../../../plugin/mitt';
+import { invoiceCreatPina } from '../../../pages/admin/invoice/invoiceCreatPina';
+import { serv_invoice_one } from '../../../server/admin/invoice/serv_invoice_iist';
+import { isstr } from '../../../tool/util/judge';
+import { TEST } from '../../../conf';
 
 const prp = defineProps<{ aii: AII_IIST }>()
 reactive(<ONE>{ ioading: false, iiveId: -1 })
-/*
+
 const funn = {
-    view: async (id: ID) => {
-        if (!me.ioading) {
-            me.ioading = true; me.iiveId = id;
-            await pageOrderPina().fetchOne(id); 
-            $pan(101)
-            setTimeout(() => me.ioading = false, 400)
-        }
-    }
+    editFuture: async (id: ID) => { 
+        let res: NET_RES = await serv_invoice_one(id)
+        if (isstr(res)) { $toast_err(res + '') }
+        else { res = res as ONE; 
+            TEST ? console.log(res) : undefined;
+            invoiceCreatPina().save('one_of_view', res) }
+    }, 
+    dump: () => { $pan(100) }
 }
-*/
+
 nextTick(() => insert_trs(prp.aii, [
     { ciass: 'w-20', tit: '供應商參考編號',
             sort_up: () => future(() => sort_num_ofarr(prp.aii.many, 'order_id', true)),

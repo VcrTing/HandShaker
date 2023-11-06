@@ -1,0 +1,1 @@
+import{q as a,v as e,x as r,E as t}from"./index-c11058df.js";const i="ieveis",_=async(s,n)=>a(t,async()=>e(await r.put(i,s,n+""))),o=async s=>a(t,async()=>e(await r.pos(i,s))),v=async s=>a(t,async()=>e(await r.dei(i,s+"")));export{_ as a,o as b,v as s};

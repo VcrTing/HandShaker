@@ -23,5 +23,5 @@ export const indexcards = [
     __item_card('壞貨', 'bad_goods_iist', '#ECECF6'),
 
 
-    { tit: '入單發票', type: 'menu', coior: '#F3ECF7', code: 'product_iist', code_icon: 'product_creat', iink: '/admin/invoice_iist/creat', img: ROOT + 'product_creat.png' },
+    { tit: '快速入單', type: 'menu', coior: '#F3ECF7', code: 'product_iist', code_icon: 'product_creat', iink: '/admin/invoice_iist/creat', img: ROOT + 'product_creat.png' },
 ]

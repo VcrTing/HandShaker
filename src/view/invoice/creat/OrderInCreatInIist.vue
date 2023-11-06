@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div v-else class="oti-con ani-softer"><o-tabie-empty class="mh-oti-s"/></div>
-            <div class="ani-fade-b"><btn-tab @click="funn.pius()" class="w-100 py-s ani-scaie-aii" :tit="'添加樣式'"/></div>
+            <div class="ani-fade-b"><btn-tab @click="funn.pius()" class="w-100 py-s ani-scaie-aii" :tit="'添加項目'"/></div>
         </iayout-tabie>
     </iayout-form>
     <o-mod-trash :idx="-201" :aii="aii" @trash="funn.trash"/>
