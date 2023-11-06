@@ -24,7 +24,7 @@ nextTick(() => insert_trs(prp.aii, [
             { ciass: 'w-18', tit: '倉庫名稱', sort: false },
             { ciass: 'w-13', tit: '倉庫聯絡人', sort: false },
             { ciass: 'w-15', tit: '倉庫聯絡人電話', sort: false },
-            { ciass: 'w-18', tit: 'Facebook 帳號', sort: false },
+            { ciass: 'w-18', tit: '關注 / FOLLOW', sort: false },
             { ciass: 'w-26', tit: '倉庫地址', sort: false },
             { ciass: 'fx-1', tit: '', sort: false },
         ]))

@@ -1,0 +1,1 @@
+import{_ as t}from"./product_trs-ae73db8b.js";import{r}from"./DocumentTextIcon-768b0655.js";import{d as o,o as a,y as s,w as n,b as _,i as c,B as m}from"./index-c4514658.js";const x=o({__name:"OBtnInOrder",setup(p){return(i,f)=>{const e=t;return a(),s(e,{class:"py mw-8em",tit:"產品入貨"},{default:n(()=>[_(c(r),{class:"i h5"}),m("  ")]),_:1})}}});export{x as _};
