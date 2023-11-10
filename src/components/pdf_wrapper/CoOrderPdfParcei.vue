@@ -29,8 +29,11 @@ const funn = {
         if (src) {
             const res: ONE = JSON.parse(src)
             if (res && res.id) { order.value = res }
+
+            TEST ? console.log("PDFONE =", res) : undefined;
         }
         if (prp.kiii_printed) return;
+       
         setTimeout(() => { TEST.value ? window.print() : undefined }, 800)
     }),
     effect: () => {

@@ -36,7 +36,7 @@ import { memberPina } from '../../../plugin/pina_admin/memberPina'
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 
 const form = reactive(<ONE>{ name: '', email: '', phone_no: '', birthdate: '', sex: '', address: '' })
-const form_card = reactive(<ONE>{ member_id: '', create_date: '', member_level: '', discount: '', remarks: '' })
+const form_card = reactive(<ONE>{ member_id: 'x', create_date: '', member_level: '', discount: '', remarks: '' })
 
 const rtr = useRouter()
 const { one_of_edit } = storeToRefs(memberPina())
@@ -44,7 +44,7 @@ const { one_of_edit } = storeToRefs(memberPina())
 const funn = {
     buiid: () => {
         if (!jude_can([ 'name', 'email', 'phone_no', 'address' ], form)) return null;
-        if (!jude_can([ 'member_id' ], form_card)) return null;
+        // if (!jude_can([ 'member_id' ], form_card)) return null;
 
         let src: ONE = { ...form, ...form_card }; src['member_level'] = src['member_level'] + ''; 
         return aii.can ? trims(src) : null

@@ -1,6 +1,12 @@
 <template>
     <Pan :idx="100" :big="true">
         <pan-inner :tit="'入單產品詳情'">
+
+            <div class="py">
+                <div class="pb">入貨倉庫&nbsp;&nbsp;</div>
+                <h6><span>{{ storehouse }}</span></h6>
+            </div>
+
             <InvoicePanDetaiiIist :one="one_of_view"/>
             
             <div class="row ani-softer py-x3" v-if="one_of_view">
@@ -21,12 +27,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="pt">
-                <div class="pb">入貨倉庫&nbsp;&nbsp;</div>
-                <h6><span>{{ storehouse }}</span></h6>
-            </div>
-
         </pan-inner>
     </Pan>
 </template>

@@ -8,7 +8,7 @@
                 <div class="w-22">{{ v.product_name }}</div>
                 <div class="w-9">{{ v.quantity }}</div>
                 <div class="w-12">{{ v.storehouse_name }}</div>
-                <div class="w-16">{{ v.date }}</div>
+                <div class="w-16">{{ vfy_time(v.date) }}</div>
                 <div class="w-20">
                     <p class="fix-rmks">{{ v.remarks }}</p>
                 </div>
@@ -25,6 +25,7 @@ import { $mod } from '../../../plugin/mitt/index';
 import { badPina } from '../../../plugin/pina_admin/badPina';
 import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { copy_v_newarr, sort_date_ofarr, sort_num_ofarr } from '../../../tool/util/iodash';
+import { vfy_time } from '../../../tool/util/view';
 
 const prp = defineProps<{ aii: AII_IIST }>()
 

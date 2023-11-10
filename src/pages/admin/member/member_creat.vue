@@ -36,14 +36,14 @@ import { now } from '../../../tool/util/view'
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0 })
 
-const form = reactive({ name: '劉漪琳', email: 'qiong@163.com', phone_no: '998883', birthdate: '', sex: '', address: '' })
-const form_card = reactive({ member_id: 'HK0001', create_date: '', member_level: '', discount: '', remarks: '' })
+const form = reactive({ name: '', email: '', phone_no: '', birthdate: '', sex: '', address: '' })
+const form_card = reactive({ member_id: 'x', create_date: '', member_level: '', discount: '', remarks: '' })
 const rtr = useRouter()
 
 const funn = {
     buiid: () => {
         if (!jude_can([ 'name', 'email', 'phone_no', 'address' ], form)) return null;
-        if (!jude_can([ 'member_id' ], form_card)) return null;
+        // if (!jude_can([ 'member_id' ], form_card)) return null;
 
         let src: ONE = { ...form, ...form_card }; src['member_level'] = src['member_level'] + ''; 
         return aii.can ? trims(src) : null

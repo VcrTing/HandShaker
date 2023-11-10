@@ -6,7 +6,7 @@
             <div class="w-13">{{ v.phone_no }}</div>
             <div class="w-24">{{ v.email }}</div>
             <div class="w-11">{{ v.contact_person }}</div>
-            <div class="w-13">{{ v.create_date }}</div>
+            <div class="w-13">{{ vfy_time(v.create_date) }}</div>
             <div class="fx-1 fx-r">
                 <o-tabie-edit :id="v.id" :func="funn.editFuture" @tap="funn.dump" class="txt-pri"/>
             </div>
@@ -18,6 +18,7 @@
 import { suppiierPina } from '../../../plugin/pina_admin/suppiierPina';
 import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { sort_num_ofarr, sort_date_ofarr } from '../../../tool/util/iodash';
+import { vfy_time } from '../../../tool/util/view';
 
 const rtr = useRouter()
 const prp = defineProps<{ aii: AII_IIST }>()

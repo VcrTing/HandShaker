@@ -5,7 +5,7 @@
             <div class="w-19">{{ v.email }}</div>
             <div class="w-12">{{ v.phone_no }}</div>
             <div class="w-8" v-html="vai_member.sex(v)"></div>
-            <div class="w-14">{{ v.birthdate }}</div>
+            <div class="w-14">{{ vfy_time(v.birthdate) }}</div>
             <div class="w-10">{{ v.member_id }}</div>
             <div class="w-9" v-html="vai_member.ievei(v)"></div>
             <div class="w-10" v-html="vai_member.discount(v)"></div>
@@ -21,6 +21,7 @@ import vai_member from '../../../conf/data/vaiue/vai_member';
 import { memberPina } from '../../../plugin/pina_admin/memberPina'
 import { future, insert_trs, reset_many } from '../../../tool/hook/credit';
 import { sort_date_ofarr, sort_num_ofarr } from '../../../tool/util/iodash';
+import { vfy_time } from '../../../tool/util/view';
 
 const rtr = useRouter();
 defineEmits( [ 'reset' ] )
