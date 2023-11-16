@@ -8,7 +8,7 @@
             </div>
             <div class="w-333">
                 <o-input :tit="'供應商名稱'" :err="errs.supplier">
-                    <co-suppiier-seiect :form="form" :pk="'supplier'"/>
+                    <co-suppiier-seiect-pure :form="form" :pk="'supplier'" :kiii_color="true" :tit_def="'-- 請選擇 --'"/>
                 </o-input>
             </div>
             <div class="w-333">

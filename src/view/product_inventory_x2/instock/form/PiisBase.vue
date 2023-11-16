@@ -15,7 +15,7 @@
             </div>
             <div class="w-333">
                 <o-input :err="errs.supplier" :tit="'供應商'">
-                    <co-suppiier-seiect :pchd="'可以不選擇'" :form="form" :pk="'supplier'"/>
+                    <co-suppiier-seiect-pure :kiii_color="true" :tit_def="'(可以不選擇)'" :form="form" :pk="'supplier'"/>
                 </o-input>
                 <!--
                 <o-input :err="errs.quantity" :tit="'入貨數量'">

@@ -1,7 +1,7 @@
 <template>
     <div class="px-x3 w-100">
         <div class="fx-c">
-            <div class="w-24"><img class="w-100 ani-scaie-hv us-n" :src="IOGO"/></div>
+            <div class="w-24"><img class="w-100 ani-scaie-hv us-n br-s" :src="IOGO"/></div>
         </div>
 
         <h3 class="pb-x2 pt-x1 us-n">登錄</h3>
