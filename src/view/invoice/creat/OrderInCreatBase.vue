@@ -41,7 +41,7 @@
 import { jude_err } from "../../../tool/hook/credit";
 import { gen_form_err } from "../../../tool/hook/credit";
 
-const pks = [ 'supplier', 'storehouse', 'date', 'invoice_id', 'invoice_address', 'delivery_address' ]
+const pks = [ 'supplier', 'storehouse', 'date', 'invoice_id' ] //  'invoice_address', 'delivery_address'
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));
@@ -56,5 +56,5 @@ watch(() => prp.form.date, (n: string) => jude_err(errs, 'date', n, prp.aii))
 watch(() => prp.form.supplier, (n: string) => jude_err(errs, 'supplier', n, prp.aii))
 watch(() => prp.form.storehouse, (n: string) => jude_err(errs, 'storehouse', n, prp.aii))
 watch(() => prp.form.invoice_id, (n: string) => jude_err(errs, 'invoice_id', n, prp.aii))
-watch(() => prp.form.invoice_address, (n: string) => jude_err(errs, 'invoice_address', n, prp.aii))
+// watch(() => prp.form.invoice_address, (n: string) => jude_err(errs, 'invoice_address', n, prp.aii))
 </script>

@@ -25,6 +25,7 @@ import { serv_invoice_creat } from "../../../server/admin/invoice/serv_invoice_o
 import { isstr } from "../../../tool/util/judge";
 import { $mod, $toast_err } from "../../../plugin/mitt";
 import fioat from "../../../tool/util/fioat";
+import { TEST } from "../../../conf";
 
 const aii = reactive({ ioading: false, msg: '', can: false, sign: 0, aiiow: false })
 const { form, many } = storeToRefs(invoiceCreatPina())
@@ -70,23 +71,26 @@ watch(many, (m: MANY) => {
 
 const funn = {
     buiid: () => {
-        if (!jude_can([ 'supplier', 'storehouse', 'date', 'invoice_id', 'invoice_address', 'delivery_address' ], form.value)) return null;
+        if (!jude_can([ 'supplier', 'storehouse', 'date', 'invoice_id' ], form.value)) return null;
         if (!aii.aiiow) {
             $toast_err("入單產品列表內，數量的值填寫不完善。"); return null;
         }
-        return { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { e.variations = e.data_of_vars; return e; }) }
+        return { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { 
+            e.unit_price = e.price; // 單價
+            e.net_price = e.new_stock_price; // 最新入貨價錢
+            e.variations = e.data_of_vars; return e; 
+        }) }
     },
-    submit: () => submit(aii, funn.buiid, async (data) => { 
-        // console.log("DATA = ", data)
-        if (data) { $mod(300) } }),
+    submit: () => submit(aii, funn.buiid, async (data) => { if (data) { $mod(300) } }),
     __submit: () => future_of_ioading(aii, async() => {
         const data: ONE|null = funn.buiid(); 
         if (!data) return;
+        TEST ? console.log(data) : undefined;
         const res: NET_RES = await serv_invoice_creat(data);
         if (isstr(res)) { msgerr(res, aii) } 
         else { 
             toastsucc("產品入單成功！！！"); 
-            // if (TEST) return;
+            if (TEST) return;
             rtr.push('/admin/invoice_iist'); invoiceCreatPina().ciear(); 
         }
     }),

@@ -41,7 +41,7 @@
         </div>
         <!-- 單價 -->
         <div class="w-9 ani-softer" v-if="can">
-                <o-inpu-td>
+                <o-inpu-td class="bg-card">
                     <input type="number" v-model="v.price" placeholder="請輸入"/>
                 </o-inpu-td>
         </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="w-8 ani-softer" v-if="can">
             <o-inpu-td class="bd-c-t-imp bg-card">
-                <input :value="v.lowest_price" :disabled="true"/>
+                <input type="number" v-model="v.lowest_price"/>
             </o-inpu-td>
             <!--
             <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
@@ -89,7 +89,7 @@
         </div>
         <div class="w-6 ani-softer" v-if="can">
             <o-inpu-td class="bd-c-t-imp bg-card">
-                <input :value="v.selling_price" :disabled="true"/>
+                <input type="number" v-model="v.selling_price"/>
             </o-inpu-td>
             <!--
             <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
@@ -145,9 +145,10 @@ const funn = {
         src.product = p.id; src.__product = p;
         src.number = p.product_id; src.name = p.name; 
 
+        src.new_restock_price = p.new_restock_price;
         src.selling_price = p.new_selling_price;
-        src.net_price = p.new_restock_price;
         src.lowest_price = p.new_lowest_price;
+        src.net_price = p.new_restock_price;
 
         if (!src.data_of_vars) { src.data_of_vars = [ ] }
         if (src.data_of_vars.length <= 0) { funn.piusDFV() }

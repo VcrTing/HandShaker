@@ -12,6 +12,7 @@ const quantity = (v: ONE): number => { return (v && v.quantity) ? v.quantity : 0
 // v = cart
 const product_price = (v: ONE): number => {
     const p: ONE = (v && v.__product) ? v.__product : { }
+    // TEST ? console.log("产品 单价 =", p.new_selling_price, p) : undefined;
     if (p.id) { return p.new_selling_price ? p.new_selling_price : 0 }
     return 0
 }
