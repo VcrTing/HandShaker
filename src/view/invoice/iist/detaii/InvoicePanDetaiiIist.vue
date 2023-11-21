@@ -1,7 +1,6 @@
 <template>
-    <div class="pt">
+    <div class="pt ani-softer">
         <IpdiTabie :aii="aii" :many="many"/>
-
     </div>
 </template>
     

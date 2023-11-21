@@ -4,8 +4,14 @@
             <div class="pt"></div>
             <ProduCeBase :form="base" :aii="aii" :edit="true"/>
         </iayout-form>
+ 
+        <div class="py">
+            <h5 class="pb-x2">價格</h5>
+            <produ-ce-price :form="base" :aii="aii"/>
+        </div>
 
         <div class="py"></div>
+
         <ProduCeTagsEdit class="pt-s" :labels="labels" :labels_exist="labels_exist" /> <div v-if="labels_exist.length <= 0" class="py-x2"></div>
 
         <ProduCeStyie class="pt-s" :edit="true" :pina="pina" :variations="variations"/> <div v-if="variations.length <= 0" class="py-x2"></div>
@@ -18,6 +24,8 @@
     
 <script lang="ts" setup>
 import ProduCeBase from '../_com_form/ProduCeBase.vue';
+import ProduCePrice from '../_com_form/ProduCePrice.vue';
+
 import ProduCeStyie from '../_com_form/ProduCeStyie.vue';
 import ProduCeRemark from '../_com_form/ProduCeRemark.vue';
 import ProduCeTagsEdit from '../_com_form/ProduCeTagsEdit.vue';

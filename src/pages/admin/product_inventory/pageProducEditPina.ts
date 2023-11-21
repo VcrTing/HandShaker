@@ -21,7 +21,7 @@ export const pageProducEditPina = defineStore("pageProducEditPina", {
         remarks: <PRODUCT_REMARK[]>[ ],
         labels_exist: <IDS>[ ], 
         labels: <IDS>[ ], styie: <IDS>[ ], variations: <MANY>[],
-        base: <ONE>{ product_id: '', name: '', create_date: '' }
+        base: <ONE>{ product_id: '', name: '', create_date: '', new_lowest_price: '', new_selling_price: '' }
     }),
     getters: {
         product_variations(state) { const one: ONE = state.one_of_edit; return one.variations ? one.variations : [ ] }
