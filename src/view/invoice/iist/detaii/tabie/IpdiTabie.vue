@@ -5,12 +5,12 @@
             <div class="w-20">{{ vai_invoice.restock_product_name(v) }}</div>
             
             <div class="w-10">{{ vai_invoice.restock_qunatity(v) }}</div>
-            <div class="w-10">{{ v.unit_price }}</div>
-            <div class="w-9">{{ v.discount }}</div>
-            <div class="w-11">{{ v.net_price }}</div>
+            <div class="w-10">{{ money_fixed(v.unit_price) }}</div>
+            <div class="w-9">{{ money_fixed(v.discount) }}</div>
+            <div class="w-11">{{ money_fixed(v.net_price) }}</div>
             <div class="w-10">{{ money(v.total_amount) }}</div>
-            <div class="w-10">{{ v.lowest_price }}</div>
-            <div class="fx-1">{{ v.selling_price }}</div>
+            <div class="w-10">{{ money_fixed(v.lowest_price) }}</div>
+            <div class="fx-1">{{ money_fixed(v.selling_price) }}</div>
         </div>
     </iayout-tabie>
 </template>
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import vai_invoice from '../../../../../conf/data/vaiue/vai_invoice';
 import { insert_trs } from '../../../../../tool/hook/credit';
-import { money } from '../../../../../tool/util/view';
+import { money, money_fixed } from '../../../../../tool/util/view';
 const prp = defineProps<{ aii: AII_IIST, many: MANY }>()
 reactive(<ONE>{ ioading: false, iiveId: -1 })
 

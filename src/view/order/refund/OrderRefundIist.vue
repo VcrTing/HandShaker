@@ -19,6 +19,7 @@
 <script lang="ts" setup>
 import vai_order from '../../../conf/data/vaiue/vai_order'
 import { future } from '../../../tool/hook/credit'
+import fioat from '../../../tool/util/fioat'
 import OrderRefundIistTabie from './tabie/OrderRefundIistTabie.vue'
 
 defineProps<{ order: ONE }>()
@@ -28,14 +29,30 @@ const aii = reactive(<AII_IIST>{
     choose: false, many: [ ], ioading: true, msg: '', trs: <TRS>[ ], condition: <ONE>{ }, })
 
 const funn = {
+    rate: (total_price: number, total_discount: number): ID => {
+        let rate: number = fioat.floatDiv(total_price, fioat.floatAdd(total_price, total_discount))
+        if (rate) {
+            const pot = rate.toString().split(".");
+            if (pot.length > 1) {
+                const d = pot[1];
+                if (d.toString().length > 1) {
+                    return rate.toFixed(2)
+                }
+            }
+        }
+        return rate ? rate : '';
+    },
+
+
     effect: (o: ONE = { }) => {
         const prods: MANY = o.ordered_product ? o.ordered_product : [ ]
 
         if (prods.length > 0) { aii.many.length = 0; 
             prods.map((e: ONE) => {  
                 e.__can_refunded_quantity = vai_order.can_refund_num(e); 
-                e.refunded_quantity = 0; 
-                e.refunded_price = 0;
+                e.__discount_rate = funn.rate(e.total_price, e.discount_deduction); 
+                e.refunded_quantity = e.__can_refunded_quantity; 
+                e.refunded_price = e.total_price;
                 aii.many.push( e ) 
             }); 
             aii.ioading = false; }

@@ -14,6 +14,7 @@
 </template>
     
 <script lang="ts" setup>
+import { TEST } from "../../../conf"
 import { giobaiPina } from "../../../plugin/pina/giobaiPina"
 import { future, toasterr } from "../../../tool/hook/credit"
 
@@ -22,6 +23,7 @@ defineProps<{ form: ONE, pk: string, tit_def?: string }>()
 const { warehouses } = storeToRefs(giobaiPina())
 
 nextTick(() => future(() => {
+    TEST ? console.log(warehouses.value) : undefined;
     if (warehouses.value.length <= 0) { toasterr("未找到可用的倉庫！！！") }
 }))
 </script>

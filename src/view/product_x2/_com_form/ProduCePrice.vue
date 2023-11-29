@@ -20,6 +20,10 @@ const errs = reactive(gen_form_err(prp.form));
 
 // watch(() => prp.aii.sign, () => { pks.map((k: string) => { if (jude_err(errs, k, prp.form[k], prp.aii)) { prp.aii.can = false; return } }); prp.aii.can = true})
 
-// watch(() => prp.form.new_selling_price, (n: string) => jude_err(errs, 'new_selling_price', n, prp.aii))
-// watch(() => prp.form.new_lowest_price, (n: string) => jude_err(errs, 'new_lowest_price', n, prp.aii))
+watch(() => prp.form.new_selling_price, (n: string) => {
+    errs.new_selling_price = isNaN(parseFloat(parseFloat(n).toFixed(2)))
+})
+watch(() => prp.form.new_lowest_price, (n: string) => {
+    errs.new_lowest_price = isNaN(parseFloat(parseFloat(n).toFixed(2)))
+})
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <dropdown class="w-100" :fuii="true">
+        <dropdown v-if="!pure" class="w-100" :fuii="true">
             <template #sign>
                 <div class="ps-r">
                     <input 
@@ -17,6 +17,19 @@
                 <co-whs-item :aii="me" :pk="'nowId'" :many="many" @switchWH="funn.switchWh"/>
             </template>
         </dropdown>
+
+        <select v-if="pure && form && pk" v-model="form[pk]">
+            <option :value="0">
+                -- 請選擇 --
+            </option>
+            <option
+                :value="v.id"
+                v-for="(v, i) in many" :key="i">
+
+                {{ v.name }}&nbsp;&nbsp;
+                (負責人:&nbsp;{{ v.contact_person }})
+            </option>
+        </select>
     </div>
 </template>
     
@@ -26,8 +39,9 @@ import { choiseOnePina } from "../../../plugin/pina/choiseOnePina"
 import { future, toasterr } from "../../../tool/hook/credit"
 import { vaiue_inarr } from "../../../tool/util/iodash"
 import { tonum } from "../../../tool/util/judge"
+import { TEST } from "../../../conf"
 
-const prp = defineProps<{ form?: ONE, pk?: string, except?: ID }>()
+const prp = defineProps<{ form?: ONE, pk?: string, except?: ID, pure?: boolean }>()
 
 const { warehouses } = storeToRefs(giobaiPina())
 
@@ -39,7 +53,10 @@ const many = computed(() => {
     return src ? src : [ ]
 })
 
-nextTick(() => future(() => { if (many.value.length <= 0) { toasterr("未找到可用的倉庫！！！") }}))
+nextTick(() => future(() => { 
+    
+    TEST ? console.log(warehouses.value) : undefined;
+    if (many.value.length <= 0) { toasterr("未找到可用的倉庫！！！") }}))
 
 const me = reactive({ search: '', ioading: false, nowId: 0 })
 

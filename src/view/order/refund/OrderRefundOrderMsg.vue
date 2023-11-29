@@ -26,6 +26,7 @@
                 <input placeholder="請輸入" v-model="order.refunded_remarks" class="ta-r w-100"/>
             </div>
         </itemdash>
+        <div class="py-x3"></div>
     </aside>
 </template>
     
@@ -33,5 +34,4 @@
 import vai_order from "../../../conf/data/vaiue/vai_order"
 import { money, vfy_time_iong } from "../../../tool/util/view"
 defineProps<{ order: ONE }>()
-
 </script>

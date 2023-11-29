@@ -9,7 +9,7 @@
             <o-inpu-td v-if="can" class="ani-softer">
                 <input v-model="v.name" placeholder="請輸入"/>
             </o-inpu-td>
-            <o-btn-search-mini class="mi-s" @tap="funn.search()" v-else :ioad="v.__ioad"/>
+            <o-btn-search-mini class="mi-s mh-2em" @tap="funn.search()" v-else :ioad="v.__ioad"/>
         </div>
 
         <!-- 循環 開始 -->
@@ -35,19 +35,19 @@
         <div class="w-8 ani-softer" v-if="can">
             <div class="w-100 ani-softer" v-for="(m, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
                 <o-inpu-td :err="!m.quantity">
-                    <input type="number" v-model="m.quantity" placeholder="請輸入"/>
+                    <input type="number" v-model="m.quantity" placeholder="請輸入正數"/>
                 </o-inpu-td>
             </div>
         </div>
         <!-- 單價 -->
         <div class="w-9 ani-softer" v-if="can">
                 <o-inpu-td class="bg-card">
-                    <input type="number" v-model="v.price" placeholder="請輸入"/>
+                    <input type="number" v-model="v.price" placeholder="請輸入金錢"/>
                 </o-inpu-td>
         </div>
         <div class="w-8 ani-softer" v-if="can">
                 <o-inpu-td>
-                    <input type="number" v-model="v.discount" placeholder="請輸入"/>
+                    <input type="number" v-model="v.discount" placeholder="0至1的小數"/>
                 </o-inpu-td>
         </div>
         <!-- 最新入貨價格 -->
@@ -55,49 +55,22 @@
             <o-inpu-td class="bd-c-t-imp">
                 <input :value="v.new_stock_price" :disabled="true"/>
             </o-inpu-td>
-            <!--
-            <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
-                <o-inpu-td class="bd-c-t-imp">
-                    <input :value="v.new_stock_price" :disabled="true"/>
-                </o-inpu-td>
-            </div>
-            -->
         </div>
         <div class="w-7 ani-softer" v-if="can">
             <o-inpu-td class="bd-c-t-imp">
                 <input :value="v.total_amount" :disabled="true"/>
             </o-inpu-td>
-            <!--
-            <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
-                <o-inpu-td class="bd-c-t-imp">
-                    <input :value="v.total_amount" :disabled="true"/>
-                </o-inpu-td>
-            </div>
-            -->
         </div>
-        <div class="w-8 ani-softer" v-if="can">
-            <o-inpu-td class="bd-c-t-imp bg-card">
-                <input type="number" v-model="v.lowest_price"/>
+        <!-- 最低售價 -->
+        <div class="w-7 ani-softer" v-if="can">
+            <o-inpu-td class="bg-card" :err="v.lowest_price > v.selling_price">
+                <input type="number" v-model="v.lowest_price" placeholder="請輸入金錢"/>
             </o-inpu-td>
-            <!--
-            <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
-                <o-inpu-td class="bd-c-t-imp bg-card">
-                    <input :value="v.lowest_price" :disabled="true"/>
-                </o-inpu-td>
-            </div>
-            -->
         </div>
-        <div class="w-6 ani-softer" v-if="can">
-            <o-inpu-td class="bd-c-t-imp bg-card">
-                <input type="number" v-model="v.selling_price"/>
+        <div class="w-7 ani-softer" v-if="can">
+            <o-inpu-td class="bg-card">
+                <input type="number" v-model="v.selling_price" placeholder="請輸入金錢"/>
             </o-inpu-td>
-            <!--
-            <div class="w-100 ani-softer" v-for="(_, n) in v.data_of_vars" :key="n" :class="{ 'pt-s': n > 0 }">
-                <o-inpu-td class="bd-c-t-imp bg-card">
-                    <input :value="v.selling_price" :disabled="true"/>
-                </o-inpu-td>
-            </div>
-            -->
         </div>
         <div class="fx-1 pi fx-r">
             <slot></slot>
@@ -114,7 +87,11 @@ const prp = defineProps<{ v: ONE|ORDER_IN_ONE }>()
 
 const pina = invoiceCreatPina()
 
-const can = computed(() => { const p: ONE = prp.v.__product; return (p && p.id) })
+const can = computed(() => { 
+    const p: ONE = prp.v.__product; 
+    // if (prp.v.lowest_price > prp.v.selling_price) return false;
+    return (p && p.id) 
+})
 
 const funn = {
     pro: (): ONE|null => (can.value ? prp.v.__product : null),

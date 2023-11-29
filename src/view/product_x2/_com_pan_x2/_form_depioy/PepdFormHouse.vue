@@ -12,6 +12,7 @@
             <h5>入貨倉庫</h5>
             <o-input :tit="'入貨倉庫'" :err="errs.storehouse_to"> 
                 <co-warehouse-seiect 
+                    :pure="true"
                     :except="form['storehouse_from']"
                     :form="form" :pk="'storehouse_to'"/>
             </o-input>

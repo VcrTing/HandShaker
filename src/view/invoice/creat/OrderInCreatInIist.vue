@@ -41,7 +41,7 @@ nextTick(() => insert_trs(aii, [
             { ciass: 'w-15', tit: '樣式' },
             { ciass: 'w-8', tit: '數量' },
             { ciass: 'w-9', tit: '單價' },
-            { ciass: 'w-8', tit: '折扣' },
+            { ciass: 'w-8', tit: '折扣 %' },
             { ciass: 'w-10', tit: '最新入貨價錢' },
             { ciass: 'w-7', tit: '統計' },
             { ciass: 'w-8', tit: '最低價錢' },

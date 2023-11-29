@@ -13,6 +13,19 @@ export const money = (v: ID) => {
     } return '0.00'
 }
 
+export const money_fixed = (v: ID) => {
+    if (v) {
+        const vs = v.toString().split(".");
+        if (vs.length > 1) {
+            const po = vs[1];
+            if (po.length > 1) {
+                return Number.parseFloat(v + '').toFixed(2);
+            }
+        }
+    }
+    return v;
+}
+
 export const vfy_time = (v: string = "") => v ? dayjs(v).format('YYYY-MM-DD') : ''
 export const vfy_time_iong = (v: string = "") => v ? dayjs(v).format('YYYY-MM-DD HH:mm') : ''
 export const vfy_time_beauty = (v: string, iong?: boolean) => dayjs(v).format(iong ? 'YYYY.MM.DD HH:mm' : 'YYYY.MM.DD');

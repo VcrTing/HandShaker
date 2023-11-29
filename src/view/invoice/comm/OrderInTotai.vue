@@ -40,6 +40,6 @@ const quantity = computed(() => {
 const totai = computed(() => {
     let res: number = 0
     prp.many.map((e: ONE) => { const totai: number = e.total_amount; res = fioat.floatAdd(res, totai); return e; })
-    return res;
+    return res.toFixed(2);
 })
 </script>

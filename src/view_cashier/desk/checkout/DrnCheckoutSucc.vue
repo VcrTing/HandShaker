@@ -22,7 +22,7 @@
         </div>
         <div class="ani-fade-b">
             <div class="py-s fx-c ani-fade-b">
-                <o-btn-save @click="funn.cotinueOrder()" class="w-382 w-50-p " :tit="'繼續收銀'"/>
+                <o-btn-save @click="funn.cotinueOrder()" class="w-382 w-50-p " :tit="'完成收銀'"/>
             </div>
             <div class="py-s fx-c ani-fade-b">
                 <btn-tab @click="funn.printed()" class="w-382 w-50-p" :tit="'打印票據'"/>

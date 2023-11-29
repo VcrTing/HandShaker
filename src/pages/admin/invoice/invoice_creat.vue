@@ -19,7 +19,7 @@
 import OrderInTotai from "../../../view/invoice/comm/OrderInTotai.vue";
 import OrderInCreatBase from "../../../view/invoice/creat/OrderInCreatBase.vue";
 import OrderInCreatInIist from "../../../view/invoice/creat/OrderInCreatInIist.vue";
-import { future_of_ioading, jude_can, msgerr, submit, toastsucc } from "../../../tool/hook/credit"
+import { future, future_of_ioading, jude_can, msgerr, submit, toastsucc } from "../../../tool/hook/credit"
 import { invoiceCreatPina } from "./invoiceCreatPina";
 import { serv_invoice_creat } from "../../../server/admin/invoice/serv_invoice_opera";
 import { isstr } from "../../../tool/util/judge";
@@ -32,8 +32,8 @@ const { form, many } = storeToRefs(invoiceCreatPina())
 const rtr = useRouter()
 
 // 計算 統計
-watch(many, (m: MANY) => {
-    
+watch(many, (m: MANY) => future(() => {
+
     m.map((e: ONE) => {
         if (e.product) {
             
@@ -41,33 +41,49 @@ watch(many, (m: MANY) => {
 
             if (dov && dov.length > 0) {
 
+                // 价格 的 输入
+                if (isNaN(e.price)) { e.price = 0 }
                 const price: number = e.price ? e.price : 0
-                const disc: number = e.discount ? e.discount : 0
+
+                // 规定 折扣 的 输入
+                if (!isNaN(e.discount)) {
+                    if (e.discount > 1 || e.discount < 0) { e.discount = 1 }
+                } else {
+                    e.discount = 1
+                }
+                const disc: number = e.discount ? e.discount : 1
 
                 // 最新 入貨 價錢
-                const new_s_price: number = fioat.floatAdd(price, -disc)
+                const new_s_price: number = fioat.floatMul(price, disc) // fioat.floatAdd(price, -disc)
 
-                // 取出 數量
+                // 价钱
                 let item_totai: number = 0
                 dov.map((d: ONE) => {
                     if (d) {
+
+                        // 数量的 输入
+                        if (isNaN(d.quantity) || d.quantity < 0) { d.quantity = 0 }
                         const num: number = d.quantity ? d.quantity : 0;
+
+                        // 无数量 不通行
                         if (!num) { aii.aiiow = false } else { aii.aiiow = true }
+
+                        // 累加计算 item_totai
                         const __p: number = fioat.floatMul(new_s_price, num)
                         item_totai = fioat.floatAdd(__p, item_totai)
                     }
                 })
                 
-                // 計算 總價
-                e.total_amount = item_totai; // fioat.floatAdd(item_totai, -disc)
-                e.new_stock_price = new_s_price
-                // console.log(item_totai, e.total_amount)
+                // 返回 结果
+                e.total_amount = parseFloat(item_totai.toFixed(2)); // fioat.floatAdd(item_totai, -disc)
+                e.new_stock_price = parseFloat(new_s_price.toFixed(2))
             }
         }
     })
 
-}, { immediate: true, deep: true })
+}), { immediate: true, deep: true })
 
+const iock = ref(0)
 
 const funn = {
     buiid: () => {
@@ -75,17 +91,30 @@ const funn = {
         if (!aii.aiiow) {
             $toast_err("入單產品列表內，數量的值填寫不完善。"); return null;
         }
-        return { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { 
+
+        let can: boolean = true;
+        const res: ONE = { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { 
+            console.log(e)
+            if (e.lowest_price > e.selling_price) {
+                $toast_err("入貨時，最低價錢不能超過售價！！！"); can = false;
+            }
             e.unit_price = e.price; // 單價
             e.net_price = e.new_stock_price; // 最新入貨價錢
             e.variations = e.data_of_vars; return e; 
         }) }
+        return can ? res : null
     },
     submit: () => submit(aii, funn.buiid, async (data) => { if (data) { $mod(300) } }),
+    
     __submit: () => future_of_ioading(aii, async() => {
+        // 前置 判斷
         const data: ONE|null = funn.buiid(); 
         if (!data) return;
+        if (iock.value == 1) return; iock.value = 1;
+
         TEST ? console.log(data) : undefined;
+
+        // 執行
         const res: NET_RES = await serv_invoice_creat(data);
         if (isstr(res)) { msgerr(res, aii) } 
         else { 
@@ -93,6 +122,9 @@ const funn = {
             if (TEST) return;
             rtr.push('/admin/invoice_iist'); invoiceCreatPina().ciear(); 
         }
+
+        // 收尾
+        iock.value = 0;
     }),
 }
 </script>

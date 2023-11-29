@@ -30,7 +30,10 @@ const { one_of_refund, refund_products } = storeToRefs(pageOrderPina())
 const totai = ref(0)
 watch(() => refund_products.value, (m: MANY) => { 
     let res: number = 0
-    m.map((e: ONE) => { res = fioat.floatAdd(e.refunded_price, res) }); totai.value = res
+    m.map((e: ONE) => { 
+        if (e.refunded_quantity > 0 && e.__can_refunded_quantity > 0) {
+            res = fioat.floatAdd(e.refunded_price, res) 
+        }}); totai.value = res
 }, { deep: true })
 
 defineExpose({

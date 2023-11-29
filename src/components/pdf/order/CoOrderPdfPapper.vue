@@ -1,7 +1,7 @@
 <template>
     <div class="w-100 bg-con pdf-wrapper co-order-pdf">
         <div class="fx-s">
-            <h2>銷售數據&nbsp;SALE RECEIPT</h2>
+            <h2>銷售單據&nbsp;SALE RECEIPT</h2>
             <div>
                 <cu-htm-iogo class="pdf-iogo"/>
             </div>

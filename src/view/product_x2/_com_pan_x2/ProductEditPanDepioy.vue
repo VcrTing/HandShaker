@@ -56,6 +56,7 @@ const funn = {
         $pan(0);
     }),
     init: () => future(() => {
+        form.storehouse_to = 0
         const def: ID = def_v_inarr(variations_of_store_of_transtock.value, 'id');
         form['storehouse_from'] = store_of_transtock.value.storehouse_id;
         form.variation = tonum(def);

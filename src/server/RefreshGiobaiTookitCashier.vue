@@ -10,7 +10,7 @@ import { future, future_of_ioading } from "../tool/hook/credit";
 const { is_iogin } = storeToRefs(userPina())
 
 const funn = {
-    fetch: () => future_of_ioading(<AII_IIST>{ ioading: true }, async () => {
+    fetch: () => future_of_ioading(<AII_IIST>{ ioading: false }, async () => {
         // 刷新 成員等級
         // await giobaiPina().refreshIeveis()
         // 刷新倉庫
