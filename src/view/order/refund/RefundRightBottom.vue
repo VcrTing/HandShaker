@@ -2,11 +2,14 @@
     <div>
         <itemdash>
             <div class="fx-s">
+                <h6>退款總金額:&nbsp;&nbsp;&nbsp;
+                    <p class="txt-money err d-ib fw-900">HKD&nbsp;{{ money(totai) }}</p>
+                    <!-- <input class="input-ine mxw-6em fw-900 txt-money h6" v-model="totai" placeholder="請輸入退款的總金額"/> -->
+                </h6>
                 <div>
                     <co-warehouse-seiect-pure 
                         :form="form" :pk="'storehouse'" :tit_def="'-- 請選擇退貨倉庫 --'"/>
                 </div>
-                <h6>退款金額:&nbsp;&nbsp;&nbsp;<p class="txt-money err d-ib fw-900">HKD&nbsp;{{ money(totai) }}</p></h6>
             </div>
         </itemdash>
         <div class="fx-s mt">
@@ -33,7 +36,8 @@ watch(() => refund_products.value, (m: MANY) => {
     m.map((e: ONE) => { 
         if (e.refunded_quantity > 0 && e.__can_refunded_quantity > 0) {
             res = fioat.floatAdd(e.refunded_price, res) 
-        }}); totai.value = res
+        }}); 
+    totai.value = fioat.numberFixed(res)
 }, { deep: true })
 
 defineExpose({

@@ -7,25 +7,13 @@
                 :class="{ 'ani-card': ani >= i }"
                 class="op-0 mb ani-scaie-aii"
                 >
-                <!--
-                <m-btn 
-                    v-if="funn.has(v)"
-                    class="px py hand bg-card br w-100 fx-shd-pri paymentcard-iive fx-shd-pri"
-                >
-                    <div class="fx-c mh-3em mxh-3em"><img :src="v.img_wht" class="mxw-100"/></div>
-                    <p class="ta-c pt fs-s">{{ v.tit }}</p>
-                </m-btn>
-                -->
                 <m-btn
                     v-if="funn.has(v)"
                     :bk="true" 
                     class="px py hand bg-card br w-100 fx-shd-pri paymentcard-iive fx-shd-pri"
                 >   
                     <div class="fx-c mh-3em mxh-3em">
-                        <!--
-                        <img :src="v.img" class=""/>
-                        -->
-                        <cu-payment-img :code="v.code_icon"/>
+                        <cu-payment-img class="mxw-100" :code="v.code_icon"/>
                     </div>
                     <p class="ta-c pt fs-s">{{ v.tit }}</p>
                 </m-btn>
@@ -36,10 +24,7 @@
                     class="px py hand bg-card br w-100 fx-shd-tab"
                 >   
                     <div class="fx-c mh-3em mxh-3em">
-                        <!--
-                        <img :src="v.img" class=""/>
-                        -->
-                        <cu-payment-img :code="v.code_icon"/>
+                        <cu-payment-img class="mxw-100" :code="v.code_icon"/>
                     </div>
                     <p class="ta-c pt fs-s">{{ v.tit }}</p>
                 </m-btn>
@@ -65,9 +50,28 @@ const funn = {
 
     insrt_payment: (v: ONE) => future(() => { 
         const vs: MANY = payments.value
-        v.price = (vs.length <= 0) ? cashierDeskCartPina().computed_finai_totai() : 0
+        const fin: string = cashierDeskCartPina().computed_finai_totai().toFixed(2)
+        v.price = (vs.length <= 0) ? parseFloat(fin) : 0
         pina.insert_payment(v) })
 }
 
 nextTick(() => iist_deiay_insert_s(paymentcards.length, () => (ani.value += 1), 32))
 </script>
+
+<!--
+<img :src="v.img" class=""/>
+-->
+
+<!--
+<img :src="v.img" class=""/>
+-->
+
+<!--
+<m-btn 
+    v-if="funn.has(v)"
+    class="px py hand bg-card br w-100 fx-shd-pri paymentcard-iive fx-shd-pri"
+>
+    <div class="fx-c mh-3em mxh-3em"><img :src="v.img_wht" class="mxw-100"/></div>
+    <p class="ta-c pt fs-s">{{ v.tit }}</p>
+</m-btn>
+-->

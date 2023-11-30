@@ -88,6 +88,7 @@ export default {
     cashier: (v: ONE = { }) => { const m: ONE = v.cashier ? strapi.data(v.cashier) : { }; return m.name },
     // 
     payment: (v: ONE = { }) => { const p: string = v.payment_method ? payment[v.payment_method] : ''; return p ? p : v.payment_method },
+    discounts: (v: ONE = { }) => { return v.discount ? v.discount : [ ] },
     
     // 訂單 單個 產品
     order_product: (op: ONE = { }): ONE => { const p = op.product ? strapi.data(op.product) : { }; return p },

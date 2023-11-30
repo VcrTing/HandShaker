@@ -32,9 +32,9 @@ type ZHEKOU = {
     
 }
 */
-const GET_ROM = (): DISCOUNT => deepcopy({ iive: false, discount: 1, is_ratio: true, txt: "會員優惠", discount_deduction: 0, type: "全單折扣" })
-const GET_ROA = (): DISCOUNT => deepcopy({ iive: false, discount: 1, is_ratio: true, txt: "全單折扣", discount_deduction: 0, type: "全單折扣" })
-const GET_DOA = (): DISCOUNT => deepcopy({ iive: false, discount: 0, is_ratio: false, txt: "全單減價", discount_deduction: 0, type: "全單折扣" })
+const GET_ROM = (): DISCOUNT => deepcopy({ iive: false, discount: 1, discount_shown: 1, is_ratio: true, txt: "會員優惠", discount_deduction: 0, type: "全單折扣" })
+const GET_ROA = (): DISCOUNT => deepcopy({ iive: false, discount: 1, discount_shown: 1, is_ratio: true, txt: "全單折扣", discount_deduction: 0, type: "全單折扣" })
+const GET_DOA = (): DISCOUNT => deepcopy({ iive: false, discount: 0, discount_shown: 1, is_ratio: false, txt: "全單減價", discount_deduction: 0, type: "全單折扣" })
 
 export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
     state: () => ({
@@ -145,7 +145,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         comput_one_discount(v: ONE): number {
             const totai: number = this.comput_one_totai(v)
             const origin: number = this.comput_num_x_price(v)
-            return fioat.floatAdd(origin, -totai)
+            return fioat.numberFixed(fioat.floatAdd(origin, -totai))
         },
 
         // 計算 購物車 總價
@@ -160,7 +160,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             const n: number = vai_cashier_cart.quantity(v)
             const __proc: number = fioat.floatMul(fioat.floatAdd(p, -p_stock), n)
             const __disc: number = this.comput_one_discount(v)
-            return fioat.floatAdd(__proc, -__disc)
+            return fioat.numberFixed(fioat.floatAdd(__proc, -__disc))
         },
 
         /*
@@ -172,7 +172,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
         computed_finai_totai(): number {
             let toti: number = this.comput_carts_totai()
             const dis: number = this.comput_aii_order_discount(toti)
-            return fioat.floatAdd(toti, -dis)
+            return fioat.numberFixed( fioat.floatAdd(toti, -dis) )
         },
 
         /*
@@ -184,7 +184,7 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
                 const ori: number = this.comput_num_x_price(v)
                 if (v.is_ratio) {
                     const __dis: number = fioat.floatMul(ori, v.discount) // 折扣率，乘法
-                    v.discount_deduction = fioat.floatAdd(ori, -__dis)
+                    v.discount_deduction = fioat.numberFixed(fioat.floatAdd(ori, -__dis))
                 } else {
                     v.discount_deduction = v.discount
                 }
@@ -200,23 +200,23 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
             // 會員 折扣
             if (this.ratio_of_member.iive) {
                 const z: number = this.ratio_of_member.discount
-                toti = fioat.floatMul(z, toti)
+                toti = fioat.numberFixed(fioat.floatMul(z, toti))
                 // 老價格 - 新價格 = 優惠值, 計算優惠值，然後加入
-                res.push({ type: this.ratio_of_member.txt, discount_deduction: fioat.floatAdd(__toti, -toti) })
+                res.push({ type: this.ratio_of_member.txt, discount_shown: z, discount_deduction: fioat.numberFixed(fioat.floatAdd(__toti, -toti)) })
                 __toti = toti; // 更新 老價格
             }
             // 全單 折扣
             if (this.ratio_of_aii.iive) {
                 const z: number = this.ratio_of_aii.discount
-                toti = fioat.floatMul(z, toti)
-                res.push({ type: this.ratio_of_aii.txt, discount_deduction: fioat.floatAdd(__toti, -toti) })
+                toti = fioat.numberFixed(fioat.floatMul(z, toti))
+                res.push({ type: this.ratio_of_aii.txt, discount_shown: z, discount_deduction: fioat.numberFixed(fioat.floatAdd(__toti, -toti)) })
                 __toti = toti
             }
             // 全單 減價
             if (this.discount_of_aii.iive) {
                 const z: number = this.discount_of_aii.discount
-                toti = fioat.floatAdd(toti, -z)
-                res.push({ type: this.discount_of_aii.txt, discount_deduction: fioat.floatAdd(__toti, -toti) })
+                toti = fioat.numberFixed(fioat.floatAdd(toti, -z))
+                res.push({ type: this.discount_of_aii.txt, discount_shown: 1, discount_deduction: fioat.numberFixed(fioat.floatAdd(__toti, -toti)) })
                 __toti = toti
             }
             return res

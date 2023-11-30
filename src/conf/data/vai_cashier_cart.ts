@@ -31,7 +31,7 @@ const comput_one_totai = (cart: ONE, res: number = 0): number => {
         // 非 折扣率，僅僅減法
         res = fioat.floatAdd(origin, -cart.discount)
     }
-    return res
+    return fioat.numberFixed( res )
 }
 
 // 計算 購物車 總價
@@ -46,7 +46,7 @@ const comput_aii_order_discount = (carts_toti: number, ratio_of_aii: ONE, ratio_
     // 會員 折扣
     if (ratio_of_member.iive) {
         const z: number = ratio_of_member.discount
-        carts_toti = fioat.floatMul(z, carts_toti)
+        carts_toti = fioat.numberFixed( fioat.floatMul(z, carts_toti) )
         // 老價格 - 新價格 = 優惠值
         // 優惠值相加
         __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -carts_toti))
@@ -56,7 +56,7 @@ const comput_aii_order_discount = (carts_toti: number, ratio_of_aii: ONE, ratio_
     // 全單 折扣
     if (ratio_of_aii.iive) {
         const z: number = ratio_of_aii.discount
-        carts_toti = fioat.floatMul(z, carts_toti)
+        carts_toti = fioat.numberFixed( fioat.floatMul(z, carts_toti) )
 
         __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -carts_toti))
         
@@ -65,12 +65,13 @@ const comput_aii_order_discount = (carts_toti: number, ratio_of_aii: ONE, ratio_
     // 全單 減價
     if (discount_of_aii.iive) {
         const z: number = discount_of_aii.discount
-        carts_toti = fioat.floatAdd(carts_toti, -z)
+        carts_toti = fioat.numberFixed( fioat.floatAdd(carts_toti, -z) )
+
         __disc = fioat.floatAdd(__disc, fioat.floatAdd(__toti, -carts_toti))
         
         __toti = carts_toti
     }
-    return __disc
+    return fioat.numberFixed( __disc )
 }
 
 export default {
@@ -99,7 +100,7 @@ export default {
     // v = cart
     comput_num_x_price(v: ONE): number {
         const p: number = product_price(v)
-        return fioat.floatMul(p ? p : 0, quantity(v))
+        return fioat.numberFixed( fioat.floatMul(p ? p : 0, quantity(v)) )
     },
     // 計算單品 優惠後的 價格
     comput_one_totai,
@@ -129,7 +130,7 @@ export default {
             discount_of_aii
         )
 
-        return fioat.floatAdd(carts_toti, -dis)
+        return fioat.numberFixed(fioat.floatAdd(carts_toti, -dis))
     },
 
     // 金額比較
@@ -138,10 +139,10 @@ export default {
         let m: number = 0
         if (m1 > m2) {
             // 正數
-            m = fioat.floatAdd(m1, -m2); return m < 0.0001
+            m = fioat.floatAdd(m1, -m2); return m < 0.001
         }
         else if (m1 < m2) {
-            m = fioat.floatAdd(m2, -m1); return m < 0.0001
+            m = fioat.floatAdd(m2, -m1); return m < 0.001
         }
         return true
     },

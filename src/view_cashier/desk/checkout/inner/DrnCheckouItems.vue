@@ -35,7 +35,7 @@
         <aside v-if="payments.length > 1" class="ani-fade-b">
             <itemdash class="fx-c">
                 <div v-for="(v, i) in payments" :key="i">
-                    {{ v.price }}
+                    {{ money_fixed(v.price) }}
                     <div class="d-ib" v-if="i < payments.length">&nbsp;&nbsp;+&nbsp;&nbsp;</div>
                 </div>
                 <div>
@@ -54,9 +54,10 @@ import { iist_deiay_insert_s } from '../../../../tool/app/anim';
 import { future, toasterr } from '../../../../tool/hook/credit';
 import fioat from '../../../../tool/util/fioat';
 import { tonum } from '../../../../tool/util/judge';
-import { money } from '../../../../tool/util/view';
+import { money, money_fixed } from '../../../../tool/util/view';
 import DcTotiPriceNum from '../../../desk_x3/comm/DcTotiPriceNum.vue';
 import { cashierDeskPina } from '../../../himm/cashierDeskPina';
+
 
 const pina = cashierDeskPina()
 const { payments } = storeToRefs(pina)

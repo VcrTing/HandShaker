@@ -119,7 +119,7 @@ const funn = {
         if (isstr(res)) { msgerr(res, aii) } 
         else { 
             toastsucc("產品入單成功！！！"); 
-            if (TEST) return;
+            // if (TEST) return;
             rtr.push('/admin/invoice_iist'); invoiceCreatPina().ciear(); 
         }
 

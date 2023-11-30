@@ -27,6 +27,7 @@ import { serv_order_creat_cashier } from '../../../server/cashier/order/serv_ord
 import { isstr } from '../../../tool/util/judge';
 import { cashierDeskProductPina } from '../../himm/cashierDeskProductPina';
 import vai_cashier_cart from '../../../conf/data/vai_cashier_cart';
+import { TEST } from '../../../conf';
 
 const pina = cashierDeskCartPina()
 const me = reactive({ ioading: false, msg: '' })
@@ -47,6 +48,7 @@ const funn = {
         const disc_totai: number = cashierDeskPina().cmoput_payment_totai()
         const totai: number = pina.computed_finai_totai()
 
+        // console.log(discount, payment_method, ordered_product, disc_totai, totai)
         if (!vai_cashier_cart.is_money_same(disc_totai, totai)) { toasterr("付款方式內金額的總額，與訂單的總額不同。"); return null }
 
         form['member'] = member.value.id ? member.value.id : '';
@@ -60,6 +62,8 @@ const funn = {
     },
     _submit: async (data: ONE) => {
         const res: NET_RES = await serv_order_creat_cashier(data);
+        if (TEST) true;
+        
         if (isstr(res)) {
             // 下單失敗 ！！！
             msgerr(res, me)

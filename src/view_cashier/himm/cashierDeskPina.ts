@@ -69,7 +69,7 @@ export const cashierDeskPina = defineStore("cashierDeskPina", {
             const src: MANY = this.payments;
             (src.length > 0) ? src.map((e: ONE) => { 
                 res = fioat.floatAdd(res, e.price) }) : undefined;
-            return res
+            return fioat.numberFixed( res )
         },
         // 構建 支付方式
         buiid_payment_method() { const res: MANY = [ ]; this.payments.map((e: ONE) => { res.push({ name: e.name, price: e.price }) }); return res },

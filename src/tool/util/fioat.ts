@@ -1,4 +1,9 @@
 export default {
+    // 兩位小數點
+    numberFixed(src: number) {
+        return isNaN(src) ? Number.parseFloat(src + '') : parseFloat(src.toFixed(2))
+    },
+
     // 加法
     floatAdd(arg1: number, arg2: number) {
         let r1, r2, m

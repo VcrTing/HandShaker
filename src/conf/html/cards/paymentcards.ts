@@ -12,9 +12,10 @@ export const paymentcards = <MANY>[
     __item_card(2, '微信支付', 'Wechat'),
     __item_card(3, '銀聯', 'UnionPay'),
     __item_card(4, 'master card', 'MasterCard'),
-    __item_card(5, '八連通', 'Octopus', 'w-333'),
-    __item_card(6, 'EPS 支付', 'Eps', 'w-333'),
-    __item_card(7, '現金支付', 'Cash', 'w-333'),
+    __item_card(5, '八連通', 'Octopus'), // , 'w-333'
+    __item_card(6, 'EPS 支付', 'Eps'),
+    __item_card(7, '現金支付', 'Cash'),
+    __item_card(8, '其他付款方式', 'Other'),
 ]
 
 export const paymentcards_def: ONE = paymentcards[0]

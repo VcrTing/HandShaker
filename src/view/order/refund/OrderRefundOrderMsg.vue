@@ -14,7 +14,7 @@
         <itemdash class="fx-s fx-t px mt-s">
             <div class="fw-700">支付方式</div>
             <div class="">
-                <div class="fx-s ta-r" v-for="(v, i) in vai_order.payment(order)" :key="i">
+                <div class="fx-s ta-r ani-softer" v-for="(v, i) in vai_order.payment(order)" :key="i">
                     <div>{{ v.name }}:&nbsp;&nbsp;&nbsp;</div>
                     <div class="fw-900 mw-4em">{{ money(v.price) }}</div>
                 </div>
@@ -26,12 +26,20 @@
                 <input placeholder="請輸入" v-model="order.refunded_remarks" class="ta-r w-100"/>
             </div>
         </itemdash>
+
+        <div class="pt-x2">
+            <!-- 折扣卡片信息 -->
+            <refund-discount-msg-card :order="order"/>
+        </div>
         <div class="py-x3"></div>
     </aside>
 </template>
     
 <script lang="ts" setup>
+import { TEST } from "../../../conf"
 import vai_order from "../../../conf/data/vaiue/vai_order"
 import { money, vfy_time_iong } from "../../../tool/util/view"
-defineProps<{ order: ONE }>()
+import RefundDiscountMsgCard from './comm/RefundDiscountMsgCard.vue'
+const prp = defineProps<{ order: ONE }>()
+nextTick(() => TEST ? console.log(prp.order) : undefined);
 </script>
