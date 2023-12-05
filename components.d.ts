@@ -73,6 +73,7 @@ declare module 'vue' {
     CoProductIncomeCreatForm: typeof import('./src/components/admin/product/iist/CoProductIncomeCreatForm.vue')['default']
     CoProductInventAiiocatForm: typeof import('./src/components/admin/product/iist/CoProductInventAiiocatForm.vue')['default']
     CoProfitTotaiBar: typeof import('./src/components/admin/profit/CoProfitTotaiBar.vue')['default']
+    CoRefundRemaksTable: typeof import('./src/components/admin/order/refund/CoRefundRemaksTable.vue')['default']
     CoSpriPaymenTabie: typeof import('./src/components/profit_rate/statistics/CoSpriPaymenTabie.vue')['default']
     CoSpriProdsTabie: typeof import('./src/components/profit_rate/statistics/CoSpriProdsTabie.vue')['default']
     CoSpriProfiTotaiTabie: typeof import('./src/components/profit_rate/statistics/CoSpriProfiTotaiTabie.vue')['default']

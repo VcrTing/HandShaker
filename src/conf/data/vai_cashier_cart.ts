@@ -132,6 +132,10 @@ export default {
 
         return fioat.numberFixed(fioat.floatAdd(carts_toti, -dis))
     },
+    // 經過 計算
+    computed_finai_total_discount(price: number) {
+        return price;
+    },
 
     // 金額比較
     // 1 = same

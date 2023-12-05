@@ -13,7 +13,10 @@
 
             <co-order-detaii-price-totai-tabie :order="one_of_view"/>
             <div class="py-row"></div>
-
+            
+            <co-refund-remaks-table class="mt" :order="one_of_view"/>
+            <div class="py-row"></div>
+ 
             <div class="py-x2 fx-c">
                 <o-save-back-btns-group v-if="need_refund" class="w-100 w-618-p" :tit_back="'退款 / 退貨'" 
                     @back="funn.refund()" @save="funn.printed()"

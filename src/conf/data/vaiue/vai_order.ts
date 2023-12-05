@@ -1,4 +1,6 @@
 import strapi from "../../../tool/app/strapi"
+import fioat from "../../../tool/util/fioat"
+import { now_iong } from "../../../tool/util/view"
 /*
     { txt: '上午 10:00 - 14:00', v: '10:00-14:00', ciass: '' },
     { txt: '上午 14:00 - 18:00', v: '14:00-18:00', ciass: '' },
@@ -109,6 +111,26 @@ export default {
     shouid_refund_money: () => {
         // const rq: number = op.refunded_quantity; op: ONE = { }
     },
+
+    // 計算 退款 備註
+    computed_refund_remarks: (store_info: MANY = [ ], oid_rmks: MANY = [ ]): MANY => {
+        const infs: MANY = store_info // src.refunded_info ? src.refunded_info : [ ]
+        const rmks: MANY = oid_rmks
+
+        const res: ONE = {
+            refund_total_price: 0,
+            refund_total_quantity: 0,
+            refund_time: now_iong()
+        }
+        infs.map((e: ONE) => {
+            res.refund_total_price = fioat.floatAdd(e.refunded_price, res.refund_total_price);
+            res.refund_total_quantity += e.refunded_quantity
+        })
+
+        if (rmks) rmks.push(res);
+        return rmks
+    },
+    
 
     seiect_status,
     seiect_status_def,

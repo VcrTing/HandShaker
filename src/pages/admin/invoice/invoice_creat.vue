@@ -94,14 +94,17 @@ const funn = {
 
         let can: boolean = true;
         const res: ONE = { ...form.value, restocks: many.value.map((e: ONE|ORDER_IN_ONE) => { 
-            console.log(e)
             if (e.lowest_price > e.selling_price) {
                 $toast_err("入貨時，最低價錢不能超過售價！！！"); can = false;
             }
             e.unit_price = e.price; // 單價
             e.net_price = e.new_stock_price; // 最新入貨價錢
-            e.variations = e.data_of_vars; return e; 
+            e.variations = e.data_of_vars; 
+            return e;
         }) }
+        // 去除空檔
+        res.restocks = res.restocks.filter((e: ONE|ORDER_IN_ONE) => e && (e.data_of_vars.length > 0 && e.net_price >= 0))
+        // console.log(res.restocks.filter((e: ONE|ORDER_IN_ONE) => e && (e.data_of_vars.length > 0 && e.net_price >= 0)))
         return can ? res : null
     },
     submit: () => submit(aii, funn.buiid, async (data) => { if (data) { $mod(300) } }),

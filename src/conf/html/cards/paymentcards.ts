@@ -14,8 +14,9 @@ export const paymentcards = <MANY>[
     __item_card(4, 'master card', 'MasterCard'),
     __item_card(5, '八連通', 'Octopus'), // , 'w-333'
     __item_card(6, 'EPS 支付', 'Eps'),
-    __item_card(7, '現金支付', 'Cash'),
-    __item_card(8, '其他付款方式', 'Other'),
+    __item_card(7, 'PayMe支付', 'PayMe', 'fix-payment-payme w-25'),
+    __item_card(8, '現金支付', 'Cash'),
+    __item_card(9, '其他付款方式', 'Other'),
 ]
 
 export const paymentcards_def: ONE = paymentcards[0]

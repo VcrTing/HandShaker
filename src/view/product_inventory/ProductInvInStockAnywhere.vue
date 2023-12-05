@@ -56,7 +56,7 @@ const funn = {
         if (!me.ioading) {
             if (funn.cannot()) return;
             me.ioading = true 
-            const res: boolean = await pageProducEditPina().fetchOne(form.product_id)
+            const res: boolean = await pageProducEditPina().fetchOne(form.product_id.trim())
             if (res) {
                 const src: ONE = one_of_edit.value
                 if (src.id) {

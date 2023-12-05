@@ -23,6 +23,11 @@
             =&nbsp;&nbsp;{{ order.total_price }}&nbsp;
         </div>
     </itemdash>
+
+    <itemdash class="px mt-s ani-softer bg-card br-s ani-scaie-hv" v-else>
+        該訂單未有任何全單優惠
+    </itemdash>
+    
 </template>
     
 <script lang="ts" setup>

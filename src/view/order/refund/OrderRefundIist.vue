@@ -17,6 +17,7 @@
 </template>
     
 <script lang="ts" setup>
+import { TEST } from '../../../conf';
 import vai_order from '../../../conf/data/vaiue/vai_order'
 import { future } from '../../../tool/hook/credit'
 import fioat from '../../../tool/util/fioat'
@@ -35,14 +36,10 @@ const funn = {
             const pot = rate.toString().split(".");
             if (pot.length > 1) {
                 const d = pot[1];
-                if (d.toString().length > 1) {
-                    return rate.toFixed(2)
-                }
-            }
-        }
+                if (d.toString().length > 1) { return rate.toFixed(2) }
+            } }
         return rate ? rate : '';
     },
-
 
     effect: (o: ONE = { }) => {
         const prods: MANY = o.ordered_product ? o.ordered_product : [ ]
@@ -53,9 +50,11 @@ const funn = {
                 e.__discount_rate = funn.rate(e.total_price, e.discount_deduction); 
                 e.refunded_quantity = e.__can_refunded_quantity; 
                 e.refunded_price = e.total_price;
+                e.__refunded_price_after_aii_discount = 0;
                 aii.many.push( e ) 
             }); 
             aii.ioading = false; }
+            TEST ? console.log("aii.many =", aii.many) : undefined
     },
     choosAii: (n: boolean) => future(() => { aii.chooses.length = 0; if (n) { aii.many.map((e: ONE) => { aii.chooses.push(e.id) }) } })
 }

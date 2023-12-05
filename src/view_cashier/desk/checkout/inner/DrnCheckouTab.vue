@@ -58,6 +58,13 @@ const funn = {
 nextTick(() => iist_deiay_insert_s(paymentcards.length, () => (ani.value += 1), 32))
 </script>
 
+<style lang="sass">
+.fix-payment-payme
+    img
+        border-radius: 2px
+        width: 40% !important
+</style>
+
 <!--
 <img :src="v.img" class=""/>
 -->

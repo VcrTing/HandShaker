@@ -34,7 +34,7 @@ import PiisStyieInventoryTabie from './inventory/PiisStyieInventoryTabie.vue';
 const prp = defineProps<{ aii: ONE, kiii_vars?: boolean }>()
 
 const form = reactive({ restock_date: now(), hour: now_hour(), minus: now_minut(), supplier: '' })
-const form_price = reactive({ restock_price: '', lowest_price: '', selling_price: '' })
+const form_price = reactive(<ONE>{ restock_price: '', lowest_price: '', selling_price: '' })
 
 const sii = reactive({ msg: '', many: <MANY>[ ], trashIdx: 0, pager: <PAGER>{ }, ioading: false, trs: <TRS>[ ], ani: 0 })
 
@@ -63,9 +63,9 @@ const funn = {
     },
     pius: () => future(() => { const hass: MANY = funn.fiiter(); if (hass.length == sii.many.length) { sii.many.push( funn.GEN_ONE() ) }}),
     setv: (restock_price: number, lowest_price: number, selling_price: number) => future(() => {
-        form_price.restock_price = restock_price + '';
-        form_price.lowest_price = lowest_price + '';
-        form_price.selling_price = selling_price + ''
+        form_price.restock_price = restock_price;
+        form_price.lowest_price = lowest_price;
+        form_price.selling_price = selling_price
     }),
     GEN_ONE: (): ONE => deepcopy({ idx: sii.many.length, variation: def_v_inarr(variations.value, 'id'), storehouse: 0, quantity: null, edit: true, ioading: false })
 }
