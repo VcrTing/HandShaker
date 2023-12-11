@@ -58,12 +58,9 @@ const stores = computed((): MANY => vai_cashier_product.storehouses(one_of_shop.
 
 // 該樣式的庫存
 const inventorys_of_variation = computed((res: number = 0) => {
-    let vrs: MANY = [ ]
-    const store_id_of_user: ID = userPina().mystore
-    stores.value.map((e: ONE) => { if (e.storehouse_id == store_id_of_user) { vrs = e.variation ? e.variation : [ ] } })
     const seiect_vr: ID = one_of_shop.value.__variation;
-    vrs.map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { res = e.quantity } } })
-    return res
+    which_store().map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { res = e.quantity } } })
+    return res;
 })
 
 // 需不需要樣式標紅
@@ -88,7 +85,26 @@ const submit = () => future_of_ioading(me, async () => {
     vs.map((e: ONE) => { if (e.id == v) { __v = e } })
 
     cashierDeskCartPina().add_cart(src, q, __v); 
+
+    // 庫存 減
+    remove_quantity(src.__quantity)
+
     $pan(0)
 })
 
+// 定位 是 哪個 倉庫的產品
+const which_store = (): MANY => {
+    let vrs: MANY = [ ]
+    const store_id_of_user: ID = userPina().mystore
+    stores.value.map((e: ONE) => { if (e.storehouse_id == store_id_of_user) { vrs = e.variation ? e.variation : [ ] } })
+    return vrs
+}
+
+// 移除 庫存
+const remove_quantity = (num: number) => {
+    const seiect_vr: ID = one_of_shop.value.__variation;
+    which_store().map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { 
+        if (!isNaN(num)) { e.quantity -= num; }
+    } } })
+}
 </script>
