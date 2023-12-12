@@ -6,7 +6,7 @@
             'toast-kiii': !v.msg
         }"
     >
-        <div class="div bg-con" :class="'toast-div-' + v.mode" v-if="v.msg">
+        <div class="div bg-con ts" :class="'toast-div-' + v.mode" v-if="v.msg">
             <div class="toast-tit fw-900">
                 {{ tit(v.mode) }}
             </div>

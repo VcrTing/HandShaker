@@ -57,8 +57,15 @@ export const cashierDeskCartPina = defineStore("cashierDeskCartPina", {
     getters: {
         has_choise(state) { let res: boolean = false; state.carts.map((e: ONE) => { if (e.__choise) { res = true } }); return res; },
         choiseOne(state) { let res: ONE = { }; state.carts.map((e: ONE) => { if (e.__choise) { res = e } }); return res },
+        choiseOneIndex(state) { let res: number = 0; state.carts.map((e: ONE, i: number) => { if (e.__choise) { res = i } }); return res }
     },
     actions: {
+        // 獲取 購物車 內 某 產品 的 購買 數量
+        cartQuantity(pid: ID, cart: ONE = { }): number {
+            this.carts.map((e: ONE) => { if (e.product == pid) { cart = e } })
+            return (cart.quantity ? cart.quantity : 0)
+        },
+
         // 重新下單
         doReceiptToOrder(carts: MANY, member: ONE, ratio_of_aii: ONE, ratio_of_member: ONE, discount_of_aii: ONE) {
             this.stating = true;

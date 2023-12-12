@@ -16,8 +16,8 @@
             </div>
             <div class="py pi-row ani-bigger br tr-bg fx-aii-weak ts ani-scaie-hv">
                 <p class="" v-if="one_of_shop.__variation" :class="{ 'txt-err': need_err }">
-                    <div class="ani-softer d-ib">{{ inventorys_of_variation }}</div>&nbsp;&nbsp;件庫存
-                    <div v-if="inventorys_of_variation == 0" class="ani-softer d-ib">(缺貨)</div>
+                    <div class="ani-softer d-ib">{{ inventorys_of_surplus }}</div>&nbsp;&nbsp;件庫存
+                    <div v-if="inventorys_of_surplus == 0" class="ani-softer d-ib">(缺貨)</div>
                 </p>
                 <p v-else class="sus">沒有庫存信息，請先選擇一個樣式</p>
                 <p class="pt">{{ money(one_of_shop.__price) }}&nbsp;HKD</p>
@@ -25,7 +25,7 @@
             <div class="pb-x3 pt">
                 <div class="py-x3">
                     <div class="pb">購買數量</div>
-                    <o-number-manger :err="errs.__quantity" :form="one_of_shop" :max="inventorys_of_variation" :pk="'__quantity'"/>
+                    <o-number-manger :err="errs.__quantity" :form="one_of_shop" :max="inventorys_of_surplus" :pk="'__quantity'"/>
                 </div>
                 <div class="txt-pri bb pt-x2 pb"><span @click="went_inventory()">庫存明細</span></div>
             </div>
@@ -58,10 +58,13 @@ const stores = computed((): MANY => vai_cashier_product.storehouses(one_of_shop.
 
 // 該樣式的庫存
 const inventorys_of_variation = computed((res: number = 0) => {
-    const seiect_vr: ID = one_of_shop.value.__variation;
+    const seiect_vr: ID = one_of_shop.value.__variation; // 定位 原 庫存
     which_store().map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { res = e.quantity } } })
-    return res;
+    return res < 0 ? 0 : res;
 })
+
+// 剩餘 庫存，庫存 - 購買 庫存
+const inventorys_of_surplus = computed(() => (inventorys_of_variation.value - cashierDeskCartPina().cartQuantity(one_of_shop.value.id)))
 
 // 需不需要樣式標紅
 const need_err = computed(() => ( (one_of_shop.value.__variation || one_of_shop.value.__variation <= 0) && inventorys_of_variation.value <= 0))
@@ -85,10 +88,6 @@ const submit = () => future_of_ioading(me, async () => {
     vs.map((e: ONE) => { if (e.id == v) { __v = e } })
 
     cashierDeskCartPina().add_cart(src, q, __v); 
-
-    // 庫存 減
-    remove_quantity(src.__quantity)
-
     $pan(0)
 })
 
@@ -96,15 +95,9 @@ const submit = () => future_of_ioading(me, async () => {
 const which_store = (): MANY => {
     let vrs: MANY = [ ]
     const store_id_of_user: ID = userPina().mystore
-    stores.value.map((e: ONE) => { if (e.storehouse_id == store_id_of_user) { vrs = e.variation ? e.variation : [ ] } })
+    stores.value.map((e: ONE) => { 
+        if (e.storehouse_id == store_id_of_user) { vrs = e.variation ? e.variation : [ ] } 
+    })
     return vrs
-}
-
-// 移除 庫存
-const remove_quantity = (num: number) => {
-    const seiect_vr: ID = one_of_shop.value.__variation;
-    which_store().map((e: ONE) => { if (e.id) { if (e.id == seiect_vr) { 
-        if (!isNaN(num)) { e.quantity -= num; }
-    } } })
 }
 </script>

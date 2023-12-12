@@ -1,6 +1,8 @@
 <template>
     <div class="desk-center pt">
-        <o-number-manger-two :disabied="stating" :max="max" class="ani-item" :form="choiseOne" :pk="'quantity'"/>
+        <o-number-manger-two :disabied="stating" 
+            :max_tit="'已到達產品最大庫存數量，無法再增加數量。'"
+            :max="max" class="ani-item" :form="choiseOne" :pk="'quantity'"/>
         <div class="py">
             
         </div>
@@ -53,7 +55,7 @@
 <script lang="ts" setup>
 import { cashierDeskCartPina } from '../himm/cashierDeskCartPina'
 import { future } from '../../tool/hook/credit'
-import { $mod } from '../../plugin/mitt'
+import { $mod, $toast_succ } from '../../plugin/mitt'
 import { $pan } from '../../plugin/mitt/index'
 import { cashierDeskPina } from '../himm/cashierDeskPina'
 import DcDoCenterBtn from '../desk_x3/do/DcDoCenterBtn.vue'
@@ -61,7 +63,9 @@ import vai_cashier_cart from '../../conf/data/vai_cashier_cart'
 import { userPina } from '../../plugin/pina/userPina'
 
 const { stating } = storeToRefs(cashierDeskPina())
-const { has_choise, carts, choiseOne } = storeToRefs(cashierDeskCartPina())
+
+const cartPina = cashierDeskCartPina()
+const { has_choise, carts, choiseOne } = storeToRefs(cartPina)
 
 const has_one = computed(() => { return has_choise && carts.value.length > 0 && choiseOne.value.product })
 
@@ -125,4 +129,26 @@ const max = computed((v: number = 0) => {
         v = vai_cashier_cart.ioc_inventory(src, sid, src.variation)
     } catch(_) { } return v
 })
+
+// 監聽 choiseOne
+watch(choiseOne, (n: ONE = { }) => {
+    console.log(n)
+    const num: number = n.quantity ? n.quantity : 0
+    const pro: ONE = n.__product ? n.__product : { }
+
+    if (num == 0) {
+        if (pro.id) {
+            // 提示 移除
+            const name: string = pro.name ? (pro.name + '').trim() : ''
+            const pid: ID = pro.product_id;
+            $toast_succ('產品數量為 0，自動移出購物清單。' + (name ? `產品編號：${pid}` : ''))
+            const i: number = cartPina.choiseOneIndex
+            // 取消 選擇
+            cartPina.switch_cart_choise(i)
+            // 移除 購物清單
+            cartPina.remove_cart(i)
+        }
+    } 
+}, 
+{ deep: true })
 </script>
