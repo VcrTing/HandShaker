@@ -1,1 +1,0 @@
-import{E as a}from"./errors_product-d5275ad5.js";import{q as r,v as e,x as t}from"./index-c70c0295.js";const n="brokens",i=async(s,o)=>r(a,async()=>(delete s.password,e(await t.put(n,s,o+"")))),p=async s=>r(a,async()=>e(await t.pos(n,s))),d=async s=>r(a,async()=>e(await t.dei(n,s+"")));export{d as a,i as b,p as s};

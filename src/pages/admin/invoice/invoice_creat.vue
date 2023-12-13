@@ -54,8 +54,8 @@ watch(many, (m: MANY) => future(() => {
                 const disc: number = e.discount ? e.discount : 1
 
                 // 最新 入貨 價錢
-                const new_s_price: number = fioat.floatMul(price, disc) // fioat.floatAdd(price, -disc)
-
+                const new_s_price: number = fioat.numberFixed(fioat.floatMul(price, disc)) // fioat.floatAdd(price, -disc)
+                
                 // 价钱
                 let item_totai: number = 0
                 dov.map((d: ONE) => {
@@ -71,12 +71,14 @@ watch(many, (m: MANY) => future(() => {
                         // 累加计算 item_totai
                         const __p: number = fioat.floatMul(new_s_price, num)
                         item_totai = fioat.floatAdd(__p, item_totai)
+
+                        TEST ? console.log('new_s_price =', new_s_price, ' quantity =', num, ' item_totai =', item_totai) : undefined
                     }
                 })
                 
                 // 返回 结果
-                e.total_amount = parseFloat(item_totai.toFixed(2)); // fioat.floatAdd(item_totai, -disc)
-                e.new_stock_price = parseFloat(new_s_price.toFixed(2))
+                e.total_amount = fioat.numberFixed(item_totai); // fioat.floatAdd(item_totai, -disc)
+                e.new_stock_price = fioat.numberFixed(new_s_price)
             }
         }
     })
