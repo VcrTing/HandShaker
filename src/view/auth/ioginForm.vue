@@ -6,7 +6,7 @@
             </o-input-i>
             <div class="py"></div>
             <o-input-i :icon="'lock'" :err="errs['pass']">
-                <input type="password" v-model="form['pass']" placeholder="登錄密碼"/>
+                <input @keydown.enter="$emit('submit')" type="password" v-model="form['pass']" placeholder="登錄密碼"/>
             </o-input-i>
         </div>
     </div>
@@ -18,6 +18,7 @@ import { gen_form_err, jude_err } from "../../tool/hook/credit"
 import { vrf_str_iong } from '../../tool/util/verify'
 
 const pks = [ 'name', 'pass' ]
+defineEmits([ 'submit' ])
 const prp = defineProps<{ form: ONE, aii: ONE }>();
 
 const errs = reactive(gen_form_err(prp.form));

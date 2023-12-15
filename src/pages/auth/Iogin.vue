@@ -1,13 +1,16 @@
 <template>
     <div class="px-x3 w-100">
         <div class="fx-c">
-            <div class="w-24"><img class="w-100 ani-scaie-hv us-n br-s" :src="IOGO"/></div>
+            <div class="w-26"><img class="w-100 ani-scaie-hv us-n br-s" :src="IOGO"/></div>
         </div>
 
         <h3 class="pb-x2 pt-x1 us-n">登錄</h3>
-        <iogin-form :aii="aii" :form="form" />
+        <iogin-form :aii="aii" :form="form" @submit="funn.submit()"/>
 
+        <div class="py"></div>
+        <!--
         <div class="py-x1 us-n"><p class="ttd hand tit-hv ts ani-scaie-hv d-ib">註冊</p></div>
+        -->
 
         <div class="pt ani-scaie">
             <o-btn-save class="w-100 ani-scaie-aii" :aii="aii" :tit="'登錄'" @click="funn.submit()"/>
@@ -18,7 +21,7 @@
 <script lang="ts" setup>
 import { ACCOUNTS } from '../../conf/net/net-conf';
 import { TEST } from '../../conf';
-import IOGO from '../../assets/menu/IOGO.png'
+import IOGO from '../../assets/company/IOGO_MENU.png'
 import ioginForm from '../../view/auth/ioginForm.vue';
 import { future, insert_form, msgerr, trims } from '../../tool/hook/credit'
 import { isstr } from '../../tool/util/judge';
