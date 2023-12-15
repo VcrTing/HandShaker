@@ -1,0 +1,1 @@
+import{J as i,m as t,ae as a}from"./index-c02dffd3.js";import{a as o}from"./serv_suppiier_iist-0c51d78f.js";const p=i("suppiierPina",{state:()=>({one_of_edit:{}}),actions:{save(e,s={}){this[e]=s},async fetchOne(e){const s=await o(e);return t(s)?a(s+""):this.one_of_edit=s,s}}});export{p as s};

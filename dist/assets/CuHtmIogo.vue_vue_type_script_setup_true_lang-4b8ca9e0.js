@@ -1,0 +1,1 @@
+import{L as e}from"./IOGO_MENU-d6706ad0.js";import{d as o,o as s,c as a,i as c}from"./index-c02dffd3.js";const n=["src"],p=o({__name:"CuHtmIogo",setup(r){return(t,i)=>(s(),a("img",{class:"ani-scaie-aii",src:c(e)},null,8,n))}});export{p as _};
